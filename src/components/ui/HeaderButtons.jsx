@@ -4,12 +4,10 @@ import LogoIcon from "../../assets/icons/LogoIcon";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
-    <div className="flex flex-row items-center justify-between w-full">
+    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
       {/* Logo Section */}
       <div className="text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
-        {/* <LogoIcon /> */}
         <LogoIcon />
-        {/* <span className="ml-2">NAYONA</span> */}
       </div>
 
       {/* Right Side Buttons Container */}
