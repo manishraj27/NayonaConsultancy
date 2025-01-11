@@ -31,7 +31,7 @@ const HeaderButtons = () => {
         style={{ backgroundColor: '#D9E0E3' }}
       >
         <span className="text-sm lg:text-lg font-medium uppercase pl-10 pr-8 text-black">
-          Chat with SOHub
+          Chat with us
         </span>
         <span className="relative overflow-hidden flex items-center justify-center w-8 lg:w-12 h-8 lg:h-12 rounded-full bg-[#F0F6F8]">
           <span className="block w-1/3 will-change-transform group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-black">
