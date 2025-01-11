@@ -21,7 +21,7 @@ const NavBar = () => {
 
       {/* Navigation Menu */}
       {isMenuOpen && (
-        <nav className="fixed right-28  top-24 lg:top-32 select-none pointer-events-auto z-[3]">
+        <nav className="fixed lg:px-0 px-4 lg:right-16 w-full lg:w-2/5 top-24 lg:top-32 select-none pointer-events-auto z-[3]">
           <div className="rounded-3xl bg-gray-100 px-4 lg:px-6 py-4 lg:py-6 flex flex-col gap-2">
             {menuItems.map((item) => (
               <a
