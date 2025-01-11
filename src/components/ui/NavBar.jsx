@@ -1,16 +1,17 @@
 import { useState } from "react";
 import HeaderButtons from "./HeaderButtons";
 import ArrowIcon from "../../assets/icons/ArrowIcon";
+import { useLocation } from 'react-router-dom';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const location = useLocation(); // Get the current location
   const menuItems = [
-    { name: "Home", href: "/", disabled: true },
-    { name: "About Us", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "/", disabled: location.pathname === "/" },
+    { name: "About Us", href: "/about", disabled: location.pathname === "/about" },
+    { name: "Services", href: "/services", disabled: location.pathname === "/services" },
+    { name: "Blog", href: "/blog", disabled: location.pathname === "/blog" },
+    { name: "Contact", href: "/contact", disabled: location.pathname === "/contact" },
   ];
 
   return (
