@@ -1,5 +1,6 @@
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
+import LogoIcon from "../../assets/icons/LogoIcon";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
@@ -7,7 +8,8 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       {/* Logo Section */}
       <div className="text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
         {/* <LogoIcon /> */}
-        <span className="ml-2">NAYONA</span>
+        <LogoIcon />
+        {/* <span className="ml-2">NAYONA</span> */}
       </div>
 
       {/* Right Side Buttons Container */}

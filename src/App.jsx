@@ -1,5 +1,5 @@
 
-import HeroSection from "./components/homepage/HeroSection";
+import Hero from "./components/homepage/Hero";
 import NavBar from "./components/ui/NavBar";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <NavBar />
-     <HeroSection />
+      <Hero/>
     </div>
   );
 }
