@@ -9,26 +9,35 @@ const NavBar = () => {
 
   const menuVariants = {
     hidden: {
-      x: "100%",
-      opacity: 0
+      x: 100,
+      y: -100,
+      opacity: 0,
+      rotate: 10,
+      scale: 0.9
     },
     visible: {
       x: 0,
+      y: 0,
       opacity: 1,
+      rotate: 0,
+      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 20,
-        duration: 0.4
+        stiffness: 80,
+        damping: 15,
+        duration: 0.5
       }
     },
     exit: {
-      x: "100%",
+      x: 100,
+      y: -100,
       opacity: 0,
+      rotate: 10,
+      scale: 0.9,
       transition: {
         type: "tween",
         duration: 0.3,
-        ease: "easeOut"
+        ease: "easeIn"
       }
     }
   };
@@ -39,7 +48,6 @@ const NavBar = () => {
         <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
 
-      {/* Navigation Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
@@ -49,7 +57,12 @@ const NavBar = () => {
             variants={menuVariants}
             className="fixed lg:px-0 px-4 lg:right-16 w-full lg:w-2/5 top-24 lg:top-32 select-none pointer-events-auto z-[3]"
           >
-            <div className="rounded-3xl bg-gray-100 px-4 lg:px-6 py-4 lg:py-6 flex flex-col gap-2">
+            <motion.div 
+              className="rounded-3xl bg-gray-100 px-4 lg:px-6 py-4 lg:py-6 flex flex-col gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+            >
               {menuItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -58,7 +71,7 @@ const NavBar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
                     duration: 0.3,
-                    delay: index * 0.1,
+                    delay: 0.2 + index * 0.1,
                     ease: "easeOut"
                   }}
                   className={`flex group flex-row items-center gap-3 
@@ -78,7 +91,7 @@ const NavBar = () => {
                   <span>{item.name}</span>
                 </motion.a>
               ))}
-            </div>
+            </motion.div>
           </motion.nav>
         )}
       </AnimatePresence>
