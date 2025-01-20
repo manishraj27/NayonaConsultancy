@@ -30,7 +30,7 @@ const NayonaLoader = ({ onLoadingComplete }) => {
             style={{
               strokeDasharray: 2000,
               strokeDashoffset: 2000,
-              animation: 'drawPath 3s ease forwards'
+              animation: 'drawPath 10s ease forwards'
             }}
           />
         </svg>

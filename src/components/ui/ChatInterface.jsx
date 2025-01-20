@@ -46,7 +46,7 @@ const ChatInterface = () => {
               <div className="p-4 bg-gray-100 rounded-t-2xl text-gray-800 flex justify-between items-center">
                 <div>
                   <span className="font-semibold text-sm">Chat with us</span>
-                  <p className="text-xs text-gray-500 mt-0.5">We typically reply within an hour</p>
+                  <p className="text-xs text-gray-500 mt-0.5">We typically reply within seconds</p>
                 </div>
                 <motion.button 
                   whileHover={{ rotate: 90 }}
