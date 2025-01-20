@@ -1,15 +1,15 @@
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
-import LogoIcon from "../../assets/icons/LogoIcon";
 import LogoWithBrandName from "../../assets/icons/LogoWithBrandName";
+import LogoIcon from './../../assets/icons/LogoIcon';
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
       {/* Logo Section */}
-      <div className="tracking-wider flex items-center">
-        {/* <LogoIcon /> */}
-        <LogoWithBrandName />
+      <div className="text-[#1d383e] text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
+        <LogoIcon />
+        {/* <LogoWithBrandName /> */}
       </div>
 
       {/* Right Side Buttons Container */}
