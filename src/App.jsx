@@ -5,6 +5,7 @@ import NavBar from "./components/ui/NavBar";
 import NayonaLoader from "./components/ui/NayonaLoader";
 import { useState } from "react";
 import Career from "./components/homepage/Career";
+import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
 
 function App() {
 
@@ -15,16 +16,17 @@ function App() {
 
   return (
     <>
-    <NayonaLoader onLoadingComplete={() => setIsLoaded(true)} />
-    <div className={`transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+    {/* <NayonaLoader onLoadingComplete={() => setIsLoaded(true)} /> */}
+    {/* <div className={`transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}> */}
       <NavBar />
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/careers" element={<Career />} />
       </Routes>
-       
-      </div>
+      <FloatingButtonsContainer />
+{/*        
+      </div> */}
     </>
   );
 }
