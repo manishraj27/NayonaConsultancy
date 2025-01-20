@@ -1,15 +1,13 @@
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
+import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 import LogoWithBrandName from "../../assets/icons/LogoWithBrandName";
-import LogoIcon from './../../assets/icons/LogoIcon';
-
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
       {/* Logo Section */}
-      <div className="text-[#081012] text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
-        <LogoIcon />
-        {/* <LogoWithBrandName /> */}
+      <div className="text-[#081012] text-xl lg:text-3xl font-bold tracking-wider flex items-center">
+       <FinalLogoWithBrand />
       </div>
 
       {/* Right Side Buttons Container */}
@@ -44,9 +42,8 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
               <span
                 className="absolute left-1/2 -translate-x-1/2 top-0 flex transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.2)]"
                 style={{
-                  transform: `translateY(${
-                    isMenuOpen ? "-100%" : "0"
-                  }) translateX(-50%)`,
+                  transform: `translateY(${isMenuOpen ? "-100%" : "0"
+                    }) translateX(-50%)`,
                 }}
               >
                 Menu
