@@ -7,7 +7,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
       {/* Logo Section */}
-      <div className="text-[#1d383e] text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
+      <div className="text-[#081012] text-2xl lg:text-3xl font-bold tracking-wider flex items-center">
         <LogoIcon />
         {/* <LogoWithBrandName /> */}
       </div>
