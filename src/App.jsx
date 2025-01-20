@@ -1,4 +1,4 @@
-import { BrowserRouter as Router,  Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Contact from "./components/homepage/Contact";
 import Hero from "./components/homepage/Hero";
 import NavBar from "./components/ui/NavBar";
@@ -10,12 +10,12 @@ import WebLoader from "./components/ui/WebLoader";
 
 function App() {
 
- 
+
 
 
   return (
     <>
-          <WebLoader />
+      <WebLoader />
       <NavBar />
       <Routes>
         <Route path="/" element={<Hero />} />
@@ -24,7 +24,7 @@ function App() {
       </Routes>
       <FloatingButtonsContainer />
     </>
-  
+
   );
 }
 
