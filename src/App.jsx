@@ -4,7 +4,8 @@ import Hero from "./components/homepage/Hero";
 import NavBar from "./components/ui/NavBar";
 import Career from "./components/homepage/Career";
 import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
-import PreLoader from "./components/ui/Preloader";
+import WebLoader from "./components/ui/WebLoader";
+
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <>
-          <PreLoader />
+          <WebLoader />
       <NavBar />
       <Routes>
         <Route path="/" element={<Hero />} />
