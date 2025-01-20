@@ -2,7 +2,7 @@ import  { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 
-const Preloader = () => {
+const WebLoader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ const Preloader = () => {
 };
 
 
-export default Preloader;
+export default WebLoader;
 
 
 // import { useEffect, useState, useRef } from 'react';

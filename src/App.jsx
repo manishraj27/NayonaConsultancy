@@ -1,10 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as  Routes, Route } from "react-router-dom";
 import Contact from "./components/homepage/Contact";
 import Hero from "./components/homepage/Hero";
 import NavBar from "./components/ui/NavBar";
 import Career from "./components/homepage/Career";
 import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
-import Preloader from "./components/ui/Preloader";
+import PreLoader from "./components/ui/Preloader";
+
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-          <Preloader />
+          <PreLoader />
       <NavBar />
       <Routes>
         <Route path="/" element={<Hero />} />
