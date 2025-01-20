@@ -36,7 +36,7 @@ const WhatsAppButton = () => {
             <div className="p-4">
               <p className="text-gray-600 text-sm mb-4">Connect with us on WhatsApp</p>
               <motion.a
-                href="https://api.whatsapp.com/send?phone=1234567890"
+                href="https://api.whatsapp.com/send?phone=9430144469"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gray-900 text-white px-4 py-2 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors text-sm"
