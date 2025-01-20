@@ -1,5 +1,5 @@
-import ChatInterface from "./ChatInterface.JSX";
-import WhatsAppButton from "./WhatsAppButton.JSX";
+import ChatInterface from "./ChatInterface.jsx";
+import WhatsAppButton from "./WhatsAppButton.jsx";
 
 const FloatingButtonsContainer = () => {
   return (
