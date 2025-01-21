@@ -1,46 +1,12 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import HeaderButtons from "./HeaderButtons";
-import ArrowIcon from "../../assets/icons/ArrowIcon";
+import BentoCard from "./BentoCard";
+import HeaderButtons from './HeaderButtons';
 import menuItems from "../../lib/menuItems";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuVariants = {
-    hidden: {
-      x: 100,
-      y: -100,
-      opacity: 0,
-      rotate: 10,
-      scale: 0.9
-    },
-    visible: {
-      x: 0,
-      y: 0,
-      opacity: 1,
-      rotate: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 15,
-        duration: 0.5
-      }
-    },
-    exit: {
-      x: 100,
-      y: -100,
-      opacity: 0,
-      rotate: 10,
-      scale: 0.9,
-      transition: {
-        type: "tween",
-        duration: 0.3,
-        ease: "easeIn"
-      }
-    }
-  };
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
     <div className="relative">
@@ -48,53 +14,50 @@ const NavBar = () => {
         <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.nav
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            variants={menuVariants}
-            className="fixed lg:px-0 px-4 lg:right-16 w-full lg:w-2/5 top-24 lg:top-32 select-none pointer-events-auto z-[3]"
-          >
-            <motion.div 
-              className="rounded-3xl bg-gray-100 px-4 lg:px-6 py-4 lg:py-6 flex flex-col gap-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-            >
-              {menuItems.map((item, index) => (
-                <motion.a
-                  key={item.name}
-                  href={item.href}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.2 + index * 0.1,
-                    ease: "easeOut"
-                  }}
-                  className={`flex group flex-row items-center gap-3 
-                    text-xl lg:text-2xl font-semibold 
-                    py-2 lg:py-3 rounded-2xl w-full px-4
-                    hover:bg-white transition-colors duration-200 ease-out
-                    ${
-                      item.disabled
-                        ? "text-gray-400 pointer-events-none"
-                        : "text-gray-800 pointer-events-auto"
-                    }
-                  `}
-                >
-                  <span className="w-0 group-hover:w-5 transition-[width] duration-300 ease-out hidden lg:block">
-                    <ArrowIcon />
-                  </span>
-                  <span>{item.name}</span>
-                </motion.a>
-              ))}
-            </motion.div>
-          </motion.nav>
-        )}
-      </AnimatePresence>
+      <nav className={`fixed lg:px-6 px-4 right-0 left-0 lg:right-16 lg:left-auto 
+        w-full lg:w-3/5 top-24 lg:top-32 
+        select-none pointer-events-auto z-[3]
+        transition-all duration-500 ease-[cubic-bezier(.22,.68,0,1)]
+        ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
+      >
+        <div className={`max-h-[70vh] overflow-y-auto rounded-3xl 
+          bg-gray-50/80 backdrop-blur-xl border border-white/20
+          p-6 shadow-xl transform transition-all duration-500
+          ease-[cubic-bezier(.22,.68,0,1)]
+          ${isMenuOpen ? 'scale-100' : 'scale-95'}
+          [&::-webkit-scrollbar]:w-2
+          [&::-webkit-scrollbar-track]:bg-transparent
+          [&::-webkit-scrollbar-thumb]:bg-gray-300
+          [&::-webkit-scrollbar-thumb]:rounded-full
+          hover:[&::-webkit-scrollbar-thumb]:bg-gray-400
+          scrollbar-thin
+          scrollbar-track-transparent
+          scrollbar-thumb-gray-300
+          hover:scrollbar-thumb-gray-400`}
+        >
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
+            {menuItems.map((item, index) => (
+              <div
+                key={item.name}
+                className={`transition-all duration-500 
+                  ease-[cubic-bezier(.22,.68,0,1)]
+                  ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}}`}
+                style={{
+                  transitionDelay: `${index * 50}ms`
+                }}
+              >
+                <BentoCard 
+                  item={item} 
+                  activeSubmenu={activeSubmenu} 
+                  setActiveSubmenu={setActiveSubmenu} 
+                  hoveredCard={hoveredCard} 
+                  setHoveredCard={setHoveredCard} 
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </nav>
     </div>
   );
 };
