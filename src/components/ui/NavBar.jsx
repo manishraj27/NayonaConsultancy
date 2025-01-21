@@ -21,7 +21,7 @@ const NavBar = () => {
         ${isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}
       >
         <div className={`max-h-[70vh] overflow-y-auto rounded-3xl 
-          bg-gray-50/80 backdrop-blur-xl border border-white/20
+          bg-gray-50 backdrop-blur-xl border border-white/20
           p-6 shadow-xl transform transition-all duration-500
           ease-[cubic-bezier(.22,.68,0,1)]
           ${isMenuOpen ? 'scale-100' : 'scale-95'}
