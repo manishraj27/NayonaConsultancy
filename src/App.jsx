@@ -18,7 +18,7 @@ function App() {
   return (
     <>
    
-      <WebLoader />
+      {/* <WebLoader /> */}
       <NavBar />
       <Routes>
         {/* <Route path="/" element={<LandingPage />} /> */}

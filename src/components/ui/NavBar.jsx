@@ -66,7 +66,7 @@ const NavBar = () => {
         )}
       </AnimatePresence>
 
-      <style jsx global>{`
+      {/* <style jsx global>{`
         ::-webkit-scrollbar {
           width: 0px;
           background: transparent;
@@ -81,7 +81,7 @@ const NavBar = () => {
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
-      `}</style>
+      `}</style> */}
     </div>
   );
 };
