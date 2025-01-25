@@ -58,7 +58,7 @@ const NavBar = () => {
             >
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">
                 {menuItems.map((item, index) => (
-                  <BentoCard key={item.name} item={item} index={index} />
+                  <BentoCard key={item.name} item={item} index={index} currentPath={window.location.pathname}  />
                 ))}
               </div>
             </motion.div>

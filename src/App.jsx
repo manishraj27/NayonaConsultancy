@@ -22,7 +22,7 @@ function App() {
       <NavBar />
       <Routes>
         {/* <Route path="/" element={<LandingPage />} /> */}
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/features/consulting" element={<Contact />} />
         <Route path="/careers" element={<Career />} />
       </Routes>
       <FloatingButtonsContainer />
