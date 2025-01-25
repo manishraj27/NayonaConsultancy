@@ -65,6 +65,23 @@ const NavBar = () => {
           </motion.nav>
         )}
       </AnimatePresence>
+
+      <style jsx global>{`
+        ::-webkit-scrollbar {
+          width: 0px;
+          background: transparent;
+        }
+        ::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+          background: transparent;
+        }
+        * {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+      `}</style>
     </div>
   );
 };
