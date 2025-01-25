@@ -13,7 +13,7 @@ const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <div className="fixed bottom-4 right-16">
+    <div className="fixed bottom-4 right-4 z-50">
       <AnimatePresence>
         {isOpen && (
           <motion.div

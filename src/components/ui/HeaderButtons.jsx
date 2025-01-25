@@ -1,7 +1,8 @@
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
-import LogoWithBrandName from "../../assets/icons/LogoWithBrandName";
+
+
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
