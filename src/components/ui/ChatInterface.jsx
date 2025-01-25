@@ -162,7 +162,7 @@ const ChatInterface = () => {
            
 
             {/* Messages Area */}
-            <div className="lg:h-[250px] overflow-y-auto p-4 space-y-4">
+            <div className="lg:h-[250px] h-[200px] overflow-y-auto p-4 space-y-4">
               {/* CHAT AREA */}
               {messages.map((message) => (
                 <motion.div
