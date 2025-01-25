@@ -18,10 +18,10 @@ function App() {
   return (
     <>
    
-      {/* <WebLoader /> */}
+      <WebLoader />
       <NavBar />
       <Routes>
-        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/features/consulting" element={<Contact />} />
         <Route path="/careers" element={<Career />} />
       </Routes>
