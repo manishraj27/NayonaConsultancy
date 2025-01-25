@@ -31,7 +31,7 @@ const menuItems = [
   {
     name: "Features",
     icon: Zap,
-    description: "Explore our key offerings",
+    description: "Explore our key",
     bgColor: "from-purple-500/10 to-pink-500/10",
     submenu: [
       { name: "Consulting Services", href: "/features/consulting", icon: Briefcase },
