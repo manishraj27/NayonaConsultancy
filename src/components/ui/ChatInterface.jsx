@@ -159,9 +159,11 @@ const ChatInterface = () => {
                 </button>
               ))}
             </div>
+           
 
             {/* Messages Area */}
             <div className="h-[250px] overflow-y-auto p-4 space-y-4">
+              {/* CHAT AREA */}
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
