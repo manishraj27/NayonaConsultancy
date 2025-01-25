@@ -119,7 +119,7 @@ const ChatInterface = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute bottom-12 right-0 bg-white rounded-3xl shadow-2xl w-[500px] mb-2 z-50 border border-gray-100"
+            className="absolute bottom-12 right-0 bg-white rounded-3xl shadow-2xl lg:w-[500px] mb-2 z-50 border border-gray-100"
           >
             {/* Header */}
             <div className="p-4 bg-gray-50 rounded-t-3xl text-gray-800 flex justify-between items-center">
@@ -162,7 +162,7 @@ const ChatInterface = () => {
            
 
             {/* Messages Area */}
-            <div className="h-[250px] overflow-y-auto p-4 space-y-4">
+            <div className="lg:h-[250px] overflow-y-auto p-4 space-y-4">
               {/* CHAT AREA */}
               {messages.map((message) => (
                 <motion.div
