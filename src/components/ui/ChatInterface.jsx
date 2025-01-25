@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  MessageCircle, X, Send, Paperclip, 
-  FileText, Image, Video, 
-  Sparkles, User, Settings 
+import {
+  MessageCircle, X, Send, Paperclip,
+  FileText, Image, Video,
+  Sparkles
 } from 'lucide-react';
 import FinalLogo from '../../assets/icons/FinalLogo';
 
@@ -82,7 +82,7 @@ const ChatInterface = () => {
 
   const addQuickReply = (reply) => {
     setMessages((prev) => [...prev, { id: Date.now(), text: reply, isBot: false }]);
-    
+
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -101,7 +101,7 @@ const ChatInterface = () => {
         {attachment.type === 'document' && <FileText size={16} className="mr-2 text-gray-600" />}
         {attachment.type === 'image' && <Image size={16} className="mr-2 text-gray-600" />}
         {attachment.type === 'video' && <Video size={16} className="mr-2 text-gray-600" />}
-        
+
         <span className="text-xs truncate max-w-[120px] mr-2">{attachment.name}</span>
         <button onClick={() => removeAttachment(attachment.id)} className="text-red-500">
           <X size={14} />
@@ -131,7 +131,7 @@ const ChatInterface = () => {
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                
+
                 <motion.button
                   whileHover={{ rotate: 90 }}
                   onClick={() => setIsOpen(false)}
@@ -148,11 +148,10 @@ const ChatInterface = () => {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-2 text-sm transition-colors ${
-                    activeTab === tab 
-                      ? 'bg-gray-100 font-semibold text-gray-900' 
+                  className={`flex-1 py-2 text-sm transition-colors ${activeTab === tab
+                      ? 'bg-gray-100 font-semibold text-gray-900'
                       : 'text-gray-500 hover:bg-gray-50'
-                  }`}
+                    }`}
                 >
                   {tab === 'chat' && <MessageCircle size={16} className="inline mr-2" />}
                   {tab === 'ai' && <Sparkles size={16} className="inline mr-2" />}
@@ -178,18 +177,17 @@ const ChatInterface = () => {
 
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className={`max-w-[80%] p-3 rounded-2xl ml-4 text-sm ${
-                      message.isBot 
-                        ? "bg-gray-100 text-gray-800" 
+                    className={`max-w-[80%] p-3 rounded-2xl ml-4 text-sm ${message.isBot
+                        ? "bg-gray-100 text-gray-800"
                         : "bg-gray-900 text-white"
-                    }`}
+                      }`}
                   >
                     {message.text}
                     {message.attachments && message.attachments.length > 0 && (
                       <div className="mt-2 flex flex-wrap">
                         {message.attachments.map(attachment => (
-                          <span 
-                            key={attachment.id} 
+                          <span
+                            key={attachment.id}
                             className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full mr-1 mb-1"
                           >
                             {attachment.name}
@@ -227,21 +225,21 @@ const ChatInterface = () => {
             <div className="p-4 border-t border-gray-100">
               <form onSubmit={handleSend} className="flex gap-2">
                 <div className="flex items-center space-x-2 mr-2">
-                  <motion.label 
+                  <motion.label
                     whileHover={{ scale: 1.1 }}
-                    htmlFor="document-upload" 
+                    htmlFor="document-upload"
                     className="cursor-pointer hover:bg-gray-100 p-2 rounded-full"
                   >
                     <Paperclip size={16} />
-                    <input 
-                      type="file" 
-                      id="document-upload" 
-                      className="hidden" 
+                    <input
+                      type="file"
+                      id="document-upload"
+                      className="hidden"
                       onChange={(e) => handleFileUpload(e, 'document')}
                     />
                   </motion.label>
                 </div>
-                
+
                 <input
                   type="text"
                   value={newMessage}
@@ -249,7 +247,7 @@ const ChatInterface = () => {
                   placeholder="Type your message..."
                   className="flex-1 p-2 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
                 />
-                
+
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -262,7 +260,7 @@ const ChatInterface = () => {
             </div>
 
 
-            
+
           </motion.div>
         )}
       </AnimatePresence>
