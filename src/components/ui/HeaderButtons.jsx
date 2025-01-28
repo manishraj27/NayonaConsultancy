@@ -1,17 +1,68 @@
+import React, { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 
-
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
+  const [isScrolling, setIsScrolling] = useState(false);
+  const controls = useAnimation(); // Framer Motion animation controls
+
+  useEffect(() => {
+    let scrollTimeout;
+
+    const handleScroll = () => {
+      // Set scrolling state to true
+      setIsScrolling(true);
+
+      // Animate the logo to move up and fade out
+      controls.start({
+        y: -window.scrollY, // Move the logo up as the user scrolls
+        opacity: 0, // Fade out the logo
+        transition: { type: "spring", stiffness: 500, damping: 100 }, // Smooth spring animation
+      });
+
+      // Clear the timeout if it exists
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set a timeout to detect when scrolling stops
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+
+        // Animate the logo back to its original position and fade in
+        controls.start({
+          y: 0, // Move the logo back to its original position
+          opacity: 1, // Fade in the logo
+          transition: { type: "spring", stiffness: 500, damping: 100 }, // Smooth spring animation
+        });
+      }, 100); // Adjust the timeout duration as needed
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+    };
+  }, [controls]);
+
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
       {/* Logo Section */}
-      <div
-      onClick={() => window.location.href = '/'}
-       className="text-[#081012] text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer">
-       <FinalLogoWithBrand />
-      </div>
+      <motion.div
+        onClick={() => (window.location.href = "/")}
+        className="text-[#050707] text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
+        animate={controls} // Bind animation controls to this element
+        initial={{ y: 0, opacity: 1 }} // Initial position and opacity
+      >
+        <FinalLogoWithBrand />
+      </motion.div>
 
       {/* Right Side Buttons Container */}
       <div className="flex flex-row items-center gap-4 lg:gap-8 z-[4] pointer-events-auto">
@@ -45,8 +96,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
               <span
                 className="absolute left-1/2 -translate-x-1/2 top-0 flex transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.2)]"
                 style={{
-                  transform: `translateY(${isMenuOpen ? "-100%" : "0"
-                    }) translateX(-50%)`,
+                  transform: `translateY(${isMenuOpen ? "-100%" : "0"}) translateX(-50%)`,
                 }}
               >
                 Menu
