@@ -10,7 +10,7 @@ const WebLoader = () => {
     // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 2000);
 
     // Animate the logo
     const tl = gsap.timeline({ repeat: -1 });

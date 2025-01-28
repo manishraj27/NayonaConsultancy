@@ -20,12 +20,18 @@ function App() {
    
       <WebLoader />
       <NavBar />
+      <main>
+      <div id="main-content">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/features/consulting" element={<Contact />} />
         <Route path="/careers" element={<Career />} />
       </Routes>
       <FloatingButtonsContainer />
+
+      </div>
+
+      </main>
     </>
 
   );

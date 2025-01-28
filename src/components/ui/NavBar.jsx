@@ -45,7 +45,7 @@ const NavBar = () => {
 
   return (
     <div className="relative">
-      <header>
+      <header className="">
         <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
 
