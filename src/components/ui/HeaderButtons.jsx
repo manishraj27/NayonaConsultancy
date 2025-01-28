@@ -5,7 +5,7 @@ import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   return (
-    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-8 z-[10]">
+    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
       {/* Logo Section */}
       <div
       onClick={() => window.location.href = '/'}
