@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import HeaderButtons from "./HeaderButtons";
 import menuItems from "../../lib/menuItems";
@@ -7,7 +7,16 @@ import BentoCard from "./BentoCard.jsx";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  useEffect(() => {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+      if (isMenuOpen) {
+        mainContent.classList.add('blur-sm', 'transition-all', 'duration-300');
+      } else {
+        mainContent.classList.remove('blur-sm', 'transition-all', 'duration-300');
+      }
+    }
+  }, [isMenuOpen]);
 
   const menuVariants = {
     hidden: {
@@ -42,6 +51,12 @@ const NavBar = () => {
 
       <AnimatePresence>
         {isMenuOpen && (
+          <>
+          <div 
+                className="fixed inset-0 bg-black/5 backdrop-blur-[2px] z-40"
+                onClick={() => setIsMenuOpen(false)}
+              />
+
           <motion.nav
             initial="hidden"
             animate="visible"
@@ -49,7 +64,7 @@ const NavBar = () => {
             variants={menuVariants}
             className="fixed lg:px-6 px-4 right-0 left-0 lg:right-16 lg:left-auto 
               w-full lg:w-3/5 top-24 lg:top-32 
-              select-none pointer-events-auto z-[3]"
+              select-none pointer-events-auto z-50"
           >
             <motion.div 
               className="max-h-[70vh] overflow-y-auto rounded-3xl 
@@ -63,6 +78,8 @@ const NavBar = () => {
               </div>
             </motion.div>
           </motion.nav>
+          
+          </>
         )}
       </AnimatePresence>
 
