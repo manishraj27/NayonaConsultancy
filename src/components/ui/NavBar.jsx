@@ -53,7 +53,7 @@ const NavBar = () => {
         {isMenuOpen && (
           <>
           <div 
-                className="fixed inset-0 bg-black/5 backdrop-blur-[2px] z-40"
+                className="fixed inset-0 bg-black/5 z-40"
                 onClick={() => setIsMenuOpen(false)}
               />
 
