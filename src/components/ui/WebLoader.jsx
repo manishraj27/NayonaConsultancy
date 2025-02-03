@@ -1,33 +1,25 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
-import './WebLoader.css'; // Create a CSS file for additional styles
+import './WebLoader.css';
 
 const WebLoader = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
 
-    // Animate the logo
+    // Logo animation with focused metallic effect
     const tl = gsap.timeline({ repeat: -1 });
     tl.to('.logo-path', {
       duration: 1.5,
-      filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.8))',
-      opacity: 0.8,
+      filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.7)) brightness(1.3)',
+      scale: 1.02,
+      opacity: 0.9,
       ease: 'power2.inOut',
       yoyo: true,
-      repeat: -1
-    });
-
-    // Add shimmer effect to the text
-    gsap.to('.shimmer-text', {
-      duration: 2,
-      backgroundPosition: '200% 0',
-      ease: 'linear',
       repeat: -1
     });
 
