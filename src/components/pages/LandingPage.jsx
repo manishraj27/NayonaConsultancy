@@ -7,8 +7,8 @@ import Motto from "../ui/Motto"
 function LandingPage() {
   return (
    <>
-   {/* <Hero/> */}
-   <HeroSection/>
+   <Hero/>
+   {/* <HeroSection/> */}
    <Motto/>
    <Features/>
    </>

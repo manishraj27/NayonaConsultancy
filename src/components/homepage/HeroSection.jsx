@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { ChevronLeft, ChevronRight, Database, BarChart2, Star, Heart, Zap } from 'lucide-react';
+import Heading from '../ui/Heading';
 
 const HeroSection = () => {
   const scrollRef = useRef(null);
@@ -21,9 +22,16 @@ const HeroSection = () => {
   return (
     <div className="w-full pt-24 min-h-[90vh]">
       {/* Header Section */}
+      <div className="container mx-auto p-8">
+      <Heading title="Frequently Asked Questions" description="FAQ" />
+    </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pt-8 sm:pt-12 pb-6 sm:pb-8">
         <span className="text-sm text-gray-500">[001]</span>
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-6">
+</div>
+&nbsp;
+--------------------
+        
+        {/* <div className="flex flex-col sm:flex-row justify-between items-start gap-6">
           <div className="max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-light leading-tight mb-4 sm:mb-6">
               We're strong on
@@ -38,7 +46,7 @@ const HeroSection = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Navigation Controls */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-end gap-2 mb-4">
