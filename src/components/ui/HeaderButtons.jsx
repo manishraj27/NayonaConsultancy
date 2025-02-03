@@ -57,7 +57,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       {/* Logo Section */}
       <motion.div
         onClick={() => (window.location.href = "/")}
-        className="text-[#050707] text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
+        className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
         animate={controls} // Bind animation controls to this element
         initial={{ y: 0, opacity: 1 }} // Initial position and opacity
       >
