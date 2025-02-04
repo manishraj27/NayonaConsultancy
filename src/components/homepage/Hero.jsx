@@ -36,10 +36,8 @@ const Hero = () => {
         </div>
       </div>
       
-
-      {/* Right Gradient Box */}
-      {/* to be implemented later */}
-      <div className="absolute right-0 top-2 w-[48%] h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background">
+      {/* Right Content */}
+      <div className="hidden lg:flex absolute right-0 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background">
       </div>
     </section>
   );
