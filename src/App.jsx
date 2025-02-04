@@ -16,7 +16,7 @@ function App() {
   return (
     <>
    
-      <WebLoader />
+      {/* <WebLoader /> */}
       <NavBar />
       <main>
       <div id="main-content">

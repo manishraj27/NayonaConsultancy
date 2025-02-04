@@ -46,9 +46,17 @@
     font-style: normal;
   }
 
-  a, p, span {
-    @apply font-open-sans tracking-wider;
+  @font-face {
+    font-family: "CabinetGrotesk-Variable";
+    src: url("./assets/fonts/CabinetGrotesk-Variable.ttf") format("truetype");
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
   }
+
+  /* a, p, span {
+    @apply font-open-sans tracking-wider;
+  } */
   
   h1, h2, h3, h4 {
     @apply font-montserrat tracking-wide;

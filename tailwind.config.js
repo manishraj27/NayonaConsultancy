@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],
         'open-sans': ['Open Sans', 'sans-serif'],
+        'grotesk': ['CabinetGrotesk-Variable', 'sans-serif'],
       },
       fontSize: {
         'title': ['clamp(2rem, 10vw, 6rem)'],
