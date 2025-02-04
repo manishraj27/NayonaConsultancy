@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { useEffect, useRef } from 'react';
 import Button from './Button';
+import CalComIntegration from './CalComIntegration';
 
 const HeroButton = () => {
   const containerRef = useRef(null);
@@ -32,9 +33,9 @@ const HeroButton = () => {
 
   return (
     <div className="pt-2 flex items-center gap-2">
-      <Button text="About Us" />
+      <CalComIntegration />
       <p ref={containerRef} className="text-body-3 font-open-sans text-gray-500 flex items-center cursor-pointer hover:text-gray-700 transition-colors">
-        Book a Call&nbsp;
+        About Us&nbsp;
         <span className="relative mt-px">
           <svg
             ref={arrowRef}
