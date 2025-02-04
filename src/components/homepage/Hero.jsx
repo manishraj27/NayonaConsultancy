@@ -1,10 +1,11 @@
 import HeroButton from '../ui/HeroButton';
+import './gradient.css';
 import PencilStroke from './../../assets/icons/PencilStroke';
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex w-full h-screen items-center justify-between px-16"
+      className="relative flex w-full h-screen items-center justify-between lg:px-16 px-4"
       aria-label="hero"
     >
       {/* Left Content */}
@@ -29,15 +30,16 @@ const Hero = () => {
               Nayona Consultancy is a leading provider of Oracle EPM services, helping companies streamline their financial and operational processes. Our team of experts deliver tailored solutions to optimize your Oracle investment.
             </p>
           </div>
-          <div className='pt-2'>
+          <div className='pt-6'>
             <HeroButton />
           </div>
         </div>
       </div>
+      
 
       {/* Right Gradient Box */}
       {/* to be implemented later */}
-      <div className="absolute right-2 top-2 w-[48%] h-[97%] rounded-3xl flex flex-col items-center justify-center text-white p-10 shadow-2xl">
+      <div className="absolute right-0 top-2 w-[48%] h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background">
       </div>
     </section>
   );
