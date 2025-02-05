@@ -34,7 +34,7 @@ const HeroButton = () => {
   return (
     <div className="pt-2 flex items-center gap-2">
       <CalComIntegration />
-      <p ref={containerRef} className="text-body-3 font-open-sans text-gray-500 flex items-center cursor-pointer hover:text-gray-700 transition-colors">
+      <p ref={containerRef} className="text-body-3 font-open-sans text-black flex items-center cursor-pointer hover:text-gray-700 transition-colors">
         About Us&nbsp;
         <span className="relative mt-px">
           <svg

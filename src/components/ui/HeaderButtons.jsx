@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
+import FinalLogo from "../../assets/icons/FinalLogo";
+import LogoIcon from "../../assets/icons/LogoIcon";
+import LogoWithInitial from './../../assets/icons/LogoWithInitial';
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [isScrolling, setIsScrolling] = useState(false);
-  const controls = useAnimation(); 
+  const [showFullLogo, setShowFullLogo] = useState(true);
+  const controls = useAnimation();
   const [logoColor, setLogoColor] = useState("#000000");
-
 
   useEffect(() => {
     let scrollTimeout;
@@ -16,9 +19,13 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
     const handleScroll = () => {
       setIsScrolling(true);
 
+      // Determine whether to show full logo based on scroll position
+      // You can adjust the threshold (50 here) to change when the switch happens
+      setShowFullLogo(window.scrollY < 50);
+
       // Get all sections you want to trigger color changes
-      const sections = document.querySelectorAll('section'); // Add appropriate selector
-      const scrollPosition = window.scrollY+50; // Similar to the first example's trigger point
+      const sections = document.querySelectorAll('section');
+      const scrollPosition = window.scrollY + 50;
 
       // Check which section we're currently in
       sections.forEach((section) => {
@@ -26,17 +33,15 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         const sectionBottom = sectionTop + section.offsetHeight;
 
         if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-          // Change color based on section
-          // You can customize these colors or add data attributes to sections
           if (section.classList.contains('dark-section')) {
-            setLogoColor("#ffffff"); // Light blue for dark sections
+            setLogoColor("#ffffff");
           } else {
-            setLogoColor("#000000"); // Default color for light sections
+            setLogoColor("#000000");
           }
         }
       });
 
-      // Existing animation logic
+      // Animation for scroll effect
       controls.start({
         y: -window.scrollY,
         opacity: 0,
@@ -67,19 +72,40 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
     };
   }, [controls]);
 
-
-
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
       {/* Logo Section */}
       <motion.div
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
-        animate={controls} 
-        style={{ color: logoColor }} // Apply the color here
+        animate={controls}
+        style={{ color: logoColor }}
         initial={{ y: 0, opacity: 1 }}
       >
-        <FinalLogoWithBrand />
+        <AnimatePresence mode="wait">
+          {showFullLogo ? (
+            <motion.div
+              key="fullLogo"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              <FinalLogoWithBrand />
+            </motion.div>
+          ) : (
+            <motion.div
+              key="simpleLogo"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* <LogoIcon /> */}
+              <LogoWithInitial />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* Right Side Buttons Container */}
