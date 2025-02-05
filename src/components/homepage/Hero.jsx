@@ -9,7 +9,7 @@ const Hero = () => {
       aria-label="hero"
     >
       {/* Left Content */}
-      <div className="max-w-xl text-left lg:text-left">
+      <div className="max-w-xl lg:pr-8 text-left lg:text-left">
         <div className="my-auto lg:pr-[60px]">
           <h2 className="text-heading-3 mt-2 font-open-sans font-light leading-normal">
             <span className="relative block">
