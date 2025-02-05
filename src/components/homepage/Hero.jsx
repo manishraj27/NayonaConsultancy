@@ -1,6 +1,7 @@
 import HeroButton from "../ui/HeroButton";
 import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
+import BulletinCarousel from "../ui/BulletinCarousel";
 const Hero = () => {
   return (
     <section
@@ -39,12 +40,18 @@ const Hero = () => {
           </div>
           <div className="pt-6">
             <HeroButton />
+  
           </div>
         </div>
       </div>
 
       {/* Right Content */}
-      <div className="hidden lg:flex absolute right-0 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background"></div>
+      <div className="hidden lg:flex absolute right-0 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background">
+      
+      <BulletinCarousel />
+
+      
+      </div>
     </section>
   );
 };
