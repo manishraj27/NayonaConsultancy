@@ -3,6 +3,7 @@ import Features from "../homepage/Features"
 import Hero from "../homepage/Hero"
 import HeroSection from "../homepage/HeroSection"
 import Motto from "../ui/Motto"
+import TestSec from "../ui/TestSec"
 
 function LandingPage() {
   return (
@@ -10,6 +11,7 @@ function LandingPage() {
    <Hero/>
    {/* <HeroSection/> */}
    <Motto/>
+   <TestSec/>
    <Features/>
    </>
   )

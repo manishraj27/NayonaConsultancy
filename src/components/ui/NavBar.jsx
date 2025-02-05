@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import HeaderButtons from "./HeaderButtons";
 import menuItems from "../../lib/menuItems";
 import BentoCard from "./BentoCard.jsx";
+import HeaderButtons from "./HeaderButtons.jsx";
 
 
 const NavBar = () => {

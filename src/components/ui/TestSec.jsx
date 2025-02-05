@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Motto = () => {
+const TestSec = () => {
   return (
-    <section className='bg-black dark-section'>
+    <section className=''>
 
     <div className="w-full py-32 select-none px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto text-center">
@@ -27,4 +27,4 @@ const Motto = () => {
   );
 };
 
-export default Motto;
+export default TestSec;

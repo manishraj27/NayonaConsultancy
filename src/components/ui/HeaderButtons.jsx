@@ -6,44 +6,59 @@ import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [isScrolling, setIsScrolling] = useState(false);
-  const controls = useAnimation(); // Framer Motion animation controls
+  const controls = useAnimation(); 
+  const [logoColor, setLogoColor] = useState("#000000");
+
 
   useEffect(() => {
     let scrollTimeout;
 
     const handleScroll = () => {
-      // Set scrolling state to true
       setIsScrolling(true);
 
-      // Animate the logo to move up and fade out
-      controls.start({
-        y: -window.scrollY, // Move the logo up as the user scrolls
-        opacity: 0, // Fade out the logo
-        transition: { type: "spring", stiffness: 500, damping: 100 }, // Smooth spring animation
+      // Get all sections you want to trigger color changes
+      const sections = document.querySelectorAll('section'); // Add appropriate selector
+      const scrollPosition = window.scrollY+50; // Similar to the first example's trigger point
+
+      // Check which section we're currently in
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+          // Change color based on section
+          // You can customize these colors or add data attributes to sections
+          if (section.classList.contains('dark-section')) {
+            setLogoColor("#ffffff"); // Light blue for dark sections
+          } else {
+            setLogoColor("#000000"); // Default color for light sections
+          }
+        }
       });
 
-      // Clear the timeout if it exists
+      // Existing animation logic
+      controls.start({
+        y: -window.scrollY,
+        opacity: 0,
+        transition: { type: "spring", stiffness: 500, damping: 100 },
+      });
+
       if (scrollTimeout) {
         clearTimeout(scrollTimeout);
       }
 
-      // Set a timeout to detect when scrolling stops
       scrollTimeout = setTimeout(() => {
         setIsScrolling(false);
-
-        // Animate the logo back to its original position and fade in
         controls.start({
-          y: 0, // Move the logo back to its original position
-          opacity: 1, // Fade in the logo
-          transition: { type: "spring", stiffness: 500, damping: 100 }, // Smooth spring animation
+          y: 0,
+          opacity: 1,
+          transition: { type: "spring", stiffness: 500, damping: 100 },
         });
-      }, 100); // Adjust the timeout duration as needed
+      }, 100);
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeout) {
@@ -52,6 +67,8 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
     };
   }, [controls]);
 
+
+
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
       {/* Logo Section */}
@@ -59,6 +76,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
         animate={controls} 
+        style={{ color: logoColor }} // Apply the color here
         initial={{ y: 0, opacity: 1 }}
       >
         <FinalLogoWithBrand />
