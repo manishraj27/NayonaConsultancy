@@ -23,7 +23,7 @@ const Button = ({ text }) => {
       ease: "power2.out"
     })
     .to(textElement, {
-      color: 'white',
+      color: '#e7e6e7',
       duration: 0.2
     }, 0);
 
