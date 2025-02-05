@@ -1,129 +1,209 @@
+import gsap from "gsap";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef, forwardRef } from "react";
+
+const BulletinCard = forwardRef(({ item, isNext }, ref) => (
+  <a
+    href={item.link}
+    ref={ref}
+    className={`
+      absolute w-full grid grid-cols-[50px_1fr] gap-3 items-start 
+      backdrop-blur-md rounded-3xl p-3
+      border border-white/20 shadow-lg transform
+      ${isNext ? 'z-10 bg-white/5 pointer-events-none' : 'z-20 bg-white/10'}
+    `}
+  >
+    <img
+      src={item.image}
+      alt={item.title}
+      className="w-[50px] h-[50px] object-cover rounded transform transition-transform duration-300 hover:scale-105"
+    />
+    <div className="overflow-hidden">
+      <div className="flex font-open-sans gap-1 text-xs uppercase tracking-wider text-white/70 mb-1">
+        <span>{item.category}</span>
+      </div>
+      <h3 className="font-open-sans font-medium text-white mb-1 text-sm line-clamp-2">
+        {item.title}
+      </h3>
+      <p className="text-xs font-grotesk text-body-2 text-white/80 line-clamp-2 hidden md:block">
+        {item.description}
+      </p>
+    </div>
+  </a>
+));
+
+BulletinCard.displayName = 'BulletinCard';
 
 const BulletinCarousel = ({ items }) => {
-  const defaultItems = [
-    {
-      id: 1,
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVer_wMBRrUuTJfkLE_pq1nZRrlaHrWVkNUA&s",
-      category: "Journal",
-      title: "Col becomes a trustee for local mental health charity",
-      description: "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the board at mental health charity Leeds Mind as a Trustee.",
-      link: "/journal/mental-health-trustee",
-    },
-    {
-        id: 2,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVer_wMBRrUuTJfkLE_pq1nZRrlaHrWVkNUA&s",
-        category: "News",
-        title: "Few and Far wins Best in Show at the Roses Creative Awards",
-        description: "We're thrilled to announce that our work with the National Trust has been awarded Best in Show at the Roses Creative Awards.",
-        link: "/news/best-in-show",
-
-    },
-    {
-        id: 3,
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVer_wMBRrUuTJfkLE_pq1nZRrlaHrWVkNUA&s",
-        category: "Journal",
-        title: "ioiuiui becomes a trustee for local mental health charity",
-        description: "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the board at mental health charity Leeds Mind as a Trustee.",
-        link: "/journal/mental-healt"
-    }
-  ];
-
-  const carouselItems = items || defaultItems;
-
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const currentCardRef = useRef(null);
+  const nextCardRef = useRef(null);
+
+  const getNextIndex = (current) => (current + 1) % items.length;
+
+  // Enhanced initial animation
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!currentCardRef.current || !nextCardRef.current) return;
+
+      const ctx = gsap.context(() => {
+        // Reset positions with improved initial state
+        gsap.set([currentCardRef.current, nextCardRef.current], {
+          y: 70,
+          opacity: 0,
+          scale: 0.85,
+          rotateX: 10
+        });
+
+        // Animate current card with spring physics
+        gsap.to(currentCardRef.current, {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          rotateX: 0,
+          duration: 1,
+          ease: "elastic.out(1, 0.75)",
+          clearProps: "transform"
+        });
+
+        // Animate next card with slight delay and different physics
+        gsap.to(nextCardRef.current, {
+          y: 16,
+          opacity: 0.6,
+          scale: 0.95,
+          rotateX: 5,
+          duration: 0.8,
+          delay: 0.1,
+          ease: "power3.out"
+        });
+      });
+
+      return () => {
+        ctx.revert();
+        clearTimeout(timeout);
+      };
+    }, 0);
+  }, [currentIndex]);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
+    if (isAnimating || !currentCardRef.current || !nextCardRef.current) return;
+    setIsAnimating(true);
+
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        setCurrentIndex(getNextIndex);
+        setIsAnimating(false);
+      }
+    });
+
+    // Enhanced next animation with physics and rotation
+    timeline
+      .to(currentCardRef.current, {
+        y: -70,
+        opacity: 0,
+        scale: 0.85,
+        rotateX: -10,
+        duration: 0.5,
+        ease: "power3.in"
+      })
+      .to(nextCardRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.75)"
+      }, "-=0.4");
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => 
-      (prevIndex - 1 + carouselItems.length) % carouselItems.length
-    );
+    if (isAnimating || !currentCardRef.current || !nextCardRef.current) return;
+    setIsAnimating(true);
+
+    const timeline = gsap.timeline({
+      onComplete: () => {
+        setCurrentIndex((current) => (current - 1 + items.length) % items.length);
+        setIsAnimating(false);
+      }
+    });
+
+    // Enhanced prev animation with physics and rotation
+    timeline
+      .to(currentCardRef.current, {
+        y: 70,
+        opacity: 0,
+        scale: 0.85,
+        rotateX: 10,
+        duration: 0.5,
+        ease: "power3.in"
+      })
+      .to(nextCardRef.current, {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.75)"
+      }, "-=0.4");
   };
 
   return (
-    <div className="relative w-full max-w-md">
-      <div className="absolute top-[175px] w-full px-2">
-        <div
-          aria-label="Bulletin pagination"
-          className="absolute right-full mr-[15px] top-1/2 -translate-y-1/2 grid gap-2"
-        >
-          {/* Previous Button */}
+    <div className="relative w-full max-w-md h-[200px]">
+      <div className="absolute top-[270px] w-full px-2">
+        <div className="relative h-[120px] perspective-1000">
+          <BulletinCard 
+            ref={currentCardRef}
+            item={items[currentIndex]}
+            isNext={false}
+          />
+          <BulletinCard 
+            ref={nextCardRef}
+            item={items[getNextIndex(currentIndex)]}
+            isNext={true}
+          />
+        </div>
+        
+        <div className="absolute right-full mr-[15px] top-1/2 -translate-y-1/2 grid gap-2">
           <button 
-            onClick={handlePrev} 
-            aria-label="Previous Bulletin"
+            onClick={handlePrev}
+            disabled={isAnimating}
             className="size-[8px] relative group"
           >
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-              size-[44px] rounded-full flex items-center justify-center
-              opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronUp className="text-white/70" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                          size-[44px] rounded-full flex items-center justify-center
+                          opacity-0 group-hover:opacity-100 transition-all duration-300
+                          hover:bg-white/10">
+              <ChevronUp className="text-white/70 transition-transform group-hover:scale-110" />
             </div>
           </button>
 
-          {/* Pagination Dots */}
-          {carouselItems.map((_, index) => (
+          {items.map((_, index) => (
             <div
               key={index}
               aria-current={index === currentIndex}
               aria-label={`Bulletin #${index + 1}`}
-              className={`size-[8px] border-brand-cream/60 border rounded-full transition
-                ${
-                  index === currentIndex
-                    ? "bg-brand-cream scale-100"
-                    : "bg-brand-cream/60 scale-50"
-                }`}
+              className={`size-[8px] border-brand-cream/60 border rounded-full
+                transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                ${index === currentIndex 
+                  ? "bg-brand-cream scale-100 shadow-lg" 
+                  : "bg-brand-cream/60 scale-50"}`}
             />
           ))}
 
-          {/* Next Button */}
           <button 
-            onClick={handleNext} 
-            aria-label="Next Bulletin"
+            onClick={handleNext}
+            disabled={isAnimating}
             className="size-[8px] relative group"
           >
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-              size-[44px] rounded-full flex items-center justify-center
-              opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <ChevronDown className="text-white/70" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                          size-[44px] rounded-full flex items-center justify-center
+                          opacity-0 group-hover:opacity-100 transition-all duration-300
+                          hover:bg-white/10">
+              <ChevronDown className="text-white/70 transition-transform group-hover:scale-110" />
             </div>
           </button>
         </div>
-
-        {/* Current Bulletin Item */}
-        <a
-          href={carouselItems[currentIndex].link}
-          className="grid grid-cols-[50px_1fr] gap-3 items-start bg-white/10 backdrop-blur-md 
-           rounded-3xl p-3 transition-all duration-300 hover:bg-white/20
-           border border-white/20 shadow-md"
-        >
-          <img
-            src={carouselItems[currentIndex].image}
-            alt={carouselItems[currentIndex].title}
-            className="w-[50px] h-[50px] object-cover rounded-xl"
-          />
-
-          <div className="overflow-hidden">
-            <div className="flex font-open-sans gap-1 text-xs uppercase tracking-wider text-white/70 mb-1">
-              <span>{carouselItems[currentIndex].category}</span>
-            </div>
-
-            <h3 className="font-open-sans font-medium text-white mb-1 text-sm line-clamp-2">
-              {carouselItems[currentIndex].title}
-            </h3>
-
-            <p className="text-xs font-grotesk text-body-2 text-white/80 line-clamp-2 hidden md:block">
-              {carouselItems[currentIndex].description}
-            </p>
-          </div>
-        </a>
       </div>
     </div>
   );
