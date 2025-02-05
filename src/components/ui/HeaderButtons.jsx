@@ -1,114 +1,111 @@
-import React, { useState, useEffect } from "react";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Lenis from "@studio-freight/lenis";
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
-import FinalLogo from "../../assets/icons/FinalLogo";
-import LogoIcon from "../../assets/icons/LogoIcon";
-import LogoWithInitial from './../../assets/icons/LogoWithInitial';
+import LogoWithInitial from '../../assets/icons/LogoWithInitial';
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [showFullLogo, setShowFullLogo] = useState(true);
-  const controls = useAnimation();
+  const [logoType, setLogoType] = useState('full');
   const [logoColor, setLogoColor] = useState("#000000");
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
-    let scrollTimeout;
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
     const handleScroll = () => {
+      const scrollY = lenis.scroll;
+      
+      // Set scrolling state
       setIsScrolling(true);
+      
+      // Clear previous timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+      
+      // Set timeout to stop scrolling state
+      scrollTimeoutRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 40);
 
-      // Determine whether to show full logo based on scroll position
-      // You can adjust the threshold (50 here) to change when the switch happens
-      setShowFullLogo(window.scrollY < 50);
+      // Logo type logic remains the same as original
+      setLogoType(scrollY > 50 ? 'initial' : 'full');
 
-      // Get all sections you want to trigger color changes
+      // Color logic for different sections
       const sections = document.querySelectorAll('section');
-      const scrollPosition = window.scrollY + 50;
-
-      // Check which section we're currently in
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + section.offsetHeight;
 
-        if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-          if (section.classList.contains('dark-section')) {
-            setLogoColor("#ffffff");
-          } else {
-            setLogoColor("#000000");
-          }
+        if (scrollY >= sectionTop && scrollY <= sectionBottom) {
+          setLogoColor(
+            section.classList.contains('dark-section') ? "#ffffff" : "#000000"
+          );
         }
       });
-
-      // Animation for scroll effect
-      controls.start({
-        y: -window.scrollY,
-        opacity: 0,
-        transition: { type: "spring", stiffness: 500, damping: 100 },
-      });
-
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      scrollTimeout = setTimeout(() => {
-        setIsScrolling(false);
-        controls.start({
-          y: 0,
-          opacity: 1,
-          transition: { type: "spring", stiffness: 500, damping: 100 },
-        });
-      }, 100);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    lenis.on('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
       }
+      lenis.off('scroll', handleScroll);
+      lenis.destroy();
     };
-  }, [controls]);
+  }, []);
 
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
-      {/* Logo Section */}
       <motion.div
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
-        animate={controls}
-        style={{ color: logoColor }}
-        initial={{ y: 0, opacity: 1 }}
+        style={{ 
+          color: logoColor,
+          opacity: isScrolling ? 0 : 1,
+          transition: 'opacity 0.3s ease'
+        }}
       >
         <AnimatePresence mode="wait">
-          {showFullLogo ? (
+          {logoType === 'full' ? (
             <motion.div
               key="fullLogo"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
               <FinalLogoWithBrand />
             </motion.div>
           ) : (
             <motion.div
               key="simpleLogo"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-              {/* <LogoIcon /> */}
               <LogoWithInitial />
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
 
-      {/* Right Side Buttons Container */}
       <div className="flex flex-row items-center gap-4 lg:gap-8 z-[4] pointer-events-auto">
         {/* Chat Button - Hidden on mobile */}
         <a

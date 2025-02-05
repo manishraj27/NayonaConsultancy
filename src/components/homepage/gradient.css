@@ -1,16 +1,15 @@
 .animated-mesh-gradient-background {
-
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color:hsla(0,0%,100%,1);
     background-image:
-        radial-gradient(at 3% 95%, hsla(240, 100%, 59%, 1) 0px, transparent 50%),
-        radial-gradient(at 75% 26%, hsla(221, 100%, 55%, 1) 0px, transparent 50%),
-        radial-gradient(at 2% 4%, hsla(205, 100%, 55%, 1) 0px, transparent 50%),
-        radial-gradient(at 96% 97%, hsla(277, 100%, 55%, 1) 0px, transparent 50%),
-        radial-gradient(at 39% 75%, hsla(205, 0%, 100%, 0.99) 0px, transparent 30%);
-
+    radial-gradient(at 13% 13%, hsla(239,100%,28%,1) 0px, transparent 50%),
+    radial-gradient(at 63% 60%, hsla(183,100%,49%,1) 0px, transparent 50%),
+    radial-gradient(at 98% 95%, hsla(220,95%,48%,1) 0px, transparent 50%),
+    radial-gradient(at 1% 97%, hsla(220,95%,48%,1) 0px, transparent 50%),
+    radial-gradient(at 1% 2%, hsla(223,100%,50%,1) 0px, transparent 50%),
+    radial-gradient(at 99% 2%, hsla(194,100%,53%,1) 0px, transparent 50%);
 
     animation: animatedgradient 10s ease infinite;
-    background-size: 200% 200%;
+    background-size: 150% 150%;
 }
 
 

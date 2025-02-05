@@ -31,7 +31,8 @@ export default {
       },
       colors: {
         transparent: 'transparent',
-        
+        'light-100' : '#dfdbd8',
+        'light-200' : '#e5e6e1',
         // Primary Colors
         'primary-100': '#1c1431', // Deep Indigo - used for main background and deep accents
         'primary-200': '#2d1a4b', // Rich Violet - used for headings and button hover states
