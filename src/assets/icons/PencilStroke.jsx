@@ -15,7 +15,7 @@ const PencilStroke = () => (
       strokeDasharray="1"
       initial={{ strokeDashoffset: 1 }}
       animate={{ strokeDashoffset: 0 }}
-      transition={{ duration: 2, ease: "easeInOut" }}
+      transition={{ duration: 2, ease: "easeInOut", delay: 3 }} // 3 sec delay after loader
     />
   </svg>
 );
