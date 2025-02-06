@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex w-full h-screen items-center justify-between lg:px-16 px-4 bg-light-200"
+      className="relative flex w-full h-screen items-center justify-between lg:px-12 px-4 bg-light-200"
       aria-label="hero"
     >
       {/* Left Content */}
@@ -48,7 +48,7 @@ const Hero = () => {
       </div>
 
       {/* Right Content */}
-      <div className="hidden lg:flex absolute right-0 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background">
+      <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background z-[1]">
       
       <BulletinCarousel items={item} />
 

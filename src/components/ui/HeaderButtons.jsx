@@ -71,7 +71,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   }, []);
 
   return (
-    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-16 py-4 lg:py-4 z-[10]">
+    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-12 py-4 lg:py-4 z-[10]">
       <motion.div
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"

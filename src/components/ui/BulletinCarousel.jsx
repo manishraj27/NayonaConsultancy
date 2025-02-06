@@ -8,7 +8,7 @@ const BulletinCard = forwardRef(({ item, isNext }, ref) => (
     ref={ref}
     className={`
       absolute w-full grid grid-cols-[50px_1fr] gap-3 items-start 
-      backdrop-blur-md rounded-3xl p-3
+      backdrop-blur-sm rounded-3xl p-3
       border border-white/20 shadow-lg transform
       ${isNext ? 'z-10 bg-white/5 pointer-events-none' : 'z-20 bg-white/10'}
     `}
@@ -16,13 +16,13 @@ const BulletinCard = forwardRef(({ item, isNext }, ref) => (
     <img
       src={item.image}
       alt={item.title}
-      className="w-[50px] h-[50px] object-cover rounded transform transition-transform duration-300 hover:scale-105"
+      className="w-[50px] h-[50px] object-cover rounded-2xl transform transition-transform duration-300 hover:scale-105"
     />
     <div className="overflow-hidden">
       <div className="flex font-open-sans gap-1 text-xs uppercase tracking-wider text-white/70 mb-1">
         <span>{item.category}</span>
       </div>
-      <h3 className="font-open-sans font-medium text-white mb-1 text-sm line-clamp-2">
+      <h3 className="font-open-sans font-medium text-body-2 text-white mb-1 text-sm line-clamp-2">
         {item.title}
       </h3>
       <p className="text-xs font-grotesk text-body-2 text-white/80 line-clamp-2 hidden md:block">

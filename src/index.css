@@ -3,18 +3,19 @@
 @tailwind utilities;
 
 
-::-webkit-scrollbar {
-    width: 8px;
+/* ::-webkit-scrollbar {
+    width: 10px;
   }
   
   ::-webkit-scrollbar-track {
     border: none;
+    background: #000000;
   }
   
   ::-webkit-scrollbar-thumb {
-    /* background: #c6fdfde1;  */
+    background: #0ecafe; 
     border-radius: 100px;  
-  }
+  } */
 
   .text-smooth {
     text-rendering: optimizeLegibility;
