@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Lenis from "@studio-freight/lenis";
+
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 import LogoWithInitial from '../../assets/icons/LogoWithInitial';
+import Lenis from '@studio-freight/lenis';
+
+
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
