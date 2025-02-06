@@ -1,53 +1,38 @@
 const bulletin = [
   {
-   
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
-    category: "1",
-    title: "Col becomes a trustee for local mental health charity",
-    description:
-      "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the board at mental health charity Leeds Mind as a Trustee.",
-    link: "/journal/mental-health-trustee",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
+    category: "News",
+    title: "Nayona Consultancy Expands Oracle EPM Services in 2025",
+    description: "We are excited to announce our expanded Oracle EPM solutions, helping businesses streamline financial planning and reporting.",
+    // link: "/news/expansion-2025",
   },
   {
-  
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
-    category: "2",
-    title: "Another interesting bulletin item",
-    description:
-      "This is another bulletin item with some interesting content to display.",
-    link: "/news/sample",
+    image: "https://ats.org/wp-content/uploads/2020/04/Index-High-Tech-Future.jpg",
+    category: "Blog",
+    title: "Why Oracle EPM is a Game-Changer for Financial Planning",
+    description: "Explore how Oracle EPM enhances financial decision-making and ensures regulatory compliance with real-time insights.",
+    // link: "/blog/oracle-epm-benefits",
   },
   {
- 
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
-    category: "3",
-    title: "Col becomes a trustee for local mental health charity",
-    description:
-      "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the board at mental health charity Leeds Mind as a Trustee.",
-    link: "/journal/mental-health-trustee",
+    image: "https://ats.org/wp-content/uploads/2020/04/Index-High-Tech-Future.jpg",
+    category: "Event",
+    title: "Join Us at the Oracle Cloud Summit 2025",
+    description: "We are speaking at the Oracle Cloud Summit! Learn how Nayona Consultancy helps businesses optimize their EPM strategies.",
+    // link: "/events/oracle-summit-2025",
   },
   {
-
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
-    category: "4",
-    title: "Col becomes a trustee for local mental health charity",
-    description:
-      "Colin Grist, Creative Director & Co-Foun",
-    link: "/journal/mental-health-trustee",
+    image: "https://ats.org/wp-content/uploads/2020/04/Index-High-Tech-Future.jpg",
+    category: "Case Study",
+    title: "How We Helped a Fortune 500 Company with Oracle EPM",
+    description: "Read about our latest success story in transforming financial planning for a global enterprise.",
+    // link: "/case-study/fortune500-success",
   },
   {
-
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
-    category: "5",
-    title: "Col becomes a trustee for local mental health charity",
-    description:
-      "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the .",
-    link: "/journal/mental-health-trustee",
+    image: "https://ats.org/wp-content/uploads/2020/04/Index-High-Tech-Future.jpg",
+    category: "Insights",
+    title: "Top 5 Trends in Enterprise Performance Management (EPM) for 2025",
+    description: "Discover the latest trends shaping EPM and how businesses can stay ahead in a dynamic financial landscape.",
+    // link: "/insights/epm-trends-2025",
   },
 ];
 
