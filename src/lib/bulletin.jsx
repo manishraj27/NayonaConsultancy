@@ -1,6 +1,6 @@
 const bulletin = [
   {
-    id: 1,
+   
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
     category: "1",
@@ -10,7 +10,7 @@ const bulletin = [
     link: "/journal/mental-health-trustee",
   },
   {
-    id: 2,
+  
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
     category: "2",
@@ -20,13 +20,33 @@ const bulletin = [
     link: "/news/sample",
   },
   {
-    id: 3,
+ 
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
     category: "3",
     title: "Col becomes a trustee for local mental health charity",
     description:
       "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the board at mental health charity Leeds Mind as a Trustee.",
+    link: "/journal/mental-health-trustee",
+  },
+  {
+
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
+    category: "4",
+    title: "Col becomes a trustee for local mental health charity",
+    description:
+      "Colin Grist, Creative Director & Co-Foun",
+    link: "/journal/mental-health-trustee",
+  },
+  {
+
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnOVjTWaheo4E99cgYZ6y14tpsgHlm0VN8Hw&s",
+    category: "5",
+    title: "Col becomes a trustee for local mental health charity",
+    description:
+      "Colin Grist, Creative Director & Co-Founder at Few and Far has joined the .",
     link: "/journal/mental-health-trustee",
   },
 ];

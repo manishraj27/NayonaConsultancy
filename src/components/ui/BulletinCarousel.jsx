@@ -10,7 +10,7 @@ const BulletinCard = forwardRef(({ item, isNext }, ref) => (
       absolute w-full grid grid-cols-[50px_1fr] gap-3 items-start 
       backdrop-blur-sm rounded-3xl p-3
       border border-white/20 shadow-lg transform
-      ${isNext ? 'z-10 bg-white/5 pointer-events-none' : 'z-20 bg-white/10'}
+      ${isNext ? "z-10 bg-white/5 pointer-events-none" : "z-20 bg-white/10"}
     `}
   >
     <img
@@ -32,7 +32,7 @@ const BulletinCard = forwardRef(({ item, isNext }, ref) => (
   </a>
 ));
 
-BulletinCard.displayName = 'BulletinCard';
+BulletinCard.displayName = "BulletinCard";
 
 const BulletinCarousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,7 +52,7 @@ const BulletinCarousel = ({ items }) => {
         gsap.set([currentCardRef.current, nextCardRef.current], {
           y: 50,
           opacity: 0,
-          scale: 0.95
+          scale: 0.95,
         });
 
         // Animate current card with smooth easing
@@ -61,7 +61,7 @@ const BulletinCarousel = ({ items }) => {
           opacity: 1,
           scale: 1,
           duration: 0.6,
-          ease: "power3.out"
+          ease: "power3.out",
         });
 
         // Animate next card with slight offset
@@ -70,7 +70,7 @@ const BulletinCarousel = ({ items }) => {
           opacity: 0.6,
           scale: 0.95,
           duration: 0.5,
-          ease: "power2.out"
+          ease: "power2.out",
         });
       });
 
@@ -89,7 +89,7 @@ const BulletinCarousel = ({ items }) => {
       onComplete: () => {
         setCurrentIndex(getNextIndex);
         setIsAnimating(false);
-      }
+      },
     });
 
     // Smooth next animation
@@ -99,15 +99,19 @@ const BulletinCarousel = ({ items }) => {
         opacity: 0,
         scale: 0.95,
         duration: 0.4,
-        ease: "power2.in"
+        ease: "power2.in",
       })
-      .to(nextCardRef.current, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.4,
-        ease: "power2.out"
-      }, "-=0.2");
+      .to(
+        nextCardRef.current,
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
   };
 
   const handlePrev = () => {
@@ -116,9 +120,11 @@ const BulletinCarousel = ({ items }) => {
 
     const timeline = gsap.timeline({
       onComplete: () => {
-        setCurrentIndex((current) => (current - 1 + items.length) % items.length);
+        setCurrentIndex(
+          (current) => (current - 1 + items.length) % items.length
+        );
         setIsAnimating(false);
-      }
+      },
     });
 
     // Smooth prev animation
@@ -128,69 +134,97 @@ const BulletinCarousel = ({ items }) => {
         opacity: 0,
         scale: 0.95,
         duration: 0.4,
-        ease: "power2.in"
+        ease: "power2.in",
       })
-      .to(nextCardRef.current, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 0.4,
-        ease: "power2.out"
-      }, "-=0.2");
+      .to(
+        nextCardRef.current,
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+        "-=0.2"
+      );
   };
+
+  const DOTS_COUNT = 3; // Fixed number of dots
+
+  const getDotIndices = (totalItems, currentIndex) => {
+    if (totalItems <= DOTS_COUNT) return [...Array(totalItems).keys()];
+
+    const half = Math.floor(DOTS_COUNT / 2);
+    let start = Math.max(0, currentIndex - half);
+    let end = start + DOTS_COUNT - 1;
+
+    if (end >= totalItems) {
+      end = totalItems - 1;
+      start = Math.max(0, end - DOTS_COUNT + 1);
+    }
+
+    return Array.from({ length: DOTS_COUNT }, (_, i) => start + i);
+  };
+
+  const visibleIndices = getDotIndices(items.length, currentIndex);
 
   return (
     <div className="relative w-full max-w-md h-[200px]">
       <div className="absolute top-[270px] w-full px-2">
         <div className="relative h-[120px]">
-          <BulletinCard 
+          <BulletinCard
             ref={currentCardRef}
             item={items[currentIndex]}
             isNext={false}
           />
-          <BulletinCard 
+          <BulletinCard
             ref={nextCardRef}
             item={items[getNextIndex(currentIndex)]}
             isNext={true}
           />
         </div>
-        
+
         <div className="absolute right-full mr-[15px] top-1/2 -translate-y-1/2 grid gap-2">
-          <button 
+          <button
             onClick={handlePrev}
             disabled={isAnimating}
             className="size-[8px] relative group"
           >
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
                           size-[44px] rounded-full flex items-center justify-center
                           opacity-0 group-hover:opacity-100 transition-all duration-300
-                          hover:bg-white/10">
+                          hover:bg-white/10"
+            >
               <ChevronUp className="text-white/70 transition-transform group-hover:scale-110" />
             </div>
           </button>
 
-          {items.map((_, index) => (
+          {visibleIndices.map((index) => (
             <div
               key={index}
               aria-current={index === currentIndex}
               aria-label={`Bulletin #${index + 1}`}
               className={`size-[8px] border-brand-cream/60 border rounded-full
-                transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                ${index === currentIndex 
-                  ? "bg-brand-cream scale-100 shadow-lg" 
-                  : "bg-brand-cream/60 scale-50"}`}
+      transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+      ${index === currentIndex
+                  ? "bg-brand-cream scale-100 shadow-lg"
+                  : "bg-brand-cream/60 scale-50"
+                }`}
             />
           ))}
 
-          <button 
+          <button
             onClick={handleNext}
             disabled={isAnimating}
             className="size-[8px] relative group"
           >
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+            <div
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
                           size-[44px] rounded-full flex items-center justify-center
                           opacity-0 group-hover:opacity-100 transition-all duration-300
-                          hover:bg-white/10">
+                          hover:bg-white/10"
+            >
               <ChevronDown className="text-white/70 transition-transform group-hover:scale-110" />
             </div>
           </button>
