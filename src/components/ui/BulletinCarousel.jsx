@@ -28,13 +28,13 @@ const BulletinCard = forwardRef(({ item, state }, ref) => {
         };
       case 'exitTop':
         return {
-          transform: "translateY(-50px)",
+          transform: "translateY(100px)",
           opacity: 0,
           zIndex: 0
         };
       case 'exitBottom':
         return {
-          transform: "translateY(100px)",
+          transform: "translateY(-50px)",
           opacity: 0,
           zIndex: 0
         };
@@ -58,8 +58,8 @@ const BulletinCard = forwardRef(({ item, state }, ref) => {
         href={item.link}
         className="
           grid grid-cols-[50px_1fr] gap-3 items-start 
-          backdrop-blur-md rounded-3xl p-3
-          border border-white/20 shadow-sm
+          backdrop-blur-sm rounded-3xl p-3
+          border border-white/20 shadow-lg
           bg-white/10 bg-clip-padding
           relative overflow-hidden
         "
@@ -147,18 +147,18 @@ const BulletinCarousel = ({ items }) => {
       <div className="absolute w-full h-full">
         <BulletinCard 
           item={items[getPrevIndex(currentIndex)]} 
-          state={animationDirection === 'top' ? 'exitTop' : 'reflection'} 
+          state={animationDirection === 'top' ? 'exitBottom' : 'reflection'} 
         />
         <BulletinCard 
           item={items[currentIndex]} 
           state={animationDirection ? 
-            (animationDirection === 'top' ? 'exitTop' : 'exitBottom') 
+            (animationDirection === 'top' ? 'exitBottom' : 'exitTop') 
             : 'current'
           } 
         />
         <BulletinCard 
           item={items[getNextIndex(currentIndex)]} 
-          state={animationDirection === 'bottom' ? 'exitBottom' : 'next'} 
+          state={animationDirection === 'bottom' ? 'exitTop' : 'next'} 
         />
       </div>
 
