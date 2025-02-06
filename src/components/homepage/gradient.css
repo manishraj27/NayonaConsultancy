@@ -1,12 +1,35 @@
 .animated-mesh-gradient-background {
-    background-color:hsla(0,0%,100%,1);
+    /* background-color:hsla(0,0%,100%,1);
     background-image:
     radial-gradient(at 13% 13%, hsla(239,100%,28%,1) 0px, transparent 50%),
     radial-gradient(at 63% 60%, hsla(183,100%,49%,1) 0px, transparent 50%),
     radial-gradient(at 98% 95%, hsla(220,95%,48%,1) 0px, transparent 50%),
     radial-gradient(at 1% 97%, hsla(220,95%,48%,1) 0px, transparent 50%),
     radial-gradient(at 1% 2%, hsla(223,100%,50%,1) 0px, transparent 50%),
-    radial-gradient(at 99% 2%, hsla(194,100%,53%,1) 0px, transparent 50%);
+    radial-gradient(at 99% 2%, hsla(194,100%,53%,1) 0px, transparent 50%); */
+
+/* 
+    background-color:hsla(0,0%,100%,1);
+background-image:
+radial-gradient(at 52% 100%, hsla(220,98%,48%,1) 0px, transparent 50%),
+radial-gradient(at 48% 3%, hsla(201,100%,50%,1) 0px, transparent 50%),
+radial-gradient(at 52% 55%, hsla(195,98%,50%,1) 0px, transparent 50%),
+radial-gradient(at 98% 1%, hsla(189,85%,41%,1) 0px, transparent 50%),
+radial-gradient(at 52% 61%, hsla(217,0%,100%,1) 0px, transparent 50%),
+radial-gradient(at 7% 97%, hsla(226,100%,49%,1) 0px, transparent 50%),
+radial-gradient(at 97% 96%, hsla(224,100%,50%,1) 0px, transparent 50%),
+radial-gradient(at 0% 0%, hsla(192,100%,50%,1) 0px, transparent 50%); */
+
+    background-color:hsla(0,0%,100%,1);
+    background-image:
+    radial-gradient(at 52% 100%, hsla(220,98%,48%,1) 0px, transparent 50%),
+    radial-gradient(at 48% 3%, hsla(201,100%,50%,1) 0px, transparent 50%),
+    radial-gradient(at 55% 46%, hsla(195,98%,50%,1) 0px, transparent 50%),
+    radial-gradient(at 98% 1%, hsla(189,85%,41%,1) 0px, transparent 50%),
+    radial-gradient(at 73% 68%, hsla(217,0%,100%,1) 0px, transparent 50%),
+    radial-gradient(at 7% 97%, hsla(226,100%,49%,1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(224,100%,50%,1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(192,100%,50%,1) 0px, transparent 50%);
 
     animation: animatedgradient 10s ease infinite;
     background-size: 150% 150%;

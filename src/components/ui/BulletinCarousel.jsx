@@ -2,154 +2,101 @@ import gsap from "gsap";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState, useEffect, useRef, forwardRef } from "react";
 
-const BulletinCard = forwardRef(({ item, isNext }, ref) => (
-  <a
-    href={item.link}
-    ref={ref}
-    className={`
-      absolute w-full grid grid-cols-[50px_1fr] gap-3 items-start 
-      backdrop-blur-sm rounded-3xl p-3
-      border border-white/20 shadow-lg transform
-      ${isNext ? "z-10 bg-white/5 pointer-events-none" : "z-20 bg-white/10"}
-    `}
-  >
-    <img
-      src={item.image}
-      alt={item.title}
-      className="w-[50px] h-[50px] object-cover rounded-2xl transform transition-transform duration-300 hover:scale-105"
-    />
-    <div className="overflow-hidden">
-      <div className="flex font-open-sans gap-1 text-xs uppercase tracking-wider text-white/70 mb-1">
-        <span>{item.category}</span>
-      </div>
-      <h3 className="font-open-sans font-medium text-body-2 text-white mb-1 text-sm line-clamp-2">
-        {item.title}
-      </h3>
-      <p className="text-xs font-grotesk text-body-2 text-white/80 line-clamp-2 hidden md:block">
-        {item.description}
-      </p>
+const BulletinCard = forwardRef(({ item, state }, ref) => {
+  const getStyles = () => {
+    switch (state) {
+      case 'current':
+        return {
+          transform: "translateY(0) scale(1)",
+          zIndex: 20,
+          opacity: 1,
+          filter: "blur(0px)"
+        };
+      case 'next':
+        return {
+          transform: "translateY(20px) scale(0.95)",
+          zIndex: 10,
+          opacity: 0.7,
+          filter: "blur(2px)"
+        };
+      case 'reflection':
+        return {
+          transform: "translateY(40px) scale(0.9)",
+          zIndex: 5,
+          opacity: 0.4,
+          filter: "blur(4px)"
+        };
+      case 'exitTop':
+        return {
+          transform: "translateY(-50px)",
+          opacity: 0,
+          zIndex: 0
+        };
+      case 'exitBottom':
+        return {
+          transform: "translateY(100px)",
+          opacity: 0,
+          zIndex: 0
+        };
+      default:
+        return {};
+    }
+  };
+
+  const styles = getStyles();
+
+  return (
+    <div 
+      ref={ref}
+      className="absolute w-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+      style={{
+        ...styles,
+        transformOrigin: 'center bottom'
+      }}
+    >
+      <a
+        href={item.link}
+        className="
+          grid grid-cols-[50px_1fr] gap-3 items-start 
+          backdrop-blur-sm rounded-3xl p-3
+          border border-white/20 shadow-lg
+          bg-white/10 bg-clip-padding
+          relative overflow-hidden
+        "
+      >
+        <img
+          src={item.image}
+          alt={item.title}
+          className="w-[50px] h-[50px] object-cover rounded-2xl"
+        />
+        <div className="overflow-hidden">
+          <div className="flex font-open-sans gap-1 text-xs uppercase tracking-wider text-white/70 mb-1">
+            <span>{item.category}</span>
+          </div>
+          <h3 className="font-open-sans font-medium text-body-2 text-white mb-1 text-sm line-clamp-2">
+            {item.title}
+          </h3>
+          <p className="text-xs font-grotesk text-body-2 text-white/80 line-clamp-2 hidden md:block">
+            {item.description}
+          </p>
+        </div>
+      </a>
     </div>
-  </a>
-));
+  );
+});
 
 BulletinCard.displayName = "BulletinCard";
 
 const BulletinCarousel = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const currentCardRef = useRef(null);
-  const nextCardRef = useRef(null);
+  const [animationDirection, setAnimationDirection] = useState(null);
+  const carouselRef = useRef(null);
 
   const getNextIndex = (current) => (current + 1) % items.length;
+  const getPrevIndex = (current) => (current - 1 + items.length) % items.length;
 
-  // Smooth initial animation
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!currentCardRef.current || !nextCardRef.current) return;
-
-      const ctx = gsap.context(() => {
-        // Set initial positions
-        gsap.set([currentCardRef.current, nextCardRef.current], {
-          y: 50,
-          opacity: 0,
-          scale: 0.95,
-        });
-
-        // Animate current card with smooth easing
-        gsap.to(currentCardRef.current, {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.6,
-          ease: "power3.out",
-        });
-
-        // Animate next card with slight offset
-        gsap.to(nextCardRef.current, {
-          y: 16,
-          opacity: 0.6,
-          scale: 0.95,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      });
-
-      return () => {
-        ctx.revert();
-        clearTimeout(timeout);
-      };
-    }, 0);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    if (isAnimating || !currentCardRef.current || !nextCardRef.current) return;
-    setIsAnimating(true);
-
-    const timeline = gsap.timeline({
-      onComplete: () => {
-        setCurrentIndex(getNextIndex);
-        setIsAnimating(false);
-      },
-    });
-
-    // Smooth next animation
-    timeline
-      .to(currentCardRef.current, {
-        y: -50,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.4,
-        ease: "power2.in",
-      })
-      .to(
-        nextCardRef.current,
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        },
-        "-=0.2"
-      );
-  };
-
-  const handlePrev = () => {
-    if (isAnimating || !currentCardRef.current || !nextCardRef.current) return;
-    setIsAnimating(true);
-
-    const timeline = gsap.timeline({
-      onComplete: () => {
-        setCurrentIndex(
-          (current) => (current - 1 + items.length) % items.length
-        );
-        setIsAnimating(false);
-      },
-    });
-
-    // Smooth prev animation
-    timeline
-      .to(currentCardRef.current, {
-        y: 50,
-        opacity: 0,
-        scale: 0.95,
-        duration: 0.4,
-        ease: "power2.in",
-      })
-      .to(
-        nextCardRef.current,
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        },
-        "-=0.2"
-      );
-  };
-
-  const DOTS_COUNT = 3; // Fixed number of dots
+  const DOTS_COUNT = 3;
 
   const getDotIndices = (totalItems, currentIndex) => {
     if (totalItems <= DOTS_COUNT) return [...Array(totalItems).keys()];
@@ -166,69 +113,99 @@ const BulletinCarousel = ({ items }) => {
     return Array.from({ length: DOTS_COUNT }, (_, i) => start + i);
   };
 
+  const handleNext = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setAnimationDirection('bottom');
+    
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => getNextIndex(prevIndex));
+      setAnimationDirection(null);
+      setIsAnimating(false);
+    }, 500);
+  };
+
+  const handlePrev = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+    setAnimationDirection('top');
+    
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => getPrevIndex(prevIndex));
+      setAnimationDirection(null);
+      setIsAnimating(false);
+    }, 500);
+  };
+
   const visibleIndices = getDotIndices(items.length, currentIndex);
 
   return (
-    <div className="relative w-full max-w-md h-[200px]">
-      <div className="absolute top-[270px] w-full px-2">
-        <div className="relative h-[120px]">
-          <BulletinCard
-            ref={currentCardRef}
-            item={items[currentIndex]}
-            isNext={false}
-          />
-          <BulletinCard
-            ref={nextCardRef}
-            item={items[getNextIndex(currentIndex)]}
-            isNext={true}
-          />
-        </div>
+    <div 
+      ref={carouselRef} 
+      className="relative w-full max-w-md h-[100px] perspective-1000"
+    >
+      <div className="absolute w-full h-full">
+        <BulletinCard 
+          item={items[getPrevIndex(currentIndex)]} 
+          state={animationDirection === 'top' ? 'exitTop' : 'reflection'} 
+        />
+        <BulletinCard 
+          item={items[currentIndex]} 
+          state={animationDirection ? 
+            (animationDirection === 'top' ? 'exitTop' : 'exitBottom') 
+            : 'current'
+          } 
+        />
+        <BulletinCard 
+          item={items[getNextIndex(currentIndex)]} 
+          state={animationDirection === 'bottom' ? 'exitBottom' : 'next'} 
+        />
+      </div>
 
-        <div className="absolute right-full mr-[15px] top-1/2 -translate-y-1/2 grid gap-2">
-          <button
-            onClick={handlePrev}
-            disabled={isAnimating}
-            className="size-[8px] relative group"
+      <div className="absolute right-full mr-[15px] top-1/2 -translate-y-1/2 grid gap-2">
+        <button 
+          onClick={handlePrev} 
+          disabled={isAnimating}
+          className="size-[8px] relative group"
+        >
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                      size-[44px] rounded-full flex items-center justify-center
+                      opacity-0 group-hover:opacity-100 transition-all duration-300
+                      hover:bg-white/10"
           >
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-                          size-[44px] rounded-full flex items-center justify-center
-                          opacity-0 group-hover:opacity-100 transition-all duration-300
-                          hover:bg-white/10"
-            >
-              <ChevronUp className="text-white/70 transition-transform group-hover:scale-110" />
-            </div>
-          </button>
+            <ChevronUp className="text-white/70 transition-transform group-hover:scale-110" />
+          </div>
+        </button>
 
-          {visibleIndices.map((index) => (
-            <div
-              key={index}
-              aria-current={index === currentIndex}
-              aria-label={`Bulletin #${index + 1}`}
-              className={`size-[8px] border-brand-cream/60 border rounded-full
-      transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-      ${index === currentIndex
-                  ? "bg-brand-cream scale-100 shadow-lg"
-                  : "bg-brand-cream/60 scale-50"
-                }`}
-            />
-          ))}
+        {visibleIndices.map((index) => (
+          <div
+            key={index}
+            aria-current={index === currentIndex}
+            aria-label={`Bulletin #${index + 1}`}
+            className={`size-[8px] border-brand-cream/60 border rounded-full
+    transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+    ${index === currentIndex
+              ? "bg-brand-cream scale-100 shadow-lg"
+              : "bg-brand-cream/60 scale-50"
+            }`}
+          />
+        ))}
 
-          <button
-            onClick={handleNext}
-            disabled={isAnimating}
-            className="size-[8px] relative group"
+        <button 
+          onClick={handleNext} 
+          disabled={isAnimating}
+          className="size-[8px] relative group"
+        >
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                      size-[44px] rounded-full flex items-center justify-center
+                      opacity-0 group-hover:opacity-100 transition-all duration-300
+                      hover:bg-white/10"
           >
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
-                          size-[44px] rounded-full flex items-center justify-center
-                          opacity-0 group-hover:opacity-100 transition-all duration-300
-                          hover:bg-white/10"
-            >
-              <ChevronDown className="text-white/70 transition-transform group-hover:scale-110" />
-            </div>
-          </button>
-        </div>
+            <ChevronDown className="text-white/70 transition-transform group-hover:scale-110" />
+          </div>
+        </button>
       </div>
     </div>
   );
