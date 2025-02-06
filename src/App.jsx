@@ -23,7 +23,7 @@ function App() {
             <div id="main-content">
               <Routes>
                 <Route path="/" element={<LandingPage />} />
-                <Route path="/features/consulting" element={<Contact />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/careers" element={<Career />} />
               </Routes>
               <FloatingButtonsContainer />

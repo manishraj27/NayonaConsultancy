@@ -1,87 +1,278 @@
+import { useState } from 'react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import apiconfig from '../../configurations/APIConfig';
+
+
 const Contact = () => {
+  const [step, setStep] = useState(1);
+  const [inquiryType, setInquiryType] = useState('');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    companyName: '',
+    email: '',
+    phone: '',
+    serviceInterest: [],
+    message: '',
+    budgetRange: '',
+    preferredContactMethod: 'Email',
+    portfolioLink: '',
+    skillName: ''
+  });
+
+  const services = ["Financial Planning", "Reporting", "Budgeting"];
+  const budgetRanges = ["Below $10,000", "$10,000 - $50,000", "$50,000+"];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const endpoint = inquiryType === 'project' 
+        ? `${apiconfig.nayona_api}/api/inquiries`
+        : `${apiconfig.nayona_api}/api/join-inquiries`;
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        alert('Submission successful!');
+        setStep(1);
+        setInquiryType('');
+        setFormData({});
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
   return (
-    <div className="relative py-16 px-8 overflow-hidden bg-gray-100">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Header Section */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <span className="inline-block px-4 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">
-                Get in Touch
-              </span>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
-                Have an inquiry, suggestion, or collaboration offer?
-              </h2>
-              <p className="text-xl text-gray-600">
-                Fill out the form below, and let's create something extraordinary together!
-              </p>
+    <div className="min-h-screen bg-gray-100 p-4 pt-64">
+      <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-sm p-8">
+        {step === 1 && (
+          <div className="text-center">
+            <h1 className="text-3xl font-bold mb-8">Hey there! How can we assist you?</h1>
+            <div className="flex gap-4 justify-center">
+              <button
+                onClick={() => {
+                  setInquiryType('join');
+                  setStep(2);
+                }}
+                className="px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+              >
+                Join SOHub
+              </button>
+              <button
+                onClick={() => {
+                  setInquiryType('project');
+                  setStep(2);
+                }}
+                className="px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+              >
+                Start a project
+              </button>
             </div>
           </div>
+        )}
 
-          {/* Right Column - Form Section */}
-          <div className="space-y-6">
-            <form className="w-full grid gap-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="relative h-16 bg-gray-200 rounded-2xl px-6">
-                  <label className="absolute text-gray-700 text-base lg:text-xl font-semibold">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full h-full bg-transparent pt-4 text-gray-800 font-semibold focus:outline-none"
-                  />
-                </div>
-                <div className="relative h-16 bg-gray-200 rounded-2xl px-6">
-                  <label className="absolute text-gray-700 text-base lg:text-xl font-semibold">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    className="w-full h-full bg-transparent pt-4 text-gray-800 font-semibold focus:outline-none"
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="relative h-16 bg-gray-200 rounded-2xl px-6">
-                  <label className="absolute text-gray-700 text-base lg:text-xl font-semibold">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    className="w-full h-full bg-transparent pt-4 text-gray-800 font-semibold focus:outline-none"
-                  />
-                </div>
-                <div className="relative h-16 bg-gray-200 rounded-2xl px-6">
-                  <label className="absolute text-gray-700 text-base lg:text-xl font-semibold">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    className="w-full h-full bg-transparent pt-4 text-gray-800 font-semibold focus:outline-none"
-                  />
-                </div>
-              </div>
-              <div className="relative bg-gray-200 rounded-2xl px-6 pt-4">
-                <label className="absolute text-gray-700 text-base lg:text-xl font-semibold">
-                  Description
-                </label>
-                <textarea
-                  className="w-full h-24 bg-transparent pt-4 text-gray-800 font-semibold resize-none focus:outline-none"
+        {step === 2 && inquiryType === 'project' && (
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-center">
+              Ready to team up? Our passion for crushing goals sets us apart. How can we help you?
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+              {services.map(service => (
+                <button
+                  key={service}
+                  onClick={() => {
+                    setFormData(prev => ({
+                      ...prev,
+                      serviceInterest: [service]
+                    }));
+                    setStep(3);
+                  }}
+                  className="px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  {service}
+                </button>
+              ))}
+            </div>
+            <div className="flex justify-between">
+              <button
+                onClick={() => setStep(1)}
+                className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+              >
+                <ArrowLeft className="mr-2" /> Go Back
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && inquiryType === 'project' && (
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-center">
+              Things in life may not always be free, right? Whats your budget for this project?
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+              {budgetRanges.map(range => (
+                <button
+                  key={range}
+                  onClick={() => {
+                    setFormData(prev => ({
+                      ...prev,
+                      budgetRange: range
+                    }));
+                    setStep(4);
+                  }}
+                  className="px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  {range}
+                </button>
+              ))}
+            </div>
+            <div className="flex justify-between">
+              <button
+                onClick={() => setStep(2)}
+                className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+              >
+                <ArrowLeft className="mr-2" /> Go Back
+              </button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && inquiryType === 'project' && (
+          <div>
+            <h2 className="text-3xl font-bold mb-8">Project Details</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="companyName"
+                  placeholder="Company Name"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Phone"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
                 />
               </div>
+              <textarea
+                name="message"
+                placeholder="Project Details"
+                required
+                className="w-full p-3 border rounded-lg h-32"
+                onChange={handleInputChange}
+              />
+              <div className="flex justify-between">
+                <button
+                  type="button"
+                  onClick={() => setStep(3)}
+                  className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  <ArrowLeft className="mr-2" /> Go Back
+                </button>
+                <button
+                  type="submit"
+                  className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  Submit <ArrowRight className="ml-2" />
+                </button>
+              </div>
             </form>
-
-            {/* Buttons */}
-            <div className="flex justify-between">
-              <button className="group hover:scale-105 transition-transform duration-300 rounded-full flex items-center bg-gray-900 p-4">
-                <span className="text-white text-base font-medium uppercase px-8">Go back</span>
-              </button>
-              <button className="group hover:scale-105 transition-transform duration-300 rounded-full flex items-center bg-gray-900 p-4">
-                <span className="text-white text-base font-medium uppercase px-8">Submit</span>
-              </button>
-            </div>
           </div>
-        </div>
+        )}
+
+        {step === 2 && inquiryType === 'join' && (
+          <div>
+            <h2 className="text-3xl font-bold mb-8">Join Our Team</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="text"
+                  name="skillName"
+                  placeholder="Skill/Position"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+                <input
+                  type="url"
+                  name="portfolioLink"
+                  placeholder="Portfolio Link"
+                  required
+                  className="p-3 border rounded-lg"
+                  onChange={handleInputChange}
+                />
+              </div>
+              <textarea
+                name="message"
+                placeholder="Tell us about yourself"
+                required
+                className="w-full p-3 border rounded-lg h-32"
+                onChange={handleInputChange}
+              />
+              <div className="flex justify-between">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  <ArrowLeft className="mr-2" /> Go Back
+                </button>
+                <button
+                  type="submit"
+                  className="flex items-center px-6 py-3 bg-gray-800 text-white rounded-full hover:bg-gray-700"
+                >
+                  Submit <ArrowRight className="ml-2" />
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );
