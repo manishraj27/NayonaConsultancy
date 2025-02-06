@@ -58,8 +58,8 @@ const BulletinCard = forwardRef(({ item, state }, ref) => {
         href={item.link}
         className="
           grid grid-cols-[50px_1fr] gap-3 items-start 
-          backdrop-blur-sm rounded-3xl p-3
-          border border-white/20 shadow-lg
+          backdrop-blur-md rounded-3xl p-3
+          border border-white/20 shadow-sm
           bg-white/10 bg-clip-padding
           relative overflow-hidden
         "

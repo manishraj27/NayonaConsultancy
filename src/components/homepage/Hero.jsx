@@ -50,7 +50,7 @@ const Hero = () => {
       {/* Right Content */}
       <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background z-[1]">
       
-      <div className="w-full h-full flex items-center justify-center mt-[420px]">
+      <div className="w-full h-full flex items-center justify-center mt-[440px]">
 
       <BulletinCarousel items={item} />
       </div>
