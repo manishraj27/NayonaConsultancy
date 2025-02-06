@@ -42,40 +42,35 @@ const BulletinCarousel = ({ items }) => {
 
   const getNextIndex = (current) => (current + 1) % items.length;
 
-  // Enhanced initial animation
+  // Smooth initial animation
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!currentCardRef.current || !nextCardRef.current) return;
 
       const ctx = gsap.context(() => {
-        // Reset positions with improved initial state
+        // Set initial positions
         gsap.set([currentCardRef.current, nextCardRef.current], {
-          y: 70,
+          y: 50,
           opacity: 0,
-          scale: 0.85,
-          rotateX: 10
+          scale: 0.95
         });
 
-        // Animate current card with spring physics
+        // Animate current card with smooth easing
         gsap.to(currentCardRef.current, {
           y: 0,
           opacity: 1,
           scale: 1,
-          rotateX: 0,
-          duration: 1,
-          ease: "elastic.out(1, 0.75)",
-          clearProps: "transform"
+          duration: 0.6,
+          ease: "power3.out"
         });
 
-        // Animate next card with slight delay and different physics
+        // Animate next card with slight offset
         gsap.to(nextCardRef.current, {
           y: 16,
           opacity: 0.6,
           scale: 0.95,
-          rotateX: 5,
-          duration: 0.8,
-          delay: 0.1,
-          ease: "power3.out"
+          duration: 0.5,
+          ease: "power2.out"
         });
       });
 
@@ -97,24 +92,22 @@ const BulletinCarousel = ({ items }) => {
       }
     });
 
-    // Enhanced next animation with physics and rotation
+    // Smooth next animation
     timeline
       .to(currentCardRef.current, {
-        y: -70,
+        y: -50,
         opacity: 0,
-        scale: 0.85,
-        rotateX: -10,
-        duration: 0.5,
-        ease: "power3.in"
+        scale: 0.95,
+        duration: 0.4,
+        ease: "power2.in"
       })
       .to(nextCardRef.current, {
         y: 0,
         opacity: 1,
         scale: 1,
-        rotateX: 0,
-        duration: 0.6,
-        ease: "elastic.out(1, 0.75)"
-      }, "-=0.4");
+        duration: 0.4,
+        ease: "power2.out"
+      }, "-=0.2");
   };
 
   const handlePrev = () => {
@@ -128,30 +121,28 @@ const BulletinCarousel = ({ items }) => {
       }
     });
 
-    // Enhanced prev animation with physics and rotation
+    // Smooth prev animation
     timeline
       .to(currentCardRef.current, {
-        y: 70,
+        y: 50,
         opacity: 0,
-        scale: 0.85,
-        rotateX: 10,
-        duration: 0.5,
-        ease: "power3.in"
+        scale: 0.95,
+        duration: 0.4,
+        ease: "power2.in"
       })
       .to(nextCardRef.current, {
         y: 0,
         opacity: 1,
         scale: 1,
-        rotateX: 0,
-        duration: 0.6,
-        ease: "elastic.out(1, 0.75)"
-      }, "-=0.4");
+        duration: 0.4,
+        ease: "power2.out"
+      }, "-=0.2");
   };
 
   return (
     <div className="relative w-full max-w-md h-[200px]">
       <div className="absolute top-[270px] w-full px-2">
-        <div className="relative h-[120px] perspective-1000">
+        <div className="relative h-[120px]">
           <BulletinCard 
             ref={currentCardRef}
             item={items[currentIndex]}
