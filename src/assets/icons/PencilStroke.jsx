@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const PencilStroke = () => (
-  console.log("PencilStroke"),
+  
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 161.000719 65.0007725"
