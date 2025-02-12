@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Hero from "../homepage/Hero";
 import Motto from "../ui/Motto";
 import gsap from 'gsap';
@@ -13,46 +13,34 @@ const LandingPage = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Set initial states
-      gsap.set(containerRef.current, {
-        perspective: 1000,
-      });
-      
+      // Initial state
       gsap.set(mottoRef.current, {
-        translateY: '100vh',
+        y: '100vh'
       });
 
-      // Create the scroll-triggered animation
-      const tl = gsap.timeline({
+      // Create scroll animation
+      gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
           end: "+=100%",
-          scrub: 1.5,
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
-          markers: false,
         }
-      });
-
-      // Smooth slide-over animation
-      tl.to(mottoRef.current, {
-        translateY: '0vh',
+      })
+      .to(mottoRef.current, {
+        y: 0,
         ease: "none",
-        duration: 1
       })
       .to(heroRef.current, {
-        translateY: '-15vh',
+        y: -100,
+        opacity: 0.9,
         ease: "power1.inOut",
-        duration: 0.5
       }, 0);
     });
 
-    // Cleanup
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -65,7 +53,6 @@ const LandingPage = () => {
         <div 
           ref={heroRef}
           className="fixed top-0 left-0 w-full h-screen"
-          style={{ willChange: 'transform' }}
         >
           <Hero />
         </div>
@@ -74,10 +61,8 @@ const LandingPage = () => {
         <div 
           ref={mottoRef}
           className="relative w-full bg-light-200"
-          style={{ willChange: 'transform' }}
         >
           <Motto />
-          {/* Add extra space for smooth scrolling */}
           <div className="h-screen bg-light-200" />
         </div>
       </div>
