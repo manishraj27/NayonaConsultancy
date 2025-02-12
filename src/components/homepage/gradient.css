@@ -31,8 +31,15 @@ radial-gradient(at 0% 0%, hsla(192,100%,50%,1) 0px, transparent 50%); */
     radial-gradient(at 97% 96%, hsla(224,100%,50%,1) 0px, transparent 50%),
     radial-gradient(at 0% 0%, hsla(192,100%,50%,1) 0px, transparent 50%);
 
+    /* background-color:hsla(71,9%,89%,1);
+background-image:
+radial-gradient(at 100% 99%, hsla(356,87%,25%,1) 0px, transparent 50%),
+radial-gradient(at 0% 0%, hsla(356,87%,25%,1) 0px, transparent 50%),
+radial-gradient(at 98% 3%, hsla(266,72%,81%,1) 0px, transparent 50%),
+radial-gradient(at 2% 94%, hsla(316,59%,82%,1) 0px, transparent 50%); */
+
     animation: animatedgradient 10s ease infinite;
-    background-size: 150% 150%;
+    background-size: 100% 150%;
 }
 
 
