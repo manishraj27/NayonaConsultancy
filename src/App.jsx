@@ -18,9 +18,9 @@ function App() {
       
 
           <WebLoader />
+            <div id="main-content">
           <NavBar />
           <main>
-            <div id="main-content">
               <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/contact" element={<Contact />} />
@@ -28,9 +28,9 @@ function App() {
               </Routes>
               <FloatingButtonsContainer />
 
-            </div>
 
           </main>
+            </div>
       
     </>
 
