@@ -15,23 +15,23 @@ function App() {
 
   return (
     <>
-      
-
-          <WebLoader />
-            <div id="main-content">
-          <NavBar />
-          <main>
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/careers" element={<Career />} />
-              </Routes>
-              <FloatingButtonsContainer />
 
 
-          </main>
-            </div>
-      
+      <WebLoader />
+      <div >
+        <NavBar />
+        <main id="main-content">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/careers" element={<Career />} />
+          </Routes>
+          <FloatingButtonsContainer />
+
+
+        </main>
+      </div>
+
     </>
 
   );
