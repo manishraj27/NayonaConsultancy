@@ -60,10 +60,10 @@ const LandingPage = () => {
         {/* Motto Section */}
         <div 
           ref={mottoRef}
-          className="relative w-full bg-light-200"
+          className="relative w-full"
         >
           <Motto />
-          <div className="h-screen bg-light-200" />
+          <div className="h-screen" />
         </div>
       </div>
     </div>
