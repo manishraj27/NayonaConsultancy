@@ -41,7 +41,7 @@ const Motto = () => {
       aria-label="motto"
       className="bg-light-200 relative select-none flex flex-col lg:px-12 px-4 w-full h-screen py-32 items-center overflow-hidden"
     >
-      <div className="mx-auto relative z-10">
+      <div className="mx-auto w-full h-full relative z-10">
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Main Message */}

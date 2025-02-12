@@ -5,9 +5,6 @@ import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 import LogoWithInitial from '../../assets/icons/LogoWithInitial';
-import Lenis from '@studio-freight/lenis';
-
-
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
@@ -16,21 +13,8 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const scrollTimeoutRef = useRef(null);
 
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      smooth: true,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
     const handleScroll = () => {
-      const scrollY = lenis.scroll;
+      const scrollY = window.scrollY;
       
       // Set scrolling state
       setIsScrolling(true);
@@ -45,7 +29,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         setIsScrolling(false);
       }, 40);
 
-      // Logo type logic remains the same as original
+      // Logo type logic
       setLogoType(scrollY > 50 ? 'initial' : 'full');
 
       // Color logic for different sections
@@ -62,14 +46,13 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       });
     };
 
-    lenis.on('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      lenis.off('scroll', handleScroll);
-      lenis.destroy();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
