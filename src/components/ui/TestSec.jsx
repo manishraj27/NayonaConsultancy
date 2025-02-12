@@ -3,9 +3,9 @@ import BulletinCarousel from './BulletinCarousel';
 
 const TestSec = () => {
   return (
-    <section className=''>
+    <section className='dark-section'>
 
-    <div className="w-full py-32 select-none px-4 overflow-hidden bg-black">
+    <div className="w-full py-32 select-none px-4 overflow-hidden bg-black dark-section">
       <div className="max-w-7xl mx-auto text-center">
         <h2 
           className="text-6xl md:text-7xl lg:text-6xl font-serif mb-12 leading-tight"

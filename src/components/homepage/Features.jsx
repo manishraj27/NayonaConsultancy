@@ -25,7 +25,7 @@ const Features = () => {
   };
 
   return (
-    <div className="relative py-16 px-8 overflow-hidden bg-white">
+    <div className="relative py-16 px-8">
       {/* Background Pattern */}
       <motion.div 
         initial={{ opacity: 0 }}
