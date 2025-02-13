@@ -1,43 +1,29 @@
 import { useEffect, useRef } from 'react';
 import Hero from "../homepage/Hero";
 import Motto from "../ui/Motto";
+import About from '../ui/About';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import HeroSection from './../homepage/HeroSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
-  const containerRef = useRef(null);
-  const heroRef = useRef(null);
-  const mottoRef = useRef(null);
+  const darkSectionsRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Initial state
-      gsap.set(mottoRef.current, {
-        y: '100vh'
-      });
-
-      // Create scroll animation
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top top",
-          end: "+=100%",
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        }
-      })
-      .to(mottoRef.current, {
-        y: 0,
+      // Create animation for dark sections sliding up
+      gsap.to(darkSectionsRef.current, {
+        yPercent: -50, // Adjust this value to control how much of Hero remains visible
         ease: "none",
-      })
-      .to(heroRef.current, {
-        y: -100,
-        opacity: 0.9,
-        ease: "power1.inOut",
-      }, 0);
+        scrollTrigger: {
+          trigger: darkSectionsRef.current,
+          start: "top bottom",
+          end: "top top",
+          scrub: true,
+        }
+      });
     });
 
     return () => ctx.revert();
@@ -45,26 +31,28 @@ const LandingPage = () => {
 
   return (
     <div className="relative">
-      <div 
-        ref={containerRef} 
-        className="relative min-h-screen bg-light-200 overflow-hidden"
+      {/* Light Hero Section */}
+      <div className="relative z-0 bg-light-200">
+        <Hero />
+      </div>
+
+      {/* Dark Sections Container */}
+      <div
+        ref={darkSectionsRef}
+        className='bg-secondary-100 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden'
       >
-        {/* Hero Section */}
-        <div 
-          ref={heroRef}
-          className="fixed top-0 left-0 w-full h-screen"
-        >
-          <Hero />
-        </div>
-        
-        {/* Motto Section */}
-        <div 
-          ref={mottoRef}
-          className="relative w-full"
-        >
-          <Motto />
-          <div className="h-screen" />
-        </div>
+
+        <Motto />
+
+               
+          <About />
+       
+
+      </div>
+
+      <div className="relative z-0 bg-light-200">
+        {/* test hero sec */}
+        <HeroSection />
       </div>
     </div>
   );

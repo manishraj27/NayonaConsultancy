@@ -51,15 +51,13 @@ const Motto = () => {
     <section
       id="motto"
       aria-label="motto"
-      className="rounded-t-3xl dark-section bg-secondary-100 relative select-none flex flex-col lg:px-12 px-4 w-full min-h-screen py-32 items-center overflow-hidden transition-colors duration-300"
+      className=" relative select-none flex flex-col lg:px-12 px-4 w-full py-24 lg:24 min-h-screen items-center overflow-hidden transition-colors duration-300"
     >
       <div className="mx-auto w-full h-full relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Visual Elements */}
           <div className="relative h-[500px]">
-            <div className="absolute inset-0">
-              <CirclePattern />
-            </div>
+           
             <div className="relative z-10 bg-slate-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg h-full transition-colors duration-300">
               <h3 className="text-heading-4 font-grotesk text-white mb-8">
                 Oracle EPM Excellence
@@ -108,7 +106,9 @@ const Motto = () => {
               <span className="block text-sky-400">Financial</span>
               <span className="block">Operations</span>
             </h2>
-            
+            <div className="absolute inset-0">
+              <CirclePattern />
+            </div>
             <div className="space-y-6">
               <div className="flex items-center space-x-4 bg-slate-900/80 backdrop-blur-sm p-4 rounded-lg shadow-sm transition-colors duration-300">
                 <div className="w-12 h-12 rounded-full bg-sky-900/50 flex items-center justify-center">

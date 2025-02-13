@@ -8,7 +8,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex w-full h-screen items-center justify-between lg:px-12 px-4 bg-light-200"
+      className="relative flex w-full min-h-screen items-center justify-between lg:px-12 px-4 bg-light-200"
       aria-label="hero"
     >
       {/* Left Content */}

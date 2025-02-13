@@ -20,7 +20,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full pt-24 min-h-[90vh]">
+    <div className="w-full pt-24 ">
       {/* Header Section */}
       <div className="container mx-auto p-8">
       <Heading title="Frequently Asked Questions" description="FAQ" />
