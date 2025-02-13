@@ -1,10 +1,10 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 import Hero from "../homepage/Hero";
 import Motto from "../ui/Motto";
-import About from '../ui/About';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import HeroSection from './../homepage/HeroSection';
+import About from "../ui/About";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import HeroSection from "./../homepage/HeroSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +21,7 @@ const LandingPage = () => {
           start: "top bottom",
           end: "top top",
           scrub: true,
-        }
+        },
       });
     });
 
@@ -38,15 +38,11 @@ const LandingPage = () => {
       {/* Dark Sections Container */}
       <div
         ref={darkSectionsRef}
-        className='bg-secondary-100 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden'
+        className="bg-secondary-100 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden"
       >
-
         <Motto />
 
-               
-          <About />
-       
-
+        <About />
       </div>
 
       <div className="relative z-0 bg-light-200">
