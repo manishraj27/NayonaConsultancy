@@ -51,7 +51,7 @@ const Motto = () => {
     <section
       id="motto"
       aria-label="motto"
-      className="rounded-t-3xl dark-section bg-[#e5e6e1] dark:bg-secondary-100 relative select-none flex flex-col lg:px-12 px-4 w-full min-h-screen py-32 items-center overflow-hidden transition-colors duration-300"
+      className="rounded-t-3xl dark-section bg-secondary-100 relative select-none flex flex-col lg:px-12 px-4 w-full min-h-screen py-32 items-center overflow-hidden transition-colors duration-300"
     >
       <div className="mx-auto w-full h-full relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -60,40 +60,40 @@ const Motto = () => {
             <div className="absolute inset-0">
               <CirclePattern />
             </div>
-            <div className="relative z-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg h-full transition-colors duration-300">
-              <h3 className="text-heading-4 font-grotesk text-slate-900 dark:text-white mb-8">
+            <div className="relative z-10 bg-slate-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg h-full transition-colors duration-300">
+              <h3 className="text-heading-4 font-grotesk text-white mb-8">
                 Oracle EPM Excellence
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-6">
-                  <div className="flex flex-col items-center p-4 bg-sky-50 dark:bg-slate-800/50 rounded-lg transition-colors duration-300">
+                  <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg transition-colors duration-300">
                     <EngagementIcon />
                     <div className="text-center mt-4">
-                      <div className="text-3xl font-grotesk font-bold text-sky-900 dark:text-sky-400">98%</div>
-                      <div className="text-body-4 font-open-sans text-slate-700 dark:text-slate-300">Client Satisfaction</div>
+                      <div className="text-3xl font-grotesk font-bold text-sky-400">98%</div>
+                      <div className="text-body-4 font-open-sans text-slate-300">Client Satisfaction</div>
                     </div>
                   </div>
-                  <div className="flex flex-col items-center p-4 bg-sky-50 dark:bg-slate-800/50 rounded-lg transition-colors duration-300">
+                  <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg transition-colors duration-300">
                     <GrowthIcon />
                     <div className="text-center mt-4">
-                      <div className="text-3xl font-grotesk font-bold text-sky-900 dark:text-sky-400">250+</div>
-                      <div className="text-body-4 font-open-sans text-slate-700 dark:text-slate-300">Projects Completed</div>
+                      <div className="text-3xl font-grotesk font-bold text-sky-400">250+</div>
+                      <div className="text-body-4 font-open-sans text-slate-300">Projects Completed</div>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-6">
-                  <div className="flex flex-col items-center p-4 bg-sky-50 dark:bg-slate-800/50 rounded-lg transition-colors duration-300">
+                  <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg transition-colors duration-300">
                     <GlobalIcon />
                     <div className="text-center mt-4">
-                      <div className="text-3xl font-grotesk font-bold text-sky-900 dark:text-sky-400">20+</div>
-                      <div className="text-body-4 font-open-sans text-slate-700 dark:text-slate-300">Countries Served</div>
+                      <div className="text-3xl font-grotesk font-bold text-sky-400">20+</div>
+                      <div className="text-body-4 font-open-sans text-slate-300">Countries Served</div>
                     </div>
                   </div>
-                  <div className="flex flex-col items-center p-4 bg-sky-50 dark:bg-slate-800/50 rounded-lg transition-colors duration-300">
+                  <div className="flex flex-col items-center p-4 bg-slate-800/50 rounded-lg transition-colors duration-300">
                     <ProjectIcon />
                     <div className="text-center mt-4">
-                      <div className="text-3xl font-grotesk font-bold text-sky-900 dark:text-sky-400">15+</div>
-                      <div className="text-body-4 font-open-sans text-slate-700 dark:text-slate-300">Years Experience</div>
+                      <div className="text-3xl font-grotesk font-bold text-sky-400">15+</div>
+                      <div className="text-body-4 font-open-sans text-slate-300">Years Experience</div>
                     </div>
                   </div>
                 </div>
@@ -103,35 +103,35 @@ const Motto = () => {
 
           {/* Right Column - Main Message */}
           <div className="space-y-8">
-            <h2 className="font-grotesk text-heading-1 text-slate-900 dark:text-white leading-tight">
+            <h2 className="font-grotesk text-heading-1 text-white leading-tight">
               Transforming
-              <span className="block text-sky-700 dark:text-sky-400">Financial</span>
+              <span className="block text-sky-400">Financial</span>
               <span className="block">Operations</span>
             </h2>
             
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-4 rounded-lg shadow-sm transition-colors duration-300">
-                <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
+              <div className="flex items-center space-x-4 bg-slate-900/80 backdrop-blur-sm p-4 rounded-lg shadow-sm transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-sky-900/50 flex items-center justify-center">
                   <svg className="w-6 h-6 text-sky-600 dark:text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" strokeLinecap="round" strokeLinejoin="round"/>
                     <polyline points="22 4 12 14.01 9 11.01" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-grotesk text-body-2 text-slate-900 dark:text-white">Strategic Planning</h4>
-                  <p className="font-open-sans text-body-4 text-slate-700 dark:text-slate-300">Comprehensive roadmap development</p>
+                  <h4 className="font-grotesk text-body-2 text-white">Strategic Planning</h4>
+                  <p className="font-open-sans text-body-4 text-slate-300">Comprehensive roadmap development</p>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-4 rounded-lg shadow-sm transition-colors duration-300">
-                <div className="w-12 h-12 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-sky-600 dark:text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <div className="flex items-center space-x-4 bg-slate-900/80 backdrop-blur-sm p-4 rounded-lg shadow-sm transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-sky-900/50 flex items-center justify-center">
+                  <svg className="w-6 h-6 text-sky-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-grotesk text-body-2 text-slate-900 dark:text-white">Technical Excellence</h4>
-                  <p className="font-open-sans text-body-4 text-slate-700 dark:text-slate-300">Industry-leading implementation expertise</p>
+                  <h4 className="font-grotesk text-body-2 text-white">Technical Excellence</h4>
+                  <p className="font-open-sans text-body-4 text-slate-300">Industry-leading implementation expertise</p>
                 </div>
               </div>
             </div>
@@ -139,9 +139,9 @@ const Motto = () => {
         </div>
 
         {/* Enhanced Background Elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-sky-100/50 dark:bg-sky-900/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-sky-200/30 dark:bg-sky-800/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/4 w-1/5 h-1/5 bg-sky-300/20 dark:bg-sky-700/20 rounded-full blur-2xl" />
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-sky-900/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-sky-800/20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/4 w-1/5 h-1/5 :bg-sky-700/20 rounded-full blur-2xl" />
       </div>
     </section>
   );
