@@ -11,7 +11,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoColor, setLogoColor] = useState("#000000");
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef(null);
-
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -19,12 +19,10 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       // Set scrolling state
       setIsScrolling(true);
       
-      // Clear previous timeout
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
       
-      // Set timeout to stop scrolling state
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 40);
@@ -32,21 +30,34 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       // Logo type logic
       setLogoType(scrollY > 50 ? 'initial' : 'full');
 
-      // Color logic for different sections
-      const sections = document.querySelectorAll('section');
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + section.offsetHeight;
-
-        if (scrollY >= sectionTop && scrollY <= sectionBottom) {
-          setLogoColor(
-            section.classList.contains('dark-section') ? "#ffffff" : "#000000"
+      // Modified color logic for GSAP setup
+      const motto = document.querySelector('.dark-section');
+      if (motto) {
+        const mottoRect = motto.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Check if motto section is in viewport
+        if (mottoRect.top < viewportHeight && mottoRect.bottom > 0) {
+          const visiblePercentage = Math.min(
+            (viewportHeight - mottoRect.top) / viewportHeight * 100,
+            100
           );
+          
+          // Change color when motto section is at least 30% visible
+          if (visiblePercentage > 30) {
+            setLogoColor("#ffffff");
+          } else {
+            setLogoColor("#000000");
+          }
+        } else {
+          setLogoColor("#000000");
         }
-      });
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
 
     return () => {
       if (scrollTimeoutRef.current) {
