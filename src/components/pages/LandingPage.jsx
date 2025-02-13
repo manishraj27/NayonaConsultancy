@@ -15,7 +15,6 @@ const LandingPage = () => {
     const ctx = gsap.context(() => {
       // Create animation for dark sections sliding up
       gsap.to(darkSectionsRef.current, {
-        yPercent: -50, // Adjust this value to control how much of Hero remains visible
         ease: "none",
         scrollTrigger: {
           trigger: darkSectionsRef.current,
