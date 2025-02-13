@@ -29,7 +29,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative bg-light-200">
       {/* Light Hero Section */}
       <div className="relative z-0 bg-light-200">
         <Hero />
@@ -38,7 +38,7 @@ const LandingPage = () => {
       {/* Dark Sections Container */}
       <div
         ref={darkSectionsRef}
-        className="bg-secondary-100 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden"
+        className="bg-secondary-100 z-0 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden"
       >
         <Motto />
 

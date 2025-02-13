@@ -59,7 +59,7 @@ const Motto = () => {
           <div className="relative h-[500px]">
            
             <div className="relative z-10 bg-slate-900/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg h-full transition-colors duration-300">
-              <h3 className="text-heading-4 font-grotesk text-white mb-8">
+              <h3 className="text-heading-4 font-open-sans text-white mb-8">
                 Oracle EPM Excellence
               </h3>
               <div className="grid grid-cols-2 gap-6">
@@ -101,7 +101,7 @@ const Motto = () => {
 
           {/* Right Column - Main Message */}
           <div className="space-y-8">
-            <h2 className="font-grotesk text-heading-1 text-white leading-tight">
+            <h2 className="font-open-sans text-heading-1 text-white leading-tight">
               Transforming
               <span className="block text-sky-400">Financial</span>
               <span className="block">Operations</span>
