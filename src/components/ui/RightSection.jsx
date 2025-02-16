@@ -1,20 +1,53 @@
+import React, { useEffect, useRef, useState } from 'react';
 import Iridescence from "../../blocks/Backgrounds/Iridescence/Iridescence";
-
 import BulletinCarousel from "./BulletinCarousel";
 import item from "../../lib/bulletin";
 import GlassCard from "./GlassCard";
 import { AnimatedBeamDemo } from "./AnimatedBeamDemo";
-import {
-  BarChart2,
-  ChevronRight,
-  FileSpreadsheet,
-  PieChart,
-} from "lucide-react";
 
-function RightSection() {
+const RightSection = () => {
+  const [lines, setLines] = useState([]);
+  const activeClientsRef = useRef(null);
+  const animatedBeamRef = useRef(null);
+  const carouselRef = useRef(null);
+  const containerRef = useRef(null);
+
+  const calculateLines = () => {
+    if (!activeClientsRef.current || !animatedBeamRef.current || !carouselRef.current || !containerRef.current) return;
+
+    const container = containerRef.current.getBoundingClientRect();
+    const activeClients = activeClientsRef.current.getBoundingClientRect();
+    const animatedBeam = animatedBeamRef.current.getBoundingClientRect();
+    const carousel = carouselRef.current.getBoundingClientRect();
+
+    // Calculate relative positions
+    const startX = activeClients.left + activeClients.width/2 - container.left;
+    const startY = activeClients.top + activeClients.height/2 - container.top;
+    
+    const beamX = animatedBeam.left + animatedBeam.width/2 - container.left;
+    const beamY = animatedBeam.top + animatedBeam.height/2 - container.top;
+    
+    const carouselX = carousel.left + carousel.width/2 - container.left;
+    const carouselY = carousel.top - container.top;
+
+    setLines([
+      `M ${startX} ${startY} Q ${startX} ${beamY} ${beamX} ${beamY}`, // Curved line to beam
+      `M ${startX} ${startY} Q ${startX} ${carouselY} ${carouselX} ${carouselY}` // Curved line to carousel
+    ]);
+  };
+
+  useEffect(() => {
+    calculateLines();
+    window.addEventListener('resize', calculateLines);
+    return () => window.removeEventListener('resize', calculateLines);
+  }, []);
+
   return (
-    <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col p-10 z-[1] overflow-hidden">
-      {/* Iridescence effect of Blue Color in the background*/}
+    <div 
+      ref={containerRef}
+      className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col p-10 z-[1] overflow-hidden"
+    >
+      {/* Background Iridescence */}
       <div className="absolute inset-0 w-full h-full">
         <Iridescence
           color={[0.1, 0.8, 1]}
@@ -24,9 +57,33 @@ function RightSection() {
         />
       </div>
 
+      {/* Connecting Lines SVG */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+        {lines.map((d, i) => (
+          <path
+            key={i}
+            d={d}
+            className="stroke-white/30"
+            strokeWidth="1"
+            fill="none"
+            strokeDasharray="4 4"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="8"
+              to="0"
+              dur="1s"
+              repeatCount="indefinite"
+            />
+          </path>
+        ))}
+      </svg>
 
       {/* Active Clients Card */}
-      <GlassCard className="absolute top-16 left-2 w-48 h-28 p-4 flex flex-col justify-between">
+      <GlassCard 
+        ref={activeClientsRef}
+        className="absolute top-16 left-2 w-48 h-28 p-4 flex flex-col justify-between"
+      >
         <div className="absolute top-2 left-2">
           <span className="text-3xl font-bold text-white">250+</span>
           <span className="text-white/80 block font-grotesk text-base">Active clients</span>
@@ -42,8 +99,8 @@ function RightSection() {
         </div>
       </GlassCard>
 
-    {/* Nayona Box */}
-    <div className="absolute right-4 top-32 rounded-3xl w-[20%] aspect-square flex items-center justify-center overflow-hidden">
+      {/* Nayona Box */}
+      <div className="absolute right-4 top-32 rounded-3xl w-[20%] aspect-square flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Iridescence
             color={[0, 1, 0.7]}
@@ -57,19 +114,26 @@ function RightSection() {
         </span>
       </div>
 
-      {/* animated beam */}
-      <div className="absolute backdrop-blur-lg rounded-3xl  border border-white/20 shadow-lg bg-white/10 top-52 left-[50%] w-[40%] h-[35%] aspect-[1.12/1] flex flex-col justify-between overflow-hidden">
+      {/* Animated Beam */}
+      <div 
+        ref={animatedBeamRef}
+        className="absolute backdrop-blur-lg rounded-3xl border border-white/20 shadow-lg bg-white/10 top-52 left-[50%] w-[40%] h-[35%] aspect-[1.12/1] flex flex-col justify-between overflow-hidden"
+      >
         <AnimatedBeamDemo />
       </div>
-      {/* Bulletin Carousel - Fixed at the bottom */}
-      <div className="absolute bottom-14 left-0 w-full">
+
+      {/* Bulletin Carousel */}
+      <div 
+        ref={carouselRef}
+        className="absolute bottom-14 left-0 w-full"
+      >
         <div className="w-full flex items-center justify-center">
           <BulletinCarousel items={item} />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default RightSection;
 
