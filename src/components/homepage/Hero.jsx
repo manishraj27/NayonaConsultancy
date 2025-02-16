@@ -3,7 +3,9 @@ import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
 import BulletinCarousel from "../ui/BulletinCarousel";
 import item from "../../lib/bulletin";
-import { AnimatedBeamMultipleOutputDemo } from './../ui/AnimatedBeamMultipleOutputDemo';
+import { AnimatedBeamMultipleOutputDemo } from "./../ui/AnimatedBeamMultipleOutputDemo";
+import Iridescence from "./../../blocks/Backgrounds/Iridescence/Iridescence";
+import Noise from "./../../blocks/Animations/Noise/Noise";
 const Hero = () => {
   return (
     <section
@@ -42,21 +44,29 @@ const Hero = () => {
           </div>
           <div className="pt-6">
             <HeroButton />
-  
           </div>
         </div>
       </div>
 
       {/* Right Content */}
-      <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 animated-mesh-gradient-background z-[1]">
-      {/* <div className="absolute top-16 left-4">
-    <AnimatedBeamMultipleOutputDemo />
-  </div> */}
-      <div className=" absolute w-full h-full flex items-center justify-center mt-[440px]">
-      <BulletinCarousel items={item} />
-      </div>
+      <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 z-[1] overflow-hidden">
+        {/* Noise effect covering the entire background */}
+        
 
-      
+        {/* Iridescence effect */}
+        <div className="absolute inset-0 w-full h-full">
+          <Iridescence
+            color={[0.4, 1, 1]}
+            mouseReact={false}
+            amplitude={0.1}
+            speed={0.5}
+          />
+        </div>
+
+        {/* Bulletin Carousel */}
+        <div className="absolute w-full h-full flex items-center justify-center mt-[440px]">
+          <BulletinCarousel items={item} />
+        </div>
       </div>
     </section>
   );
