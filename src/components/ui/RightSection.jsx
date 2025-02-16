@@ -17,61 +17,33 @@ function RightSection() {
       {/* Iridescence effect of Blue Color in the background*/}
       <div className="absolute inset-0 w-full h-full">
         <Iridescence
-          color={[0, 0.7, 1]}
+          color={[0.1, 0.8, 1]}
           mouseReact={false}
           amplitude={0.1}
           speed={0.5}
         />
       </div>
 
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {/* Dotted vertical line */}
-        <line
-          x1="150"
-          y1="475"
-          x2="150"
-          y2="235"
-          stroke="white"
-          strokeWidth="2"
-          strokeDasharray="4 4"
-          strokeOpacity="0.5"
-        />
-
-        {/* Solid rectangular line */}
-        <path
-          d="M 192 144 L 240 144 L 240 208"
-          fill="none"
-          stroke="white"
-          strokeWidth="2"
-          strokeOpacity="0.5"
-        />
-
-        {/* Circular dots at vertices */}
-        <circle cx="150" cy="235" r="3" fill="white" fillOpacity="0.8" />
-        <circle cx="150" cy="475" r="3" fill="white" fillOpacity="0.8" />
-        <circle cx="192" cy="144" r="3" fill="white" fillOpacity="0.8" />
-        <circle cx="300" cy="144" r="3" fill="white" fillOpacity="0.8" />
-        <circle cx="240" cy="208" r="3" fill="white" fillOpacity="0.8" />
-      </svg>
 
       {/* Active Clients Card */}
-      <GlassCard className="absolute top-16 left-2 w-48 h-32 p-4 flex flex-col justify-between">
+      <GlassCard className="absolute top-16 left-2 w-48 h-28 p-4 flex flex-col justify-between">
         <div className="absolute top-2 left-2">
           <span className="text-3xl font-bold text-white">250+</span>
-          <span className="text-white/80 block text-sm">Active clients</span>
+          <span className="text-white/80 block font-grotesk text-base">Active clients</span>
         </div>
         <div className="mt-12 flex items-center space-x-2">
           <div className="flex -space-x-2">
             <div className="w-6 h-6 rounded-full bg-blue-400" />
             <div className="w-6 h-6 rounded-full bg-blue-500" />
           </div>
-          <button className="text-white bg-blue-500/20 px-3 py-1 rounded-full text-sm">
+          <button className="text-white font-open-sans bg-blue-500/20 px-3 py-1 rounded-full text-xs">
             Learn more
           </button>
         </div>
       </GlassCard>
 
-      <div className="absolute left-[520px] top-36 rounded-3xl w-24 h-24 flex items-center justify-center overflow-hidden">
+    {/* Nayona Box */}
+    <div className="absolute right-4 top-32 rounded-3xl w-[20%] aspect-square flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Iridescence
             color={[0, 1, 0.7]}
@@ -80,20 +52,15 @@ function RightSection() {
             speed={0.3}
           />
         </div>
-
         <span className="absolute text-white text-xl font-serif italic">
           Nayona
         </span>
       </div>
 
-      <div
-        className="absolute  backdrop-blur-lg rounded-3xl p-6
-        border border-white/20 shadow-lg
-        bg-white/10 top-52 left-80 w-[280px] h-[250px] items-center  flex flex-col justify-between  overflow-hidden"
-      >
+      {/* animated beam */}
+      <div className="absolute backdrop-blur-lg rounded-3xl  border border-white/20 shadow-lg bg-white/10 top-52 left-[50%] w-[40%] h-[35%] aspect-[1.12/1] flex flex-col justify-between overflow-hidden">
         <AnimatedBeamDemo />
       </div>
-
       {/* Bulletin Carousel - Fixed at the bottom */}
       <div className="absolute bottom-14 left-0 w-full">
         <div className="w-full flex items-center justify-center">
@@ -144,27 +111,5 @@ export default RightSection;
   /* Expertise Areas */
 }
 {
-  /* <GlassCard className="w-72">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-white font-medium">Core Expertise</span>
-            <span className="text-white/60 text-sm">2024</span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-white text-sm">
-              Oracle EPM Cloud
-            </span>
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-white text-sm">
-              Hyperion
-            </span>
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-white text-sm">
-              PBCS
-            </span>
-            <span className="px-3 py-1 rounded-full bg-blue-500/20 text-white text-sm">
-              FCCS
-            </span>
-            <button className="w-8 h-8 rounded-full bg-blue-600/20 text-white flex items-center justify-center">
-              +
-            </button>
-          </div>
-        </GlassCard> */
+
 }
