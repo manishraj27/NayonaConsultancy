@@ -13,8 +13,8 @@ const FinalLogo = () => (
     }}
   >
     <svg
-      width="24" // Size of the SVG
-      height="24"
+      width="20" // Size of the SVG
+      height="20"
       viewBox="0 0 428 430"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

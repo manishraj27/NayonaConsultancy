@@ -13,7 +13,7 @@ export const AnimatedBeam = ({
   reverse = false, // Include the reverse prop
   duration = Math.random() * 3 + 4,
   delay = 0,
-  pathColor = "gray",
+  pathColor = "white",
   pathWidth = 2,
   pathOpacity = 0.2,
   gradientStartColor = "#ffaa40",
@@ -108,7 +108,7 @@ export const AnimatedBeam = ({
       height={svgDimensions.height}
       xmlns="http://www.w3.org/2000/svg"
       className={cn(
-        "pointer-events-none absolute left-0 top-0 transform-gpu stroke-2",
+        "pointer-events-none absolute left-0 top-0 transform-gpu stroke-2 ",
         className
       )}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}>

@@ -21,7 +21,7 @@ const Circle = forwardRef(({ className, children, label }, ref) => {
     });
     gsap.to(textRef.current, {
       opacity: 1,
-      y: -20,
+      y: -15,
       duration: 0.3,
       ease: "power2.inOut"
     });
@@ -56,10 +56,10 @@ const Circle = forwardRef(({ className, children, label }, ref) => {
     >
       <div
         ref={circleRef}
-        className={`z-10 flex size-12 items-center justify-center rounded-full border-2 bg-white p-3 shadow-lg hover:shadow-xl transition-all duration-300 ${className}`}
+        className={`z-10 flex size-8 items-center justify-center rounded-full border-2 bg-white p-2 shadow-md hover:shadow-lg transition-all duration-300 ${className}`}
         style={{
           borderColor: isHovered ? '#e5e6e1' : '#E5E7EB',
-          boxShadow: isHovered ? '0 0 20px -5px rgba(59, 130, 246, 0.5)' : '0 0 20px -12px rgba(0, 0, 0, 0.8)'
+          boxShadow: isHovered ? '0 0 15px -5px rgba(59, 130, 246, 0.5)' : '0 0 15px -10px rgba(0, 0, 0, 0.6)'
         }}
       >
         {children}
@@ -67,7 +67,7 @@ const Circle = forwardRef(({ className, children, label }, ref) => {
       {label && (
         <div 
           ref={textRef}
-          className="absolute text-nowrap text-lg font-open-sans pt-24 opacity-0 text-white/90"
+          className="absolute text-nowrap text-sm font-open-sans pt-16 opacity-0 text-white/90"
           style={{
             transform: 'translateY(0)',
             transition: 'opacity 0.3s ease, transform 0.3s ease'
@@ -93,20 +93,20 @@ export function AnimatedBeamDemo() {
   const div7Ref = useRef(null);
 
   const beams = useMemo(() => [
-    { from: div1Ref, to: div4Ref, curvature: -75, endYOffset: -10, color: '#e5e6e1' },
+    { from: div1Ref, to: div4Ref, curvature: -60, endYOffset: -8, color: '#e5e6e1' },
     { from: div2Ref, to: div4Ref, color: '#e5e6e1' },
-    { from: div3Ref, to: div4Ref, curvature: 75, endYOffset: 10, color: '#e5e6e1' },
-    { from: div5Ref, to: div4Ref, curvature: -75, endYOffset: -10, reverse: true, color: '#e5e6e1' },
+    { from: div3Ref, to: div4Ref, curvature: 60, endYOffset: 8, color: '#e5e6e1' },
+    { from: div5Ref, to: div4Ref, curvature: -60, endYOffset: -8, reverse: true, color: '#e5e6e1' },
     { from: div6Ref, to: div4Ref, reverse: true, color: '#e5e6e1' },
-    { from: div7Ref, to: div4Ref, curvature: 75, endYOffset: 10, reverse: true, color: '#e5e6e1' },
+    { from: div7Ref, to: div4Ref, curvature: 60, endYOffset: 8, reverse: true, color: '#e5e6e1' },
   ], []);
 
   return (
     <div
-      className="relative flex h-[300px] w-full items-center justify-center overflow-hidden p-10"
+      className="relative flex h-[250px] w-[250px] items-center justify-center overflow-hidden p-8"
       ref={containerRef}
     >
-      <div className="flex size-full max-h-[200px] max-w-lg flex-col items-stretch justify-between gap-10">
+      <div className="flex size-full max-h-[150px] max-w-md flex-col items-stretch justify-between gap-6">
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref} label="Planning">
             <Icons.planning />
