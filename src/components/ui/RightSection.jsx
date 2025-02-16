@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import Iridescence from "../../blocks/Backgrounds/Iridescence/Iridescence";
 import BulletinCarousel from "./BulletinCarousel";
 import item from "../../lib/bulletin";
@@ -6,13 +6,14 @@ import GlassCard from "./GlassCard";
 import { AnimatedBeamDemo } from "./AnimatedBeamDemo";
 
 const RightSection = () => {
-  const [lines, setLines] = useState([]);
+  const [paths, setPaths] = useState({ dotted: '', curved: '' });
+  const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
   const activeClientsRef = useRef(null);
   const animatedBeamRef = useRef(null);
   const carouselRef = useRef(null);
   const containerRef = useRef(null);
 
-  const calculateLines = () => {
+  const calculatePaths = () => {
     if (!activeClientsRef.current || !animatedBeamRef.current || !carouselRef.current || !containerRef.current) return;
 
     const container = containerRef.current.getBoundingClientRect();
@@ -25,21 +26,28 @@ const RightSection = () => {
     const startY = activeClients.top + activeClients.height/2 - container.top;
     
     const beamX = animatedBeam.left + animatedBeam.width/2 - container.left;
-    const beamY = animatedBeam.top + animatedBeam.height/2 - container.top;
+    const beamY = animatedBeam.top - container.top; // Connect to top middle
     
     const carouselX = carousel.left + carousel.width/2 - container.left;
     const carouselY = carousel.top - container.top;
 
-    setLines([
-      `M ${startX} ${startY} Q ${startX} ${beamY} ${beamX} ${beamY}`, // Curved line to beam
-      `M ${startX} ${startY} Q ${startX} ${carouselY} ${carouselX} ${carouselY}` // Curved line to carousel
-    ]);
+    // Calculate circle position (intersection point)
+    const circleX = beamX;
+    const circleY = startY;
+
+    // Set paths
+    setPaths({
+      dotted: `M ${startX} ${startY} L ${startX} ${carouselY} `, // Straight dotted line
+      curved: `M ${startX} ${startY} L ${circleX} ${circleY} C ${circleX} ${circleY}, ${beamX} ${circleY}, ${beamX} ${beamY}` // Solid line with curve
+    });
+
+    setCirclePosition({ x: circleX, y: circleY });
   };
 
   useEffect(() => {
-    calculateLines();
-    window.addEventListener('resize', calculateLines);
-    return () => window.removeEventListener('resize', calculateLines);
+    calculatePaths();
+    window.addEventListener('resize', calculatePaths);
+    return () => window.removeEventListener('resize', calculatePaths);
   }, []);
 
   return (
@@ -59,24 +67,38 @@ const RightSection = () => {
 
       {/* Connecting Lines SVG */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        {lines.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            className="stroke-white/30"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="4 4"
-          >
-            <animate
-              attributeName="stroke-dashoffset"
-              from="8"
-              to="0"
-              dur="1s"
-              repeatCount="indefinite"
-            />
-          </path>
-        ))}
+        {/* Dotted line to carousel */}
+        <path
+          d={paths.dotted}
+          className="stroke-white/30"
+          strokeWidth="1"
+          fill="none"
+          strokeDasharray="4 4"
+        >
+          <animate
+            attributeName="stroke-dashoffset"
+            from="8"
+            to="0"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+        </path>
+        
+        {/* Solid curved line to beam */}
+        <path
+          d={paths.curved}
+          className="stroke-white/30"
+          strokeWidth="1"
+          fill="none"
+        />
+
+        {/* Intersection circle */}
+        <circle
+          cx={circlePosition.x}
+          cy={circlePosition.y}
+          r="3"
+          className="fill-white"
+        />
       </svg>
 
       {/* Active Clients Card */}
@@ -136,7 +158,6 @@ const RightSection = () => {
 };
 
 export default RightSection;
-
 {
   /* Services Selection */
 }
