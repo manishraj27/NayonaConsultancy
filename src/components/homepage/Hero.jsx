@@ -5,7 +5,7 @@ import BulletinCarousel from "../ui/BulletinCarousel";
 import item from "../../lib/bulletin";
 import { AnimatedBeamMultipleOutputDemo } from "./../ui/AnimatedBeamMultipleOutputDemo";
 import Iridescence from "./../../blocks/Backgrounds/Iridescence/Iridescence";
-import Noise from "./../../blocks/Animations/Noise/Noise";
+
 const Hero = () => {
   return (
     <section
