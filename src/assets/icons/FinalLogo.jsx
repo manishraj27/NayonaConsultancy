@@ -6,7 +6,7 @@ const FinalLogo = () => (
       width: '40px', // Adjust the size of the circle
       height: '40px',
       borderRadius: '50%',
-      backgroundColor: '#f0f0f0', // Adjust the circle's background color
+      // backgroundColor: '#f0f0f0', // Adjust the circle's background color
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',

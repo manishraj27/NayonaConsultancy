@@ -3,8 +3,9 @@ import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
 import BulletinCarousel from "../ui/BulletinCarousel";
 import item from "../../lib/bulletin";
-import { AnimatedBeamMultipleOutputDemo } from "./../ui/AnimatedBeamMultipleOutputDemo";
 import Iridescence from "./../../blocks/Backgrounds/Iridescence/Iridescence";
+import { AnimatedBeamDemo } from "../ui/AnimatedBeamDemo";
+
 
 const Hero = () => {
   return (
@@ -51,9 +52,9 @@ const Hero = () => {
       {/* Right Content */}
       <div className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col items-center justify-center p-10 z-[1] overflow-hidden">
         {/* Noise effect covering the entire background */}
-        
 
-        {/* Iridescence effect */}
+
+        {/* Iridescence effect of Blue Color*/}
         <div className="absolute inset-0 w-full h-full">
           <Iridescence
             color={[0.4, 1, 1]}
@@ -62,7 +63,10 @@ const Hero = () => {
             speed={0.5}
           />
         </div>
+        <div className="absolute pb-32 inset-0 w-full h-full flex items-center justify-center">
+          <AnimatedBeamDemo />
 
+        </div>
         {/* Bulletin Carousel */}
         <div className="absolute w-full h-full flex items-center justify-center mt-[440px]">
           <BulletinCarousel items={item} />
