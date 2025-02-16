@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -9,6 +10,9 @@ import LogoWithInitial from '../../assets/icons/LogoWithInitial';
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
   const [logoColor, setLogoColor] = useState("#000000");
+  const [menuColor, setMenuColor] = useState("#0C1016"); // State for menu button background color
+  const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1E242C"); // State for menu inner circle color
+  const [textColor, setTextColor] = useState("#1882ea"); // State for menu text color
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef(null);
   
@@ -46,11 +50,20 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
           // Change color when motto section is at least 30% visible
           if (visiblePercentage > 30) {
             setLogoColor("#ffffff");
+            setMenuColor("#ffffff"); // Update menu button background color
+            menuInnerCircleColor("gray"); // Update menu inner circle color
+            setTextColor("#000000"); // Update menu text color
           } else {
-            setLogoColor("#000000");
+            setLogoColor("#000000"); // Reset logo color
+            setMenuColor("#0C1016"); // Reset menu button background color
+            setMenuInnerCircleColor("#1E242C"); // Reset menu inner circle color
+            setTextColor("#1882ea"); // Reset menu text color
           }
         } else {
           setLogoColor("#000000");
+          setMenuColor("#0C1016"); // Reset menu button background color
+          setMenuInnerCircleColor("#1E242C"); // Reset menu inner circle color
+          setTextColor("#1882ea"); // Reset menu text color
         }
       }
     };
@@ -127,9 +140,9 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-[0.3rem] will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex flex-row items-center"
-          style={{ backgroundColor: "#0C1016" }}
+          style={{ backgroundColor: menuColor }} // Use menuColor state
         >
-          <span className="text-sm lg:text-base font-medium uppercase pl-6 lg:pl-10 pr-4 lg:pr-8 text-[#F0F6F8]">
+          <span className="text-sm lg:text-base font-medium uppercase pl-6 lg:pl-10 pr-4 lg:pr-8" style={{ color: textColor }}> {/* Use textColor state */}
             <span className="block text-wrapper relative overflow-hidden">
               <span
                 className="absolute left-1/2 -translate-x-1/2 top-0 flex transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.2)]"
@@ -151,9 +164,9 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
           </span>
           <span
             className="relative overflow-hidden flex items-center justify-center w-7 lg:w-12 h-7 lg:h-12 rounded-full"
-            style={{ backgroundColor: "#1E242C" }}
+            style={{ backgroundColor: menuInnerCircleColor }} // Use menuInnerCircleColor state
           >
-            <span className="block w-1/3 will-change-transform group-hover:rotate-[90deg] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-[#F0F6F8]">
+            <span className="block w-1/3 will-change-transform group-hover:rotate-[90deg] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]" style={{ color: textColor }}> {/* Use textColor state */}
               <DotsIcon />
             </span>
           </span>
