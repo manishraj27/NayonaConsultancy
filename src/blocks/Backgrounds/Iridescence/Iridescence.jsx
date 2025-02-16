@@ -1,8 +1,3 @@
-/*
-	jsrepo 1.36.0
-	Installed from https://reactbits.dev/tailwind/
-	16-2-2025
-*/
 
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import { useEffect, useRef } from "react";
