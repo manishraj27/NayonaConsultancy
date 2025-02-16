@@ -10,17 +10,21 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
   const darkSectionsRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create animation for dark sections sliding up
+      // Set up the scroll trigger animation
       gsap.to(darkSectionsRef.current, {
+        yPercent: -100,
         ease: "none",
         scrollTrigger: {
-          trigger: darkSectionsRef.current,
-          start: "top bottom",
-          end: "top top",
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=100%",
           scrub: true,
+          pin: true,
+          anticipatePin: 1,
         },
       });
     });
@@ -30,23 +34,25 @@ const LandingPage = () => {
 
   return (
     <div className="relative bg-light-200">
-      {/* Light Hero Section */}
-      <div className="relative z-0 bg-light-200">
-        <Hero />
+      {/* Main container for the parallax effect */}
+      <div ref={containerRef} className="relative h-screen overflow-hidden">
+        {/* Fixed Hero Section */}
+        <div className="fixed top-0 left-0 w-full h-screen z-10">
+          <Hero />
+        </div>
+
+        {/* Dark Sections Container that slides up */}
+        <div
+          ref={darkSectionsRef}
+          className="absolute dark-section top-full left-0 w-full min-h-screen bg-secondary-100 rounded-3xl z-20"
+        >
+          <Motto />
+          <About />
+        </div>
       </div>
 
-      {/* Dark Sections Container */}
-      <div
-        ref={darkSectionsRef}
-        className="bg-secondary-100 z-0 dark-section rounded-3xl relative  flex flex-col w-full min-h-screen items-center overflow-hidden"
-      >
-        <Motto />
-
-        <About />
-      </div>
-
-      <div className="relative z-0 bg-light-200">
-        {/* test hero sec */}
+      {/* Additional content that appears after the animation */}
+      <div className="relative z-30 bg-light-200">
         <HeroSection />
       </div>
     </div>
