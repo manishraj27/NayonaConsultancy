@@ -18,7 +18,14 @@ const Inquiry = ({ onBackToHome }) => {
   const [submitting, setSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
-  const services = ["Financial Planning", "Reporting", "Budgeting"];
+  const services = [
+    "Planning & Budgeting",
+    "Financial Consolidation",
+    "Account Reconciliation",
+    "Enterprise Data Management",
+    "Narrative Reporting",
+    "Other",
+  ];
   const budgetRanges = ["Below $10,000", "$10,000 - $50,000", "$50,000+"];
 
   const handleServiceSelect = (service) => {
@@ -109,7 +116,8 @@ const Inquiry = ({ onBackToHome }) => {
 
   const steps = [
     {
-      title: "Ready to team up? Our passion for crushing goals sets us apart. How can we help you?",
+      title:
+        "Ready to team up? Our passion for crushing goals sets us apart. How can we help you?",
       content: (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
           {services.map((service) => (
@@ -130,7 +138,8 @@ const Inquiry = ({ onBackToHome }) => {
       ),
     },
     {
-      title: "Things in life may not always be free, right? What's your budget for your EPM Service?",
+      title:
+        "Things in life may not always be free, right? What's your budget for your EPM Service?",
       content: (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
           {budgetRanges.map((range) => (
@@ -153,7 +162,8 @@ const Inquiry = ({ onBackToHome }) => {
       ),
     },
     {
-      title: "Let's spice it up! Fill out our inquiry form — and let our adventure begin!",
+      title:
+        "Let's spice it up! Fill out our inquiry form — and let our adventure begin!",
       content: (
         <div className="flex flex-col gap-4 w-full max-w-3xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -215,22 +225,22 @@ const Inquiry = ({ onBackToHome }) => {
     <div className="relative w-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-6 w-full lg:w-[60%] px-4 lg:px-0 pt-8 pb-24 lg:py-16">
         <div className="flex flex-col items-center gap-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-600 tracking-wide">[Start your inquiry]</h2>
+          <h2 className="text-xl font-semibold text-gray-600 tracking-wide">
+            [Start your inquiry]
+          </h2>
           <p className="text-gray-900 text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wide text-center">
             {steps[currentStep].title}
           </p>
         </div>
 
-        <div className="mt-6 lg:mt-12 w-full">
-          {steps[currentStep].content}
-        </div>
+        <div className="mt-6 lg:mt-12 w-full">{steps[currentStep].content}</div>
 
-        {submitting && (
-          <div className="mt-4 text-gray-600">Submitting...</div>
-        )}
+        {submitting && <div className="mt-4 text-gray-600">Submitting...</div>}
 
         {submissionSuccess && (
-          <div className="mt-4 text-green-600">Check your mail for inquiry details</div>
+          <div className="mt-4 text-green-600">
+            Check your mail for inquiry details
+          </div>
         )}
 
         <div className="absolute left-8 bottom-2">
