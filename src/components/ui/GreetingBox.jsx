@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 function GreetingBox() {
     const [timeOfDay, setTimeOfDay] = useState('');
-    const [location, setLocation] = useState('Markapur, India');
+    const [location, setLocation] = useState('');
   
     useEffect(() => {
       // Determine the time of day
@@ -32,7 +32,7 @@ function GreetingBox() {
   return (
     <p className="text-gray-900 text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wider text-center">
           Hey there! How can we assist you<br />
-          on this {timeOfDay} in <span className="h-word">{location}</span>?
+          this {timeOfDay} in <span className="h-word">{location}</span>?
         </p>
   )
 }
