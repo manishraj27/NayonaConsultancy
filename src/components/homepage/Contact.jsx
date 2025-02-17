@@ -8,7 +8,7 @@ function Contact() {
       <section
         id="contact"
         aria-label="contact"
-        className="overflow-hidden lg:px-12 px-6 w-full py-16 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
+        className="overflow-hidden lg:px-12 px-6 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
       >
         {/* Container for Heading and Globe */}
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8 md:gap-0">
@@ -29,8 +29,8 @@ function Contact() {
         </div>
 
         {/* Paragraph Text Below Heading and Globe */}
-        <div className="w-full mt-8 text-left pr-40">
-          <p className="text-heading-3 font-montserrat text-white">
+        <div className="w-full mt-8 text-left lg:pr-40 ">
+          <p className="lg:text-heading-3 text-heading-4 font-montserrat text-white">
             Have an inquiry, suggestion, a collaboration offer, or even trouble sleeping?{" "}
             <span className="bg-gradient-to-r from-white via-gray-600 to-white text-transparent bg-clip-text">
               Get in touch
