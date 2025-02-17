@@ -15,6 +15,8 @@ const Inquiry = ({ onBackToHome }) => {
     message: "",
     preferredContactMethod: "Email",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   const services = ["Financial Planning", "Reporting", "Budgeting"];
   const budgetRanges = ["Below $10,000", "$10,000 - $50,000", "$50,000+"];
@@ -60,6 +62,8 @@ const Inquiry = ({ onBackToHome }) => {
   const handleSubmit = async () => {
     if (!validateForm()) return;
 
+    setSubmitting(true);
+
     try {
       const response = await fetch(`${apiconfig.nayona_api}/api/inquiries`, {
         method: "POST",
@@ -76,6 +80,7 @@ const Inquiry = ({ onBackToHome }) => {
 
       if (response.ok) {
         const result = await response.json();
+        setSubmissionSuccess(true);
         alert(
           `Form submitted successfully! Inquiry number: ${result.inquiryNumber}`
         );
@@ -97,6 +102,8 @@ const Inquiry = ({ onBackToHome }) => {
     } catch (error) {
       console.error("Error submitting form:", error);
       alert(`Error submitting form: ${error.message}`);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -218,6 +225,14 @@ const Inquiry = ({ onBackToHome }) => {
           {steps[currentStep].content}
         </div>
 
+        {submitting && (
+          <div className="mt-4 text-gray-600">Submitting...</div>
+        )}
+
+        {submissionSuccess && (
+          <div className="mt-4 text-green-600">Check your mail for inquiry details</div>
+        )}
+
         <div className="absolute left-8 bottom-2">
           <UiButton
             text="Back"
@@ -238,11 +253,12 @@ const Inquiry = ({ onBackToHome }) => {
         <div className="absolute right-8 bottom-2">
           {currentStep === steps.length - 1 ? (
             <UiButton
-              text="Submit"
+              text={submitting ? "Submitting..." : "Submit"}
               icon={ChevronRight}
               iconPosition="right"
               onClick={handleSubmit}
               type="button"
+              disabled={submitting}
             />
           ) : (
             <UiButton
