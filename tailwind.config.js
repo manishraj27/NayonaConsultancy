@@ -52,7 +52,8 @@ export default {
         'light-200' : '#E1E4E6',
                
         // dark Background Colors(all other sections)
-        'background-100': '#0c0c0c', 
+        'background-100': '#0c0c0c',
+         
         
       }
     },
