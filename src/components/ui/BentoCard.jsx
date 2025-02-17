@@ -97,36 +97,14 @@ function BentoCard({ item, index, currentPath }) {
       onHoverEnd={() => setHoveredCard(null)}
       className={`relative group isolate overflow-hidden
         ${hasSubmenu ? "row-span-2 col-span-1" : "col-span-1 row-span-1"}
-        rounded-3xl bg-white/90
+        rounded-3xl bg-black
         border border-gray-100/50
         transition-all duration-300 ease-out
         shadow-sm hover:shadow-md
         ${isActive ? "ring-1 ring-gray-200/50 scale-[1.01]" : ""}
       `}
     >
-      {/* Animated background gradient */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: isHovered || isActive ? 0.5 : 0.3,
-          background: item.bgColor
-        }}
-        transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-gradient-to-br opacity-30"
-      />
-
-      {/* Dynamic spotlight effect */}
-      <motion.div
-        initial={{ x: '-100%' }}
-        animate={{
-          x: isHovered || isActive ? '100%' : '-100%',
-          transition: {
-            duration: 1,
-            ease: "easeInOut"
-          }
-        }}
-        className="absolute inset-0 bg-gradient-to-br from-white/0 via-white/10 to-white/0"
-      />
+    
 
       <motion.a
         href={item.href}

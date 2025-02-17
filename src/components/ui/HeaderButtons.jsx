@@ -120,16 +120,16 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         <a
           href="/contact"
           className="p-[0.3rem] select-none will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex-row items-center hidden lg:flex"
-          style={{ backgroundColor: "#D9E0E3" }}
+          style={{ backgroundColor: "#C7F0FF" }}
         >
-          <span className="text-sm lg:text-lg font-medium uppercase pl-10 pr-8 text-black">
+          <span className="text-sm lg:text-lg font-normal uppercase pl-10 pr-8 text-slate-900">
             Chat with us
           </span>
-          <span className="relative overflow-hidden flex items-center justify-center w-8 lg:w-12 h-8 lg:h-12 rounded-full bg-[#F0F6F8]">
-            <span className="block w-1/3 will-change-transform group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-black">
+          <span className="relative overflow-hidden flex items-center justify-center w-8 lg:w-12 h-8 lg:h-12 rounded-full bg-[#90E2FF]">
+            <span className="block w-1/3 will-change-transform group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-slate-900">
               <ChatIcon />
             </span>
-            <span className="block w-1/3 will-change-transform absolute -translate-x-[250%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-black">
+            <span className="block w-1/3 will-change-transform absolute -translate-x-[250%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-slate-900">
               <ChatIcon />
             </span>
           </span>
@@ -141,7 +141,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
           className="p-[0.3rem] will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex flex-row items-center"
           style={{ backgroundColor: menuColor }} // Use menuColor state
         >
-          <span className="text-sm lg:text-base font-medium uppercase pl-6 lg:pl-10 pr-4 lg:pr-8" style={{ color: textColor }}> {/* Use textColor state */}
+          <span className="text-sm lg:text-base font-normal uppercase pl-6 lg:pl-10 pr-4 lg:pr-8" style={{ color: textColor }}> {/* Use textColor state */}
             <span className="block text-wrapper relative overflow-hidden">
               <span
                 className="absolute left-1/2 -translate-x-1/2 top-0 flex transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.2)]"
