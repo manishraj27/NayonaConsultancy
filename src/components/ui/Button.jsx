@@ -39,7 +39,7 @@ const Button = ({ text }) => {
   return (
     <button 
       ref={buttonRef}
-      className="relative h-12 px-6 overflow-hidden rounded-full border border-secondary-100 text-black font-open-sans tracking-wider"
+      className="relative h-12 px-6 overflow-hidden rounded-full border border-background-100 text-black font-open-sans tracking-wider"
     >
       <div 
         ref={curtainRef}

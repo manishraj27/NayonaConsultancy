@@ -44,7 +44,7 @@ const LandingPage = () => {
         {/* Dark Sections Container that slides up */}
         <div
           ref={darkSectionsRef}
-          className="absolute dark-section top-full left-0 w-full min-h-screen bg-secondary-100 rounded-3xl z-20"
+          className="absolute dark-section top-full left-0 w-full min-h-screen bg-background-100 rounded-3xl z-20"
         >
           <Motto />
           <About />

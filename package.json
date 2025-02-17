@@ -16,6 +16,7 @@
     "@shadergradient/react": "^2.0.19",
     "@studio-freight/lenis": "^1.0.42",
     "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
     "lenis": "^1.1.20",

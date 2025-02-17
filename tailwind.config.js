@@ -46,44 +46,14 @@ export default {
       },
       colors: {
         transparent: 'transparent',
+        // light background color(used only in hero and footer)
         'light-100' : '#dfdbd8',
         // 'light-200' : '#e5e6e1',
         'light-200' : '#E1E4E6',
-        // Primary Colors
-        'primary-100': '#1c1431', // Deep Indigo - used for main background and deep accents
-        'primary-200': '#2d1a4b', // Rich Violet - used for headings and button hover states
-        'primary-300': '#46265d', // Royal Purple - used for call-to-action buttons
-        'primary-400': '#5c3a77', // Velvet Violet - subtle background or section dividers
+               
+        // dark Background Colors(all other sections)
+        'background-100': '#0c0c0c', 
         
-        // Secondary Colors
-        'secondary-100': '#0d0d0d', // Obsidian Black - used for dark backgrounds and text contrast
-        'secondary-200': '#262626', // Charcoal Blue - used for dark-themed buttons
-        'secondary-300': '#444444', // Graphite Gray - used for navigation bars or side menus
-        'secondary-400': '#616161', // Muted Gray - used for text highlights or borders
-        'secondary-500': '#797979', // Steel Gray - used for text or muted icons
-
-        // Accent Colors
-        'accent-100': '#c57ce2', // Lavender Rose - used for call-to-action buttons and accent details
-        'accent-200': '#e7e6e7', // Soft White - used for subtle text or section highlights //LIGHT BG 
-        'accent-300': '#a026e1', // Cyber Magenta - used for buttons, highlights, or link colors
-        'accent-400': '#e4a484', // Warm Peach - used for subtle text or section dividers
-        
-        // Highlight Colors
-        'highlight-100': '#f7d1e2', // Light Pink - used for lighter accents or hover effects
-        'highlight-200': '#e0d6ec', // Pale Lavender - used for background highlights or soft borders
-        'highlight-300': '#d3e8f0', // Frosted Lilac - used for subtle background accents or cards
-
-        // Background Colors
-        'background-100': '#0c0c0c', // Night Black - used for the primary background color
-        'background-200': '#13101b', // Charcoal Blue - used for card backgrounds and sections
-        
-        // Highlighted Text and Elements
-        'highlight-400': '#c2c2c2', // Ash Gray - used for light text on dark backgrounds
-        'highlight-500': '#cdaadd', // Frosted Lilac - used for titles and highlighted sections
-        
-        // Muted Tone
-        'subtleGray': '#848484', // Muted Gray - used for borders or subtle divider lines
-        'softPeach': '#e4a484', // Warm Peach - used for form field highlights or muted backgrounds
       }
     },
   },
