@@ -97,7 +97,7 @@ function BentoCard({ item, index, currentPath }) {
       onHoverEnd={() => setHoveredCard(null)}
       className={`relative group isolate overflow-hidden
         ${hasSubmenu ? "row-span-2 col-span-1" : "col-span-1 row-span-1"}
-        rounded-3xl bg-black
+        rounded-3xl bg-white/90
         border border-gray-100/50
         transition-all duration-300 ease-out
         shadow-sm hover:shadow-md
@@ -145,12 +145,12 @@ function BentoCard({ item, index, currentPath }) {
           )}
         </div>
 
-        <h3 className={`text-xl font-semibold mb-1 transition-colors duration-300
+        <h3 className={`text-xl font-grotesk font-semibold mb-1 transition-colors duration-300
           ${isActive ? 'text-gray-900' : 'text-gray-800'}
         `}>
           {item.name}
         </h3>
-        <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+        <p className="text-sm font-grotesk text-gray-600 mb-2">{item.description}</p>
 
         <AnimatePresence>
           {hasSubmenu && isActive && (
@@ -182,9 +182,9 @@ function BentoCard({ item, index, currentPath }) {
                     href={subItem.href}
                     onClick={(e) => e.stopPropagation()}
                     className={`flex items-center gap-3 p-2 rounded-xl
-                      transition-all duration-200 text-sm group/item
+                      transition-all duration-200 font-grotesk text-sm group/item
                       ${isSubmenuItemActive 
-                        ? 'bg-gray-100 text-gray-900 font-semibold' 
+                        ? 'bg-gray-100 text-gray-900 font-grotesk font-semibold' 
                         : 'hover:bg-white/10 text-gray-700'}`}
                   >
                     <div

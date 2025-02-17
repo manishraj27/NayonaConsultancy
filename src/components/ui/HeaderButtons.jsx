@@ -8,9 +8,9 @@ import LogoWithInitial from '../../assets/icons/LogoWithInitial';
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
-  const [logoColor, setLogoColor] = useState("#000000");
-  const [menuColor, setMenuColor] = useState("#0C1016"); // Default menu button background color
-  const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1E242C"); // Default menu inner circle color
+  const [logoColor, setLogoColor] = useState("#E1E4E6");
+  const [menuColor, setMenuColor] = useState("#0c0c0c"); // Default menu button background color
+  const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1A1F2F"); // Default menu inner circle color
   const [textColor, setTextColor] = useState("#ffffff"); // Default menu text color
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef(null);
@@ -48,20 +48,20 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
 
           // Change colors when motto section is at least 30% visible
           if (visiblePercentage > 30) {
-            setLogoColor("#ffffff");
-            setMenuColor("#ffffff"); // White menu button background
-            setMenuInnerCircleColor("#D9E0E3"); // Light gray inner circle
+            setLogoColor("#E1E4E6");
+            setMenuColor("#E1E4E6"); // White menu button background
+            setMenuInnerCircleColor("#D7D7D7"); // Light gray inner circle
             setTextColor("#000000"); // Black text
           } else {
             setLogoColor("#000000");
-            setMenuColor("#0C1016"); // Black menu button background
-            setMenuInnerCircleColor("#1E242C"); // Dark gray inner circle
+            setMenuColor("#0c0c0c"); // Black menu button background
+            setMenuInnerCircleColor("#1A1F2F"); // Dark gray inner circle
             setTextColor("#ffffff"); // white text
           }
         } else {
           setLogoColor("#000000");
-          setMenuColor("#0C1016"); // Black menu button background
-          setMenuInnerCircleColor("#1E242C"); // Dark gray inner circle
+          setMenuColor("#0c0c0c"); // Black menu button background
+          setMenuInnerCircleColor("#1A1F2F"); // Dark gray inner circle
           setTextColor("#ffffff"); // white text
         }
       }
@@ -80,7 +80,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   }, []);
 
   return (
-    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-12 py-4 lg:py-4 z-[10]">
+    <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-12 py-4 lg:py-4 z-40">
       <motion.div
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
