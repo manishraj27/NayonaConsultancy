@@ -1,5 +1,4 @@
-// Inquiry.jsx
-import React, { useState } from "react";
+import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import UiButton from "./UiButton";
 import apiconfig from "../../configurations/APIConfig";
@@ -18,7 +17,6 @@ const Inquiry = ({ onBackToHome }) => {
   });
 
   const services = ["Financial Planning", "Reporting", "Budgeting"];
-
   const budgetRanges = ["Below $10,000", "$10,000 - $50,000", "$50,000+"];
 
   const handleServiceSelect = (service) => {
@@ -111,11 +109,11 @@ const Inquiry = ({ onBackToHome }) => {
             <button
               key={service}
               onClick={() => handleServiceSelect(service)}
-              className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
+              className={`px-6 py-4 rounded-full text-body-3 font-medium font-grotesk transition-all duration-300
                 ${
                   formData.serviceInterest.includes(service)
-                    ? "bg-[#333841] text-white"
-                    : "bg-[#C8CFD1] text-gray-800 hover:bg-gray-300"
+                    ? "bg-[#1a1a1a] text-white"
+                    : "bg-[#ffffff] text-black hover:bg-light-200"
                 }`}
             >
               {service}
@@ -137,8 +135,8 @@ const Inquiry = ({ onBackToHome }) => {
               className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
                 ${
                   formData.budgetRange === range
-                    ? "bg-[#333841] text-white"
-                    : "bg-[#C8CFD1] text-gray-800 hover:bg-gray-300"
+                    ? "bg-[#1a1a1a] text-white"
+                    : "bg-[#ffffff] text-black hover:bg-light-200"
                 }`}
             >
               {range}
@@ -158,7 +156,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
             />
             <input
               type="text"
@@ -166,7 +164,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Company Name"
               value={formData.companyName}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
             />
             <input
               type="email"
@@ -174,7 +172,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
             />
             <input
               type="tel"
@@ -182,7 +180,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
             />
           </div>
           <textarea
@@ -190,13 +188,13 @@ const Inquiry = ({ onBackToHome }) => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleInputChange}
-            className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none min-h-32"
+            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none min-h-32"
           />
           <select
             name="preferredContactMethod"
             value={formData.preferredContactMethod}
             onChange={handleInputChange}
-            className="w-full px-6 py-4 rounded-2xl bg-[#C8CFD1] text-gray-800 focus:outline-none"
+            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
           >
             <option value="Email">Email</option>
             <option value="Phone">Phone</option>
@@ -205,50 +203,39 @@ const Inquiry = ({ onBackToHome }) => {
       ),
     },
   ];
-{/* <div className="flex items-center gap-4">
-          {steps.map((step, index) => (
-            <React.Fragment key={step.title}>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center
-                ${index === currentStep ? 'bg-[#333841] text-white' : 
-                  index < currentStep ? 'bg-blue-200 text-white' : 'bg-[#C8CFD1] text-gray-600'}`}>
-                {index + 1}
-              </div>
-              {index < steps.length - 1 && (
-                <div className="w-16 h-1 bg-[#C8CFD1]">
-                  <div className={`h-full transition-all duration-300
-                    ${index < currentStep ? 'bg-blue-200 w-full' : 'w-0'}`} />
-                </div>
-              )}
-            </React.Fragment>
-          ))}
-        </div> */}
+
   return (
-    <div className="w-full mx-auto p-8">
-      <div className="flex flex-col items-center">
-        
+    <div className="relative w-full flex items-center justify-center">
+      <div className="flex flex-col items-center gap-6 w-full lg:w-[60%] px-4 lg:px-0 pt-8 pb-24 lg:py-16">
+        <div className="flex flex-col items-center gap-6 mb-8">
+          <h2 className="text-xl font-semibold text-gray-600 tracking-wide">[Start your inquiry]</h2>
+          <p className="text-gray-900 text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wide text-center">
+            {steps[currentStep].title}
+          </p>
+        </div>
 
-        <h2 className="lg:mx-64 mx-0 text-heading-4 text-gray-900 font-grotesk font-bold tracking-wide text-center">
-          {steps[currentStep].title}
-        </h2>
+        <div className="mt-6 lg:mt-12 w-full">
+          {steps[currentStep].content}
+        </div>
 
-        {steps[currentStep].content}
-
-        <div className="flex justify-between w-full mb-8">
+        <div className="absolute left-8 bottom-2">
           <UiButton
             text="Back"
             icon={ChevronLeft}
             iconPosition="left"
             onClick={() => {
               if (currentStep === 0) {
-                onBackToHome(); // Go back to ContactBox state
+                onBackToHome();
               } else {
-                setCurrentStep((prev) => prev - 1); // Go to the previous step
+                setCurrentStep((prev) => prev - 1);
               }
             }}
             type="button"
-            disabled={currentStep === 0 && !onBackToHome} // Disable if no onBackToHome provided
+            disabled={currentStep === 0 && !onBackToHome}
           />
+        </div>
 
+        <div className="absolute right-8 bottom-2">
           {currentStep === steps.length - 1 ? (
             <UiButton
               text="Submit"
