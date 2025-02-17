@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import UiButton from './UiButton';
+import apiconfig from '../../configurations/APIConfig';
 
 const Inquiry = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -70,7 +71,7 @@ const Inquiry = () => {
     if (!validateForm()) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/inquiries', {
+      const response = await fetch(`${apiconfig.nayona_api}/api/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
