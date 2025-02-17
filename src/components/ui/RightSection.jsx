@@ -96,8 +96,7 @@ const RightSection = () => {
           color={[0.1, 0.8, 1]}
           mouseReact={false}
           amplitude={0.15}
-          speed={0.4}
-          density={0.8}
+          speed={0.2}
         />
       </motion.div>
 
@@ -198,7 +197,6 @@ const RightSection = () => {
             mouseReact={true}
             amplitude={0.15}
             speed={0.4}
-            density={1}
           />
         </div>
         <span className="absolute text-white text-xl font-serif italic">
