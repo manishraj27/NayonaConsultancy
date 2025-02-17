@@ -5,7 +5,7 @@ import BulletinCarousel from "./BulletinCarousel";
 import item from "../../lib/bulletin";
 import GlassCard from "./GlassCard";
 import { AnimatedBeamDemo } from "./AnimatedBeamDemo";
-import AnnotatedBeam from "./AnnotatedBeam";
+
 
 const RightSection = () => {
   const [paths, setPaths] = useState({ dotted: "", curved: "" });
@@ -58,7 +58,7 @@ const RightSection = () => {
     const controlPoint2Y = beamY - 50;
 
     setPaths({
-      dotted: `M ${startX} ${startY} L ${startX} ${carouselY} M ${startX} ${carouselY} L ${carouselX} ${carouselY}`,
+      dotted: `M ${startX} ${startY} L ${startX} ${carouselY} `,
       curved: `M ${startX} ${startY} L ${circleX} ${circleY} C ${controlPoint1X} ${controlPoint1Y}, ${controlPoint2X} ${controlPoint2Y}, ${beamX} ${beamY}`,
     });
 
@@ -74,7 +74,7 @@ const RightSection = () => {
       calculatePaths();
 
       // Delay the visibility of paths and circle by an additional 500ms
-      setTimeout(() => setIsVisible(true), 500);
+      setTimeout(() => setIsVisible(true), 200);
     }, 3500);
 
     window.addEventListener("resize", debouncedCalculatePaths);
@@ -251,42 +251,3 @@ const RightSection = () => {
 };
 
 export default RightSection;
-
-/* Services Selection */
-
-{
-  /* <GlassCard className="w-72 mb-8">
-          <h3 className="text-white mb-4">Explore our EPM solutions</h3>
-          <div className="space-y-3">
-            <button className="w-full flex items-center justify-between text-white bg-white/5 p-3 rounded-lg hover:bg-white/10 transition-colors">
-              <div className="flex items-center gap-2">
-                <BarChart2 size={18} />
-                <span>Planning & Budgeting</span>
-              </div>
-              <ChevronRight size={18} />
-            </button>
-  
-            <button className="w-full flex items-center justify-between text-white bg-white/5 p-3 rounded-lg hover:bg-white/10 transition-colors">
-              <div className="flex items-center gap-2">
-                <FileSpreadsheet size={18} />
-                <span>Financial Consolidation</span>
-              </div>
-              <ChevronRight size={18} />
-            </button>
-  
-            <button className="w-full flex items-center justify-between text-white bg-white/5 p-3 rounded-lg hover:bg-white/10 transition-colors">
-              <div className="flex items-center gap-2">
-                <PieChart size={18} />
-                <span>Profitability Analysis</span>
-              </div>
-              <ChevronRight size={18} />
-            </button>
-          </div>
-        </GlassCard> */
-}
-
-{
-  /* Expertise Areas */
-}
-{
-}
