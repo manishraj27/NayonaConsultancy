@@ -44,7 +44,7 @@ function Contact() {
         
         <div className="w-full mt-8 text-left lg:pr-40 ">
           <p className="lg:text-heading-3 text-heading-4 font-montserrat text-white">
-            Have an inquiry, suggestion, a collaboration offer, or even trouble sleeping?{" "}
+            Have an inquiry, suggestion, a collaboration offer, or want an unfair advantage?{" "}
             <span
               ref={gradientTextRef}
               style={{

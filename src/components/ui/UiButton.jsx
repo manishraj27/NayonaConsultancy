@@ -1,8 +1,8 @@
 const UiButton = ({
   text,
   icon: Icon,
-  bgColor = "#1F2937",
-  iconBgColor = "#374151",
+  bgColor = "#0c0c0c",
+  iconBgColor = "#1A1F2F",
   iconPosition = "right",
   onClick,
   type = "button",
@@ -26,14 +26,14 @@ const UiButton = ({
           style={{ backgroundColor: iconBgColor }}
         >
           <span
-            className={`block w-1/3 will-change-transform text-black ${
+            className={`block w-1/3 will-change-transform text-light-200 ${
               disabled ? "" : "group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]"
             }`}
           >
             <Icon />
           </span>
           <span
-            className={`block w-1/3 will-change-transform absolute -translate-x-[250%] text-black ${
+            className={`block w-1/3 will-change-transform absolute -translate-x-[250%] text-light-200 ${
               disabled ? "" : "group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]"
             }`}
           >
@@ -44,7 +44,7 @@ const UiButton = ({
 
       {text && (
         <span
-          className={`text-sm lg:text-lg font-medium uppercase px-4 text-black ${
+          className={`text-sm lg:text-lg font-medium uppercase px-4 text-light-200 ${
             disabled ? "opacity-50" : ""
           }`}
         >
@@ -60,14 +60,14 @@ const UiButton = ({
           style={{ backgroundColor: iconBgColor }}
         >
           <span
-            className={`block w-1/3 will-change-transform text-black ${
+            className={`block w-1/3 will-change-transform text-light-200 ${
               disabled ? "" : "group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]"
             }`}
           >
             <Icon />
           </span>
           <span
-            className={`block w-1/3 will-change-transform absolute -translate-x-[250%] text-black ${
+            className={`block w-1/3 will-change-transform absolute -translate-x-[250%] text-light-200 ${
               disabled ? "" : "group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]"
             }`}
           >

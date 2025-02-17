@@ -1,69 +1,61 @@
 // Inquiry.jsx
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import UiButton from './UiButton';
-import apiconfig from '../../configurations/APIConfig';
+import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import UiButton from "./UiButton";
+import apiconfig from "../../configurations/APIConfig";
 
-const Inquiry = () => {
+const Inquiry = ({ onBackToHome }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     serviceInterest: [],
-    budgetRange: '',
-    fullName: '',
-    companyName: '',
-    email: '',
-    phone: '',
-    message: '',
-    preferredContactMethod: 'Email'
+    budgetRange: "",
+    fullName: "",
+    companyName: "",
+    email: "",
+    phone: "",
+    message: "",
+    preferredContactMethod: "Email",
   });
 
-  const services = [
-    'Financial Planning',
-    'Reporting',
-    'Budgeting'
-  ];
+  const services = ["Financial Planning", "Reporting", "Budgeting"];
 
-  const budgetRanges = [
-    'Below $10,000',
-    '$10,000 - $50,000',
-    '$50,000+'
-  ];
+  const budgetRanges = ["Below $10,000", "$10,000 - $50,000", "$50,000+"];
 
   const handleServiceSelect = (service) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       serviceInterest: prev.serviceInterest.includes(service)
-        ? prev.serviceInterest.filter(s => s !== service)
-        : [...prev.serviceInterest, service]
+        ? prev.serviceInterest.filter((s) => s !== service)
+        : [...prev.serviceInterest, service],
     }));
   };
 
   const handleInputChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   const validateForm = () => {
-    const required = ['fullName', 'companyName', 'email', 'phone', 'message'];
-    const missing = required.filter(field => !formData[field]);
-    
+    const required = ["fullName", "companyName", "email", "phone", "message"];
+    const missing = required.filter((field) => !formData[field]);
+
     if (missing.length > 0) {
-      alert(`Please fill in all required fields: ${missing.join(', ')}`);
+      alert(`Please fill in all required fields: ${missing.join(", ")}`);
       return false;
     }
-    
+
     if (formData.serviceInterest.length === 0) {
-      alert('Please select at least one service');
+      alert("Please select at least one service");
       return false;
     }
-    
+
     if (!formData.budgetRange) {
-      alert('Please select a budget range');
+      alert("Please select a budget range");
       return false;
     }
-    
+
     return true;
   };
 
@@ -72,45 +64,47 @@ const Inquiry = () => {
 
     try {
       const response = await fetch(`${apiconfig.nayona_api}/api/inquiries`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           ...formData,
-          serviceInterest: Array.isArray(formData.serviceInterest) 
-            ? formData.serviceInterest 
-            : [formData.serviceInterest]
-        })
+          serviceInterest: Array.isArray(formData.serviceInterest)
+            ? formData.serviceInterest
+            : [formData.serviceInterest],
+        }),
       });
 
       if (response.ok) {
         const result = await response.json();
-        alert(`Form submitted successfully! Inquiry number: ${result.inquiryNumber}`);
+        alert(
+          `Form submitted successfully! Inquiry number: ${result.inquiryNumber}`
+        );
         setCurrentStep(0);
         setFormData({
           serviceInterest: [],
-          budgetRange: '',
-          fullName: '',
-          companyName: '',
-          email: '',
-          phone: '',
-          message: '',
-          preferredContactMethod: 'Email'
+          budgetRange: "",
+          fullName: "",
+          companyName: "",
+          email: "",
+          phone: "",
+          message: "",
+          preferredContactMethod: "Email",
         });
       } else {
         const errorData = await response.json();
-        throw new Error(errorData.message || 'Submission failed');
+        throw new Error(errorData.message || "Submission failed");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
       alert(`Error submitting form: ${error.message}`);
     }
   };
 
   const steps = [
     {
-      title: 'Select Services',
+      title: "Ready to team up? Our passion for crushing goals sets us apart. How can we help you?",
       content: (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
           {services.map((service) => (
@@ -118,39 +112,43 @@ const Inquiry = () => {
               key={service}
               onClick={() => handleServiceSelect(service)}
               className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
-                ${formData.serviceInterest.includes(service)
-                  ? 'bg-[#333841] text-white'
-                  : 'bg-[#C8CFD1] text-gray-800 hover:bg-gray-300'
+                ${
+                  formData.serviceInterest.includes(service)
+                    ? "bg-[#333841] text-white"
+                    : "bg-[#C8CFD1] text-gray-800 hover:bg-gray-300"
                 }`}
             >
               {service}
             </button>
           ))}
         </div>
-      )
+      ),
     },
     {
-      title: 'Budget Range',
+      title: "Things in life may not always be free, right? What's your budget for your EPM Service?",
       content: (
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl">
           {budgetRanges.map((range) => (
             <button
               key={range}
-              onClick={() => setFormData(prev => ({ ...prev, budgetRange: range }))}
+              onClick={() =>
+                setFormData((prev) => ({ ...prev, budgetRange: range }))
+              }
               className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
-                ${formData.budgetRange === range
-                  ? 'bg-[#333841] text-white'
-                  : 'bg-[#C8CFD1] text-gray-800 hover:bg-gray-300'
+                ${
+                  formData.budgetRange === range
+                    ? "bg-[#333841] text-white"
+                    : "bg-[#C8CFD1] text-gray-800 hover:bg-gray-300"
                 }`}
             >
               {range}
             </button>
           ))}
         </div>
-      )
+      ),
     },
     {
-      title: 'Contact Details',
+      title: "Let's spice it up! Fill out our inquiry form — and let our adventure begin!",
       content: (
         <div className="flex flex-col gap-4 w-full max-w-3xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -204,14 +202,10 @@ const Inquiry = () => {
             <option value="Phone">Phone</option>
           </select>
         </div>
-      )
-    }
+      ),
+    },
   ];
-
-  return (
-    <div className="w-full mx-auto p-8">
-      <div className="flex flex-col items-center gap-8">
-        <div className="flex items-center gap-4">
+{/* <div className="flex items-center gap-4">
           {steps.map((step, index) => (
             <React.Fragment key={step.title}>
               <div className={`w-8 h-8 rounded-full flex items-center justify-center
@@ -227,39 +221,50 @@ const Inquiry = () => {
               )}
             </React.Fragment>
           ))}
-        </div>
-
-        <h2 className="text-2xl font-semibold text-[#333841]">{steps[currentStep].title}</h2>
+        </div> */}
+  return (
+    <div className="w-full mx-auto p-8">
+      <div className="flex flex-col items-center">
         
+
+        <h2 className="lg:mx-64 mx-0 text-heading-4 text-gray-900 font-grotesk font-bold tracking-wide text-center">
+          {steps[currentStep].title}
+        </h2>
+
         {steps[currentStep].content}
 
-        <div className="flex justify-between w-full mt-8">
-    
+        <div className="flex justify-between w-full mb-8">
           <UiButton
-          text='Back'
-          icon={ChevronLeft}
-          iconPosition='left'
-          onClick={() => setCurrentStep(prev => prev - 1)}
-          type='button'
-          disabled={currentStep === 0}
+            text="Back"
+            icon={ChevronLeft}
+            iconPosition="left"
+            onClick={() => {
+              if (currentStep === 0) {
+                onBackToHome(); // Go back to ContactBox state
+              } else {
+                setCurrentStep((prev) => prev - 1); // Go to the previous step
+              }
+            }}
+            type="button"
+            disabled={currentStep === 0 && !onBackToHome} // Disable if no onBackToHome provided
           />
 
           {currentStep === steps.length - 1 ? (
-            <button
+            <UiButton
+              text="Submit"
+              icon={ChevronRight}
+              iconPosition="right"
               onClick={handleSubmit}
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#333841] text-white transition-all duration-300 hover:bg-gray-700"
-            >
-              Submit
-              <ChevronRight size={20} />
-            </button>
+              type="button"
+            />
           ) : (
-            <button
-              onClick={() => setCurrentStep(prev => prev + 1)}
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#333841] text-white transition-all duration-300 hover:bg-gray-700"
-            >
-              Next
-              <ChevronRight size={20} />
-            </button>
+            <UiButton
+              text="Next"
+              icon={ChevronRight}
+              iconPosition="right"
+              onClick={() => setCurrentStep((prev) => prev + 1)}
+              type="button"
+            />
           )}
         </div>
       </div>
