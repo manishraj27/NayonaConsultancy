@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -10,23 +9,23 @@ import LogoWithInitial from '../../assets/icons/LogoWithInitial';
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
   const [logoColor, setLogoColor] = useState("#000000");
-  const [menuColor, setMenuColor] = useState("#0C1016"); // State for menu button background color
-  const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1E242C"); // State for menu inner circle color
-  const [textColor, setTextColor] = useState("#1882ea"); // State for menu text color
+  const [menuColor, setMenuColor] = useState("#0C1016"); // Default menu button background color
+  const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1E242C"); // Default menu inner circle color
+  const [textColor, setTextColor] = useState("#ffffff"); // Default menu text color
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef(null);
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      
+
       // Set scrolling state
       setIsScrolling(true);
-      
+
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      
+
       scrollTimeoutRef.current = setTimeout(() => {
         setIsScrolling(false);
       }, 40);
@@ -34,36 +33,36 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       // Logo type logic
       setLogoType(scrollY > 50 ? 'initial' : 'full');
 
-      // Modified color logic for GSAP setup
+      // Color logic for dark-section
       const motto = document.querySelector('.dark-section');
       if (motto) {
         const mottoRect = motto.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
-        
+
         // Check if motto section is in viewport
         if (mottoRect.top < viewportHeight && mottoRect.bottom > 0) {
           const visiblePercentage = Math.min(
             (viewportHeight - mottoRect.top) / viewportHeight * 100,
             100
           );
-          
-          // Change color when motto section is at least 30% visible
+
+          // Change colors when motto section is at least 30% visible
           if (visiblePercentage > 30) {
             setLogoColor("#ffffff");
-            setMenuColor("#ffffff"); // Update menu button background color
-            menuInnerCircleColor("gray"); // Update menu inner circle color
-            setTextColor("#000000"); // Update menu text color
+            setMenuColor("#ffffff"); // White menu button background
+            setMenuInnerCircleColor("#D9E0E3"); // Light gray inner circle
+            setTextColor("#000000"); // Black text
           } else {
-            setLogoColor("#000000"); // Reset logo color
-            setMenuColor("#0C1016"); // Reset menu button background color
-            setMenuInnerCircleColor("#1E242C"); // Reset menu inner circle color
-            setTextColor("#1882ea"); // Reset menu text color
+            setLogoColor("#000000");
+            setMenuColor("#0C1016"); // Black menu button background
+            setMenuInnerCircleColor("#1E242C"); // Dark gray inner circle
+            setTextColor("#ffffff"); // white text
           }
         } else {
           setLogoColor("#000000");
-          setMenuColor("#0C1016"); // Reset menu button background color
-          setMenuInnerCircleColor("#1E242C"); // Reset menu inner circle color
-          setTextColor("#1882ea"); // Reset menu text color
+          setMenuColor("#0C1016"); // Black menu button background
+          setMenuInnerCircleColor("#1E242C"); // Dark gray inner circle
+          setTextColor("#ffffff"); // white text
         }
       }
     };
