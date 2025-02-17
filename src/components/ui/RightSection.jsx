@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useRef, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Iridescence from "../../blocks/Backgrounds/Iridescence/Iridescence";
 import BulletinCarousel from "./BulletinCarousel";
 import item from "../../lib/bulletin";
 import GlassCard from "./GlassCard";
 import { AnimatedBeamDemo } from "./AnimatedBeamDemo";
+import AnnotatedBeam from "./AnnotatedBeam";
 
 const RightSection = () => {
-  const [paths, setPaths] = useState({ dotted: '', curved: '' });
+  const [paths, setPaths] = useState({ dotted: "", curved: "" });
   const [circlePosition, setCirclePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [startAnimation, setStartAnimation] = useState(false);
@@ -25,20 +26,27 @@ const RightSection = () => {
   };
 
   const calculatePaths = useCallback(() => {
-    if (!activeClientsRef.current || !animatedBeamRef.current || !carouselRef.current || !containerRef.current) return;
+    if (
+      !activeClientsRef.current ||
+      !animatedBeamRef.current ||
+      !carouselRef.current ||
+      !containerRef.current
+    )
+      return;
 
     const container = containerRef.current.getBoundingClientRect();
     const activeClients = activeClientsRef.current.getBoundingClientRect();
     const animatedBeam = animatedBeamRef.current.getBoundingClientRect();
     const carousel = carouselRef.current.getBoundingClientRect();
 
-    const startX = activeClients.left + activeClients.width/2 - container.left;
-    const startY = activeClients.top + activeClients.height/2 - container.top;
-    
-    const beamX = animatedBeam.left + animatedBeam.width/2 - container.left;
+    const startX =
+      activeClients.left + activeClients.width / 2 - container.left;
+    const startY = activeClients.top + activeClients.height / 2 - container.top;
+
+    const beamX = animatedBeam.left + animatedBeam.width / 2 - container.left;
     const beamY = animatedBeam.top - container.top;
-    
-    const carouselX = carousel.left + carousel.width/2 - container.left;
+
+    const carouselX = carousel.left + carousel.width / 2 - container.left;
     const carouselY = carousel.top - container.top;
 
     const circleX = beamX;
@@ -50,8 +58,8 @@ const RightSection = () => {
     const controlPoint2Y = beamY - 50;
 
     setPaths({
-      dotted: `M ${startX} ${startY} L ${startX} ${carouselY}`,
-      curved: `M ${startX} ${startY} L ${circleX} ${circleY} C ${controlPoint1X} ${controlPoint1Y}, ${controlPoint2X} ${controlPoint2Y}, ${beamX} ${beamY}`
+      dotted: `M ${startX} ${startY} L ${startX} ${carouselY} M ${startX} ${carouselY} L ${carouselX} ${carouselY}`,
+      curved: `M ${startX} ${startY} L ${circleX} ${circleY} C ${controlPoint1X} ${controlPoint1Y}, ${controlPoint2X} ${controlPoint2Y}, ${beamX} ${beamY}`,
     });
 
     setCirclePosition({ x: circleX, y: circleY });
@@ -59,26 +67,26 @@ const RightSection = () => {
 
   useEffect(() => {
     const debouncedCalculatePaths = debounce(calculatePaths, 100);
-    
+
     // Delay the start of animations by 3 seconds
     const animationTimer = setTimeout(() => {
       setStartAnimation(true);
       calculatePaths();
-      
+
       // Delay the visibility of paths and circle by an additional 500ms
       setTimeout(() => setIsVisible(true), 500);
     }, 3500);
-    
-    window.addEventListener('resize', debouncedCalculatePaths);
-    
+
+    window.addEventListener("resize", debouncedCalculatePaths);
+
     return () => {
-      window.removeEventListener('resize', debouncedCalculatePaths);
+      window.removeEventListener("resize", debouncedCalculatePaths);
       clearTimeout(animationTimer);
     };
   }, [calculatePaths]);
 
   return (
-    <motion.div 
+    <motion.div
       ref={containerRef}
       initial={{ opacity: 0, x: 100 }}
       animate={startAnimation ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
@@ -86,7 +94,7 @@ const RightSection = () => {
       className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col p-10 z-[1] overflow-hidden"
     >
       {/* Background Iridescence */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0 }}
         animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 1.2 }}
@@ -103,7 +111,7 @@ const RightSection = () => {
       {/* Connecting Lines SVG */}
       <AnimatePresence>
         {isVisible && (
-          <motion.svg 
+          <motion.svg
             className="absolute inset-0 w-full h-full pointer-events-none"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -118,7 +126,7 @@ const RightSection = () => {
               fill="none"
               strokeDasharray="2 2"
             />
-            
+
             {/* Curved line remains the same */}
             <motion.path
               d={paths.curved}
@@ -149,31 +157,35 @@ const RightSection = () => {
         animate={startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 3.2 }}
       >
-        <GlassCard 
+        <GlassCard
           ref={activeClientsRef}
           className="absolute top-16 left-2 w-48 h-28 p-4 flex flex-col justify-between hover:scale-105 transition-transform duration-300"
         >
-          <motion.div 
+          <motion.div
             className="absolute top-2 left-2"
             initial={{ opacity: 0 }}
             animate={startAnimation ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.5, delay: 3.4 }}
           >
-            <span className="text-3xl font-bold font-grotesk text-white">250+</span>
-            <span className="text-white/80 block font-grotesk text-base">Active clients</span>
+            <span className="text-3xl font-bold font-grotesk text-white">
+              250+
+            </span>
+            <span className="text-white/80 block font-grotesk text-base">
+              Active clients
+            </span>
           </motion.div>
           <div className="mt-12 flex items-center space-x-2">
             <div className="flex -space-x-2">
-              <motion.div 
+              <motion.div
                 className="w-6 h-6 rounded-full bg-blue-400"
                 whileHover={{ scale: 1.1 }}
               />
-              <motion.div 
+              <motion.div
                 className="w-6 h-6 rounded-full bg-blue-500"
                 whileHover={{ scale: 1.1 }}
               />
             </div>
-            <motion.button 
+            <motion.button
               className="text-white font-open-sans bg-blue-500 px-3 py-1 rounded-full text-xs hover:bg-blue-500 transition-colors duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -185,9 +197,13 @@ const RightSection = () => {
       </motion.div>
 
       {/* Nayona Box */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, rotate: -10 }}
-        animate={startAnimation ? { opacity: 1, rotate: 0 } : { opacity: 0, rotate: -10 }}
+        animate={
+          startAnimation
+            ? { opacity: 1, rotate: 0 }
+            : { opacity: 0, rotate: -10 }
+        }
         transition={{ duration: 0.8, delay: 3.6 }}
         className="absolute right-4 top-32 rounded-3xl w-[20%] aspect-square flex items-center justify-center overflow-hidden hover:scale-105 transition-transform duration-300"
       >
@@ -205,17 +221,21 @@ const RightSection = () => {
       </motion.div>
 
       {/* Animated Beam */}
-      <motion.div 
+      <motion.div
         ref={animatedBeamRef}
-       
-       
-        className="absolute backdrop-blur-lg rounded-3xl border border-white/20 shadow-lg bg-white/10 top-52 left-[50%] w-[40%] h-[35%] aspect-[1.12/1] flex flex-col justify-between overflow-hidden hover:border-white/30 transition-colors duration-300"
+        initial={{ opacity: 0, scale: 1 }}
+        animate={
+          startAnimation ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }
+        }
+        transition={{ duration: 0.8, delay: 3.8 }}
+        className="absolute backdrop-blur-lg rounded-3xl border border-white/20 shadow-lg bg-white/10 top-52 left-[50%] w-[255px] h-[35%] flex flex-col justify-between overflow-hidden hover:border-white/30 transition-colors duration-300"
       >
         <AnimatedBeamDemo />
       </motion.div>
 
+    
       {/* Bulletin Carousel */}
-      <motion.div 
+      <motion.div
         ref={carouselRef}
         initial={{ opacity: 0, y: 20 }}
         animate={startAnimation ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -232,7 +252,7 @@ const RightSection = () => {
 
 export default RightSection;
 
-  /* Services Selection */
+/* Services Selection */
 
 {
   /* <GlassCard className="w-72 mb-8">
@@ -269,5 +289,4 @@ export default RightSection;
   /* Expertise Areas */
 }
 {
-
 }
