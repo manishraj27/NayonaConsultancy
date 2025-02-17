@@ -40,7 +40,7 @@ const RightSection = () => {
     const carousel = carouselRef.current.getBoundingClientRect();
 
     const startX =
-      activeClients.left + activeClients.width / 2 - container.left;
+    activeClients.left + activeClients.width / 2 - container.left+30;
     const startY = activeClients.top + activeClients.height / 2 - container.top;
 
     const beamX = animatedBeam.left + animatedBeam.width / 2 - container.left;

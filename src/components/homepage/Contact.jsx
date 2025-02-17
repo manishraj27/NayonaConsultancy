@@ -48,7 +48,7 @@ function Contact() {
             <span
               ref={gradientTextRef}
               style={{
-                background: "linear-gradient(90deg, #ffffff, #6b7280, #ffffff)",
+                background: "linear-gradient(90deg, #40ffaa, #4079ff, #40ffaa)",
                 backgroundSize: "200% 100%",
                 WebkitBackgroundClip: "text",
                 backgroundClip: "text",

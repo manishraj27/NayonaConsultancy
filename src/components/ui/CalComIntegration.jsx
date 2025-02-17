@@ -29,7 +29,7 @@ const CalComIntegration = () => {
       <div
         onClick={() => document.getElementById("calcom-button").click()}
       >
-        <Button text="Schedule a meeting" />
+        <Button text="Schedule meeting" />
       </div>
     </div>
   );

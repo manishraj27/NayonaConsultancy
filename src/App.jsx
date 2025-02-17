@@ -10,13 +10,8 @@ import LandingPage from "./components/pages/LandingPage";
 
 function App() {
 
-
-
-
   return (
     <>
-
-
       <WebLoader />
       <div >
         <NavBar />
@@ -27,13 +22,9 @@ function App() {
             <Route path="/careers" element={<Career />} />
           </Routes>
           <FloatingButtonsContainer />
-
-
         </main>
       </div>
-
     </>
-
   );
 }
 
