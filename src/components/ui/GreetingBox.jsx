@@ -30,7 +30,7 @@ function GreetingBox() {
     }, []);
   
   return (
-    <p className="text-gray-900 text-heading-2 lg:text-heading-3 font-grotesk font-semibold tracking-wider text-center">
+    <p className="text-gray-900 text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wider text-center">
           Hey there! How can we assist you<br />
           on this {timeOfDay} in <span className="h-word">{location}</span>?
         </p>
