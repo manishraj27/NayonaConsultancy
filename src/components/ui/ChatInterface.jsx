@@ -142,27 +142,10 @@ const ChatInterface = () => {
               </div>
             </div>
 
-            {/* Tabs */}
-            <div className="flex border-b border-gray-100">
-              {['chat', 'ai'].map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-2 text-sm transition-colors ${activeTab === tab
-                      ? 'bg-gray-100 font-semibold text-gray-900'
-                      : 'text-gray-500 hover:bg-gray-50'
-                    }`}
-                >
-                  {tab === 'chat' && <MessageCircle size={16} className="inline mr-2" />}
-                  {tab === 'ai' && <Sparkles size={16} className="inline mr-2" />}
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </button>
-              ))}
-            </div>
            
 
             {/* Messages Area */}
-            <div className="lg:h-[250px] h-[200px] overflow-y-auto p-4 space-y-4">
+            <div className="lg:h-[350px] h-[250px] overflow-y-auto p-4 space-y-4">
               {/* CHAT AREA */}
               {messages.map((message) => (
                 <motion.div
