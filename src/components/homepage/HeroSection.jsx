@@ -20,7 +20,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full pt-24 ">
+    <div className="w-full pt-24 bg-red-300 rounded-b-3xl ">
       {/* Header Section */}
       <div className="container mx-auto p-8">
       <Heading title="Frequently Asked Questions" description="FAQ" />

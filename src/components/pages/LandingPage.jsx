@@ -33,7 +33,7 @@ const LandingPage = () => {
   }, []);
 
   return (
-    <div className="relative bg-light-200">
+    <div className="relative">
       {/* Main container for the parallax effect */}
       <div ref={containerRef} className="relative h-screen overflow-hidden">
         {/* Fixed Hero Section */}
@@ -52,7 +52,7 @@ const LandingPage = () => {
       </div>
 
       {/* Additional content that appears after the animation */}
-      <div className="relative z-30 bg-light-200">
+      <div className="relative z-30 bg-light-200  rounded-b-3xl">
         <HeroSection />
       </div>
     </div>

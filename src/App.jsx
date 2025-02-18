@@ -6,6 +6,7 @@ import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
 import WebLoader from "./components/ui/WebLoader";
 import LandingPage from "./components/pages/LandingPage";
 import "./App.css";
+import Footer from "./components/ui/Footer";
 
 
 function App() {
@@ -13,9 +14,9 @@ function App() {
   return (
     <>
       <WebLoader />
-      <div >
+      <div className="min-h-screen flex flex-col bg-light-200">
         <NavBar />
-        <main id="main-content">
+        <main id="main-content" className="flex-grow">
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
@@ -23,6 +24,7 @@ function App() {
           </Routes>
           <FloatingButtonsContainer />
         </main>
+        <Footer />
       </div>
     </>
   );
