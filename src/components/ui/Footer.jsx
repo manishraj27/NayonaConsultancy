@@ -1,12 +1,17 @@
+import FooterContent from "./FooterContent"
 
 
-const Footer = () => {
+function Footer() {
   return (
-    <footer className="w-full bg-light-200 text-gray-100 mt-auto relative">
-    {/* yet to implement */}
-    <p className="text-center font-grotesk text-heading-4 text-black">© 2021 Nayona Consultancy. All rights reserved.</p>
+    <footer 
+      className='relative h-[580px] bg-light-200'
+      style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
+    >
+      <div className='fixed bottom-0 h-[580px] w-full'>
+        <FooterContent />
+      </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
