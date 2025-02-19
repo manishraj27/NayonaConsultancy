@@ -9,20 +9,23 @@ import "./App.css";
 import Footer from "./components/ui/Footer";
 import { useEffect } from "react";
 import Lenis from 'lenis';
+import gsap from "gsap";
+
 
 
 function App() {
 
-  useEffect( () => {
-    const lenis = new Lenis()
-
+  useEffect(() => {
+    const lenis = new Lenis();
     function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
+      lenis.raf(time * 1000);
     }
-
-    requestAnimationFrame(raf)
-  }, [])
+    gsap.ticker.add(raf); // Sync Lenis with GSAP
+    gsap.ticker.lagSmoothing(0); 
+    return () => {
+      gsap.ticker.remove(raf); 
+    };
+  }, []);
 
   return (
     <>
