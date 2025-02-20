@@ -50,7 +50,7 @@ const LandingPage = () => {
         >
          {/* <MarqueeText /> */}
           <Motto />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <About />
           <MarqueeText />
         </div>
