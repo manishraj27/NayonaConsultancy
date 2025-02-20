@@ -5,6 +5,7 @@ import About from "../ui/About";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "./../homepage/HeroSection";
+import { Testimonials } from "../ui/Testimonials";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,6 +48,7 @@ const LandingPage = () => {
           className="absolute dark-section top-full left-0 right-0 w-full min-h-screen bg-background-100 rounded-[40px] z-20"
         >
           <Motto />
+          <Testimonials />
           <About />
         </div>
       </div>
