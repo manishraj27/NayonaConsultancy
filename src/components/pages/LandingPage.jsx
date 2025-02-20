@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Testimonials } from "../ui/Testimonials";
 import TrustedBySection from "../ui/TrustedBySection";
+import MarqueeText from "../ui/MarqueeText";
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
@@ -47,17 +48,18 @@ const LandingPage = () => {
           className="absolute dark-section top-full left-0 right-0 w-full min-h-screen bg-background-100 rounded-[40px] z-20"
           aria-label="Content Sections"
         >
-         
+         {/* <MarqueeText /> */}
           <Motto />
           <Testimonials />
           <About />
+          <MarqueeText />
         </div>
       </div>
 
       {/* Additional content that appears after the animation */}
-      {/* <div className="relative z-30 bg-light-200 rounded-b-3xl">
-        <Testimonials />
-      </div> */}
+      <div className="relative z-30 bg-background-100 rounded-b-3xl">
+      
+      </div>
     </div>
   );
 };

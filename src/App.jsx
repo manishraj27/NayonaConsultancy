@@ -37,8 +37,10 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Career />} />
+            
           </Routes>
           <FloatingButtonsContainer />
+        
         </main>
         <Footer />
       </div>

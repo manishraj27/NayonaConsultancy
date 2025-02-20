@@ -1,4 +1,5 @@
 import FooterContent from "./FooterContent"
+import MarqueeText from "./MarqueeText"
 
 
 function Footer() {
@@ -9,6 +10,7 @@ function Footer() {
     >
       <div className='fixed bottom-0 h-[90vh] lg:h-[87vh] w-full'>
         <FooterContent />
+        <MarqueeText />
       </div>
     </footer>
   )
