@@ -2,8 +2,13 @@ import HeroButton from "../ui/HeroButton";
 import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
 import RightSection from "../ui/RightSection";
+import { FlipWords } from "../magicui/flip-words";
 
 const Hero = () => {
+
+  const words = ["instantly", "completely", "strategically", "brilliantly", "efficiently"]
+
+
   return (
     <section
       id="hero"
@@ -11,20 +16,21 @@ const Hero = () => {
       aria-label="hero"
     >
       {/* Left Content */}
-      <div className="max-w-xl lg:pr-8 text-left lg:text-left">
+      <div className="max-w-xl lg:pr-8 text-left lg:text-start">
         <div className="my-auto lg:pr-[60px]">
           <h2 className="text-heading-3 mt-2 font-open-sans font-light leading-normal">
             <span className="relative block">
-              <span className="inline-block mr-1">We</span>
-              <span className="inline-block mr-1">help</span>
-              <span className="inline-block mr-1">companies</span>
-              <span className="inline-block mr-1">optimize</span>
-              <span className="inline-block mr-1">their</span>
-              <span className="inline-block mr-1">Oracle</span>
-              <span className="inline-block mr-1">EPM</span>
+              <span className="inline-block mr-2">We</span>
+              <span className="inline-block mr-2">help</span>
+              <span className="inline-block mr-2">companies</span>
+              <span className="inline-block mr-2">transform</span>
+              <span className="inline-block mr-2">their</span>
+              <span className="inline-block mr-2">Oracle</span>
+              <span className="inline-block mr-2">EPM</span>
+              <span className="inline-block mr-2">solution</span>
               <span className="relative inline-block">
-                <span className="text-heading-3 font-serif italic">
-                  solutions
+                <span className="text-heading-4 font-serif italic">
+                  <FlipWords words={words} />
                 </span>
                 <PencilStroke />
               </span>
