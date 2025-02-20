@@ -11,9 +11,7 @@ const Hero = () => {
       "smarter",   // More intelligent or efficient
       "faster",    // More quickly
       "better",    // Improved quality
-      "simpler",   // Easier to use or understand
-      "quicker",   // Faster
-      "safer",     // More secure
+      
     ],
     []
   );
