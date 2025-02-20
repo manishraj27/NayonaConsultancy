@@ -4,9 +4,8 @@ import Motto from "../ui/Motto";
 import About from "../ui/About";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import HeroSection from "./../homepage/HeroSection";
 import { Testimonials } from "../ui/Testimonials";
-
+import TrustedBySection from "../ui/TrustedBySection";
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
@@ -28,17 +27,17 @@ const LandingPage = () => {
           anticipatePin: 1,
         },
       });
-    });
+    }, containerRef); // Scope the context to the containerRef
 
-    return () => ctx.revert();
+    return () => ctx.revert(); // Cleanup
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative" role="main">
       {/* Main container for the parallax effect */}
       <div ref={containerRef} className="relative h-screen overflow-hidden">
         {/* Fixed Hero Section */}
-        <div className="fixed top-0 left-0 w-full h-screen z-10">
+        <div className="fixed top-0 left-0 w-full h-screen z-10" aria-label="Hero Section">
           <Hero />
         </div>
 
@@ -46,7 +45,9 @@ const LandingPage = () => {
         <div
           ref={darkSectionsRef}
           className="absolute dark-section top-full left-0 right-0 w-full min-h-screen bg-background-100 rounded-[40px] z-20"
+          aria-label="Content Sections"
         >
+         
           <Motto />
           <Testimonials />
           <About />
@@ -54,8 +55,8 @@ const LandingPage = () => {
       </div>
 
       {/* Additional content that appears after the animation */}
-      {/* <div className="relative z-30 bg-light-200  rounded-b-3xl">
-        <HeroSection />
+      {/* <div className="relative z-30 bg-light-200 rounded-b-3xl">
+        <Testimonials />
       </div> */}
     </div>
   );

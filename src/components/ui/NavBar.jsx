@@ -44,7 +44,7 @@ const NavBar = () => {
 
 
   return (
-    <div className="relative">
+    <nav className="relative">
       <header className="">
         <HeaderButtons isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       </header>
@@ -82,7 +82,7 @@ const NavBar = () => {
           </>
         )}
       </AnimatePresence>
-    </div>
+    </nav>
   );
 };
 
