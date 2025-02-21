@@ -52,7 +52,7 @@ const LandingPage = () => {
           <Motto />
           {/* <Testimonials /> */}
           <About />
-          <MarqueeText />
+          {/* <MarqueeText /> */}
         </div>
       </div>
 

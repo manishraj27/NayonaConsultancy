@@ -30,7 +30,8 @@ export default {
         'grotesk': ['CabinetGrotesk-Variable', 'sans-serif'],
       },
       fontSize: {
-        'title': ['clamp(2rem, 10vw, 6rem)'],
+        'title': ['clamp(2rem, 10vw, 6rm)'],
+        'footer': ['clamp(15rem, 100vw, 19rem)'],
         'heading-1': ['clamp(2.5rem, 6.5vw, 10rem)'],
         'heading-2': ['clamp(2.4rem, 8vw, 10rem)'],
         'heading-3': ['clamp(2rem, 5vw, 2.75rem)'], 
