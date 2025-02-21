@@ -6,6 +6,7 @@ import RightSection from "../ui/RightSection";
 import { FlipWords } from "../magicui/flip-words";
 // eslint-disable-next-line no-unused-vars
 import nayonalogo from "../../assets/icons/NayonaLogoFull.svg";
+import HeroRightSection from "./HeroRightSection";
 
 const Hero = () => {
   const words = useMemo(
@@ -63,7 +64,8 @@ const Hero = () => {
       </div>
 
       {/* Right Content */}
-      <RightSection />
+      {/* <RightSection /> */}
+      <HeroRightSection />
     </section>
   );
 };
