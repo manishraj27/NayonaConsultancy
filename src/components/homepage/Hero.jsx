@@ -4,6 +4,8 @@ import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
 import RightSection from "../ui/RightSection";
 import { FlipWords } from "../magicui/flip-words";
+// eslint-disable-next-line no-unused-vars
+import nayonalogo from "../../assets/icons/NayonaLogoFull.svg";
 
 const Hero = () => {
   const words = useMemo(
