@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 import HeroButton from "../ui/HeroButton";
 import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
