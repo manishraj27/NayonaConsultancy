@@ -4,7 +4,6 @@ import Iridescence from "../../blocks/Backgrounds/Iridescence/Iridescence";
 import BulletinCarousel from "../ui/BulletinCarousel";
 import item from "../../lib/bulletin";
 import GlassCardBento from "./GlassCoardBento";
-import { WavyBackgroundDemo } from "../magicui/WavyBackgroundDemo";
 
 
 
@@ -46,8 +45,6 @@ const HeroRightSection = () => {
           ></GlassCardBento>
         </div>
       </div>
-
-<WavyBackgroundDemo />
       {/* Bulletin Carousel */}
       <div className="absolute bottom-8 left-0 w-full">
         <div className="w-full flex items-center justify-center">
