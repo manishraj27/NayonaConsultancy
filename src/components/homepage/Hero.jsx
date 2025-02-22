@@ -64,8 +64,8 @@ const Hero = () => {
       </div>
 
       {/* Right Content */}
-      {/* <RightSection /> */}
-      <HeroRightSection />
+      <RightSection />
+      {/* <HeroRightSection /> */}
     </section>
   );
 };
