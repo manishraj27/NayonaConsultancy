@@ -2,7 +2,7 @@
 function NayonaFooter() {
   return (
     <svg 
-    className="w-[65%]" 
+    className="w-[80%]" 
     viewBox="0 0 984 219" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
