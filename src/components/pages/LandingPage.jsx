@@ -60,6 +60,7 @@ const LandingPage = () => {
       <div className="relative z-30 bg-background-100 rounded-b-3xl">
       
       </div>
+      
     </div>
   );
 };

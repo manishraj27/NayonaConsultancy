@@ -6,13 +6,13 @@ import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
 import WebLoader from "./components/ui/WebLoader";
 import LandingPage from "./components/pages/LandingPage";
 import Footer from "./components/ui/Footer";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Lenis from 'lenis';
 import gsap from "gsap";
 
-
-
 function App() {
+  const [showFloatingButtons, setShowFloatingButtons] = useState(true);
+  const footerRef = useRef(null);
 
   useEffect(() => {
     const lenis = new Lenis();
@@ -21,8 +21,29 @@ function App() {
     }
     gsap.ticker.add(raf); // Sync Lenis with GSAP
     gsap.ticker.lagSmoothing(0); 
+    
+    // Add intersection observer to detect when footer is visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Hide floating buttons when footer is visible
+          setShowFloatingButtons(!entry.isIntersecting);
+        });
+      },
+      { threshold: 0.1 } // Trigger when at least 10% of footer is visible
+    );
+    
+    // Get footer element and observe it
+    const footer = document.querySelector('footer');
+    if (footer) {
+      observer.observe(footer);
+    }
+    
     return () => {
-      gsap.ticker.remove(raf); 
+      gsap.ticker.remove(raf);
+      if (footer) {
+        observer.unobserve(footer);
+      }
     };
   }, []);
 
@@ -36,10 +57,8 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Career />} />
-            
           </Routes>
-          <FloatingButtonsContainer />
-        
+          {showFloatingButtons && <FloatingButtonsContainer />}
         </main>
         <Footer />
       </div>

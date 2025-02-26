@@ -44,7 +44,7 @@ const UiButton = ({
 
       {text && (
         <span
-          className={`text-sm lg:text-lg font-medium uppercase px-4 text-light-200 ${
+          className={`text-body-4  font-open-sans uppercase px-4 text-light-200 ${
             disabled ? "opacity-50" : ""
           }`}
         >

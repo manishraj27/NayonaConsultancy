@@ -21,18 +21,20 @@ const Hero = () => {
 
   const renderTextWithFlipWords = () => (
     <span className="relative block">
-      {["We", "help", "companies", "transform", "their", "Oracle", "EPM", "solution"].map(
+      {["We", "help", "companies", "transform", "their", "Oracle", "EPM",].map(
         (word, index) => (
         <span key={index} className="inline-block mr-2">
           {word}
         </span>
       ))}
       <span className="relative inline-block">
-        <span className="text-heading-3 font-serif italic">
-          <FlipWords words={words} />
+        <span className="font-serif italic">
+          {/* <FlipWords words={words} /> */}
+          solutions
         </span>
         <PencilStroke />
       </span>
+      .
     </span>
   );
 
@@ -45,7 +47,7 @@ const Hero = () => {
       {/* Left Content */}
       <div className="max-w-xl lg:pr-8 select-none text-left lg:text-start">
         <div className="my-auto lg:pr-[60px]">
-          <h2 className="text-heading-3 pt-10 mt-2 font-open-sans font-light leading-normal">
+          <h2 className="text-heading-4 lg:text-heading-3 pt-10 mt-2 font-open-sans font-light leading-normal">
             {renderTextWithFlipWords()}
           </h2>
 
