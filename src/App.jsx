@@ -5,7 +5,6 @@ import Career from "./components/homepage/Career";
 import FloatingButtonsContainer from "./components/ui/FloatingButtonsContainer";
 import WebLoader from "./components/ui/WebLoader";
 import LandingPage from "./components/pages/LandingPage";
-import "./App.css";
 import Footer from "./components/ui/Footer";
 import { useEffect } from "react";
 import Lenis from 'lenis';
