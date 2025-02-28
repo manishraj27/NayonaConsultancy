@@ -1,11 +1,10 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react';
 import globe from "../../assets/images/globe.png";
 import NayonaFooter from "../../assets/icons/NayonaFooter";
 import FooterArrow from '../../assets/icons/FooterArrow';
 import { motion } from 'framer-motion';
 
 function FooterBottom() {
-
   // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
@@ -14,15 +13,13 @@ function FooterBottom() {
     });
   };
 
-
   return (
     <>
-
       {/* Mobile Layout: Column order */}
       <div className="w-full flex flex-col lg:hidden">
         {/* "Based in New York" */}
         <div className="flex items-center justify-center whitespace-nowrap mb-4">
-        <motion.img
+          <motion.img
             src={globe}
             alt="Globe"
             className="w-6 h-6 mr-2"
@@ -45,7 +42,7 @@ function FooterBottom() {
 
         {/* Back to top button */}
         <div className="w-full flex justify-center">
-        <motion.button
+          <motion.button
             onClick={scrollToTop}
             className="flex items-center text-gray-700 hover:text-gray-900 transition-colors"
             whileHover="hover"
@@ -126,7 +123,7 @@ function FooterBottom() {
         </motion.div>
       </motion.button>
     </>
-  )
+  );
 }
 
-export default FooterBottom
+export default FooterBottom;
