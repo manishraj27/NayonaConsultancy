@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import globe from "../../assets/images/globe.png";
 import NayonaFooter from "../../assets/icons/NayonaFooter";
 import FooterArrow from '../../assets/icons/FooterArrow';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 
 function FooterBottom() {
   // Scroll to top function
@@ -11,6 +11,86 @@ function FooterBottom() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  // Setup for animation on scroll
+  const mobileControls = useAnimation();
+  const desktopControls = useAnimation();
+  const mobileRef = useRef(null);
+  const desktopRef = useRef(null);
+
+  // Start animation when component mounts or is in view
+  useEffect(() => {
+    // Mobile observer
+    const mobileObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          mobileControls.start("visible");
+          mobileObserver.disconnect(); // Only trigger once
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    // Desktop observer
+    const desktopObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          desktopControls.start("visible");
+          desktopObserver.disconnect(); // Only trigger once
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (mobileRef.current) {
+      mobileObserver.observe(mobileRef.current);
+    }
+
+    if (desktopRef.current) {
+      desktopObserver.observe(desktopRef.current);
+    }
+
+    return () => {
+      if (mobileRef.current) {
+        mobileObserver.unobserve(mobileRef.current);
+      }
+      if (desktopRef.current) {
+        desktopObserver.unobserve(desktopRef.current);
+      }
+    };
+  }, [mobileControls, desktopControls]);
+
+  // Mobile animation variants - From LEFT
+  const mobileLogoVariants = {
+    hidden: {
+      opacity: 0,
+      x: -100
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 2,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  // Desktop animation variants - From BOTTOM
+  const desktopLogoVariants = {
+    hidden: {
+      opacity: 0,
+      y: 100
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 2,
+        ease: "easeOut"
+      }
+    }
   };
 
   return (
@@ -36,9 +116,15 @@ function FooterBottom() {
         </div>
 
         {/* Logo */}
-        <div className="w-full flex justify-center mb-4">
+        <motion.div 
+          ref={mobileRef}
+          className="w-full flex justify-center mb-4"
+          initial="hidden"
+          animate={mobileControls}
+          variants={mobileLogoVariants}
+        >
           <NayonaFooter />
-        </div>
+        </motion.div>
 
         {/* Back to top button */}
         <div className="w-full flex justify-center">
@@ -73,9 +159,15 @@ function FooterBottom() {
       {/* Desktop Layout: Row order */}
       <div className="w-full hidden lg:flex flex-row items-center justify-between lg:justify-start">
         {/* Logo */}
-        <div className="w-full flex justify-center lg:justify-start mb-4 lg:mb-0">
+        <motion.div 
+          ref={desktopRef}
+          className="w-full flex justify-center lg:justify-start mb-4 lg:mb-0"
+          initial="hidden"
+          animate={desktopControls}
+          variants={desktopLogoVariants}
+        >
           <NayonaFooter />
-        </div>
+        </motion.div>
 
         {/* "Based in New York" */}
         <div className="flex items-center justify-center lg:justify-start whitespace-nowrap">
