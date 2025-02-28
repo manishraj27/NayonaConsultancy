@@ -41,7 +41,7 @@ export default {
         'body-2': ['clamp(1rem, 1.5vw, 1.5rem)'],
         'body-3': '1.1rem',
         'body-4': ['clamp(0.75rem, 3vw, 1rem)'],
-        'body-5': ['clamp(0.50rem, 2vw, 0.85rem)'],
+        'body-5': ['clamp(0.60rem, 2vw, 0.85rem)'],
       },
       letterSpacing: {
         'wide': '0.025em',

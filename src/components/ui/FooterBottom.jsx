@@ -155,6 +155,33 @@ function FooterBottom() {
             </motion.div>
           </motion.button>
         </div>
+
+{/* add a seprator  */}
+<div className="w-full my-4 px-4">
+          <div className="h-px bg-gray-300"></div>
+        </div>
+
+        {/* "All Rights Reserved" */}
+         <div className="w-full flex justify-between items-center px-4">
+          {/* All Rights Reserved */}
+          <span className="flex items-center text-gray-700 font-grotesk text-body-5 lg:text-body-5">
+            <Copyright className="w-4 h-4 mr-2" /> {new Date().getFullYear()} All Rights Reserved
+          </span>
+
+          {/* Website by Him */}
+          <span className="text-gray-700 font-grotesk text-body-5 lg:text-body-5">
+            Website by
+            <a
+              href="https://manishraj.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:underline ml-1"
+            >
+              Him
+            </a>
+          </span>
+        </div>
+        
       </div>
 
       {/* Desktop Layout: Row order */}
@@ -200,6 +227,7 @@ function FooterBottom() {
       </div>
 
       {/* Desktop Layout: Back to top button */}
+      <div>
       <div className="flex flex-col items-center lg:items-start space-y-2">
         <motion.button
           onClick={scrollToTop}
@@ -227,7 +255,7 @@ function FooterBottom() {
           </motion.div>
         </motion.button>
 
-        <span className="text-gray-700 text-nowrap font-grotesk text-body-2 lg:text-body-5">
+        <span className="hidden lg:flex text-gray-700 text-nowrap font-grotesk text-body-2 lg:text-body-5">
           Website by
           <a
             href="https://manishraj.me"
@@ -238,6 +266,9 @@ function FooterBottom() {
             Him
           </a>
         </span>
+      </div>
+
+  
       </div>
     </>
   );
