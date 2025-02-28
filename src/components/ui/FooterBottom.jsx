@@ -156,19 +156,18 @@ function FooterBottom() {
           </motion.button>
         </div>
 
-{/* add a seprator  */}
-<div className="w-full my-4 px-4">
+        {/* add a seprator  and all rights*/}
+        {/* <div className="w-full my-4 px-4">
           <div className="h-px bg-gray-300"></div>
         </div>
 
-        {/* "All Rights Reserved" */}
-         <div className="w-full flex justify-between items-center px-4">
-          {/* All Rights Reserved */}
+        <div className="w-full flex justify-between items-center px-4">
+
           <span className="flex items-center text-gray-700 font-grotesk text-body-5 lg:text-body-5">
             <Copyright className="w-4 h-4 mr-2" /> {new Date().getFullYear()} All Rights Reserved
           </span>
 
-          {/* Website by Him */}
+
           <span className="text-gray-700 font-grotesk text-body-5 lg:text-body-5">
             Website by
             <a
@@ -180,8 +179,8 @@ function FooterBottom() {
               Him
             </a>
           </span>
-        </div>
-        
+        </div> */}
+
       </div>
 
       {/* Desktop Layout: Row order */}
@@ -218,9 +217,9 @@ function FooterBottom() {
           </div>
 
           {/* Copyright Section */}
-          <span className="flex items-center text-gray-700 font-grotesk text-body-2 lg:text-body-5">
+          {/* <span className="flex items-center text-gray-700 font-grotesk text-body-2 lg:text-body-5">
             &nbsp;<Copyright className="w-4 h-4 mr-3" /> {new Date().getFullYear()} All Rights Reserved
-          </span>
+          </span> */}
         </div>
 
 
@@ -228,34 +227,34 @@ function FooterBottom() {
 
       {/* Desktop Layout: Back to top button */}
       <div>
-      <div className="flex flex-col items-center lg:items-start space-y-2">
-        <motion.button
-          onClick={scrollToTop}
-          className="lg:flex hidden items-center text-gray-700 hover:text-gray-900 transition-colors"
-          whileHover="hover"
-        >
-          <motion.span
-            className="mr-2 font-grotesk text-body-2 lg:text-body-4 whitespace-nowrap"
-            variants={{
-              hover: { fontWeight: 700 },
-            }}
+        <div className="flex flex-col items-center lg:items-start space-y-2">
+          <motion.button
+            onClick={scrollToTop}
+            className="lg:flex hidden items-center text-gray-700 hover:text-gray-900 transition-colors"
+            whileHover="hover"
           >
-            Back to top
-          </motion.span>
-          <motion.div
-            variants={{
-              hover: { y: -4 },
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-            }}
-          >
-            <FooterArrow className="w-4 h-4" />
-          </motion.div>
-        </motion.button>
+            <motion.span
+              className="mr-2 font-grotesk text-body-2 lg:text-body-4 whitespace-nowrap"
+              variants={{
+                hover: { fontWeight: 700 },
+              }}
+            >
+              Back to top
+            </motion.span>
+            <motion.div
+              variants={{
+                hover: { y: -4 },
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+              }}
+            >
+              <FooterArrow className="w-4 h-4" />
+            </motion.div>
+          </motion.button>
 
-        <span className="hidden lg:flex text-gray-700 text-nowrap font-grotesk text-body-2 lg:text-body-5">
+          {/* <span className="hidden lg:flex text-gray-700 text-nowrap font-grotesk text-body-2 lg:text-body-5">
           Website by
           <a
             href="https://manishraj.me"
@@ -265,10 +264,10 @@ function FooterBottom() {
           >
             Him
           </a>
-        </span>
-      </div>
+        </span> */}
+        </div>
 
-  
+
       </div>
     </>
   );
