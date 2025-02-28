@@ -59,8 +59,8 @@ function App() {
             <Route path="/careers" element={<Career />} />
           </Routes>
           {showFloatingButtons && <FloatingButtonsContainer />}
-        </main>
         <Footer />
+        </main>
       </div>
     </>
   );
