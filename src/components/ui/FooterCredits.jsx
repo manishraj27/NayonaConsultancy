@@ -39,7 +39,8 @@ function FooterCredits() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Copyright className="w-3 h-3 mr-2" /> 
-            <span>{currentYear} Nayona Consultancy. All Rights Reserved</span>
+            {/* <span>{currentYear} Nayona Consultancy. All Rights Reserved</span> */}
+            <span>{currentYear} Nayona Consultancy</span>
           </motion.span>
           
           {/* Policy links */}
