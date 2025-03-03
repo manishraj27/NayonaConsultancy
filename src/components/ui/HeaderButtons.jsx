@@ -46,7 +46,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
     setLogoType(scrollY > 50 ? 'initial' : 'full');
 
     const motto = document.querySelector('.dark-section');
-    const footer = document.querySelector('footer');
+    //const footer = document.querySelector('footer');
 
     if (motto) {
       const mottoRect = motto.getBoundingClientRect();
@@ -77,17 +77,17 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       }
     }
 
-    if (footer) {
-      const footerRect = footer.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+    // if (footer) {
+    //   const footerRect = footer.getBoundingClientRect();
+    //   const viewportHeight = window.innerHeight;
 
-      if (footerRect.top < viewportHeight && footerRect.bottom > 0) {
-        setLogoColor(colorSettings.default.logoColor);
-        setMenuColor(colorSettings.default.menuColor);
-        setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
-        setTextColor(colorSettings.default.textColor);
-      }
-    }
+    //   if (footerRect.top < viewportHeight && footerRect.bottom > 0) {
+    //     setLogoColor(colorSettings.default.logoColor);
+    //     setMenuColor(colorSettings.default.menuColor);
+    //     setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
+    //     setTextColor(colorSettings.default.textColor);
+    //   }
+    // }
   }, [colorSettings]);
 
   useEffect(() => {
