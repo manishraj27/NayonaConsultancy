@@ -2,22 +2,46 @@ import React, { useState } from 'react';
 import { Mail, Send, Instagram, Linkedin, MapPin, Phone } from 'lucide-react';
 import { Icon } from "@iconify/react";
 import { motion } from 'framer-motion';
+import apiconfig from '../../configurations/APIConfig';
 
 function FooterUpper() {
   const [emailFocus, setEmailFocus] = useState(false);
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (email) {
-      setIsSubmitted(true);
-      setEmail('');
-      // Reset submission status after 3 seconds
-      setTimeout(() => setIsSubmitted(false), 3000);
+      try {
+        // Make a POST request to the backend
+        const response = await fetch(`${apiconfig.nayona_api}/api/newsletter/subscribe`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+  
+        // Parse the response
+        const data = await response.json();
+  
+        if (response.ok) {
+          // If the subscription is successful
+          setIsSubmitted(true);
+          setEmail("");
+          // Reset submission status after 3 seconds
+          setTimeout(() => setIsSubmitted(false), 3000);
+        } else {
+          // If there's an error (e.g., email already subscribed)
+          alert(data.message || "Something went wrong. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("Something went wrong. Please try again.");
+      }
     }
   };
-
   // Hover animation variants
   const linkHoverVariants = {
     initial: { width: 0 },
