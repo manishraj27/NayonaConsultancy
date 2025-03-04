@@ -74,18 +74,18 @@ function FooterUpper() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h3 className="text-gray-900 font-grotesk font-semibold text-lg mb-2">Navigation</h3>
+          <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Navigation</h3>
           <nav className="flex flex-col space-y-2">
             {['Home', 'About', 'Services', 'Work', 'Contact'].map((item, index) => (
               <a 
                 key={index}
                 href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`} 
-                className="w-fit group relative text-gray-700 hover:text-gray-900 transition-colors font-grotesk text-body-3"
+                className="w-fit group relative text-secondary-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
               >
                 <span>{item}</span>
-                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-red-500 duration-300 ease-in-out group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                 <motion.span 
-                  className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-gray-500"
+                  className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-accent-300"
                   initial="initial"
                   whileHover="hover"
                   variants={linkHoverVariants}
@@ -102,7 +102,7 @@ function FooterUpper() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-gray-900 font-grotesk font-semibold text-lg mb-2">Connect</h3>
+          <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Connect</h3>
           <div className="flex flex-col space-y-2">
             {[
               { name: 'Instagram', icon: <Instagram className="w-4 h-4 mr-2" />, url: 'https://instagram.com/nayona' },
@@ -116,7 +116,7 @@ function FooterUpper() {
                 href={item.url} 
                 target={item.url.startsWith('mailto') ? '' : '_blank'} 
                 rel={item.url.startsWith('mailto') ? '' : 'noopener noreferrer'} 
-                className="flex items-center text-gray-700 hover:text-gray-900 transition-colors font-grotesk text-body-3"
+                className="flex items-center text-gray-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
@@ -124,7 +124,7 @@ function FooterUpper() {
                 </motion.span>
                 <div className="group relative w-fit">
                   <span>{item.name}</span>
-                  <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-red-500 duration-300 ease-in-out group-hover:w-full"></span>
+                  <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                   <motion.span 
                     className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-gray-500"
                     initial="initial"
@@ -144,7 +144,7 @@ function FooterUpper() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <h3 className="text-gray-900 font-grotesk font-semibold text-lg mb-2">Location</h3>
+          <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Location</h3>
           <div className="flex flex-col space-y-2">
             <motion.div 
               className="flex items-start text-gray-700 font-grotesk text-body-3"
@@ -155,7 +155,7 @@ function FooterUpper() {
             </motion.div>
             <motion.a 
               href="tel:+12125551234" 
-              className="flex items-center text-gray-700 hover:text-gray-900 transition-colors font-grotesk text-body-3"
+              className="flex items-center text-gray-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
               whileHover="hover"
             >
               <motion.span variants={iconVariants}>
@@ -163,7 +163,7 @@ function FooterUpper() {
               </motion.span>
               <div className="group relative w-fit">
                 <span>+1 (212) 555-1234</span>
-                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-red-500 duration-300 ease-in-out group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                 <motion.span 
                   className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-gray-500"
                   initial="initial"
@@ -198,7 +198,7 @@ function FooterUpper() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h3 className="text-gray-900 font-grotesk font-semibold text-lg mb-2">Newsletter</h3>
+          <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Newsletter</h3>
           <p className="text-gray-700 font-grotesk text-body-3 mb-2">
             Subscribe to our newsletter for updates and insights.
           </p>
@@ -264,7 +264,7 @@ function FooterUpper() {
                 className="w-8 h-8 text-red-600" 
               />
               <div>
-                <h4 className="font-semibold text-gray-900">Oracle EPM Experts</h4>
+                <h4 className="font-semibold text-secondary-600">Oracle EPM Experts</h4>
                 <p className="text-xs text-gray-600">Certified Implementation Partner</p>
               </div>
             </div>
