@@ -1,4 +1,4 @@
-import  { useMemo } from "react";
+import { useMemo } from "react";
 import HeroButton from "../ui/HeroButton";
 import "./gradient.css";
 import PencilStroke from "./../../assets/icons/PencilStroke";
@@ -14,21 +14,20 @@ const Hero = () => {
       "smarter",   // More intelligent or efficient
       "faster",    // More quickly
       "better",    // Improved quality
-      
     ],
     []
   );
 
   const renderTextWithFlipWords = () => (
     <span className="relative block">
-      {["We", "help", "companies", "transform", "their", "Oracle", "EPM",].map(
+      {["We", "help", "companies", "transform", "their", "Oracle", "EPM"].map(
         (word, index) => (
-        <span key={index} className="inline-block mr-2">
+        <span key={index} className="inline-block mr-2 text-on-light">
           {word}
         </span>
       ))}
       <span className="relative inline-block">
-        <span className="font-serif italic">
+        <span className="font-serif italic text-primary-400">
           {/* <FlipWords words={words} /> */}
           solutions
         </span>
@@ -47,12 +46,12 @@ const Hero = () => {
       {/* Left Content */}
       <div className="max-w-xl lg:pr-8 select-none text-left lg:text-start">
         <div className="my-auto lg:pr-[60px]">
-          <h2 className="text-heading-4 lg:text-heading-3 pt-10 mt-2 font-open-sans font-light leading-normal">
+          <h2 className="text-heading-4 lg:text-heading-3 pt-10 mt-2 font-open-sans font-light leading-normal text-on-light">
             {renderTextWithFlipWords()}
           </h2>
 
           <div className="pt-8">
-            <p className="text-body-3 justify-start items-start font-grotesk max-w-2xl">
+            <p className="text-body-3 justify-start items-start font-grotesk max-w-2xl text-on-light">
               Nayona Consultancy is a leading provider of Oracle EPM services,
               helping companies streamline their financial and operational
               processes. Our team of experts deliver tailored solutions to

@@ -17,16 +17,16 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   // Memoized color settings for motto and footer sections
   const colorSettings = useMemo(() => ({
     motto: {
-      logoColor: "#E1E4E6",
-      menuColor: "#E1E4E6",
-      menuInnerCircleColor: "#D7D7D7",
-      textColor: "#000000"
+      logoColor: "#EEEEFF",
+      menuColor: "#EEEEFF",
+      menuInnerCircleColor: "#8A92B2",
+      textColor: "#1A202C"
     },
     default: {
-      logoColor: "#000000",
+      logoColor: "#1E1B4B",
       menuColor: "#0c0c0c",
       menuInnerCircleColor: "#1A1F2F",
-      textColor: "#ffffff"
+      textColor: "#E2E8F0"
     }
   }), []);
 
@@ -46,7 +46,6 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
     setLogoType(scrollY > 50 ? 'initial' : 'full');
 
     const motto = document.querySelector('.dark-section');
-    //const footer = document.querySelector('footer');
 
     if (motto) {
       const mottoRect = motto.getBoundingClientRect();
@@ -76,18 +75,6 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
         setTextColor(colorSettings.default.textColor);
       }
     }
-
-    // if (footer) {
-    //   const footerRect = footer.getBoundingClientRect();
-    //   const viewportHeight = window.innerHeight;
-
-    //   if (footerRect.top < viewportHeight && footerRect.bottom > 0) {
-    //     setLogoColor(colorSettings.default.logoColor);
-    //     setMenuColor(colorSettings.default.menuColor);
-    //     setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
-    //     setTextColor(colorSettings.default.textColor);
-    //   }
-    // }
   }, [colorSettings]);
 
   useEffect(() => {
@@ -139,24 +126,26 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       </motion.div>
 
       <div className="flex flex-row items-center gap-4 lg:gap-8 z-[4] pointer-events-auto">
+        {/* Chat with us button */}
         <a
           href="/contact"
           className="p-[0.3rem] select-none will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex-row items-center hidden lg:flex"
-          style={{ backgroundColor: "#C7F0FF" }}
+          style={{ backgroundColor: "#C7F0FF" }} // Single tone for contrast
         >
-          <span className="text-sm lg:text-lg font-normal uppercase pl-10 pr-8 text-slate-900">
+          <span className="text-sm lg:text-lg font-normal uppercase pl-10 pr-8 text-on-light">
             Chat with us
           </span>
-          <span className="relative overflow-hidden flex items-center justify-center w-8 lg:w-12 h-8 lg:h-12 rounded-full bg-[#90E2FF]">
-            <span className="block w-1/3 will-change-transform group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-slate-900">
+          <span className="relative overflow-hidden flex items-center justify-center w-8 lg:w-12 h-8 lg:h-12 rounded-full bg-[#4A90E2]">
+            <span className="block w-1/3 will-change-transform group-hover:translate-x-[250%] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-on-dark">
               <ChatIcon />
             </span>
-            <span className="block w-1/3 will-change-transform absolute -translate-x-[250%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-slate-900">
+            <span className="block w-1/3 will-change-transform absolute -translate-x-[250%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)] text-on-dark">
               <ChatIcon />
             </span>
           </span>
         </a>
 
+        {/* Menu button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-[0.3rem] will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex flex-row items-center"

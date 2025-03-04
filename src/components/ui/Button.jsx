@@ -23,7 +23,7 @@ const Button = ({ text }) => {
       ease: "power2.out"
     })
     .to(textElement, {
-      color: '#e7e6e7',
+      color: '#e7e6e7', // This will be replaced with a Tailwind color class
       duration: 0.2
     }, 0);
 
@@ -39,14 +39,14 @@ const Button = ({ text }) => {
   return (
     <button 
       ref={buttonRef}
-      className="relative h-12 px-6 overflow-hidden rounded-full border border-background-100 text-black font-open-sans tracking-wider"
+      className="relative h-12 px-6 overflow-hidden rounded-full border border-background-100 text-on-light font-open-sans tracking-wider"
     >
       <div 
         ref={curtainRef}
-        className="absolute inset-0 bg-black"
+        className="absolute inset-0 bg-background-100"
         style={{ transform: 'translateY(100%)' }}
       />
-      <span ref={textRef} className="relative z-10 font-medium">
+      <span ref={textRef} className="relative z-10 font-open-sans text-on-light">
         {text}
       </span>
     </button>

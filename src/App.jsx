@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Lenis from 'lenis';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ColorPaletteVisualizer from "./lib/ColorPaletteVisualizer";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -53,6 +54,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Career />} />
+            <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
           </Routes>
           {showFloatingButtons && <FloatingButtonsContainer />}
           <Footer />
