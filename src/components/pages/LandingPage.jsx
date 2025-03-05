@@ -34,6 +34,7 @@ const LandingPage = () => {
   }, []);
 
   return (
+    
     <div className="relative" role="main">
       {/* Main container for the parallax effect */}
       <div ref={containerRef} className="relative h-screen overflow-hidden">
