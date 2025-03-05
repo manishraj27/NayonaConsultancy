@@ -28,7 +28,7 @@ function Contact() {
         
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8 md:gap-0">
          
-          <div className="text-white w-full md:w-3/4 text-left">
+          <div className="w-full md:w-3/4 text-left">
             <Heading title="Reach To Us" description="PING US" />
             <div className="mt-4 w-full md:w-2/3">
               <span className="text-white lg:mx-16 lg:w-full text-heading-4 font-grotesk text-pretty block">

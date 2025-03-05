@@ -1,43 +1,30 @@
+import testimonials from "../../lib/testimonials";
 import { AnimatedTestimonials } from "./animated-testimonials";
-
+import Heading from "./Heading";
 
 export function Testimonials() {
-  const testimonials = [
-    {
-      quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Sarah Chen",
-      designation: "Product Manager at TechFlow",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Michael Rodriguez",
-      designation: "CTO at InnovateSphere",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Emily Watson",
-      designation: "Operations Director at CloudScale",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "James Kim",
-      designation: "Engineering Lead at DataPro",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Lisa Thompson",
-      designation: "VP of Technology at FutureNet",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
-  return <AnimatedTestimonials testimonials={testimonials} />;
+  return (
+    <section
+      id="testimonials"
+      aria-label="Testimonials"
+      className="relative flex flex-col lg:grid lg:grid-cols-2 lg:items-center lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden gap-12 lg:gap-8"
+    >
+      {/* Left Side: Heading and Description */}
+      <div className=" text-left">
+        <Heading title="What Our Clients Say" description="Testimonials" />
+        <div className="mt-6">
+          <p className="text-body-1 font-grotesk text-secondary-300 text-pretty">
+            Discover the impact we've made through the eyes of those who've experienced our exceptional service and transformative solutions.
+          </p>
+        </div>
+      </div>
+
+      {/* Right Side: Testimonial Slider */}
+      <AnimatedTestimonials 
+        testimonials={testimonials} 
+        autoplay={true} 
+      
+      />
+    </section>
+  );
 }

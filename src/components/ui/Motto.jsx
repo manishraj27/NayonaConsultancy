@@ -42,7 +42,7 @@ const Motto = () => {
     <section
       id="motto"
       aria-label="motto"
-      className="relative select-none flex flex-col lg:px-12 px-4 w-full py-16 lg:py-24 min-h-screen items-center overflow-hidden transition-colors duration-300 "
+      className="relative select-none flex flex-col lg:px-12 px-4 w-full pt-16 lg:pt-24 min-h-screen items-center overflow-hidden transition-colors duration-300 "
     >
       <div className="mx-auto w-full h-full relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -128,8 +128,8 @@ const Motto = () => {
 
         {/* Enhanced Background Elements */}
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary-400/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-primary-300/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/4 w-1/5 h-1/5 bg-primary-200/20 rounded-full blur-2xl" />
+        <div className="absolute bottom-36 left-0 w-1/4 h-1/4 bg-primary-300/20 rounded-full blur-3xl" />
+        
       </div>
     </section>
   );

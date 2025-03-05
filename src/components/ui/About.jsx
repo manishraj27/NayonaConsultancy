@@ -6,7 +6,7 @@ function About() {
   return (
     <section
       id="about"
-      className="relative flex w-full min-h-screen items-center justify-between lg:px-12 px-4"
+      className="relative flex flex-col lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden"
       aria-label="About"
     >
       <Heading title="About Us" description="About Us"/>
