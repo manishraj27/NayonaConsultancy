@@ -7,7 +7,6 @@ import WebLoader from "./components/ui/WebLoader";
 import LandingPage from "./components/pages/LandingPage";
 import Footer from "./components/ui/Footer";
 import { useEffect, useState } from "react";
-import Lenis from 'lenis';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ColorPaletteVisualizer from "./lib/ColorPaletteVisualizer";
@@ -19,13 +18,6 @@ function App() {
   const [showFloatingButtons, setShowFloatingButtons] = useState(true);
 
   useEffect(() => {
-    const lenis = new Lenis();
-    function raf(time) {
-      lenis.raf(time * 1000);
-    }
-    gsap.ticker.add(raf); // Sync Lenis with GSAP
-    gsap.ticker.lagSmoothing(0); 
-    
     // Create smooth ScrollTrigger for footer
     ScrollTrigger.create({
       trigger: 'footer',
@@ -38,7 +30,6 @@ function App() {
     });
     
     return () => {
-      gsap.ticker.remove(raf);
       // Clear ScrollTrigger instances
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
