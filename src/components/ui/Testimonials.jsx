@@ -7,7 +7,7 @@ export function Testimonials() {
     <section
       id="testimonials"
       aria-label="Testimonials"
-      className="relative flex flex-col lg:grid lg:grid-cols-2 lg:items-center lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden gap-12 lg:gap-4"
+      className="relative flex flex-col lg:grid min-h-screen lg:grid-cols-2 lg:items-center lg:px-12 px-4 w-full py-24 overflow-hidden gap-12 lg:gap-4"
     >
       {/* Left Side: Heading and Description */}
       <div className=" text-left">
@@ -22,7 +22,7 @@ export function Testimonials() {
       {/* Right Side: Testimonial Slider */}
       <AnimatedTestimonials 
         testimonials={testimonials} 
-        autoplay={true} 
+        autoplay={false} 
       
       />
     </section>
