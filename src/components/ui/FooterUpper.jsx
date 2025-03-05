@@ -116,7 +116,7 @@ function FooterUpper() {
                 href={item.url} 
                 target={item.url.startsWith('mailto') ? '' : '_blank'} 
                 rel={item.url.startsWith('mailto') ? '' : 'noopener noreferrer'} 
-                className="flex items-center text-gray-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
+                className="flex items-center text-secondary-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
@@ -126,11 +126,11 @@ function FooterUpper() {
                   <span>{item.name}</span>
                   <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                   <motion.span 
-                    className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-gray-500"
-                    initial="initial"
-                    whileHover="hover"
-                    variants={linkHoverVariants}
-                  ></motion.span>
+                  className="absolute bottom-0 left-0 h-[0.15em] w-0 rounded-full bg-accent-300"
+                  initial="initial"
+                  whileHover="hover"
+                  variants={linkHoverVariants}
+                ></motion.span>
                 </div>
               </motion.a>
             ))}
@@ -147,7 +147,7 @@ function FooterUpper() {
           <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Location</h3>
           <div className="flex flex-col space-y-2">
             <motion.div 
-              className="flex items-start text-gray-700 font-grotesk text-body-3"
+              className="flex items-start text-secondary-700 font-grotesk text-body-3"
               whileHover={{ x: 3, transition: { duration: 0.2 } }}
             >
               <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0" /> 
@@ -155,7 +155,7 @@ function FooterUpper() {
             </motion.div>
             <motion.a 
               href="tel:+12125551234" 
-              className="flex items-center text-gray-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
+              className="flex items-center text-secondary-700 hover:text-secondary-600 transition-colors font-grotesk text-body-3"
               whileHover="hover"
             >
               <motion.span variants={iconVariants}>
@@ -174,8 +174,8 @@ function FooterUpper() {
             </motion.a>
             
             {/* Oracle EPM Partnership */}
-            <div className="mt-4 pt-4 border-t border-gray-200">
-              <p className="text-gray-700 font-grotesk text-body-4 mb-2">Official Partner</p>
+            <div className="mt-4 pt-4 border-t border-secondary-200">
+              <p className="text-secondary-600 font-grotesk text-body-4 mb-2">Official Partner</p>
               <motion.div 
                 className="flex items-center"
                 whileHover={{ scale: 1.05 }}
@@ -185,7 +185,7 @@ function FooterUpper() {
                   icon="simple-icons:oracle" 
                   className="w-6 h-6 mr-2 text-red-600" 
                 />
-                <span className="text-gray-800 font-medium">Oracle EPM Solutions</span>
+                <span className="text-secondary-700 font-medium">Oracle EPM Solutions</span>
               </motion.div>
             </div>
           </div>
@@ -199,7 +199,7 @@ function FooterUpper() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">Newsletter</h3>
-          <p className="text-gray-700 font-grotesk text-body-3 mb-2">
+          <p className="text-secondary-700 font-grotesk text-body-3 mb-2">
             Subscribe to our newsletter for updates and insights.
           </p>
           
@@ -215,18 +215,18 @@ function FooterUpper() {
                   onChange={(e) => setEmail(e.target.value)}
                   onFocus={() => setEmailFocus(true)}
                   onBlur={() => setEmailFocus(false)}
-                  className={`peer block w-full appearance-none border-0 border-b ${emailFocus ? 'border-b-blue-500' : 'border-b-gray-950'} bg-transparent px-0 py-2.5 focus:outline-none focus:ring-0 transition-colors duration-300`}
+                  className={`peer block w-full appearance-none border-0 border-b ${emailFocus ? 'border-b-blue-500' : 'border-b-secondary-700'} bg-transparent px-0 py-2.5 focus:outline-none focus:ring-0 transition-colors duration-300`}
                   placeholder=" "
                 />
                 <label
                   htmlFor="email"
-                  className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 ${emailFocus ? 'text-blue-500' : 'text-gray-500'} duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500`}
+                  className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 ${emailFocus ? 'text-blue-500' : 'text-secondary'} duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500`}
                 >
                   Your email
                 </label>
                 <motion.button 
                   type="submit" 
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-700 "
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 text-secondary-700 "
                   variants={buttonVariants}
                   initial="initial"
                   whileHover="hover"
@@ -235,7 +235,7 @@ function FooterUpper() {
                   <Send className="w-4 h-4" />
                 </motion.button>
               </div>
-              <p className="text-gray-600 font-grotesk text-body-5">
+              <p className="text-secondary font-grotesk text-body-5">
                 We respect your privacy. No spam, ever.
               </p>
             </form>
@@ -265,7 +265,7 @@ function FooterUpper() {
               />
               <div>
                 <h4 className="font-semibold text-secondary-600">Oracle EPM Experts</h4>
-                <p className="text-xs text-gray-600">Certified Implementation Partner</p>
+                <p className="text-xs text-secondary-700">Certified Implementation Partner</p>
               </div>
             </div>
           </motion.div>

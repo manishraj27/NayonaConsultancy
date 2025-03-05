@@ -68,7 +68,7 @@ export const AnimatedTestimonials = ({
 
   return (
     <div
-      className="max-w-sm md:max-w-full mx-auto lg:mx-0 lg:ml-auto antialiased font-sans py-20 bg-background-100"
+      className="max-w-sm md:max-w-full mx-auto lg:mx-0 lg:ml-auto antialiased px-4 font-sans py-20 bg-background-100"
     >
       <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Image Section */}
