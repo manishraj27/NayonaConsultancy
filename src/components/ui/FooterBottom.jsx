@@ -111,7 +111,7 @@ function FooterBottom() {
               ease: "linear",
             }}
           />
-          <span className="text-gray-700 font-grotesk text-body-2 lg:text-body-4">
+          <span className="text-secondary-700 font-grotesk text-body-2 lg:text-body-4">
             Based in New York
           </span>
         </div>
@@ -119,7 +119,7 @@ function FooterBottom() {
         {/* Logo */}
         <motion.div
           ref={mobileRef}
-          className="w-full flex justify-center mb-4"
+          className="w-full flex justify-center mb-4 text-secondary-700"
           initial="hidden"
           animate={mobileControls}
           variants={mobileLogoVariants}
@@ -131,7 +131,7 @@ function FooterBottom() {
         <div className="w-full flex justify-center">
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center text-gray-700 hover:text-gray-900 transition-colors"
+            className="flex items-center text-secondary-700 hover:text-secondary-600 transition-colors"
             whileHover="hover"
           >
             <motion.span
@@ -155,9 +155,6 @@ function FooterBottom() {
             </motion.div>
           </motion.button>
         </div>
-
-       
-
       </div>
 
       {/* Desktop Layout: Row order */}
@@ -165,7 +162,7 @@ function FooterBottom() {
         {/* Logo */}
         <motion.div
           ref={desktopRef}
-          className="w-full flex justify-center lg:justify-start mb-4 lg:mb-0"
+          className="w-full flex justify-center lg:justify-start mb-4 lg:mb-0 text-secondary-700"
           initial="hidden"
           animate={desktopControls}
           variants={desktopLogoVariants}
@@ -188,15 +185,11 @@ function FooterBottom() {
                 ease: "linear",
               }}
             />
-            <span className="text-gray-700 font-grotesk text-body-2 lg:text-body-4">
+            <span className="text-secondary-700 font-grotesk text-body-2 lg:text-body-4">
               Based in New York
             </span>
           </div>
-
-        
         </div>
-
-
       </div>
 
       {/* Desktop Layout: Back to top button */}
@@ -204,7 +197,7 @@ function FooterBottom() {
         <div className="flex flex-col items-center lg:items-start space-y-2">
           <motion.button
             onClick={scrollToTop}
-            className="lg:flex hidden items-center text-gray-700 hover:text-gray-900 transition-colors"
+            className="lg:flex hidden items-center text-secondary-700 hover:text-secondary-600 transition-colors"
             whileHover="hover"
           >
             <motion.span
@@ -227,11 +220,7 @@ function FooterBottom() {
               <FooterArrow className="w-4 h-4" />
             </motion.div>
           </motion.button>
-
-         
         </div>
-
-
       </div>
     </>
   );

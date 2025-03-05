@@ -7,11 +7,11 @@ export function Testimonials() {
     <section
       id="testimonials"
       aria-label="Testimonials"
-      className="relative flex flex-col lg:grid lg:grid-cols-2 lg:items-center lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden gap-12 lg:gap-8"
+      className="relative flex flex-col lg:grid lg:grid-cols-2 lg:items-center lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden gap-12 lg:gap-4"
     >
       {/* Left Side: Heading and Description */}
       <div className=" text-left">
-        <Heading title="What Our Clients Say" description="Testimonials" />
+        <Heading title="Client Stories" description="Testimonials" />
         <div className="mt-6">
           <p className="text-body-1 font-grotesk text-secondary-300 text-pretty">
             Discover the impact we've made through the eyes of those who've experienced our exceptional service and transformative solutions.

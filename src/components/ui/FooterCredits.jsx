@@ -16,7 +16,7 @@ function FooterCredits() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <motion.div 
-          className="h-px bg-gradient-to-r from-transparent via-red-500 to-transparent"
+          className="h-px bg-gradient-to-r from-transparent via-accent-300 to-transparent"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
@@ -34,17 +34,16 @@ function FooterCredits() {
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2 sm:mb-0">
           {/* Copyright notice with animation */}
           <motion.span 
-            className="flex items-center text-gray-700 font-grotesk text-body-5 lg:text-body-5"
+            className="flex items-center text-secondary-700 font-grotesk text-body-5 lg:text-body-5"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <Copyright className="w-3 h-3 mr-2" /> 
-            {/* <span>{currentYear} Nayona Consultancy. All Rights Reserved</span> */}
             <span>{currentYear} Nayona Consultancy</span>
           </motion.span>
           
           {/* Policy links */}
-          <div className="flex items-center gap-3 text-body-5 text-gray-600">
+          <div className="flex items-center gap-3 text-body-5 text-secondary-600">
             {["Privacy Policy", "Terms of Service", "Cookies"].map((item, index) => (
               <motion.a
                 key={index}
@@ -54,7 +53,7 @@ function FooterCredits() {
               >
                 {item}
                 <motion.span 
-                  className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-gray-400"
+                  className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-accent-300"
                   initial={{ width: 0 }}
                   whileHover={{ width: '100%' }}
                   transition={{ duration: 0.3 }}
@@ -68,7 +67,7 @@ function FooterCredits() {
         <div className="flex items-center gap-4">
           {/* Website credit */}
           <motion.span 
-            className="text-gray-700 font-grotesk text-body-5 lg:text-body-5 flex items-center"
+            className="text-secondary-700 font-grotesk text-body-5 lg:text-body-5 flex items-center"
             whileHover={{ scale: 1.02 }}
           >
             Website by
@@ -76,7 +75,7 @@ function FooterCredits() {
               href="https://manishraj.me"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 ml-1 font-medium inline-flex items-center"
+              className="text-accent-400 hover:text-accent-300 ml-1 font-medium inline-flex items-center"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
@@ -89,22 +88,6 @@ function FooterCredits() {
               </motion.span>
             </motion.a>
           </motion.span>
-          
-          {/* Oracle verification badge */}
-          {/* <motion.a
-            href="https://oracle.com/partners"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:flex items-center px-2 py-1 bg-gray-50 rounded-md border border-gray-200 text-body-5 text-gray-700"
-            whileHover={{ backgroundColor: "#F9FAFB", y: -2 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <Icon 
-              icon="simple-icons:oracle" 
-              className="w-3 h-3 mr-1 text-red-600" 
-            />
-            <span>Verified Partner</span>
-          </motion.a> */}
         </div>
       </motion.div>
     </>

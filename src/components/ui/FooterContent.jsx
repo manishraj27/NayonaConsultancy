@@ -19,17 +19,7 @@ function FooterContent() {
         </div>
         <FooterCredits />
        
-      <DotPattern
-        width={20}
-        height={20}
-        cx={1}
-        cy={1}
-        cr={1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] ",
-        )}
-      />
-
+      
       </div>
     </>
 
