@@ -31,7 +31,7 @@ function Contact() {
           <div className="w-full md:w-3/4 text-left">
             <Heading title="Reach To Us" description="PING US" />
             <div className="mt-4 w-full md:w-2/3">
-              <span className="text-white lg:mx-16 lg:w-full text-heading-4 font-grotesk text-pretty block">
+              <span className="text-on-dark lg:mx-16 lg:w-full text-heading-4 font-grotesk text-pretty block">
                 Start a conversation about new business opportunities and get a free consultation.
               </span>
             </div>
@@ -43,7 +43,7 @@ function Contact() {
         </div>
         
         <div className="w-full mt-8 text-left lg:pr-40 ">
-          <p className="lg:text-heading-3 text-heading-4 font-montserrat text-white">
+          <p className="lg:text-heading-3 text-heading-4  text-on-dark">
             Have an inquiry, suggestion, a collaboration offer, or want an unfair advantage?{" "}
             <span
               ref={gradientTextRef}

@@ -124,11 +124,11 @@ const Inquiry = ({ onBackToHome }) => {
             <button
               key={service}
               onClick={() => handleServiceSelect(service)}
-              className={`px-6 py-4 rounded-full text-body-3 font-medium font-grotesk transition-all duration-300
+              className={`px-6 py-4 rounded-full lg:text-body-3 text-body-4 font-medium font-grotesk transition-all duration-300
                 ${
                   formData.serviceInterest.includes(service)
-                    ? "bg-[#1a1a1a] text-white"
-                    : "bg-[#ffffff] text-black hover:bg-light-200"
+                    ? "bg-[#1a1a1a] text-on-dark"
+                    : "bg-accent-100 text-on-light hover:bg-light-200"
                 }`}
             >
               {service}
@@ -151,8 +151,8 @@ const Inquiry = ({ onBackToHome }) => {
               className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
                 ${
                   formData.budgetRange === range
-                    ? "bg-[#1a1a1a] text-white"
-                    : "bg-[#ffffff] text-black hover:bg-light-200"
+                     ? "bg-[#1a1a1a] text-on-dark"
+                    : "bg-accent-100 text-on-light hover:bg-light-200"
                 }`}
             >
               {range}
@@ -173,7 +173,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Full Name"
               value={formData.fullName}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none"
             />
             <input
               type="text"
@@ -181,7 +181,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Company Name"
               value={formData.companyName}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none"
             />
             <input
               type="email"
@@ -189,7 +189,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none"
             />
             <input
               type="tel"
@@ -197,7 +197,7 @@ const Inquiry = ({ onBackToHome }) => {
               placeholder="Phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
+              className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none"
             />
           </div>
           <textarea
@@ -205,13 +205,13 @@ const Inquiry = ({ onBackToHome }) => {
             placeholder="Your Message"
             value={formData.message}
             onChange={handleInputChange}
-            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none min-h-32"
+            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none min-h-32"
           />
           <select
             name="preferredContactMethod"
             value={formData.preferredContactMethod}
             onChange={handleInputChange}
-            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-white focus:outline-none"
+            className="w-full px-6 py-4 rounded-2xl bg-[#1a1a1a] text-on-dark focus:outline-none"
           >
             <option value="Email">Email</option>
             <option value="Phone">Phone</option>
@@ -225,17 +225,17 @@ const Inquiry = ({ onBackToHome }) => {
     <div className="relative w-full flex items-center justify-center">
       <div className="flex flex-col items-center gap-6 w-full lg:w-[60%] px-4 lg:px-0 pt-8 pb-24 lg:py-16">
         <div className="flex flex-col items-center gap-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-600 tracking-wide">
+          <h2 className="text-xl font-semibold text-secondary tracking-wide">
             [Start your inquiry]
           </h2>
-          <p className="text-gray-900 text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wide text-center">
+          <p className="text-on-light text-heading-3 lg:text-heading-3 font-grotesk font-semibold tracking-wide text-center">
             {steps[currentStep].title}
           </p>
         </div>
 
         <div className="mt-6 lg:mt-12 w-full">{steps[currentStep].content}</div>
 
-        {submitting && <div className="mt-4 text-gray-600">Submitting...</div>}
+        {submitting && <div className="mt-4 text-secondary">Submitting...</div>}
 
         {submissionSuccess && (
           <div className="mt-4 text-green-600">
@@ -260,10 +260,10 @@ const Inquiry = ({ onBackToHome }) => {
           />
         </div>
 
-        <div className="absolute right-8 bottom-2">
+        <div className="absolute right-8 bottom-2 gap-10">
           {currentStep === steps.length - 1 ? (
             <UiButton
-              text={submitting ? "Submitting..." : "Submit"}
+              text={submitting ? "Sending..." : "Submit"}
               icon={ChevronRight}
               iconPosition="right"
               onClick={handleSubmit}

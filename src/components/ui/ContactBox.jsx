@@ -9,8 +9,8 @@ const ContactBox = () => {
   const [showJoinUsForm, setShowJoinUsForm] = useState(false);
 
   return (
-    <div className="mt-16 relative w-full min-h-[85vh] rounded-3xl bg-light-100 flex items-center justify-center">
-      <div className="flex w-full flex-col items-center gap-16 px-4 lg:px-0">
+    <div className="mt-16 relative w-full min-h-[85vh] rounded-[40px] bg-light-100 flex items-center justify-center">
+      <div className="flex w-full flex-col items-center gap-16 px-0">
         {showProjectForm ? (
           <Inquiry onBackToHome={() => setShowProjectForm(false)} />
         ) : showJoinUsForm ? (
