@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Testimonials } from "../ui/Testimonials";
 import TrustedBySection from "../ui/TrustedBySection";
 import MarqueeText from "../ui/MarqueeText";
+import FAQAcc from './../ui/FAQAcc';
 gsap.registerPlugin(ScrollTrigger);
 
 const LandingPage = () => {
@@ -52,7 +53,9 @@ const LandingPage = () => {
          {/* <MarqueeText /> */}
           <Motto />
           <Testimonials />
+         
           <About />
+          <FAQAcc/>
           {/* <MarqueeText /> */}
         </div>
       </div>
