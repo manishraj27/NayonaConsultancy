@@ -61,10 +61,19 @@ function FooterUpper() {
 
   return (
     <div className="w-full mt-12 lg:mt-0 mb-12 lg:mb-8 relative">
-      {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-      </div>
+   {/* Company Description - Mobile Only */}
+   <motion.div 
+        className="block lg:hidden md:pb-12 pb-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2 className="text-xl font-grotesk font-semibold text-secondary-600 mb-2">Nayona Consultancy</h2>
+        <p className="text-secondary-700 font-grotesk text-body-3">
+          Empowering businesses through innovative digital solutions and strategic Oracle EPM implementations. 
+          With over a decade of expertise, we transform how organizations plan, analyze, and report financial data.
+        </p>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative z-10">
         {/* Navigation Links */}
