@@ -36,7 +36,7 @@ const MarqueeText = () => {
   }, []);
 
   return (
-    <div className="move hidden lg:flex  bg-background-100 py-3 flex items-center justify-start flex-nowrap rounded-b-[40px]">
+    <div className="move  lg:flex py-3 flex items-center justify-start flex-nowrap rounded-b-[40px]">
       {[...Array(7)].map((_, index) => (
         <div key={index} className="marque flex items-center justify-center flex-shrink-0 gap-[3vw] px-[1.5vw] transform -translate-x-full">
           <h1 className="font-grotesk text-light-100 font-medium text-[3vw]">nayona consultancy</h1>

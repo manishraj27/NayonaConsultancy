@@ -9,7 +9,7 @@
 
   /* Track */
   ::-webkit-scrollbar-track {
-    background: #FFFAFA;
+    background: #EEEEFF;
   }
 
   /* Handle */
@@ -23,7 +23,9 @@
   }
 
  
-
+/* * {
+  border: 0.5px solid #ee0303;
+} */
 
   /* * {
     cursor: none;

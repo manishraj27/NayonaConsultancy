@@ -10,11 +10,11 @@ import LenisWrapper from './components/ui/LenisWrapper.jsx'
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
   <StrictMode>
-    {/* <LenisWrapper> */}
+    <LenisWrapper>
     <SpotlightCursor />
     <App />
 
-    {/* </LenisWrapper> */}
+    </LenisWrapper>
   </StrictMode>
   </BrowserRouter>
 )

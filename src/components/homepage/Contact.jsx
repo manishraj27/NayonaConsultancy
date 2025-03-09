@@ -31,7 +31,7 @@ function Contact() {
           <div className="w-full md:w-3/4 text-left">
             <Heading title="Reach To Us" description="PING US" />
             <div className="mt-4 w-full md:w-2/3">
-              <span className="text-on-dark lg:mx-16 lg:w-full text-heading-4 font-grotesk text-pretty block">
+              <span className="text-secondary-300 lg:mx-16 lg:w-full text-heading-4 font-grotesk text-pretty block">
                 Start a conversation about new business opportunities and get a free consultation.
               </span>
             </div>

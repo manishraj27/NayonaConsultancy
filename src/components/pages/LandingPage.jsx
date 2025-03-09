@@ -52,17 +52,12 @@ const LandingPage = () => {
         >
          {/* <MarqueeText /> */}
           <Motto />
-          <Testimonials />
          
           <About />
+          <Testimonials />
           <FAQAcc/>
           {/* <MarqueeText /> */}
         </div>
-      </div>
-
-      {/* Additional content that appears after the animation */}
-      <div className="relative z-30 bg-background-100 rounded-b-3xl">
-      
       </div>
       
     </div>
