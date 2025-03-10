@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   MessageCircle, X, Send, Paperclip,
   FileText, Image, Video,
-  Sparkles
 } from 'lucide-react';
 import FinalLogo from '../../assets/icons/FinalLogo';
 
@@ -30,6 +29,18 @@ const ChatInterface = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isOpen]);
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -97,12 +108,12 @@ const ChatInterface = () => {
 
   const renderAttachments = () => {
     return attachments.map((attachment) => (
-      <div key={attachment.id} className="flex items-center bg-gray-100 p-2 rounded-lg mr-2 mb-2">
-        {attachment.type === 'document' && <FileText size={16} className="mr-2 text-gray-600" />}
-        {attachment.type === 'image' && <Image size={16} className="mr-2 text-gray-600" />}
-        {attachment.type === 'video' && <Video size={16} className="mr-2 text-gray-600" />}
+      <div key={attachment.id} className="flex items-center bg-primary-100 p-2 rounded-lg mr-2 mb-2">
+        {attachment.type === 'document' && <FileText size={16} className="mr-2 text-primary-400" />}
+        {attachment.type === 'image' && <Image size={16} className="mr-2 text-primary-400" />}
+        {attachment.type === 'video' && <Video size={16} className="mr-2 text-primary-400" />}
 
-        <span className="text-xs truncate max-w-[120px] mr-2">{attachment.name}</span>
+        <span className="text-xs truncate max-w-[120px] mr-2 text-primary-400">{attachment.name}</span>
         <button onClick={() => removeAttachment(attachment.id)} className="text-red-500">
           <X size={14} />
         </button>
@@ -119,34 +130,30 @@ const ChatInterface = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute bottom-12 right-0 bg-white rounded-3xl shadow-2xl lg:w-[500px] mb-2 z-50 border border-gray-100"
+            className="absolute bottom-12 right-0 bg-light-100 rounded-3xl shadow-2xl lg:w-[500px] mb-2 z-50 border border-gray-100/50"
           >
             {/* Header */}
-            <div className="p-4 bg-gray-50 rounded-t-3xl text-gray-800 flex justify-between items-center">
+            <div className="p-4 bg-primary-100 rounded-t-3xl text-primary-400 flex justify-between items-center">
               <div className="flex items-center">
                 <FinalLogo className="w-8 h-8 mr-3" />
                 <div>
-                  <span className="font-bold text-base">Nayona AI Assistant</span>
-                  <p className="text-xs text-gray-500 mt-0.5">Enterprise Consultation Support</p>
+                  <span className="font-grotesk font-bold text-base">Nayona AI Assistant</span>
+                  <p className="font-grotesk text-xs text-primary-300 mt-0.5">Enterprise Consultation Support</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-
                 <motion.button
                   whileHover={{ rotate: 90 }}
                   onClick={() => setIsOpen(false)}
-                  className="hover:bg-gray-200 p-1.5 rounded-full"
+                  className="hover:bg-primary-200 p-1.5 rounded-full transition-colors"
                 >
-                  <X size={16} />
+                  <X size={16} className="text-primary-400" />
                 </motion.button>
               </div>
             </div>
 
-           
-
             {/* Messages Area */}
-            <div className="lg:h-[350px] h-[250px] overflow-y-auto p-4 space-y-4">
-              {/* CHAT AREA */}
+            <div className="lg:h-[350px] h-[250px] overflow-y-auto p-4 space-y-4 messages-area">
               {messages.map((message) => (
                 <motion.div
                   key={message.id}
@@ -162,10 +169,11 @@ const ChatInterface = () => {
 
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className={`max-w-[80%] p-3 rounded-2xl ml-4 text-sm ${message.isBot
-                        ? "bg-gray-100 text-gray-800"
-                        : "bg-gray-900 text-white"
-                      }`}
+                    className={`max-w-[80%] p-3 rounded-2xl ml-4 text-sm font-grotesk ${
+                      message.isBot
+                        ? "bg-primary-100 text-primary-400"
+                        : "bg-primary-400 text-light-100"
+                    }`}
                   >
                     {message.text}
                     {message.attachments && message.attachments.length > 0 && (
@@ -173,7 +181,7 @@ const ChatInterface = () => {
                         {message.attachments.map(attachment => (
                           <span
                             key={attachment.id}
-                            className="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded-full mr-1 mb-1"
+                            className="bg-primary-200 text-primary-400 text-xs px-2 py-1 rounded-full mr-1 mb-1"
                           >
                             {attachment.name}
                           </span>
@@ -199,7 +207,7 @@ const ChatInterface = () => {
                 <button
                   key={index}
                   onClick={reply.action}
-                  className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs hover:bg-gray-200 transition-colors"
+                  className="bg-primary-100 text-primary-400 px-3 py-1 rounded-full text-xs font-grotesk hover:bg-primary-200 transition-colors"
                 >
                   {reply.text}
                 </button>
@@ -207,15 +215,15 @@ const ChatInterface = () => {
             </div>
 
             {/* Message Input */}
-            <div className="p-4 border-t border-gray-100">
+            <div className="p-4 border-t border-gray-100/50">
               <form onSubmit={handleSend} className="flex gap-2">
                 <div className="flex items-center space-x-2 mr-2">
                   <motion.label
                     whileHover={{ scale: 1.1 }}
                     htmlFor="document-upload"
-                    className="cursor-pointer hover:bg-gray-100 p-2 rounded-full"
+                    className="cursor-pointer hover:bg-primary-100 p-2 rounded-full"
                   >
-                    <Paperclip size={16} />
+                    <Paperclip size={16} className="text-primary-400" />
                     <input
                       type="file"
                       id="document-upload"
@@ -230,22 +238,19 @@ const ChatInterface = () => {
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 p-2 bg-gray-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="flex-1 p-2 bg-primary-100 rounded-xl text-sm font-grotesk focus:outline-none focus:ring-2 focus:ring-primary-300"
                 />
 
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="bg-gray-900 text-white p-2 rounded-xl hover:bg-gray-800 transition-colors"
+                  className="bg-primary-400 text-light-100 p-2 rounded-xl hover:bg-primary-300 transition-colors"
                 >
                   <Send size={16} />
                 </motion.button>
               </form>
             </div>
-
-
-
           </motion.div>
         )}
       </AnimatePresence>
@@ -254,7 +259,7 @@ const ChatInterface = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-gray-900 text-white p-2.5 rounded-full shadow-lg hover:bg-gray-800 transition-colors"
+        className="bg-primary-400 text-light-100 p-2.5 rounded-full shadow-lg hover:bg-primary-300 transition-colors"
       >
         <MessageCircle size={20} />
       </motion.button>
