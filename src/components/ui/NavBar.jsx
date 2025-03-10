@@ -8,13 +8,26 @@ const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const scrollContainerRef = useRef(null);
 
-  // Handle blur effect on main content
+  // Handle blur effect on main content - MODIFIED
   useEffect(() => {
+    // Get all main page containers but exclude fixed/absolute positioned elements
     const mainContent = document.getElementById("main-content");
+    
     if (mainContent) {
-      mainContent.classList.toggle("blur-sm", isMenuOpen);
-      mainContent.classList.toggle("transition-all", isMenuOpen);
-      mainContent.classList.toggle("duration-300", isMenuOpen);
+      // Apply blur to main content but exclude elements with fixed/absolute positioning
+      if (isMenuOpen) {
+        // Add a dedicated overlay for blur instead of blurring content directly
+        const blurOverlay = document.createElement('div');
+        blurOverlay.id = 'blur-overlay';
+        blurOverlay.className = 'fixed inset-0 backdrop-blur-sm z-30 pointer-events-none transition-all duration-300';
+        document.body.appendChild(blurOverlay);
+      } else {
+        // Remove the blur overlay if it exists
+        const existingOverlay = document.getElementById('blur-overlay');
+        if (existingOverlay) {
+          document.body.removeChild(existingOverlay);
+        }
+      }
     }
   }, [isMenuOpen]);
 
