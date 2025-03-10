@@ -68,7 +68,7 @@ const NavBar = () => {
           >
             <motion.div 
               className="max-h-[70vh] overflow-y-auto rounded-3xl 
-                bg-gray-50 backdrop-blur-xl border border-gray-100/50
+                bg-light-100 backdrop-blur-xl border border-gray-100/50
                 p-6"
             >
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-auto">

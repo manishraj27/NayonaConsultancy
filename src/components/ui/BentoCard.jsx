@@ -97,15 +97,13 @@ function BentoCard({ item, index, currentPath }) {
       onHoverEnd={() => setHoveredCard(null)}
       className={`relative group isolate overflow-hidden
         ${hasSubmenu ? "row-span-2 col-span-1" : "col-span-1 row-span-1"}
-        rounded-3xl bg-white/90
+        rounded-3xl bg-light-200
         border border-gray-100/50
         transition-all duration-300 ease-out
         shadow-sm hover:shadow-md
         ${isActive ? "ring-1 ring-gray-200/50 scale-[1.01]" : ""}
       `}
     >
-    
-
       <motion.a
         href={item.href}
         onClick={handleClick}
@@ -122,7 +120,7 @@ function BentoCard({ item, index, currentPath }) {
             `}
           >
             <Icon className={`w-6 h-6 
-              ${isActive ? 'text-gray-800' : 'text-gray-800'}
+              ${isActive ? 'text-primary-400' : 'text-secondary-500'}
               transition-colors duration-300`} 
             />
           </motion.div>
@@ -146,11 +144,11 @@ function BentoCard({ item, index, currentPath }) {
         </div>
 
         <h3 className={`text-xl font-grotesk font-semibold mb-1 transition-colors duration-300
-          ${isActive ? 'text-gray-900' : 'text-gray-800'}
+          ${isActive ? 'text-primary-400' : 'text-secondary-600'}
         `}>
           {item.name}
         </h3>
-        <p className="text-sm font-grotesk text-gray-600 mb-2">{item.description}</p>
+        <p className="text-sm font-grotesk text-secondary-300 mb-2">{item.description}</p>
 
         <AnimatePresence>
           {hasSubmenu && isActive && (
@@ -184,18 +182,18 @@ function BentoCard({ item, index, currentPath }) {
                     className={`flex items-center gap-3 p-2 rounded-xl
                       transition-all duration-200 font-grotesk text-sm group/item
                       ${isSubmenuItemActive 
-                        ? 'bg-gray-100 text-gray-900 font-grotesk font-semibold' 
-                        : 'hover:bg-white/10 text-gray-700'}`}
+                        ? 'bg-primary-100 text-primary-400 font-semibold' 
+                        : 'hover:bg-primary-200 text-secondary-500'}`}
                   >
                     <div
                       className={`p-1.5 rounded-lg transition-colors duration-200
                         hidden sm:block
                         ${isSubmenuItemActive 
-                          ? 'bg-gray-100/50' 
-                          : 'bg-white/5 group-hover/item:bg-white/10'}`}
+                          ? 'bg-primary-200' 
+                          : 'bg-white/5 group-hover/item:bg-primary-100'}`}
                     >
                       <SubIcon className={`w-4 h-4 
-                        ${isSubmenuItemActive ? 'text-gray-800' : ''}`} 
+                        ${isSubmenuItemActive ? 'text-primary-400' : 'text-secondary-500'}`} 
                       />
                     </div>
                     {subItem.name}
