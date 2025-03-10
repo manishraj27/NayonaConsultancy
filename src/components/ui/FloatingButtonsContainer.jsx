@@ -4,7 +4,7 @@ import WhatsAppButton from "./WhatsAppButton.jsx";
 const FloatingButtonsContainer = () => {
   return (
     <div>
-      <ChatInterface />
+      {/* <ChatInterface /> */}
       <WhatsAppButton />
     </div>
   );
