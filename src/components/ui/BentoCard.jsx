@@ -97,7 +97,7 @@ function BentoCard({ item, index, currentPath }) {
       onHoverEnd={() => setHoveredCard(null)}
       className={`relative group isolate overflow-hidden
         ${hasSubmenu ? "row-span-2 col-span-1" : "col-span-1 row-span-1"}
-        rounded-3xl bg-light-200
+        rounded-3xl bg-secondary-200/50
         border border-gray-100/50
         transition-all duration-300 ease-out
         shadow-sm hover:shadow-md
