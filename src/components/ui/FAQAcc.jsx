@@ -44,7 +44,7 @@ function FAQAcc() {
   return (
     <section
       id="faq"
-      className="relative min-h-screen flex flex-col lg:px-12 px-4 w-full py-16 lg:py-24 overflow-hidden"
+      className="relative min-h-screen flex flex-col lg:px-12 px-4 w-full py-16 lg:py-0 lg:pb-24 overflow-hidden"
       aria-label="FAQ">
       <div className="pb-10 lg:pb-16">
         <Heading title="Frequently Asked Questions" description="FAQ" />
