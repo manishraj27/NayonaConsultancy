@@ -1,17 +1,21 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight } from "lucide-react";
 
-function BentoCard({ item, index, currentPath }) {
+function BentoCard({ item, index, currentPath, onNavigation }) {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const hasSubmenu = item.submenu;
+  // Check if this item's path matches the current path
+  const isCurrentPath = item.to === currentPath;
+  
   const isActive = useMemo(
     () =>
       activeSubmenu === item.name ||
       (hasSubmenu &&
-        item.submenu.some((subItem) => currentPath && subItem.href === currentPath)),
+        item.submenu.some((subItem) => currentPath && subItem.to === currentPath)),
     [activeSubmenu, item, currentPath, hasSubmenu]
   );
 
@@ -21,7 +25,7 @@ function BentoCard({ item, index, currentPath }) {
   useEffect(() => {
     if (hasSubmenu && currentPath) {
       const matchingSubmenuItem = item.submenu.find(
-        (subItem) => subItem.href === currentPath
+        (subItem) => subItem.to === currentPath
       );
       if (matchingSubmenuItem) {
         setActiveSubmenu(item.name);
@@ -34,10 +38,18 @@ function BentoCard({ item, index, currentPath }) {
       if (hasSubmenu) {
         e.preventDefault();
         setActiveSubmenu((prev) => (prev === item.name ? null : item.name));
+      } else {
+        // If it's not a submenu item, close the bento grid
+        onNavigation();
       }
     },
-    [hasSubmenu, item.name]
+    [hasSubmenu, item.name, onNavigation]
   );
+
+  const handleSubmenuItemClick = useCallback(() => {
+    // When a submenu item is clicked, close the bento grid
+    onNavigation();
+  }, [onNavigation]);
 
   const cardVariants = {
     initial: { opacity: 0, scale: 0.95, y: 20 },
@@ -66,10 +78,10 @@ function BentoCard({ item, index, currentPath }) {
 
     return item.submenu.map((subItem, subIndex) => {
       const SubIcon = subItem.icon;
-      const isSubmenuItemActive = currentPath === subItem.href;
+      const isSubmenuItemActive = currentPath === subItem.to;
 
       return (
-        <motion.a
+        <motion.div
           key={subItem.name}
           initial={{ opacity: 0, x: -10 }}
           animate={{
@@ -77,32 +89,41 @@ function BentoCard({ item, index, currentPath }) {
             x: 0,
             transition: { delay: subIndex * 0.1, type: "spring", stiffness: 300, damping: 20 },
           }}
-          href={subItem.href}
-          onClick={(e) => e.stopPropagation()}
-          className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-200 font-grotesk text-sm group/item ${
-            isSubmenuItemActive
-              ? "bg-primary-100 text-primary-400 font-semibold"
-              : "hover:bg-primary-200 text-secondary-500"
-          }`}
         >
-          <div
-            className={`p-1.5 rounded-lg transition-colors duration-200 hidden sm:block ${
+          <Link
+            to={subItem.to}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleSubmenuItemClick();
+            }}
+            className={`flex items-center gap-3 p-2 rounded-xl transition-all duration-200 font-grotesk text-sm group/item ${
               isSubmenuItemActive
-                ? "bg-primary-200"
-                : "bg-white/5 group-hover/item:bg-primary-100"
+                ? "bg-primary-100 text-primary-400 font-semibold"
+                : "hover:bg-primary-200 text-secondary-500"
             }`}
           >
-            <SubIcon
-              className={`w-4 h-4 ${
-                isSubmenuItemActive ? "text-primary-400" : "text-secondary-500"
+            <div
+              className={`p-1.5 rounded-lg transition-colors duration-200 hidden sm:block ${
+                isSubmenuItemActive
+                  ? "bg-primary-200"
+                  : "bg-white/5 group-hover/item:bg-primary-100"
               }`}
-            />
-          </div>
-          {subItem.name}
-        </motion.a>
+            >
+              <SubIcon
+                className={`w-4 h-4 ${
+                  isSubmenuItemActive ? "text-primary-400" : "text-secondary-500"
+                }`}
+              />
+            </div>
+            {subItem.name}
+          </Link>
+        </motion.div>
       );
     });
-  }, [hasSubmenu, isActive, item.submenu, currentPath]);
+  }, [hasSubmenu, isActive, item.submenu, currentPath, handleSubmenuItemClick]);
+
+  // Determine if the item should be disabled based on current path
+  const isDisabled = !hasSubmenu && isCurrentPath;
 
   return (
     <motion.div
@@ -118,11 +139,11 @@ function BentoCard({ item, index, currentPath }) {
         isActive ? "ring-1 ring-gray-200/50 scale-[1.01]" : ""
       }`}
     >
-      <motion.a
-        href={item.href}
+      <Link
+        to={item.to}
         onClick={handleClick}
         className={`relative flex flex-col h-full p-4 ${
-          item.disabled ? "pointer-events-none opacity-50" : ""
+          isDisabled ? "pointer-events-none opacity-50" : ""
         }`}
       >
         <div className="flex items-center justify-between mb-3">
@@ -173,7 +194,7 @@ function BentoCard({ item, index, currentPath }) {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.a>
+      </Link>
     </motion.div>
   );
 }
