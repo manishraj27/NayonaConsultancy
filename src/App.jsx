@@ -11,6 +11,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ColorPaletteVisualizer from "./lib/ColorPaletteVisualizer";
 import Footer from "./components/ui/Footer/Footer";
+import Service from "./components/pages/Service";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -45,6 +46,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/services/enterprise" element={<Service />} />
             <Route path="/careers" element={<Career />} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
           </Routes>

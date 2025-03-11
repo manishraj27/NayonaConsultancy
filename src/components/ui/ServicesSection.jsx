@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 import pic from "../../assets/images/pic1.avif";
+import serviceItems from './../../lib/servicesdata';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -26,61 +27,42 @@ function SerivesSection() {
     if (containerRef.current) {
       const services = gsap.utils.toArray(".service");
 
-      const observerOptions = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
-      };
-
-      const observerCallback = (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const service = entry.target;
-            const imgContainer = service.querySelector(".img");
-
-            // First ScrollTrigger for image width expansion
-            ScrollTrigger.create({
-              trigger: service,
-              start: "bottom bottom",
-              end: "top top",
-              scrub: true,
-              onUpdate: (self) => {
-                const progress = self.progress;
-                let newWidth = 30 + 70 * progress;
-                gsap.to(imgContainer, {
-                  width: `${newWidth}%`,
-                  duration: 0.1,
-                  ease: "none",
-                });
-              },
-            });
-
-            // Second ScrollTrigger for section height change
-            ScrollTrigger.create({
-              trigger: service,
-              start: "top bottom",
-              end: "top top",
-              scrub: true,
-              onUpdate: (self) => {
-                const progress = self.progress;
-                let newHeight = 150 + 300 * progress;
-                gsap.to(service, {
-                  height: `${newHeight}px`,
-                  duration: 0.1,
-                  ease: "none",
-                });
-              },
-            });
-
-            observer.unobserve(service);
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(observerCallback, observerOptions);
-
       services.forEach((service) => {
-        observer.observe(service);
+        const imgContainer = service.querySelector(".img");
+
+        // ScrollTrigger for image width expansion
+        ScrollTrigger.create({
+          trigger: service,
+          start: "top bottom", // Start animation when the top of the service hits the bottom of the viewport
+          end: "top top", // End animation when the top of the service hits the top of the viewport
+          scrub: true,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            let newWidth = 30 + 70 * progress; // Increase width from 30% to 100%
+            gsap.to(imgContainer, {
+              width: `${newWidth}%`,
+              duration: 0.1,
+              ease: "none",
+            });
+          },
+        });
+
+        // ScrollTrigger for section height change
+        ScrollTrigger.create({
+          trigger: service,
+          start: "top bottom", // Start animation when the top of the service hits the bottom of the viewport
+          end: "top top", // End animation when the top of the service hits the top of the viewport
+          scrub: true,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            let newHeight = 150 + 300 * progress; // Increase height from 150px to 450px
+            gsap.to(service, {
+              height: `${newHeight}px`,
+              duration: 0.1,
+              ease: "none",
+            });
+          },
+        });
       });
     }
 
@@ -91,31 +73,12 @@ function SerivesSection() {
     };
   }, []);
 
-  // Sample service data
-  const serviceItems = [
-    {
-      title: "Lorem ipsum",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus earum rem Lorem ipsum dolor sit amet, consectetur adipisi",
-      image: pic,
-    },
-    {
-      title: "Lorem ipsum",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus earum rem Lorem ipsum dolor sit amet, consectetur adipisi",
-      image: pic,
-    },
-    
-    {
-      title: "Lorem ipsum",
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus earum rem Lorem ipsum dolor sit amet, consectetur adipisi",
-      image: pic,
-    },
-    // Add more service items as needed
-  ];
+
 
   return (
     <section
       id="services"
-      className="relative min-h-screen flex flex-col lg:px-12 px-4 w-full py-16 lg:py-16 overflow-hidden"
+      className="relative min-h-screen flex flex-col w-full py-16 lg:py-16 overflow-hidden"
       aria-label="SerivesSection"
     >
       <div ref={containerRef}>
