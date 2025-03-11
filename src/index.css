@@ -15,16 +15,19 @@
     background: #EEEEFF;
   }
 
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: #1f1f1f;
-  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #1f1f1f;
+  border: 3px solid transparent; /* Creates padding effect */
+  background-clip: padding-box; /* Ensures background stays within the border */
+}
 
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #3f3f3f;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f3f;
+}
+
 
  
 /* * {

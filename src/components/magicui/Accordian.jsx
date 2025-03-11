@@ -176,7 +176,7 @@ const Accordion = ({ number, title, children, isOpen, onClick }) => {
         ref={contentRef}
         className="accordion-content h-0 overflow-hidden"
       >
-        <ul className="py-4 px-6 space-y-3">
+        <ul className="py-4 px-4 space-y-3">
           {React.Children.map(children, (child, index) => (
             <li
               key={index}
