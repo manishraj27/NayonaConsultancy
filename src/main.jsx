@@ -5,15 +5,16 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import SpotlightCursor from './components/ui/SpotlightCursor.jsx'
 import LenisWrapper from './components/ui/LenisWrapper.jsx'
+import ServicesSection from './components/ui/ServicesSection';
 
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <StrictMode>
-      <LenisWrapper>
         <SpotlightCursor />
         <App />
-      </LenisWrapper>
+        {/* <ServicesSection /> */}
+
     </StrictMode>
   </BrowserRouter>
 )
