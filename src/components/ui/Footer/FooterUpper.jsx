@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Send, Instagram, Linkedin, MapPin, Phone } from 'lucide-react';
 import { Icon } from "@iconify/react";
 import { motion } from 'framer-motion';
-import apiconfig from '../../configurations/APIConfig';
+import apiconfig from '../../../configurations/APIConfig';
 
 function FooterUpper() {
   const [emailFocus, setEmailFocus] = useState(false);

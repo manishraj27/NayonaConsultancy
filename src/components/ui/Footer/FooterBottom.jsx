@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import globe from "../../assets/images/globe.png";
-import NayonaFooter from "../../assets/icons/NayonaFooter";
-import FooterArrow from "../../assets/icons/FooterArrow";
-import { motion, useAnimation } from "framer-motion";
-import { Copyright } from "lucide-react";
+import globe from "../../../assets/images/globe.png";
+import NayonaFooter from "../../../assets/icons/NayonaFooter";
+import FooterArrow from "../../../assets/icons/FooterArrow";
+import {motion, useAnimation } from "framer-motion";
 
 function FooterBottom() {
   // Scroll to top function

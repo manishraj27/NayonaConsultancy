@@ -1,6 +1,3 @@
-
-import { cn } from "../../lib/utils";
-import DotPattern from "../magicui/DotPattern";
 import FooterBottom from "./FooterBottom";
 import FooterCredits from "./FooterCredits";
 import FooterUpper from "./FooterUpper";
