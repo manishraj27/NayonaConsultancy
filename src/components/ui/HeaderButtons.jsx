@@ -4,6 +4,7 @@ import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
 import LogoWithInitial from '../../assets/icons/LogoWithInitial';
+import { Link } from "react-router-dom";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [logoType, setLogoType] = useState('full');
@@ -127,8 +128,8 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
 
       <div className="flex flex-row items-center gap-4 lg:gap-8 z-[4] pointer-events-auto">
         {/* Chat with us button */}
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="p-[0.3rem] select-none will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex-row items-center hidden lg:flex"
           style={{ backgroundColor: "#C7F0FF" }} // Single tone for contrast
         >
@@ -143,7 +144,7 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
               <ChatIcon />
             </span>
           </span>
-        </a>
+        </Link>
 
         {/* Menu button */}
         <button

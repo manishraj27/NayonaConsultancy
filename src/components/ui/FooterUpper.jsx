@@ -68,7 +68,7 @@ function FooterUpper() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-xl font-grotesk font-semibold text-secondary-600 mb-2">Nayona Consultancy</h2>
+        <h2 className="text-lg font-grotesk font-semibold text-secondary-600 mb-2">Nayona Consultancy</h2>
         <p className="text-secondary-700 font-grotesk text-body-3">
           Empowering businesses through innovative digital solutions and strategic Oracle EPM implementations. 
           With over a decade of expertise, we transform how organizations plan, analyze, and report financial data.
