@@ -39,7 +39,7 @@ function App() {
 
   return (
     <>
-      <WebLoader />
+      {/* <WebLoader /> */}
       <div className="min-h-screen flex flex-col bg-light-200">
         <NavBar />
         <main id="main-content">

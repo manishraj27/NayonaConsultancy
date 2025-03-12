@@ -6,7 +6,7 @@ function Service() {
     <section
     id="service"
     aria-label="service"
-    className=" rounded-b-3xl overflow-hidden lg:px-12 px-6 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
+    className=" rounded-b-3xl overflow-hidden lg:px-12 px-4 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
   >
 <SerivesSection />
 

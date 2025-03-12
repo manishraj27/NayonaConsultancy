@@ -11,9 +11,12 @@ import ServicesSection from './components/ui/ServicesSection';
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <StrictMode>
+      <LenisWrapper>
         <SpotlightCursor />
         <App />
         {/* <ServicesSection /> */}
+
+      </LenisWrapper>
 
     </StrictMode>
   </BrowserRouter>
