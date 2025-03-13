@@ -56,12 +56,12 @@ function ServicesSection() {
         
         // Reset to initial state
         gsap.set(imgEl, { width: "30%" });
-        gsap.set(serviceEl, { height: 145 });
+        gsap.set(serviceEl, { height: 150 });
         
         // Create animation for the specific viewport range
         ScrollTrigger.create({
           trigger: serviceEl,
-          start: "top 50%", // Start when the top of element reaches 30% down the viewport
+          start: "top 80%", // Start when the top of element reaches 30% down the viewport
           end: "top 20%",  // End when the top of element is 20% above the viewport
           onEnter: () => {
             // Animate to enlarged state when entering the specified range
@@ -71,7 +71,7 @@ function ServicesSection() {
           onLeave: () => {
             // Return to original size when leaving the range (scrolling up)
             gsap.to(imgEl, { width: "30%", duration: 0.3, ease: "power1.in" });
-            gsap.to(serviceEl, { height: 145, duration: 0.3, ease: "power1.in" });
+            gsap.to(serviceEl, { height: 150, duration: 0.3, ease: "power1.in" });
           },
           onEnterBack: () => {
             // Animate to enlarged state when entering the range again (scrolling up)
@@ -81,7 +81,7 @@ function ServicesSection() {
           onLeaveBack: () => {
             // Return to original size when leaving the range (scrolling down)
             gsap.to(imgEl, { width: "30%", duration: 0.3, ease: "power1.in" });
-            gsap.to(serviceEl, { height: 145, duration: 0.3, ease: "power1.in" });
+            gsap.to(serviceEl, { height: 150, duration: 0.3, ease: "power1.in" });
           },
           markers: true, // Uncomment for debugging
           id: `service-trigger-${index}`,
@@ -113,7 +113,7 @@ function ServicesSection() {
           <div
             key={index}
             ref={serviceRefs.current[index]}
-            className="service flex gap-8 h-[145px] border-t border-opacity-20 border-secondary-700"
+            className="service flex gap-8 h-[150px] border-t border-opacity-20 border-secondary-700"
           >
             <div className="service-info w-full h-full flex flex-col justify-around p-4">
               <h1 className="text-on-dark text-3xl font-medium">{service.title}</h1>
