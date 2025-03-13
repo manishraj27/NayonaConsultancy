@@ -132,9 +132,13 @@ function ServicesSection() {
   return (
     <div
       id="services"
-      className="relative flex flex-col w-full py-16 lg:py-16  overflow-hidden bg-background-100"
+      className="relative flex flex-col w-full pb-28 overflow-hidden bg-background-100"
       aria-label="Services Section"
     >
+      <h1 className="text-on-dark text-heading-1 font-grotesk text-center mb-20">
+       Oracle EPM Services We Provide
+      </h1>
+
       {/* Desktop Layout */}
       <div className="hidden md:flex md:flex-col w-full " ref={containerRef}>
         {serviceItems.map((service, index) => (
