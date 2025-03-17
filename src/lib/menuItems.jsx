@@ -44,8 +44,8 @@ const menuItems = [
     submenu: [
       { name: "Enterprise Solutions", to: "/services/enterprise", icon: Building },
       { name: "Cloud Services", to: "/services/cloud", icon: Cloud },
-      { name: "IT Infrastructure", to: "/services/infrastructure", icon: Server },
-      { name: "AI Integration", to: "/services/ai", icon: Server }
+      // { name: "IT Infrastructure", to: "/services/infrastructure", icon: Server },
+      // { name: "AI Integration", to: "/services/ai", icon: Server }
     ]
   },
   {
