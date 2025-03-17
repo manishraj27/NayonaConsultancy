@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import CalComIntegration from "../ui/CalComIntegration";
 
 function Service() {
-  
+
 
   return (
     <section
@@ -19,30 +19,30 @@ function Service() {
     >
       {/* Background gradient effect */}
       {/* <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-red-500 to-gray-400 pointer-events-none" /> */}
-      
+
       {/* Introduction Section */}
-      <motion.div 
+      <motion.div
         className="w-full text-left min-h-screen"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
         <Heading
           title="Services We Deal With"
           description="Enterprise Solutions"
         />
         <div className="mt-6 w-full md:w-2/3">
-          <motion.span 
+          <motion.span
             className="text-secondary-300 lg:mx-16 lg:w-full text-body-1 font-grotesk text-pretty block"
-           
+
           >
             Optimize, Automate, Elevate – Oracle EPM Solutions for Your Business
             Needs.
           </motion.span>
-          <motion.p 
+          <motion.p
             className="text-on-dark text-body-2 font-grotesk mt-4"
-           
+
           >
             Our Oracle EPM services are designed to streamline your financial
             processes, improve decision-making, and ensure compliance. Below, we
@@ -53,23 +53,25 @@ function Service() {
       </motion.div>
 
       {/* Services Section */}
-      <motion.div 
+      <motion.div
         className="w-full"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
+
+        {/* this component explains about oracle epm services */}
         <ServicesSection />
       </motion.div>
 
       {/* Implementation Methodology Section */}
-      <motion.div 
+      <motion.div
         className="w-full mt-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+      
       >
         <Heading
           title="Our Implementation Methodology"
@@ -79,12 +81,12 @@ function Service() {
       </motion.div>
 
       {/* Enhanced Quote Section with animation */}
-      <motion.div 
+      <motion.div
         className="bg-light-100 rounded-3xl w-full mx-0 mt-24 overflow-hidden shadow-lg"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
         <div className="w-full py-16 px-6 md:px-12 relative">
           <motion.div
@@ -95,8 +97,8 @@ function Service() {
           >
             <Quote size={64} />
           </motion.div>
-          
-          <motion.h1 
+
+          <motion.h1
             className="text-center text-heading-2 md:text-heading-1 font-grotesk text-background-100 mb-6"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -104,7 +106,7 @@ function Service() {
           >
             We are here to help you grow your business
           </motion.h1>
-          
+
           <motion.p
             className="text-center text-body-1 font-grotesk text-background-100/80 max-w-3xl mx-auto"
             initial={{ y: 20, opacity: 0 }}
@@ -113,43 +115,40 @@ function Service() {
           >
             "Transform your financial operations with our expertise. We don't just implement solutions; we create strategic advantages for your business."
           </motion.p>
-          
+
           <motion.div
             className="mt-8 flex justify-center"
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            {/* <a href="#contact" className="bg-secondary-300 hover:bg-secondary-400 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
-              Get Started
-            </a> */}
-          
-            
-          <Button
-            text="Get Started"
-            />
+
+
+            <Link to="/contact">
+            <Button text="Get Started"/>
+            </Link>
 
           </motion.div>
         </div>
       </motion.div>
 
       {/* Enhanced "Why Choose Us" Section */}
-      <motion.div 
+      <motion.div
         className="w-full mt-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
         <Heading title="Why Choose Us?" description="What Makes Us Stand Out" />
-        
-        <motion.div 
+
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8"
-    
+
         >
-          <motion.div 
+          <motion.div
             className="bg-background-200/30 p-6 rounded-xl backdrop-blur-sm hover:bg-background-200/50 transition-all duration-300"
-           
+
           >
             <div className="flex items-center mb-3">
               <div className="w-10 h-10 rounded-full bg-secondary-300 flex items-center justify-center text-white mr-3">
@@ -159,10 +158,10 @@ function Service() {
             </div>
             <p className="text-on-dark/80 text-body-2 ml-12">Specialized team with extensive experience in Oracle EPM implementations across industries.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="bg-background-200/30 p-6 rounded-xl backdrop-blur-sm hover:bg-background-200/50 transition-all duration-300"
-           
+
           >
             <div className="flex items-center mb-3">
               <div className="w-10 h-10 rounded-full bg-secondary-300 flex items-center justify-center text-white mr-3">
@@ -172,10 +171,10 @@ function Service() {
             </div>
             <p className="text-on-dark/80 text-body-2 ml-12">Customized implementation strategies aligned with your unique business requirements and objectives.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="bg-background-200/30 p-6 rounded-xl backdrop-blur-sm hover:bg-background-200/50 transition-all duration-300"
-           
+
           >
             <div className="flex items-center mb-3">
               <div className="w-10 h-10 rounded-full bg-secondary-300 flex items-center justify-center text-white mr-3">
@@ -185,10 +184,10 @@ function Service() {
             </div>
             <p className="text-on-dark/80 text-body-2 ml-12">Successfully delivered enterprise projects with measurable ROI and client satisfaction.</p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="bg-background-200/30 p-6 rounded-xl backdrop-blur-sm hover:bg-background-200/50 transition-all duration-300"
-           
+
           >
             <div className="flex items-center mb-3">
               <div className="w-10 h-10 rounded-full bg-secondary-300 flex items-center justify-center text-white mr-3">
@@ -202,12 +201,12 @@ function Service() {
       </motion.div>
 
       {/* Client Testimonial Section */}
-      <motion.div 
+      <motion.div
         className="w-full mt-24 bg-background-200/20 p-8 rounded-2xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
         {/* <Heading title="Client Success Stories" description="What Our Clients Say" /> */}
         <h1 className="text-heading-2 text-on-dark font-grotesk text-center mb-6">Client Success Stories</h1>
@@ -215,7 +214,7 @@ function Service() {
           <div className="absolute -left-4 top-0 text-secondary-300/30">
             <Quote size={48} />
           </div>
-          
+
           <motion.div
             className="pl-12 pr-4"
             initial={{ opacity: 0 }}
@@ -235,18 +234,18 @@ function Service() {
           </motion.div>
         </div>
       </motion.div>
-      
+
       {/* Call to Action */}
-      <motion.div 
+      <motion.div
         className="w-full mt-24 text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-       
+
       >
         <h2 className="text-heading-3 text-on-dark font-grotesk mb-6">Ready to Transform Your Financial Operations?</h2>
         <p className="text-on-dark/80 mb-8 max-w-2xl mx-auto">Let's discuss how our Oracle EPM solutions can address your specific business challenges and drive growth.</p>
-       <CalComIntegration theme="dark" />
+        <CalComIntegration theme="dark" />
       </motion.div>
     </section>
   );

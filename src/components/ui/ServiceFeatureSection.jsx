@@ -82,7 +82,7 @@ const implementationMethodology = [
 
 export default function ServiceFeatureSection() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-12">
+    <section className="max-w-6xl mx-auto py-12">
       <HoverEffect items={implementationMethodology} className="gap-6" />
     </section>
   );
