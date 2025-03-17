@@ -81,7 +81,7 @@ function Service() {
 
         {/* Animated down arrow */}
         <motion.div
-          className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-12 lg:left-1/2 transform -translate-x-1/2"
           initial={{ y: 0 }}
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
@@ -122,7 +122,7 @@ function Service() {
           </motion.p>
         </div>
 
-        <div className="py-56">
+        <div className="lg:py-56 pt-52">
           <ServicesSection />
         </div>
       </motion.div>
