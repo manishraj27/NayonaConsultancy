@@ -142,7 +142,7 @@ const BulletinCarousel = ({ items }) => {
   return (
     <div 
       ref={carouselRef} 
-      className="relative w-full max-w-md h-[100px] perspective-1000"
+      className="relative w-full max-w-lg h-[100px] perspective-1000"
     >
       <div className="absolute w-full h-full">
         <BulletinCard 
