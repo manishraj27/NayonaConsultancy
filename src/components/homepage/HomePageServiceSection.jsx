@@ -1,9 +1,9 @@
 
 import React from "react";
 
-import Image from './../ui/animated-testimonials';
 import { Card, Carousel } from "../magicui/apple-cards-carousel";
 import pic from "../../assets/images/ServiceImages/EnterpriseDataManagement.webp";
+import Heading from "../ui/Heading";
 
 
 export function HomePageServiceSection() {
@@ -12,12 +12,13 @@ export function HomePageServiceSection() {
   ));
 
   return (
-    <div className="w-full h-full py-20">
-      <h2
-        className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-        Get to know your iSad.
-      </h2>
+    <div className="min-h-screen py-24">
+    <div className="w-full px-4 lg:px-12">
+     <Heading title="Our Services"  description="Services"/>
+    </div>
       <Carousel items={cards} />
+    
+
     </div>
   );
 }
@@ -40,12 +41,7 @@ const DummyContent = () => {
               Langotiya jeetu ka mara hua yaar is ready to capture every
               thought.
             </p>
-            <Image
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height="500"
-              width="500"
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain" />
+           
           </div>
         );
       })}

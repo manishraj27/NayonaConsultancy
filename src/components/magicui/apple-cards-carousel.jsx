@@ -8,7 +8,6 @@ import React, {
 
 import { AnimatePresence, motion } from "motion/react";
 
-
 import { cn } from './../../lib/utils';
 import { useOutsideClick } from './../../lib/use-outside-click';
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -144,6 +143,8 @@ export const Card = ({
   const containerRef = useRef(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
 
+
+
   useEffect(() => {
     function onKeyDown(event) {
       if (event.key === "Escape") {
@@ -188,7 +189,9 @@ export const Card = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[1000] my-10 p-4 md:p-10 rounded-3xl font-sans relative">
+              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit  z-[1000] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              data-lenis-prevent
+              >
               <button
                 className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
                 onClick={handleClose}>

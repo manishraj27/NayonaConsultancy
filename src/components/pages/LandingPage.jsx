@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from "react";
 import Hero from "../homepage/Hero";
 import Motto from "../ui/Motto";
@@ -7,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Testimonials } from "../ui/Testimonials";
 import TrustedBySection from "../ui/TrustedBySection";
 import MarqueeText from "../ui/MarqueeText";
-import FAQAcc from './../ui/FAQAcc';
+import FAQAcc from "./../ui/FAQAcc";
 import SerivesSection from "../ui/ServicesSection";
 import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
 gsap.registerPlugin(ScrollTrigger);
@@ -36,33 +37,41 @@ const LandingPage = () => {
     return () => ctx.revert(); // Cleanup
   }, []);
 
+ 
   return (
-    
     <div className="relative" role="main">
       {/* Main container for the parallax effect */}
       <div ref={containerRef} className="relative h-screen overflow-hidden">
         {/* Fixed Hero Section */}
-        <div className="fixed top-0 left-0 w-full h-screen z-10" aria-label="Hero Section">
+        <div
+          className="fixed top-0 left-0 w-full h-screen z-10"
+          aria-label="Hero Section"
+        >
           <Hero />
         </div>
 
         {/* Dark Sections Container that slides up */}
         <div
           ref={darkSectionsRef}
-          className="absolute dark-section top-full left-0 right-0 w-full min-h-screen bg-background-100 rounded-[40px] z-20"
-          aria-label="Content Sections"
+          className="absolute dark-section top-full left-0 right-0 w-full min-h-screen bg-background-100 rounded-t-[40px] z-20"
+         
         >
-         {/* <MarqueeText /> */}
+          {/* <MarqueeText /> */}
           <Motto />
-         {/* <SerivesSection /> */}
+          {/* <SerivesSection /> */}
           {/* <About /> */}
-          <HomePageServiceSection />
-          <Testimonials />
-          <FAQAcc/>
+          
           {/* <MarqueeText /> */}
         </div>
       </div>
-      
+
+
+      <div className="relative bg-background-100  left-0 right-0 w-full min-h-screen rounded-b-[40px] ">
+        <HomePageServiceSection />
+        
+        <Testimonials />
+          <FAQAcc />
+      </div>
     </div>
   );
 };

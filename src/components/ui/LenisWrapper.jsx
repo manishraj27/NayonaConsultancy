@@ -13,6 +13,7 @@ const LenisWrapper = ({ children }) => {
       lerp: 0.1, // Adjust the smoothness (optional)
       smoothWheel: true, // Enable smooth wheel scrolling
       smoothTouch: false, // Disable smooth scrolling on touch devices for better performance
+      direction: "vertical", // Restrict Lenis to vertical scrolling only
     });
 
     // Sync Lenis with GSAP ScrollTrigger
