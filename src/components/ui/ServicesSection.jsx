@@ -136,7 +136,7 @@ function ServicesSection() {
       aria-label="Services Section"
     >
       <h1 className="text-on-dark text-heading-1 font-grotesk text-center mb-20">
-       Oracle EPM Services We Provide
+       Oracle EPM Services
       </h1>
 
       {/* Desktop Layout */}

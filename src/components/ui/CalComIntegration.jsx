@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
 import Button from "./Button"; // Import the animated button component
 
-const CalComIntegration = () => {
+const CalComIntegration = ({theme}) => {
   useEffect(() => {
     (async function () {
       const cal = await getCalApi({ namespace: "30min" });
@@ -29,7 +29,7 @@ const CalComIntegration = () => {
       <div
         onClick={() => document.getElementById("calcom-button").click()}
       >
-        <Button text="Schedule meeting" />
+        <Button text="Schedule meeting" theme={theme} />
       </div>
     </div>
   );
