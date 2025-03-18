@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import ChatIcon from "../../assets/icons/ChatIcon";
 import DotsIcon from "../../assets/icons/DotsIcon";
 import FinalLogoWithBrand from "../../assets/icons/FinalLogoWithBrand";
-import LogoWithInitial from '../../assets/icons/LogoWithInitial';
+import LogoWithInitial from "../../assets/icons/LogoWithInitial";
 import { Link } from "react-router-dom";
 
 const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
-  const [logoType, setLogoType] = useState('full');
+  const [logoType, setLogoType] = useState("full");
   const [logoColor, setLogoColor] = useState("#E1E4E6");
   const [menuColor, setMenuColor] = useState("#0c0c0c");
   const [menuInnerCircleColor, setMenuInnerCircleColor] = useState("#1A1F2F");
@@ -15,23 +15,24 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
   const [isScrolling, setIsScrolling] = useState(false);
   const scrollTimeoutRef = useRef(null);
 
-  // Memoized color settings for motto and footer sections
-  const colorSettings = useMemo(() => ({
-    motto: {
-      logoColor: "#EEEEFF",
-      menuColor: "#EEEEFF",
-      menuInnerCircleColor: "#8A92B2",
-      textColor: "#1A202C"
-    },
-    default: {
-      logoColor: "#1E1B4B",
-      menuColor: "#0c0c0c",
-      menuInnerCircleColor: "#1A1F2F",
-      textColor: "#E2E8F0"
-    }
-  }), []);
+  const colorSettings = useMemo(
+    () => ({
+      motto: {
+        logoColor: "#EEEEFF",
+        menuColor: "#EEEEFF",
+        menuInnerCircleColor: "#8A92B2",
+        textColor: "#1A202C",
+      },
+      default: {
+        logoColor: "#1E1B4B",
+        menuColor: "#0c0c0c",
+        menuInnerCircleColor: "#1A1F2F",
+        textColor: "#E2E8F0",
+      },
+    }),
+    []
+  );
 
-  // Debounced scroll handler
   const handleScroll = useCallback(() => {
     const scrollY = window.scrollY;
 
@@ -44,65 +45,63 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       setIsScrolling(false);
     }, 40);
 
-    setLogoType(scrollY > 50 ? 'initial' : 'full');
+    setLogoType(scrollY > 50 ? "initial" : "full");
 
-    const motto = document.querySelector('.dark-section');
+    const darkSections = document.querySelectorAll(".dark-section");
+    const viewportHeight = window.innerHeight;
+    let isAnyDarkSectionVisible = false;
 
-    if (motto) {
-      const mottoRect = motto.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+    darkSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const visiblePercentage = Math.min(
+        (viewportHeight - rect.top) / viewportHeight * 100,
+        100
+      );
 
-      if (mottoRect.top < viewportHeight && mottoRect.bottom > 0) {
-        const visiblePercentage = Math.min(
-          (viewportHeight - mottoRect.top) / viewportHeight * 100,
-          100
-        );
-
-        if (visiblePercentage > 30) {
-          setLogoColor(colorSettings.motto.logoColor);
-          setMenuColor(colorSettings.motto.menuColor);
-          setMenuInnerCircleColor(colorSettings.motto.menuInnerCircleColor);
-          setTextColor(colorSettings.motto.textColor);
-        } else {
-          setLogoColor(colorSettings.default.logoColor);
-          setMenuColor(colorSettings.default.menuColor);
-          setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
-          setTextColor(colorSettings.default.textColor);
-        }
-      } else {
-        setLogoColor(colorSettings.default.logoColor);
-        setMenuColor(colorSettings.default.menuColor);
-        setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
-        setTextColor(colorSettings.default.textColor);
+      if (rect.top < viewportHeight && rect.bottom > 0 && visiblePercentage > 30) {
+        isAnyDarkSectionVisible = true;
       }
+    });
+
+    if (isAnyDarkSectionVisible) {
+      setLogoColor(colorSettings.motto.logoColor);
+      setMenuColor(colorSettings.motto.menuColor);
+      setMenuInnerCircleColor(colorSettings.motto.menuInnerCircleColor);
+      setTextColor(colorSettings.motto.textColor);
+    } else {
+      setLogoColor(colorSettings.default.logoColor);
+      setMenuColor(colorSettings.default.menuColor);
+      setMenuInnerCircleColor(colorSettings.default.menuInnerCircleColor);
+      setTextColor(colorSettings.default.textColor);
     }
   }, [colorSettings]);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Initial check
 
     return () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
 
   return (
     <div className="fixed flex flex-row items-center justify-between w-full px-4 lg:px-12 py-4 lg:py-4 z-40">
+      {/* Rest of your component remains unchanged */}
       <motion.div
         onClick={() => (window.location.href = "/")}
         className="text-xl lg:text-3xl font-bold tracking-wider flex items-center cursor-pointer"
-        style={{ 
+        style={{
           color: logoColor,
           opacity: isScrolling ? 0 : 1,
-          transition: 'opacity 0.3s ease'
+          transition: "opacity 0.3s ease",
         }}
       >
         <AnimatePresence mode="wait">
-          {logoType === 'full' ? (
+          {logoType === "full" ? (
             <motion.div
               key="fullLogo"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -127,11 +126,10 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
       </motion.div>
 
       <div className="flex flex-row items-center gap-4 lg:gap-8 z-[4] pointer-events-auto">
-        {/* Chat with us button */}
         <Link
           to="/contact"
           className="p-[0.3rem] select-none will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex-row items-center hidden lg:flex"
-          style={{ backgroundColor: "#C7F0FF" }} // Single tone for contrast
+          style={{ backgroundColor: "#C7F0FF" }}
         >
           <span className="text-sm lg:text-lg font-normal uppercase pl-10 pr-8 text-on-light">
             Chat with us
@@ -146,18 +144,22 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
           </span>
         </Link>
 
-        {/* Menu button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="p-[0.3rem] will-change-transform group hover:scale-110 transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1)] rounded-full flex flex-row items-center"
           style={{ backgroundColor: menuColor }}
         >
-          <span className="text-sm lg:text-base font-normal uppercase pl-6 lg:pl-10 pr-4 lg:pr-8" style={{ color: textColor }}>
+          <span
+            className="text-sm lg:text-base font-normal uppercase pl-6 lg:pl-10 pr-4 lg:pr-8"
+            style={{ color: textColor }}
+          >
             <span className="block text-wrapper relative overflow-hidden">
               <span
                 className="absolute left-1/2 -translate-x-1/2 top-0 flex transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.2)]"
                 style={{
-                  transform: `translateY(${isMenuOpen ? "-100%" : "0"}) translateX(-50%)`,
+                  transform: `translateY(${
+                    isMenuOpen ? "-100%" : "0"
+                  }) translateX(-50%)`,
                 }}
               >
                 Menu
@@ -176,7 +178,10 @@ const HeaderButtons = ({ isMenuOpen, setIsMenuOpen }) => {
             className="relative overflow-hidden flex items-center justify-center w-7 lg:w-12 h-7 lg:h-12 rounded-full"
             style={{ backgroundColor: menuInnerCircleColor }}
           >
-            <span className="block w-1/3 will-change-transform group-hover:rotate-[90deg] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]" style={{ color: textColor }}>
+            <span
+              className="block w-1/3 will-change-transform group-hover:rotate-[90deg] transition-transform duration-500 ease-[cubic-bezier(.22,.68,0,1.5)]"
+              style={{ color: textColor }}
+            >
               <DotsIcon />
             </span>
           </span>
