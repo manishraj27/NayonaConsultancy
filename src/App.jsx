@@ -9,6 +9,7 @@ import Footer from "./components/ui/Footer/Footer";
 import Service from "./components/pages/Service";
 import ColorPaletteVisualizer from "./lib/ColorPaletteVisualizer";
 import useScrollTrigger from "./lib/hooks/useScrollTrigger";
+import NotFound from './components/ui/NotFound';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/careers" element={<Career />} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
           {showFloatingButtons && <FloatingButtonsContainer />}
           <Footer />

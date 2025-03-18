@@ -19,7 +19,7 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #1f1f1f;
-  border: 3px solid transparent; /* Creates padding effect */
+  border: 2px solid transparent; /* Creates padding effect */
   background-clip: padding-box; /* Ensures background stays within the border */
 }
 
