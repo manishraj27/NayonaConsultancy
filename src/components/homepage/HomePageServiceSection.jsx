@@ -12,7 +12,7 @@ export function HomePageServiceSection() {
   ));
 
   return (
-    <div className="min-h-screen py-24">
+    <div className="py-24">
     <div className="w-full px-4 lg:px-12">
      <Heading title="Our Services"  description="Services"/>
     </div>
