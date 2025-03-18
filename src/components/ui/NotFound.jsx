@@ -75,7 +75,7 @@ function NotFound() {
         animate="visible"
       >
         <motion.h1
-          className="text-heading-1 text-secondary-200 font-grotesk font-bold drop-shadow-lg"
+          className="text-8xl text-secondary-200 font-open-sans tracking-widest font-bold drop-shadow-lg"
           variants={itemVariants}
         >
           404
