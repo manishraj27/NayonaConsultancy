@@ -20,7 +20,7 @@ export function HomePageServiceSection() {
       <div className="w-full px-4 lg:px-12">
         <Heading
           title="Our Services"
-          description="Explore Nayona Consultancy's Oracle EPM Solutions"
+          description="Explore Services"
         />
       </div>
       <Carousel items={cards} />
