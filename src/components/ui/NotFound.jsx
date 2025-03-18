@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Ballpit from "../../blocks/Backgrounds/Ballpit/Ballpit";
 import Button from "./Button";
 
 function NotFound() {
-  // Animation variants for Framer Motion
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640); // Mobile threshold at 640px (sm)
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,7 +56,6 @@ function NotFound() {
 
   return (
     <div className="relative w-full min-h-screen bg-background-100 dark-section rounded-b-3xl flex flex-col items-center justify-center overflow-hidden">
-      {/* Background with Ballpit */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -55,19 +64,18 @@ function NotFound() {
         }}
       >
         <Ballpit
-          count={60}
-          colors={[0xC7D2FE, 0x6366F1, 0x2C5282]} // Black balls
-          gravity={0.8} // Balls fall downward
-          friction={0.99} // Natural settling
-          wallBounce={0.9} // Reduced bounce for stacking
-          followCursor={false} // No cursor interaction
-          maxY={10} // Vertical space for falling
-          minSize={0.5} // Minimum ball size
-          maxSize={1.5} // Maximum ball size
+          count={isMobile ? 30 : 60}         // Fewer balls on mobile
+          colors={[0xC7D2FE, 0x6366F1, 0x2C5282]} // Accent gradient + deep blue
+          gravity={0.8}
+          friction={0.99}
+          wallBounce={0.9}
+          followCursor={false}
+          maxY={10}
+          minSize={isMobile ? 0.3 : 0.5}     // Smaller min size on mobile
+          maxSize={isMobile ? 0.8 : 1.5}     // Smaller max size on mobile
         />
       </div>
 
-      {/* Animated Content */}
       <motion.div
         className="relative z-10 text-center px-6 py-12 lg:px-12 lg:py-16"
         variants={containerVariants}
@@ -87,7 +95,7 @@ function NotFound() {
           Page Not Found
         </motion.h2>
         <motion.p
-          className="text-body-1 text-on-dark mt-6 max-w-md mx-auto my-8  "
+          className="text-body-1 text-on-dark mt-6 max-w-md mx-auto my-8"
           variants={itemVariants}
         >
           Oops! It seems this page has vanished into the void. Let’s get you
