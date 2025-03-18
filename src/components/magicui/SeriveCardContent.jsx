@@ -3,41 +3,32 @@ export const SeriveCardContent = ({ serviceType }) => {
   const svgMap = {
     "Implementation": (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-      <rect x="10" y="20" width="80" height="60" rx="5" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-      <rect x="20" y="30" width="60" height="10" rx="2" fill="#60A5FA"/>
-      <rect x="20" y="45" width="25" height="25" rx="2" fill="#34D399"/>
-      <rect x="55" y="45" width="25" height="10" rx="2" fill="#F472B6"/>
-      <rect x="55" y="60" width="25" height="10" rx="2" fill="#F472B6"/>
-      <circle cx="50" cy="90" r="5" fill="#374151"/>
+      <g fill="none" fill-rule="evenodd">
+    <polygon fill="#FFDD95" points="31 5 55.249 19 55.249 47 31 61 6.751 47 6.751 19"/>
+    <circle cx="31" cy="5" r="3" fill="#E43535"/>
+    <circle cx="31" cy="60" r="3" fill="#E43535"/>
+    <circle cx="55" cy="47" r="3" fill="#E43535"/>
+    <circle cx="7" cy="47" r="3" fill="#E43535"/>
+    <circle cx="55" cy="19" r="3" fill="#E43535"/>
+    <circle cx="7" cy="19" r="3" fill="#E43535"/>
+    <path fill="#22BA8E" d="M23.3800958,28.2085229 L21.8076118,26.636039 L24.636039,23.8076118 L26.2085229,25.3800958 C27.0544216,24.8470663 27.9952899,24.4509973 29,24.2230164 L29,22 L33,22 L33,24.2230164 C34.0047101,24.4509973 34.9455784,24.8470663 35.7914771,25.3800958 L37.363961,23.8076118 L40.1923882,26.636039 L38.6199042,28.2085229 C39.1529337,29.0544216 39.5490027,29.9952899 39.7769836,31 L42,31 L42,35 L39.7769836,35 C39.5490027,36.0047101 39.1529337,36.9455784 38.6199042,37.7914771 L40.1923882,39.363961 L37.363961,42.1923882 L35.7914771,40.6199042 C34.9455784,41.1529337 34.0047101,41.5490027 33,41.7769836 L33,44 L29,44 L29,41.7769836 C27.9952899,41.5490027 27.0544216,41.1529337 26.2085229,40.6199042 L24.636039,42.1923882 L21.8076118,39.363961 L23.3800958,37.7914771 C22.8470663,36.9455784 22.4509973,36.0047101 22.2230164,35 L20,35 L20,31 L22.2230164,31 C22.4509973,29.9952899 22.8470663,29.0544216 23.3800958,28.2085229 Z M31,36 C32.6568542,36 34,34.6568542 34,33 C34,31.3431458 32.6568542,30 31,30 C29.3431458,30 28,31.3431458 28,33 C28,34.6568542 29.3431458,36 31,36 Z"/>
+  </g>
     </svg>
     ),
     "Financial Solutions": (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-        <defs>
-          <linearGradient id="finGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#34D399", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#10B981", stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-        {/* Chart Background */}
-        <rect x="15" y="15" width="70" height="70" rx="8" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
-        {/* Line Chart */}
-        <path
-          d="M25 70 L35 50 L50 60 L65 40 L75 55"
-          fill="none"
-          stroke="url(#finGrad)"
-          strokeWidth="4"
-          strokeLinecap="round"
-        />
-        {/* Data Points */}
-        <circle cx="25" cy="70" r="3" fill="#10B981" />
-        <circle cx="35" cy="50" r="3" fill="#10B981" />
-        <circle cx="50" cy="60" r="3" fill="#10B981" />
-        <circle cx="65" cy="40" r="3" fill="#10B981" />
-        <circle cx="75" cy="55" r="3" fill="#10B981" />
-        {/* Axes */}
-        <line x1="15" y1="70" x2="85" y2="70" stroke="#374151" strokeWidth="1" />
-        <line x1="25" y1="15" x2="25" y2="85" stroke="#374151" strokeWidth="1" />
+<g fill="none" fill-rule="evenodd">
+    <rect width="54" height="33" x="4" y="12" fill="#FFDD95"/>
+    <rect width="60" height="4" x="1" y="8" fill="#BD7575" rx="2"/>
+    <rect width="60" height="4" x="1" y="45" fill="#BD7575" rx="2"/>
+    <rect width="4" height="11" x="29" y="49" fill="#9D4C4C"/>
+    <rect width="12" height="4" x="25" y="58" fill="#BD7575"/>
+    <polyline stroke="#4796E7" stroke-linecap="round" stroke-width="2" points="11 36.869 24.072 26.562 34.838 34.455 50.627 17.779"/>
+    <circle cx="24" cy="27" r="3" fill="#4796E7"/>
+    <circle cx="35" cy="34" r="3" fill="#4796E7"/>
+    <circle cx="51" cy="17" r="3" fill="#4796E7"/>
+    <circle cx="11" cy="36" r="3" fill="#4796E7"/>
+  </g>
       </svg>
     ),
     "Data Management": (
@@ -105,25 +96,17 @@ export const SeriveCardContent = ({ serviceType }) => {
     ),
     "Support": (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-        <defs>
-          <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: "#FCA5A5", stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: "#EF4444", stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-        {/* Headset */}
-        <circle cx="50" cy="50" r="40" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
-        <path
-          d="M35 35 Q50 25 65 35 L70 45 Q70 60 50 60 Q30 60 30 45 Z"
-          fill="url(#supportGrad)"
-          stroke="#EF4444"
-          strokeWidth="2"
-        />
-        {/* Earpieces */}
-        <rect x="25" y="40" width="10" height="20" rx="5" fill="#FECACA" stroke="#EF4444" strokeWidth="1" />
-        <rect x="65" y="40" width="10" height="20" rx="5" fill="#FECACA" stroke="#EF4444" strokeWidth="1" />
-        {/* Microphone */}
-        <path d="M45 60 Q50 70 55 60" fill="none" stroke="#B91C1C" strokeWidth="2" strokeLinecap="round" />
+          <g fill="none" fill-rule="evenodd">
+    <path fill="#5B68C0" d="M8,50.9206814 C8,48.707202 9.77500008,46.6994337 11.9692715,46.4356406 L31.875,44.0425936 L51.7807285,46.4356406 C53.9728966,46.6991808 55.75,48.7006188 55.75,50.9206814 L55.75,63.0425936 L8,63.0425936 L8,50.9206814 Z"/>
+    <path fill="#FFDD95" d="M23.9659091,41.0820517 C19.997906,37.3171352 17.375,31.2233999 17.375,26.1331692 C17.375,18.1250403 23.8668711,11.6331692 31.875,11.6331692 C39.8831289,11.6331692 46.375,18.1250403 46.375,26.1331692 C46.375,31.2233999 43.752094,37.3171352 39.7840909,41.0820517 L39.7840909,49.9058965 C39.7840909,49.9058965 34.4224889,51.8154815 31.875,51.8154815 C29.3275111,51.8154815 23.9659091,49.9058965 23.9659091,49.9058965 L23.9659091,41.0820517 Z"/>
+    <path fill="#FFAF40" d="M17.875,14.5 C17.875,11.4624339 20.3328519,9 23.3759961,9 L49.875,9 L49.875,14.5 C49.875,17.5375661 47.4171481,20 44.3740039,20 L17.875,20 L17.875,14.5 Z"/>
+    <path stroke="#979797" stroke-linecap="round" stroke-width="2" d="M15,28 L15,12.9911656 L15,12.9911656 C15,9.13005145 17.5416212,6 20.6716936,6 L43.3283064,6 C46.4606963,6 49,9.12869969 49,12.9911656 L49,28"/>
+    <path stroke="#868686" stroke-linecap="round" stroke-width="2" d="M38,46 L38,46 C47.9411255,46 56,37.9411255 56,28"/>
+    <rect width="9" height="2" x="29" y="45" stroke="#FF5EAC" stroke-width="2" rx="1"/>
+    <rect width="8" height="17" x="46" y="18" fill="#FF5EAC" rx="2"/>
+    <rect width="8" height="17" x="10" y="18" fill="#FF5EAC" rx="2"/>
+    <rect width="1" height="5" x="55" y="24" stroke="#979797" stroke-width="2"/>
+  </g>
       </svg>
     ),
   };
