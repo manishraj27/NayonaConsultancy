@@ -5,7 +5,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import { AnimatePresence, motion } from "framer-motion"; // Note: corrected import from "motion/react" to "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"; 
 import { cn } from "./../../lib/utils";
 import { useOutsideClick } from "./../../lib/use-outside-click";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -111,18 +111,18 @@ export const Carousel = ({ items, initialScroll = 0 }) => {
         </div>
         <div className="flex justify-end gap-2 mr-10">
           <button
-            className="relative z-30 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-30 h-10 w-10 rounded-full bg-accent-300 flex items-center justify-center disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
           >
-            <ChevronLeft className="h-6 w-6 text-gray-500" />
+            <ChevronLeft className="h-6 w-6 text-light-100" />
           </button>
           <button
-            className="relative z-30 h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-50"
+            className="relative z-30 h-10 w-10 rounded-full bg-accent-300  flex items-center justify-center disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
           >
-            <ChevronRight className="h-6 w-6 text-gray-500" />
+            <ChevronRight className="h-6 w-6 text-light-100" />
           </button>
         </div>
       </div>
@@ -180,24 +180,24 @@ export const Card = ({ card, index, layout = false }) => {
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 h-fit z-[1000] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              className="max-w-5xl mx-auto bg-light-200  h-fit z-[1000] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
               data-lenis-prevent
             >
               <button
-                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-black dark:bg-white rounded-full flex items-center justify-center"
+                className="sticky top-4 h-8 w-8 right-0 ml-auto bg-background-100  rounded-full flex items-center justify-center"
                 onClick={handleClose}
               >
-                <X className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
+                <X className="h-6 w-6 text-light-200" />
               </button>
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-black dark:text-white"
+                className="text-body-3 font-open-sans text-on-light"
               >
                 {card.category}
               </motion.p>
               <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
-                className="text-2xl md:text-5xl font-semibold text-neutral-700 mt-4 dark:text-white"
+                className="text-heading-3 font-grotesk text-secondary-700 mt-4"
               >
                 {card.title}
               </motion.p>
@@ -209,23 +209,23 @@ export const Card = ({ card, index, layout = false }) => {
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="service-card rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
+        className="service-card rounded-3xl  h-80 w-56 md:h-[40rem] md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
-        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
+        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-red-900 via-transparent to-transparent z-30 pointer-events-none" />
         <div className="relative z-40 p-8">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white text-sm md:text-base font-medium font-sans text-left"
+            className="text-primary-100 text-body-4 font-extralight font-open-sans text-left"
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
+            className="text-light-100 text-heading-4 font-semibold font-grotesk max-w-xs text-left [text-wrap:balance]  mt-2"
           >
             {card.title}
           </motion.p>
-          <motion.p className="text-white text-sm md:text-base font-sans text-left mt-2 lg:mt-16 opacity-80">
+          <motion.p className="text-secondary-100 lg:text-body-2 text-body-4  font-sans text-left mt-2 lg:mt-16 opacity-80">
             {card.message || "Learn more about this service."}
           </motion.p>
         </div>
