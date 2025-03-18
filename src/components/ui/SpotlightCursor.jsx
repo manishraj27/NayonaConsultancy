@@ -103,7 +103,7 @@ const SpotlightCursor = () => {
       <div className="flex items-center justify-center">
         <span
           ref={textRef}
-          className="text-black text-sm font-semibold opacity-0"
+          className="text-secondary-700 font-grotesk text-body-3 font-semibold opacity-0"
         >
           Click
         </span>
@@ -111,7 +111,7 @@ const SpotlightCursor = () => {
           ref={arrowRef} 
           className="opacity-0 ml-1"
         >
-          <ArrowRight className="w-4 h-4 text-black" />
+          <ArrowRight className="w-4 h-4 text-secondary-700" />
         </div>
       </div>
     </div>

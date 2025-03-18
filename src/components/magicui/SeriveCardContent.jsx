@@ -1,78 +1,132 @@
 export const SeriveCardContent = ({ serviceType }) => {
 
-    const svgMap = {
-      "Implementation": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <rect x="10" y="20" width="80" height="60" rx="5" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-          <rect x="20" y="30" width="60" height="10" rx="2" fill="#60A5FA"/>
-          <rect x="20" y="45" width="25" height="25" rx="2" fill="#34D399"/>
-          <rect x="55" y="45" width="25" height="10" rx="2" fill="#F472B6"/>
-          <rect x="55" y="60" width="25" height="10" rx="2" fill="#F472B6"/>
-          <circle cx="50" cy="90" r="5" fill="#374151"/>
-        </svg>
-      ),
-      "Financial Solutions": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <rect x="15" y="15" width="70" height="70" rx="5" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-          <path d="M25 70 L25 40 L35 30 L45 50 L55 35 L65 45 L75 25 L75 70 Z" fill="#60A5FA" fillOpacity="0.7" stroke="#2563EB" strokeWidth="2"/>
-          <circle cx="25" cy="40" r="3" fill="#2563EB"/>
-          <circle cx="35" cy="30" r="3" fill="#2563EB"/>
-          <circle cx="45" cy="50" r="3" fill="#2563EB"/>
-          <circle cx="55" cy="35" r="3" fill="#2563EB"/>
-          <circle cx="65" cy="45" r="3" fill="#2563EB"/>
-          <circle cx="75" cy="25" r="3" fill="#2563EB"/>
-          <line x1="15" y1="70" x2="85" y2="70" stroke="#374151" strokeWidth="1"/>
-          <line x1="25" y1="15" x2="25" y2="85" stroke="#374151" strokeWidth="1"/>
-        </svg>
-      ),
-      "Data Management": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <ellipse cx="50" cy="25" rx="30" ry="10" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-          <path d="M20 25 L20 45 C20 50.5 33 55 50 55 C67 55 80 50.5 80 45 L80 25" fill="none" stroke="#374151" strokeWidth="2"/>
-          <ellipse cx="50" cy="45" rx="30" ry="10" fill="#A7F3D0" fillOpacity="0.6" stroke="#374151" strokeWidth="1"/>
-          <path d="M20 45 L20 65 C20 70.5 33 75 50 75 C67 75 80 70.5 80 65 L80 45" fill="none" stroke="#374151" strokeWidth="2"/>
-          <ellipse cx="50" cy="65" rx="30" ry="10" fill="#BFDBFE" fillOpacity="0.6" stroke="#374151" strokeWidth="1"/>
-          <path d="M30 25 L40 45 M60 25 L55 45 M45 25 L35 45" stroke="#4B5563" strokeWidth="1"/>
-          <path d="M30 45 L40 65 M60 45 L55 65 M45 45 L35 65" stroke="#4B5563" strokeWidth="1"/>
-        </svg>
-      ),
-      "Cloud Services": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <path d="M25 55 C25 43 35 35 45 35 C55 30 70 35 75 45 C85 45 90 55 85 65 C90 75 80 80 75 80 L35 80 C20 80 15 65 25 55Z" fill="#BFDBFE" stroke="#2563EB" strokeWidth="2"/>
-          <path d="M45 55 L55 55 L55 65 L65 65 L50 80 L35 65 L45 65 Z" fill="#60A5FA" stroke="#2563EB" strokeWidth="1.5"/>
-          <circle cx="50" cy="45" r="5" fill="#3B82F6" stroke="#2563EB" strokeWidth="1"/>
-          <rect x="40" y="60" width="20" height="5" rx="1" fill="#93C5FD"/>
-        </svg>
-      ),
-      "Reporting": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <rect x="15" y="15" width="70" height="70" rx="5" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-          <rect x="25" y="25" width="30" height="20" rx="2" fill="#FDE68A" stroke="#F59E0B" strokeWidth="1"/>
-          <rect x="60" y="25" width="15" height="20" rx="2" fill="#A7F3D0" stroke="#10B981" strokeWidth="1"/>
-          <rect x="25" y="55" width="50" height="20" rx="2" fill="#DDD6FE" stroke="#8B5CF6" strokeWidth="1"/>
-          <line x1="30" y1="30" x2="50" y2="30" stroke="#F59E0B" strokeWidth="2"/>
-          <line x1="30" y1="35" x2="45" y2="35" stroke="#F59E0B" strokeWidth="2"/>
-          <line x1="30" y1="40" x2="40" y2="40" stroke="#F59E0B" strokeWidth="2"/>
-          <line x1="65" y1="30" x2="70" y2="30" stroke="#10B981" strokeWidth="2"/>
-          <line x1="65" y1="35" x2="70" y2="35" stroke="#10B981" strokeWidth="2"/>
-          <line x1="65" y1="40" x2="70" y2="40" stroke="#10B981" strokeWidth="2"/>
-          <line x1="30" y1="60" x2="70" y2="60" stroke="#8B5CF6" strokeWidth="2"/>
-          <line x1="30" y1="65" x2="60" y2="65" stroke="#8B5CF6" strokeWidth="2"/>
-          <line x1="30" y1="70" x2="50" y2="70" stroke="#8B5CF6" strokeWidth="2"/>
-        </svg>
-      ),
-      "Support": (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
-          <circle cx="50" cy="50" r="35" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
-          <path d="M50 25 Q65 25 65 45 L65 55 Q65 75 50 75 Q35 75 35 55 L35 45 Q35 25 50 25Z" fill="#FCA5A5" fillOpacity="0.7" stroke="#EF4444" strokeWidth="1.5"/>
-          <circle cx="42" cy="45" r="5" fill="#FECACA"/>
-          <circle cx="58" cy="45" r="5" fill="#FECACA"/>
-          <path d="M42 60 Q50 70 58 60" fill="none" stroke="#B91C1C" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M35 50 L25 40 M65 50 L75 40" stroke="#374151" strokeWidth="2"/>
-        </svg>
-      ),
-    };
-  
+  const svgMap = {
+    "Implementation": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+      <rect x="10" y="20" width="80" height="60" rx="5" fill="#E5E7EB" stroke="#374151" strokeWidth="2"/>
+      <rect x="20" y="30" width="60" height="10" rx="2" fill="#60A5FA"/>
+      <rect x="20" y="45" width="25" height="25" rx="2" fill="#34D399"/>
+      <rect x="55" y="45" width="25" height="10" rx="2" fill="#F472B6"/>
+      <rect x="55" y="60" width="25" height="10" rx="2" fill="#F472B6"/>
+      <circle cx="50" cy="90" r="5" fill="#374151"/>
+    </svg>
+    ),
+    "Financial Solutions": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+        <defs>
+          <linearGradient id="finGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#34D399", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#10B981", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        {/* Chart Background */}
+        <rect x="15" y="15" width="70" height="70" rx="8" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
+        {/* Line Chart */}
+        <path
+          d="M25 70 L35 50 L50 60 L65 40 L75 55"
+          fill="none"
+          stroke="url(#finGrad)"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        {/* Data Points */}
+        <circle cx="25" cy="70" r="3" fill="#10B981" />
+        <circle cx="35" cy="50" r="3" fill="#10B981" />
+        <circle cx="50" cy="60" r="3" fill="#10B981" />
+        <circle cx="65" cy="40" r="3" fill="#10B981" />
+        <circle cx="75" cy="55" r="3" fill="#10B981" />
+        {/* Axes */}
+        <line x1="15" y1="70" x2="85" y2="70" stroke="#374151" strokeWidth="1" />
+        <line x1="25" y1="15" x2="25" y2="85" stroke="#374151" strokeWidth="1" />
+      </svg>
+    ),
+    "Data Management": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+        <defs>
+          <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#A7F3D0", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#34D399", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        {/* Database Layers */}
+        <ellipse cx="50" cy="30" rx="35" ry="15" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
+        <ellipse cx="50" cy="50" rx="35" ry="15" fill="url(#dataGrad)" stroke="#34D399" strokeWidth="2" />
+        <ellipse cx="50" cy="70" rx="35" ry="15" fill="#E5E7EB" stroke="#374151" strokeWidth="2" opacity="0.8" />
+        {/* Connecting Lines */}
+        <path d="M30 30 Q50 40 70 30" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="5,5" />
+        <path d="M30 50 Q50 60 70 50" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="5,5" />
+        <path d="M30 70 Q50 80 70 70" fill="none" stroke="#2563EB" strokeWidth="2" strokeDasharray="5,5" />
+      </svg>
+    ),
+    "Cloud Services": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+        <defs>
+          <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#BFDBFE", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#60A5FA", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        {/* Cloud Shape */}
+        <path
+          d="M20 60 C20 45 30 35 45 35 C55 30 70 35 80 45 C90 45 95 55 90 65 C95 75 85 85 75 85 H25 C15 85 10 75 20 60 Z"
+          fill="url(#cloudGrad)"
+          stroke="#2563EB"
+          strokeWidth="2"
+        />
+        {/* Upload Arrow */}
+        <path
+          d="M45 55 L55 55 L55 65 L65 65 L50 80 L35 65 L45 65 Z"
+          fill="#2563EB"
+          stroke="#1E40AF"
+          strokeWidth="1.5"
+        />
+        {/* Small Node */}
+        <circle cx="50" cy="45" r="5" fill="#3B82F6" stroke="#2563EB" strokeWidth="1" />
+      </svg>
+    ),
+    "Reporting": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+        <defs>
+          <linearGradient id="reportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#DDD6FE", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#8B5CF6", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        {/* Background */}
+        <rect x="15" y="15" width="70" height="70" rx="8" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
+        {/* Bars */}
+        <rect x="25" y="45" width="15" height="30" rx="3" fill="#FDE68A" stroke="#F59E0B" strokeWidth="1" />
+        <rect x="45" y="30" width="15" height="45" rx="3" fill="url(#reportGrad)" stroke="#8B5CF6" strokeWidth="1" />
+        <rect x="65" y="55" width="15" height="20" rx="3" fill="#A7F3D0" stroke="#34D399" strokeWidth="1" />
+        {/* Magnifying Glass */}
+        <circle cx="75" cy="25" r="8" fill="none" stroke="#2563EB" strokeWidth="2" />
+        <path d="M80 30 L85 35" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+    "Support": (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-6">
+        <defs>
+          <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: "#FCA5A5", stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: "#EF4444", stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        {/* Headset */}
+        <circle cx="50" cy="50" r="40" fill="#E5E7EB" stroke="#374151" strokeWidth="2" />
+        <path
+          d="M35 35 Q50 25 65 35 L70 45 Q70 60 50 60 Q30 60 30 45 Z"
+          fill="url(#supportGrad)"
+          stroke="#EF4444"
+          strokeWidth="2"
+        />
+        {/* Earpieces */}
+        <rect x="25" y="40" width="10" height="20" rx="5" fill="#FECACA" stroke="#EF4444" strokeWidth="1" />
+        <rect x="65" y="40" width="10" height="20" rx="5" fill="#FECACA" stroke="#EF4444" strokeWidth="1" />
+        {/* Microphone */}
+        <path d="M45 60 Q50 70 55 60" fill="none" stroke="#B91C1C" strokeWidth="2" strokeLinecap="round" />
+      </svg>
+    ),
+  };
     
     const contentMap = {
       "Implementation": (
