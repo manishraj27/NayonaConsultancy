@@ -1,37 +1,5 @@
 import { HoverEffect } from "./card-hover-effect";
 
-// const items = [
-//   {
-//     title: "Project Management",
-//     description: "Manage your projects efficiently with our intuitive tools.",
-
-//   },
-//   {
-//     title: "Team Collaboration",
-//     description: "Enhance teamwork with seamless communication and file sharing.",
-
-//   },
-//   {
-//     title: "Analytics & Insights",
-//     description: "Gain valuable insights with real-time analytics and reports.",
-
-//   },
-//   {
-//     title: "Security & Compliance",
-//     description: "Ensure data security with advanced compliance features.",
-
-//   },
-//   {
-//     title: "Customer Support",
-//     description: "Get 24/7 support from our dedicated team of experts.",
-
-//   },
-//   {
-//     title: "Integrations",
-//     description: "Connect with third-party services for enhanced productivity.",
-
-//   },
-// ];
 
 const implementationMethodology = [
   {

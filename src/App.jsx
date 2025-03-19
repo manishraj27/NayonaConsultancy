@@ -11,6 +11,7 @@ import ColorPaletteVisualizer from "./lib/ColorPaletteVisualizer";
 import useScrollTrigger from "./lib/hooks/useScrollTrigger";
 import NotFound from './components/ui/NotFound';
 import UnsubscribePage from "./components/pages/UnsubscribePage";
+import CloudService from "./components/pages/CloudService";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
+            <Route path="/services/cloud" element={<CloudService />} />
             <Route path="/careers" element={<Career />} />
             <Route path="/unsubscribe" element={<UnsubscribePage/>} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />

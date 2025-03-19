@@ -2,18 +2,17 @@ import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-import serviceItems from './../../lib/servicesdata';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-function ServicesSection() {
+function ServicesSection({ title, services }) {
   const containerRef = useRef(null);
   const lenisRef = useRef(null);
   const serviceRefs = useRef([]);
 
   // Initialize array of refs for each service item
-  serviceRefs.current = serviceItems.map((_, i) => serviceRefs.current[i] || React.createRef());
+  serviceRefs.current = services.map((_, i) => serviceRefs.current[i] || React.createRef());
 
   // Initialize Lenis for smooth scrolling
   useEffect(() => {
@@ -107,7 +106,7 @@ function ServicesSection() {
     }
 
     ScrollTrigger.refresh();
-  }, []);
+  }, [services]);
 
   // Handle window resize
   useEffect(() => {
@@ -136,12 +135,12 @@ function ServicesSection() {
       aria-label="Services Section"
     >
       <h1 className="text-on-dark text-heading-1 font-grotesk text-center mb-20">
-       Oracle EPM Services
+        {title}
       </h1>
 
       {/* Desktop Layout */}
       <div className="hidden md:flex md:flex-col w-full " ref={containerRef}>
-        {serviceItems.map((service, index) => (
+        {services.map((service, index) => (
           <div
             key={`desktop-${service.id || index}`}
             ref={serviceRefs.current[index]}
@@ -172,7 +171,7 @@ function ServicesSection() {
 
       {/* Mobile Card Layout */}
       <div className="md:hidden grid grid-cols-1 gap-8">
-        {serviceItems.map((service, index) => (
+        {services.map((service, index) => (
           <div
             key={`mobile-${service.id || index}`}
             className="service-card  rounded-3xl overflow-hidden shadow-lg bg-secondary-700  bg-opacity-10"

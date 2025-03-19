@@ -2,7 +2,7 @@ import BlueGradientIcon from "../../assets/icons/BlueGradientIcon";
 
 export default function Heading({ title, description }) {
   return (
-    <div className="section-heading select-none flex flex-col">
+    <div className="section-heading  flex flex-col">
       {/* Logo and Small Description */}
       <div className="flex space-x-3">
         <BlueGradientIcon />

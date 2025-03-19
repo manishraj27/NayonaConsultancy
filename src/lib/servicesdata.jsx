@@ -1,4 +1,3 @@
-import pic from "../assets/images/pic1.avif";
 import financialConsolidationClose from "../assets/images/ServiceImages/FinancialConsolidationClose.webp";
 import planningBudgetingForecasting from "../assets/images/ServiceImages/PlanningBudgetingForecasting.webp";
 import profitabilityCostManagement from "../assets/images/ServiceImages/ProfitabilityCostManagement.webp";
