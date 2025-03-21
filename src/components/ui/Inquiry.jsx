@@ -148,7 +148,7 @@ const Inquiry = ({ onBackToHome }) => {
               onClick={() =>
                 setFormData((prev) => ({ ...prev, budgetRange: range }))
               }
-              className={`px-6 py-4 rounded-full text-base font-medium transition-all duration-300
+              className={`px-6 py-4 rounded-full lg:text-body-3 text-body-4 font-medium font-grotesk transition-all duration-300
                 ${
                   formData.budgetRange === range
                      ? "bg-[#1a1a1a] text-on-dark"

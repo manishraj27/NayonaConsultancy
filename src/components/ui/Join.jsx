@@ -121,11 +121,11 @@ const Join = ({ onBackToHome }) => {
               <button
                 key={skill}
                 onClick={() => handleSkillSelect(skill)}
-                className={`px-6 py-4 rounded-full text-body-3 font-medium font-grotesk transition-all duration-300
+                className={`px-6 py-4 rounded-full lg:text-body-3 text-body-4 font-medium font-grotesk transition-all duration-300
                   ${
                     formData.skillName === skill
-                      ? "bg-[#1a1a1a] text-white"
-                      : "bg-[#ffffff] text-black hover:bg-light-200"
+                     ? "bg-[#1a1a1a] text-on-dark"
+                    : "bg-accent-100 text-on-light hover:bg-light-200"
                   }`}
               >
                 {skill}
