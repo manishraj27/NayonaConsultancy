@@ -214,25 +214,44 @@ function FooterUpper() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-1">
               {siteMap.map((item, index) => (
                 <div key={index} className="mb-3">
-                  <a
-                    href={item.to}
-                    className="group font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center relative"
-                  >
-                    {item.icon && <item.icon className="w-4 h-4 mr-2" />}
-                    {item.name}
-                    <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
-                  </a>
+                  {/* Menu Item */}
+                  <div className="group relative">
+                    {item.to ? (
+                      <a
+                        href={item.to}
+                        className="font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center"
+                      >
+                        {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                        {item.name}
+                        <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>
+                      </a>
+                    ) : (
+                      <div className="font-medium text-secondary-700 flex items-center">
+                        {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                        {item.name}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Submenu Items */}
                   {item.submenu && (
                     <div className="mt-1 ml-6 flex flex-col space-y-1">
                       {item.submenu.map((subitem, subindex) => (
-                        <a
-                          key={subindex}
-                          href={subitem.to}
-                          className="group text-secondary-600 text-sm hover:text-accent-500 transition-colors relative"
-                        >
-                          {subitem.name}
-                          <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
-                        </a>
+                        <div key={subindex} className="group relative">
+                          {subitem.to ? (
+                            <a
+                              href={subitem.to}
+                              className="text-secondary-600 text-sm hover:text-accent-500 transition-colors"
+                            >
+                              {subitem.name}
+                              <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                          ) : (
+                            <div className="text-secondary-600 text-sm">
+                              {subitem.name}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -275,7 +294,7 @@ function FooterUpper() {
                   <Phone className="w-4 h-4 mr-2 text-accent-500" />
                 </motion.span>
                 <span>+1 (212) 555-1234</span>
-                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
 
               <motion.a
@@ -287,7 +306,7 @@ function FooterUpper() {
                   <Mail className="w-4 h-4 mr-2 text-accent-500" />
                 </motion.span>
                 <span>hello@nayona.com</span>
-                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
 
               {/* Line Separator */}
@@ -418,7 +437,6 @@ function FooterUpper() {
 }
 
 export default FooterUpper;
-
 // import React, { useState } from 'react';
 // import {
 //   Mail,
