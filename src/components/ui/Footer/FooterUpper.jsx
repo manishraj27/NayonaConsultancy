@@ -166,8 +166,8 @@ function FooterUpper() {
   ];
 
   return (
-    <div className="w-full mt-12 lg:mt-0 mb-12 lg:mb-8 relative">
-      <div className="container mx-auto px-4">
+    <div className="w-full mt-12 lg:mt-0 mb-6 lg:mb-8 relative bg-light-200">
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
           {/* Company Information Column - 3 cols */}
           <motion.div
@@ -177,17 +177,17 @@ function FooterUpper() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center mb-4">
-              <h2 className="text-xl font-grotesk font-semibold text-secondary-800">
+              <h2 className="text-xl font-grotesk font-semibold text-secondary-600">
                 Nayona
               </h2>
             </div>
-            <p className="text-secondary-600 font-grotesk text-body-3 mb-4">
+            <p className="text-secondary-700 font-grotesk text-body-4 mb-4">
               Empowering businesses through innovative digital solutions and
               strategic Oracle EPM implementations.
             </p>
 
             <motion.div
-              className="w-full my-3 "
+              className="w-full my-3 lg:hidden "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -200,29 +200,7 @@ function FooterUpper() {
               ></motion.div>
             </motion.div>
 
-            {/* <motion.div
-              className="hidden lg:flex mt-2 p-2 rounded-lg shadow-sm"
-              whileHover={{
-                y: -5,
-                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 15 }}
-            >
-              <div className="flex items-center space-x-3">
-                <Icon
-                  icon="simple-icons:oracle"
-                  className="w-8 h-8 text-red-600"
-                />
-                <div>
-                  <h4 className="font-semibold text-secondary-600">
-                    Oracle EPM Experts
-                  </h4>
-                  <p className="text-xs text-secondary-700">
-                    Certified Implementation Partner
-                  </p>
-                </div>
-              </div>
-            </motion.div> */}
+            
           </motion.div>
 
           {/* Site Navigation - 4 cols */}
@@ -232,15 +210,15 @@ function FooterUpper() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <h3 className="text-secondary-800 font-grotesk font-semibold text-lg mb-4">
+            <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-4">
               Site Map
             </h3>
             <div className="grid grid-cols-2 gap-x-6 gap-y-1">
               {siteMap.map((item, index) => (
                 <div key={index} className="mb-3">
                   <a
-                    href={item.to || "#"}
-                    className="font-medium text-secondary-800 hover:text-accent-500 transition-colors flex items-center"
+                    href={item.to}
+                    className="font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center"
                   >
                     {item.icon && <item.icon className="w-4 h-4 mr-2" />}
                     {item.name}
@@ -256,10 +234,13 @@ function FooterUpper() {
                           {subitem.name}
                         </a>
                       ))}
+                     
                     </div>
                   )}
+                  
                 </div>
               ))}
+              
             </div>
           </motion.div>
 
@@ -270,7 +251,7 @@ function FooterUpper() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h3 className="text-secondary-800 font-grotesk font-semibold text-lg mb-4">
+            <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-4">
               Contact Us
             </h3>
             <div className="space-y-3">
@@ -287,6 +268,7 @@ function FooterUpper() {
                   United States
                 </span>
               </motion.div>
+              
               <motion.a
                 href="tel:+12125551234"
                 className="flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3"
@@ -296,6 +278,7 @@ function FooterUpper() {
                   <Phone className="w-4 h-4 mr-2 text-accent-500" />
                 </motion.span>
                 <span>+1 (212) 555-1234</span>
+                
               </motion.a>
               <motion.a
                 href="mailto:hello@nayona.com"
@@ -384,18 +367,16 @@ function FooterUpper() {
                       onChange={(e) => setEmail(e.target.value)}
                       onFocus={() => setEmailFocus(true)}
                       onBlur={() => setEmailFocus(false)}
-                      className={`peer block w-full appearance-none border-0 border-b ${
-                        emailFocus
+                      className={`peer block w-full appearance-none border-0 border-b ${emailFocus
                           ? "border-b-blue-500"
                           : "border-b-secondary-700"
-                      } bg-transparent px-0 py-2.5 focus:outline-none focus:ring-0 transition-colors duration-300`}
+                        } bg-transparent px-0 py-2.5 focus:outline-none focus:ring-0 transition-colors duration-300`}
                       placeholder=" "
                     />
                     <label
                       htmlFor="email"
-                      className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 ${
-                        emailFocus ? "text-blue-500" : "text-secondary"
-                      } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500`}
+                      className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 ${emailFocus ? "text-blue-500" : "text-secondary"
+                        } duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-500`}
                     >
                       Your email
                     </label>
@@ -429,6 +410,30 @@ function FooterUpper() {
                   </p>
                 </motion.div>
               )}
+
+              {/* <motion.div
+                className="hidden lg:flex  p-4 rounded-lg shadow-sm"
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                }}
+                transition={{ type: "tween", stiffness: 300, damping: 15 }}
+              >
+                <div className="flex items-center space-x-3">
+                  <Icon
+                    icon="simple-icons:oracle"
+                    className="w-8 h-8 text-red-600"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-secondary-600">
+                      Oracle EPM Experts
+                    </h4>
+                    <p className="text-xs text-secondary-700">
+                      Certified Implementation Partner
+                    </p>
+                  </div>
+                </div>
+              </motion.div> */}
             </motion.div>
           </motion.div>
         </div>
