@@ -137,3 +137,65 @@
   /* Enable pan/swipe gestures */
   touch-action: pan-y;
 }
+
+@layer components {
+  .custom-quill .ql-editor {
+    @apply font-open-sans text-on-dark leading-relaxed;
+    font-size: 18px; /* Base font size for body text */
+    line-height: 1.8; /* Comfortable line height for readability */
+  }
+  .custom-quill .ql-editor h1 {
+    @apply font-bold text-on-dark;
+    font-size: 36px; /* Large and bold for main headings */
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .custom-quill .ql-editor h2 {
+    @apply font-bold text-on-dark;
+    font-size: 30px; /* Slightly smaller for subheadings */
+    margin-top: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .custom-quill .ql-editor h3 {
+    @apply font-bold text-on-dark;
+    font-size: 24px; /* Smaller for sub-subheadings */
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .custom-quill .ql-editor h4 {
+    @apply font-bold text-on-dark;
+    font-size: 20px; /* Even smaller for minor headings */
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .custom-quill .ql-editor p {
+    @apply font-grotesk text-on-dark;
+    font-size: 18px; /* Body text */
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .custom-quill .ql-editor a {
+    @apply text-primary-300 underline hover:text-primary-400; /* Links with hover effect */
+  }
+  .custom-quill .ql-editor blockquote {
+    @apply border-l-4 border-primary-300 pl-4 italic text-on-dark;
+    font-size: 18px; /* Blockquote text */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .custom-quill .ql-editor code {
+    @apply bg-secondary-600 text-on-dark px-2 py-1 rounded-md font-mono;
+    font-size: 14px; /* Code blocks */
+  }
+  .custom-quill .ql-editor ul,
+  .custom-quill .ql-editor ol {
+    @apply pl-6 mb-4; /* Lists with proper indentation */
+  }
+  .custom-quill .ql-editor li {
+    @apply mb-2; /* Spacing between list items */
+    font-size: 18px; /* List item text */
+  }
+  .custom-quill .ql-editor img {
+    @apply my-6 rounded-lg shadow-lg; /* Styled images */
+  }
+}

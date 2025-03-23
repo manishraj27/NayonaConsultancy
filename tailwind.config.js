@@ -77,4 +77,7 @@ export default {
     },
   },
   plugins: [],
+  // corePlugins: {
+  //   preflight: false, // Disable Tailwind's default styles if needed
+  // },
 }
