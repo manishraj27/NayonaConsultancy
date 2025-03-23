@@ -4,7 +4,7 @@ import FooterContent from "./FooterContent"
 function Footer() {
   return (
     <footer 
-      className='relative lg:h-[88vh] bg-light-200'
+      className='relative lg:h-[87vh] bg-light-200'
       style={{clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)"}}
     >
       {/* Mobile: Normal footer (non-fixed) */}

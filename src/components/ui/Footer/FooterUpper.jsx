@@ -199,8 +199,6 @@ function FooterUpper() {
                 transition={{ duration: 0.8, delay: 0.3 }}
               ></motion.div>
             </motion.div>
-
-            
           </motion.div>
 
           {/* Site Navigation - 4 cols */}
@@ -218,10 +216,11 @@ function FooterUpper() {
                 <div key={index} className="mb-3">
                   <a
                     href={item.to}
-                    className="font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center"
+                    className="group font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center relative"
                   >
                     {item.icon && <item.icon className="w-4 h-4 mr-2" />}
                     {item.name}
+                    <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                   </a>
                   {item.submenu && (
                     <div className="mt-1 ml-6 flex flex-col space-y-1">
@@ -229,18 +228,16 @@ function FooterUpper() {
                         <a
                           key={subindex}
                           href={subitem.to}
-                          className="text-secondary-600 text-sm hover:text-accent-500 transition-colors"
+                          className="group text-secondary-600 text-sm hover:text-accent-500 transition-colors relative"
                         >
                           {subitem.name}
+                          <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
                         </a>
                       ))}
-                     
                     </div>
                   )}
-                  
                 </div>
               ))}
-              
             </div>
           </motion.div>
 
@@ -268,27 +265,29 @@ function FooterUpper() {
                   United States
                 </span>
               </motion.div>
-              
+
               <motion.a
                 href="tel:+12125551234"
-                className="flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3"
+                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3 relative"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
                   <Phone className="w-4 h-4 mr-2 text-accent-500" />
                 </motion.span>
                 <span>+1 (212) 555-1234</span>
-                
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
               </motion.a>
+
               <motion.a
                 href="mailto:hello@nayona.com"
-                className="flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3"
+                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3 relative"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
                   <Mail className="w-4 h-4 mr-2 text-accent-500" />
                 </motion.span>
                 <span>hello@nayona.com</span>
+                <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-accent-300 duration-300 ease-in-out group-hover:w-full"></span>
               </motion.a>
 
               {/* Line Separator */}
@@ -410,30 +409,6 @@ function FooterUpper() {
                   </p>
                 </motion.div>
               )}
-
-              {/* <motion.div
-                className="hidden lg:flex  p-4 rounded-lg shadow-sm"
-                whileHover={{
-                  y: -5,
-                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-                }}
-                transition={{ type: "tween", stiffness: 300, damping: 15 }}
-              >
-                <div className="flex items-center space-x-3">
-                  <Icon
-                    icon="simple-icons:oracle"
-                    className="w-8 h-8 text-red-600"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-secondary-600">
-                      Oracle EPM Experts
-                    </h4>
-                    <p className="text-xs text-secondary-700">
-                      Certified Implementation Partner
-                    </p>
-                  </div>
-                </div>
-              </motion.div> */}
             </motion.div>
           </motion.div>
         </div>
