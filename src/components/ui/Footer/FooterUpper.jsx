@@ -166,7 +166,7 @@ function FooterUpper() {
   ];
 
   return (
-    <div className="w-full mt-12 lg:mt-0 mb-6 lg:mb-8 relative bg-light-200">
+    <div className="w-full mt-12 lg:mt-0 mb-6 lg:mb-5 relative bg-light-200">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
           {/* Company Information Column - 3 cols */}
@@ -181,7 +181,7 @@ function FooterUpper() {
                 Nayona
               </h2>
             </div>
-            <p className="text-secondary-700 font-grotesk text-body-4 mb-4">
+            <p className="text-secondary-700 font-grotesk lg:text-body-4 text-body-3 mb-4">
               Empowering businesses through innovative digital solutions and
               strategic Oracle EPM implementations.
             </p>
@@ -287,7 +287,7 @@ function FooterUpper() {
 
               <motion.a
                 href="tel:+12125551234"
-                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3 relative"
+                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk lg:text-body-4 text-body-3 relative"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
@@ -299,7 +299,7 @@ function FooterUpper() {
 
               <motion.a
                 href="mailto:hello@nayona.com"
-                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk text-body-3 relative"
+                className="group flex items-center text-secondary-700 hover:text-secondary-800 transition-colors font-grotesk lg:text-body-4 text-body-3 relative"
                 whileHover="hover"
               >
                 <motion.span variants={iconVariants}>
@@ -366,7 +366,7 @@ function FooterUpper() {
               <h3 className="text-secondary-600 font-grotesk font-semibold text-lg mb-2">
                 Newsletter
               </h3>
-              <p className="text-secondary-700 font-grotesk text-body-3 mb-2">
+              <p className="text-secondary-700 font-grotesk lg:text-body-4 text-body-3 mb-2">
                 Subscribe to our newsletter for updates and insights.
               </p>
 

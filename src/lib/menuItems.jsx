@@ -62,7 +62,7 @@ const menuItems = [
     icon: Users,
     description: "Our story",
     submenu: [
-      { name: "About Us", to: "/about/team", icon: Users },
+      { name: "About Us", to: "/about/us", icon: Users },
       { name: "Testimonials", to: "/about/testimonials", icon: MessageCircle }
     ]
   },

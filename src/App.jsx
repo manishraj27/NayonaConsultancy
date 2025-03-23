@@ -28,7 +28,7 @@ function App() {
         <main id="main-content">
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/about/team" element={<AboutUsPage />} />
+            <Route path="/about/us" element={<AboutUsPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/services/cloud" element={<CloudService />} />
