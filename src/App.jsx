@@ -13,6 +13,9 @@ import NotFound from './components/ui/NotFound';
 import UnsubscribePage from "./components/pages/UnsubscribePage";
 import CloudService from "./components/pages/CloudService";
 
+import AboutUsPage from "./components/pages/AboutUsPage";
+import FooterUpper from "./components/ui/Footer/FooterUpper";
+
 
 function App() {
   const showFloatingButtons = useScrollTrigger();
@@ -25,6 +28,7 @@ function App() {
         <main id="main-content">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/about/team" element={<AboutUsPage />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/services/cloud" element={<CloudService />} />
@@ -35,6 +39,7 @@ function App() {
           </Routes>
           {showFloatingButtons && <FloatingButtonsContainer />}
           <Footer />
+          {/* <FooterUpper /> */}
         </main>
       </div>
     </>
