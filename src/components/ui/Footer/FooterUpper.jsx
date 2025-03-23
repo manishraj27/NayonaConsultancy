@@ -152,7 +152,7 @@ function FooterUpper() {
       icon: "mdi:linkedin",
       url: "https://linkedin.com/in/nayona",
     },
-    { name: "Twitter", icon: "mdi:twitter", url: "https://twitter.com/nayona" },
+    { name: "Twitter", icon: "pajamas:twitter", url: "https://twitter.com/nayona" },
     {
       name: "Facebook",
       icon: "mdi:facebook",
@@ -333,7 +333,7 @@ function FooterUpper() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-8 h-8 flex items-center justify-center rounded-full bg-white shadow-sm border border-gray-100 text-secondary-600 hover:text-accent-500 hover:border-accent-500 transition-all"
+                      className="w-8 h-8 flex items-center justify-center rounded-full  shadow-sm border border-secondary-600  text-secondary-600 hover:text-accent-500 hover:border-accent-500 transition-all"
                       whileHover={{ y: -3, scale: 1.1 }}
                       transition={{
                         type: "spring",

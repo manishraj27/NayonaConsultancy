@@ -15,6 +15,7 @@ import CloudService from "./components/pages/CloudService";
 
 import AboutUsPage from "./components/pages/AboutUsPage";
 import FooterUpper from "./components/ui/Footer/FooterUpper";
+import Blog from "./components/pages/Blog";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/about/us" element={<AboutUsPage />} />
+            <Route path="/resources/blogs" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/services/cloud" element={<CloudService />} />

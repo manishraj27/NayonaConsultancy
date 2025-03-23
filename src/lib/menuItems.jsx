@@ -53,8 +53,8 @@ const menuItems = [
     icon: BookOpen,
     description: "Knowledge center",
     submenu: [
+      { name: "Blog", to: "/resources/blogs", icon: Book },
       { name: "Case Studies", to: "/resources/cases", icon: FileText },
-      { name: "Blog", to: "/resources/blog", icon: Book },
     ]
   },
   {
