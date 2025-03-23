@@ -54,8 +54,7 @@ const menuItems = [
     description: "Knowledge center",
     submenu: [
       { name: "Case Studies", to: "/resources/cases", icon: FileText },
-      { name: "Whitepapers", to: "/resources/whitepapers", icon: Book },
-      { name: "Webinars", to: "/resources/webinars", icon: Video }
+      { name: "Blog", to: "/resources/blog", icon: Book },
     ]
   },
   {
@@ -63,8 +62,7 @@ const menuItems = [
     icon: Users,
     description: "Our story",
     submenu: [
-      { name: "Our Team", to: "/about/team", icon: Users },
-      { name: "Company Culture", to: "/about/culture", icon: Heart },
+      { name: "About Us", to: "/about/team", icon: Users },
       { name: "Testimonials", to: "/about/testimonials", icon: MessageCircle }
     ]
   },

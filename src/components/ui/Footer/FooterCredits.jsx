@@ -25,7 +25,7 @@ function FooterCredits() {
 
       {/* Credits section with animations */}
       <motion.div 
-        className="w-full flex flex-wrap justify-between items-center px-4 py-2"
+        className="w-full flex flex-wrap justify-between items-center py-2"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
