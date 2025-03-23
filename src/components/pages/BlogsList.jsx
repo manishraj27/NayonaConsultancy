@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Heading from '../ui/Heading';
 import defaultBlogCover from "../../assets/images/blogDefaultImage.webp";
+import apiconfig from './../../configurations/APIConfig';
 
 function BlogList() {
   const [blogs, setBlogs] = useState([]);
@@ -16,7 +17,7 @@ function BlogList() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/blogs');
+        const response = await axios.get(`${apiconfig.nayona_api}/api/blogs`);
         setBlogs(response.data);
         setLoading(false);
       } catch (err) {

@@ -5,6 +5,7 @@ import { ArrowLeft, Heart, Eye, Calendar, Clock, Tag, MessageCircle } from 'luci
 import ReactQuill from 'react-quill';
 // import 'react-quill/dist/quill.bubble.css';
 import defaultBlogCover from "../../assets/images/blogDefaultImage.webp";
+import apiconfig from '../../configurations/APIConfig';
 
 function Blog() {
   const { slug } = useParams();
@@ -18,7 +19,7 @@ function Blog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/blogs/${slug}`);
+        const response = await axios.get(`${apiconfig.nayona_api}/api/blogs/${slug}`);
         const blogData = Array.isArray(response.data) ? response.data[0] : response.data;
         
         if (!blogData) {
