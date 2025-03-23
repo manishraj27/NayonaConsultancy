@@ -177,8 +177,8 @@ function FooterUpper() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center mb-4">
-              <h2 className="text-xl font-grotesk font-semibold text-secondary-600">
-                Nayona
+              <h2 className="text-heading-4 tracking-widest font-open-sans font-ligh text-secondary-600">
+                NAYONA
               </h2>
             </div>
             <p className="text-secondary-700 font-grotesk lg:text-body-4 text-body-3 mb-4">
@@ -272,7 +272,7 @@ function FooterUpper() {
             </h3>
             <div className="space-y-3">
               <motion.div
-                className="flex items-start text-secondary-700 font-grotesk text-body-4"
+                className="flex items-start text-secondary-700 font-grotesk lg:text-body-4 text-body-3"
                 whileHover={{ x: 3, transition: { duration: 0.2 } }}
               >
                 <MapPin className="w-4 h-4 mr-2 mt-1 flex-shrink-0 text-accent-500" />
