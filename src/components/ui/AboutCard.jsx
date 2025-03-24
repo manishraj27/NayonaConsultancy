@@ -57,7 +57,6 @@ function AboutCard() {
   const container = useRef();
 
   useGSAP(() => {
-    const parentOffset = container.current.offsetTop;
   
     // Ensure the container is properly sized
     gsap.set(container.current, { height: "auto" });
