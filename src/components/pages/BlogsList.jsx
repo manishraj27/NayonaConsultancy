@@ -47,7 +47,7 @@ function BlogList() {
   };
 
   if (loading) return (
-    <section className="overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
+    <section className="dark-section overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
       <div className="w-full text-center">
         <div className="inline-block relative w-24 h-24">
           <div className="absolute top-0 left-0 w-full h-full border-4 border-transparent border-t-primary-300 border-r-primary-300 rounded-full animate-spin"></div>
@@ -58,7 +58,7 @@ function BlogList() {
   );
 
   if (error) return (
-    <section className="overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
+    <section className="dark-section overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
       <div className="w-full text-center text-accent-400 font-mono">{error}</div>
     </section>
   );
@@ -70,7 +70,7 @@ function BlogList() {
     <section
       id="blog"
       aria-label="blog"
-      className="overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col justify-start relative"
+      className="dark-section overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col justify-start relative"
     >
       <div className="w-full md:w-3/4 text-left relative z-10">
         <Heading title="Our Blogs" description="Resources"/>
@@ -119,14 +119,14 @@ function BlogList() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="text-sm">
-                      <p className="text-light-100 font-semibold">{featuredBlog.title}</p>
+                      <p className="text-light-100 font-semibold">{featuredBlog.author?.name}</p>
                       <p className="text-secondary-300">{new Date(featuredBlog.createdAt).toLocaleDateString()}</p>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-3 text-sm text-secondary-300">
+                  <div className="flex items-center space-x-3 text-sm pr-12 lg:pr-10 text-secondary-300">
                     <span className="font-mono">{featuredBlog.readTime} min read</span>
-                    <span className="flex items-center"><span className="mr-1 text-primary-300">◉</span>{featuredBlog.views}</span>
-                    <span className="flex items-center"><span className="mr-1 text-accent-400">❤</span>{featuredBlog.likes}</span>
+                    {/* <span className="flex items-center"><span className="mr-1 text-primary-300">◉</span>{featuredBlog.views}</span>
+                    <span className="flex items-center"><span className="mr-1 text-accent-400">❤</span>{featuredBlog.likes}</span> */}
                   </div>
                 </div>
 
@@ -226,14 +226,6 @@ function BlogList() {
             <span className="w-2 h-8 bg-primary-300 mr-3 rounded-full"></span>
             {selectedCategory === 'All' ? 'All Blogs' : `${selectedCategory} Blogs`}
           </h2>
-          <div className="flex space-x-3">
-            <button className="px-4 py-2 bg-secondary-600 rounded-full text-secondary-300 hover:bg-secondary-500 transition-colors text-sm font-mono">
-              Latest
-            </button>
-            <button className="px-4 py-2 bg-secondary-600 rounded-full text-secondary-300 hover:bg-secondary-500 transition-colors text-sm font-mono">
-              Popular
-            </button>
-          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

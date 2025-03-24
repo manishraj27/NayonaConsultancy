@@ -219,14 +219,14 @@ function FooterUpper() {
                     {item.to ? (
                       <a
                         href={item.to}
-                        className="font-medium text-secondary-700 hover:text-accent-500 transition-colors flex items-center"
+                        className="font-open-sans text-secondary-700 hover:text-accent-500 transition-colors flex items-center"
                       >
                         {item.icon && <item.icon className="w-4 h-4 mr-2" />}
                         {item.name}
                         <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>
                       </a>
                     ) : (
-                      <div className="font-medium text-secondary-700 flex items-center">
+                      <div className="font-open-sans text-secondary-700 flex items-center">
                         {item.icon && <item.icon className="w-4 h-4 mr-2" />}
                         {item.name}
                       </div>
@@ -241,7 +241,7 @@ function FooterUpper() {
                           {subitem.to ? (
                             <a
                               href={subitem.to}
-                              className="text-secondary-600 text-sm hover:text-accent-500 transition-colors"
+                              className="text-secondary-600 font-grotesk text-sm hover:text-accent-500 transition-colors"
                             >
                               {subitem.name}
                               <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>

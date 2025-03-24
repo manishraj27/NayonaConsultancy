@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Heart, Eye, Calendar, Clock, Tag, MessageCircle } from 'lucide-react';
 import ReactQuill from 'react-quill';
-// import 'react-quill/dist/quill.bubble.css';
 import defaultBlogCover from "../../assets/images/blogDefaultImage.webp";
 import apiconfig from '../../configurations/APIConfig';
 
@@ -12,8 +11,7 @@ function Blog() {
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [tableOfContents, setTableOfContents] = useState([]);
-  const [activeHeading, setActiveHeading] = useState('');
+
   const contentRef = useRef(null);
   
   useEffect(() => {
@@ -40,69 +38,7 @@ function Blog() {
     fetchBlog();
   }, [slug]);
 
-  useEffect(() => {
-    if (blog && blog.content) {
-      const tempDiv = document.createElement('div');
-      tempDiv.innerHTML = blog.content;
-      
-      const headings = [];
-      const headingElements = tempDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
-      
-      headingElements.forEach((heading, index) => {
-        const id = `heading-${index}`;
-        heading.id = id;
-        
-        headings.push({
-          id,
-          text: heading.textContent,
-          level: parseInt(heading.tagName.substring(1), 10)
-        });
-      });
-      
-      setTableOfContents(headings);
-      
-      if (contentRef.current) {
-        const contentDiv = contentRef.current.querySelector('.ql-editor');
-        if (contentDiv) {
-          const headingNodesInEditor = contentDiv.querySelectorAll('h1, h2, h3, h4, h5, h6');
-          headingNodesInEditor.forEach((heading, index) => {
-            heading.id = `heading-${index}`;
-          });
-          
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  setActiveHeading(entry.target.id);
-                }
-              });
-            },
-            { threshold: 0.1 }
-          );
-          
-          headingNodesInEditor.forEach(heading => {
-            observer.observe(heading);
-          });
-          
-          return () => {
-            headingNodesInEditor.forEach(heading => {
-              observer.unobserve(heading);
-            });
-          };
-        }
-      }
-    }
-  }, [blog]);
 
-  const scrollToHeading = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 100,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   const getDefaultImage = () => defaultBlogCover;
 
@@ -122,41 +58,13 @@ function Blog() {
     <section
       id="blog"
       aria-label="blog"
-      className="dark-section overflow-visible w-full rounded-b-3xl py-12 lg:py-20 min-h-screen bg-background-100 flex flex-col items-center justify-start relative"
+      className="dark-section lg:px-60 px-4 overflow-visible w-full rounded-b-3xl py-32 min-h-screen bg-background-100 flex flex-col items-center justify-start relative"
     >
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Table of Contents - Only visible on large screens */}
-        {tableOfContents.length > 0 && (
-          <aside className="hidden lg:block lg:col-span-3 h-screen sticky top-20 pt-6 pr-6 overflow-y-auto">
-            <div className="border-l-2 border-secondary-300 pl-4">
-              <h3 className="text-lg font-semibold mb-4 text-on-dark">Table of Contents</h3>
-              <nav>
-                <ul className="space-y-2">
-                  {tableOfContents.map((heading) => (
-                    <li 
-                      key={heading.id}
-                      className={`cursor-pointer transition-colors duration-200 ${
-                        activeHeading === heading.id 
-                          ? 'text-primary-300 font-medium' 
-                          : 'text-secondary-300 hover:text-on-dark'
-                      }`}
-                      style={{ 
-                        paddingLeft: `${(heading.level - 1) * 12}px`,
-                        fontSize: `${Math.max(18 - heading.level, 13)}px`
-                      }}
-                      onClick={() => scrollToHeading(heading.id)}
-                    >
-                      {heading.text}
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            </div>
-          </aside>
-        )}
+
 
         {/* Main content */}
-        <article className={`px-4 ${tableOfContents.length > 0 ? 'lg:col-span-9' : 'lg:col-span-12'}`}>
+        <article className={`px-4 ${'lg:col-span-12'}`}>
           {/* Back button */}
           <Link to="/resources/blogs" className="inline-flex items-center text-primary-300 hover:text-primary-400 mb-6">
             <ArrowLeft size={16} className="mr-1" />
