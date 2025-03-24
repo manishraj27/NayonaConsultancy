@@ -95,7 +95,7 @@ function BlogList() {
       <div className="w-full md:w-3/4 text-left relative z-10">
         <Heading title="Our Blogs" description="Resources"/>
         <div className="mt-4 w-full">
-          <span className="text-secondary-300 lg:mx-16 lg:w-full text-body-1 font-mono text-pretty block">
+          <span className="text-secondary-300 lg:mx-16 lg:w-full text-body-1 font-grotesk text-pretty block">
             Compiled notes from the team, industry insights, and more.
           </span>
         </div>
@@ -161,82 +161,78 @@ function BlogList() {
         )}
 
         {/* Categories Section */}
-        <div className="lg:col-span-1 bg-background-100 rounded-3xl p-6 border border-secondary-600">
-          <h3 className="text-heading-4 font-bold mb-6 text-light-100 font-mono relative">
-            <span className="relative z-10">Categories</span>
-            <span className="absolute top-10 left-0 w-12 h-1 bg-primary-300 rounded-full"></span>
-          </h3>
-          
-          {/* Modern Badge Layout - First Row (2 badges) */}
-          <div className="grid grid-cols-2 gap-3 mb-3">
-            {CATEGORIES.slice(0, 2).map((category, index) => (
-              <button 
-                key={index} 
-                onClick={() => setSelectedCategory(category)}
-                className={`px-3 py-3 rounded-2xl text-sm transition-all duration-300 flex flex-col items-center justify-center ${
-                  selectedCategory === category 
-                    ? 'bg-primary-300 text-light-100 shadow-md' 
-                    : 'bg-secondary-600 text-secondary-300 hover:bg-secondary-500'
-                } border ${
-                  selectedCategory === category 
-                    ? 'border-primary-300' 
-                    : 'border-secondary-600'
-                }`}
-              >
-                <div className={`w-10 h-10 rounded-full mb-1 flex items-center justify-center ${
-                  selectedCategory === category ? 'bg-primary-300/20' : 'bg-secondary-600'
-                }`}>
-                  {getIconForCategory(category)}
-                </div>
-                <span className="font-medium font-mono text-xs">{category}</span>
-                {selectedCategory === category && (
-                  <span className="h-1 w-8 mt-1 rounded-full bg-primary-300"></span>
-                )}
-              </button>
-            ))}
+        <div className="lg:col-span-1 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-3xl p-6 border border-gray-100/60 shadow-sm backdrop-blur-md">
+  <h3 className="text-lg font-medium mb-7 text-gray-800 relative inline-block">
+    Categories
+    <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-violet-400 rounded-full"></span>
+  </h3>
+  
+  {/* First Row */}
+  <div className="grid grid-cols-2 gap-4 mb-4">
+    {CATEGORIES.slice(0, 2).map((category, index) => (
+      <button 
+        key={index} 
+        onClick={() => setSelectedCategory(category)}
+        className={`group px-3 py-3.5 rounded-2xl text-sm transition-all duration-300 transform hover:scale-105 ${
+          selectedCategory === category 
+            ? 'bg-gradient-to-br from-violet-50 to-indigo-50 text-violet-700 ring-1 ring-violet-200/70 shadow-sm' 
+            : 'bg-white/80 text-gray-600 hover:bg-white hover:shadow-sm'
+        }`}
+      >
+        <div className="flex flex-col items-center">
+          <div className={`w-10 h-10 rounded-full mb-2 flex items-center justify-center transition-colors duration-300 ${
+            selectedCategory === category ? 'bg-violet-100' : 'bg-gray-100 group-hover:bg-gray-50'
+          }`}>
+            {getIconForCategory(category)}
           </div>
-          
-          {/* Modern Badge Layout - Second Row (3 badges) */}
-          <div className="grid grid-cols-3 gap-3 mb-3">
-            {CATEGORIES.slice(2, 5).map((category, index) => (
-              <button 
-                key={index + 2} 
-                onClick={() => setSelectedCategory(category)}
-                className={`px-2 py-3 rounded-2xl text-sm transition-all duration-300 flex flex-col items-center justify-center ${
-                  selectedCategory === category 
-                    ? 'bg-primary-300 text-light-100 shadow-md' 
-                    : 'bg-secondary-600 text-secondary-300 hover:bg-secondary-500'
-                } border ${
-                  selectedCategory === category 
-                    ? 'border-primary-300' 
-                    : 'border-secondary-600'
-                }`}
-              >
-                <div className={`w-8 h-8 rounded-full mb-1 flex items-center justify-center ${
-                  selectedCategory === category ? 'bg-primary-300/20' : 'bg-secondary-600'
-                }`}>
-                  {getIconForCategory(category)}
-                </div>
-                <span className="font-medium font-mono text-xs leading-tight text-center">{category}</span>
-                {selectedCategory === category && (
-                  <span className="h-1 w-6 mt-1 rounded-full bg-primary-300"></span>
-                )}
-              </button>
-            ))}
-          </div>
-          
-          {/* Additional feature - Recent tags */}
-          <div className="mt-8 pt-6 border-t border-secondary-600">
-            <h4 className="text-sm font-bold mb-3 text-secondary-300 font-mono">POPULAR TAGS</h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-secondary-600 text-secondary-300 px-3 py-1 rounded-full text-xs hover:bg-secondary-500 cursor-pointer transition-colors">#webdev</span>
-              <span className="bg-secondary-600 text-secondary-300 px-3 py-1 rounded-full text-xs hover:bg-secondary-500 cursor-pointer transition-colors">#react</span>
-              <span className="bg-secondary-600 text-secondary-300 px-3 py-1 rounded-full text-xs hover:bg-secondary-500 cursor-pointer transition-colors">#ai</span>
-              <span className="bg-secondary-600 text-secondary-300 px-3 py-1 rounded-full text-xs hover:bg-secondary-500 cursor-pointer transition-colors">#design</span>
-              <span className="bg-secondary-600 text-secondary-300 px-3 py-1 rounded-full text-xs hover:bg-secondary-500 cursor-pointer transition-colors">#ux</span>
-            </div>
-          </div>
+          <span className="font-medium text-xs tracking-wide">{category}</span>
+          {selectedCategory === category && (
+            <span className="h-0.5 w-6 mt-2 rounded-full bg-violet-300"></span>
+          )}
         </div>
+      </button>
+    ))}
+  </div>
+  
+  {/* Second Row */}
+  <div className="grid grid-cols-3 gap-4 mb-6">
+    {CATEGORIES.slice(2, 5).map((category, index) => (
+      <button 
+        key={index + 2} 
+        onClick={() => setSelectedCategory(category)}
+        className={`group px-2 py-3.5 rounded-2xl text-sm transition-all duration-300 transform hover:scale-105 ${
+          selectedCategory === category 
+            ? 'bg-gradient-to-br from-violet-50 to-indigo-50 text-violet-700 ring-1 ring-violet-200/70 shadow-sm' 
+            : 'bg-white/80 text-gray-600 hover:bg-white hover:shadow-sm'
+        }`}
+      >
+        <div className="flex flex-col items-center">
+          <div className={`w-9 h-9 rounded-full mb-2 flex items-center justify-center transition-colors duration-300 ${
+            selectedCategory === category ? 'bg-violet-100' : 'bg-gray-100 group-hover:bg-gray-50'
+          }`}>
+            {getIconForCategory(category)}
+          </div>
+          <span className="font-medium text-xs tracking-wide">{category}</span>
+          {selectedCategory === category && (
+            <span className="h-0.5 w-5 mt-2 rounded-full bg-violet-300"></span>
+          )}
+        </div>
+      </button>
+    ))}
+  </div>
+  
+  {/* Tags */}
+  <div className="mt-8 pt-6 border-t border-gray-200/50">
+    <h4 className="text-xs font-medium mb-4 text-gray-400 tracking-wider uppercase">Popular Tags</h4>
+    <div className="flex flex-wrap gap-2.5">
+      <span className="bg-white/80 text-gray-600 px-4 py-1.5 rounded-full text-xs hover:bg-white hover:text-violet-600 hover:shadow-sm cursor-pointer transition-all duration-300 transform hover:scale-105">#webdev</span>
+      <span className="bg-white/80 text-gray-600 px-4 py-1.5 rounded-full text-xs hover:bg-white hover:text-violet-600 hover:shadow-sm cursor-pointer transition-all duration-300 transform hover:scale-105">#react</span>
+      <span className="bg-white/80 text-gray-600 px-4 py-1.5 rounded-full text-xs hover:bg-white hover:text-violet-600 hover:shadow-sm cursor-pointer transition-all duration-300 transform hover:scale-105">#ai</span>
+      <span className="bg-white/80 text-gray-600 px-4 py-1.5 rounded-full text-xs hover:bg-white hover:text-violet-600 hover:shadow-sm cursor-pointer transition-all duration-300 transform hover:scale-105">#design</span>
+      <span className="bg-white/80 text-gray-600 px-4 py-1.5 rounded-full text-xs hover:bg-white hover:text-violet-600 hover:shadow-sm cursor-pointer transition-all duration-300 transform hover:scale-105">#ux</span>
+    </div>
+  </div>
+</div>
       </div>
 
       {/* All Blogs Section */}
