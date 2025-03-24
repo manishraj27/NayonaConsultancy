@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.2",
+    "@gsap/react": "^2.1.2",
     "@react-spring/three": "^9.7.5",
     "@react-three/fiber": "^8.17.14",
     "@shadergradient/react": "^2.0.19",
@@ -24,7 +25,7 @@
     "cobe": "^0.6.3",
     "framer-motion": "^11.18.2",
     "gsap": "^3.12.7",
-    "lenis": "^1.1.20",
+    "lenis": "^1.2.3",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.471.0",
     "motion": "^12.4.7",

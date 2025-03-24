@@ -1,6 +1,7 @@
 import FooterBottom from "./FooterBottom";
 import FooterCredits from "./FooterCredits";
-import FooterUpper from "./FooterUpper";
+
+import FooterUpper from './FooterUpper1';
 
 function FooterContent() {
   return (
@@ -8,9 +9,9 @@ function FooterContent() {
       
       <div className="h-full w-full flex flex-col justify-end pb-4 px-4 lg:px-12">
      
-        <FooterUpper />
+        {/* <FooterUpper /> */}
 
-
+<FooterUpper/>
         <div className="w-full flex flex-col lg:flex-row items-center justify-between lg:gap-24">
           <FooterBottom />
         </div>
