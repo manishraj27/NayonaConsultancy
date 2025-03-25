@@ -75,8 +75,8 @@ const Card = ({ index, title, description, features, iconSrc }) => {
     <div className="px-4 lg:px-8 card relative w-full" id={`card-${index}`}>
       <div className="card-inner relative will-change-transform w-full h-full pt-4 gap-8 md:gap-16 items-center border-t border-secondary-500 bg-background-100 ">
         <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-heading-4 font-semibold text-accent-400 md:grid md:justify-between md:gap-x-fluid">
-          <span className="col-span-2 font-mono">({index})</span>
-          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 text-on-dark font-medium">
+          <span className="col-span-2 text-heading-3 font-open-sans">({index})</span>
+          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 text-on-dark font-open-sans">
             {title}
           </h3>
           <img
@@ -92,7 +92,7 @@ const Card = ({ index, title, description, features, iconSrc }) => {
 
         <div className="grid-gap relative flex min-h-[30vh] py-8 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
           <div className="col-span-7 col-start-6 flex w-full flex-col gap-y-space-sm pt-space-sm text-heading-4">
-            <p className="max-w-[40ch] text-body-1 pb-2 font-medium text-on-dark opacity-80">
+            <p className="max-w-[40ch] text-body-1 pb-2 font-grotesk text-on-dark opacity-80">
               {description}
             </p>
 
