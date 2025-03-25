@@ -70,8 +70,6 @@ import FAQAcc from "./../ui/FAQAcc";
 import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
 import { useLayoutEffect, useRef } from "react";
 import AboutCard from './../ui/AboutCard';
-import serviceItems from "../../lib/servicesdata";
-import ServicesSection from "../ui/ServicesSection";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -80,32 +78,36 @@ const LandingPage = () => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero starts fixed, switches to sticky, then unfixes completely
     ScrollTrigger.create({
       trigger: spacerRef.current,
-      start: "top bottom", // When spacer enters viewport
-      end: "bottom top",  // When spacer leaves viewport
+      start: "top bottom",
+      end: "bottom top",
       onEnter: () => {
-        // When scrolled past Hero, make it sticky (but not fixed)
-        gsap.set(heroRef.current, {
+        gsap.set(heroRef.current, { 
           position: "sticky",
           top: 0,
+          // Smooth transition between states
+          transition: "all 0.2s ease-out" 
         });
       },
       onLeaveBack: () => {
-        // When scrolling back up (before Hero is fully covered), reset to fixed
-        gsap.set(heroRef.current, {
+        gsap.set(heroRef.current, { 
           position: "fixed",
-          top: 0,
+          top: 0 
         });
       },
       onLeave: () => {
-        // When scrolled past completely, make it relative (normal scroll)
-        gsap.set(heroRef.current, {
-          position: "relative",
+        gsap.to(heroRef.current, { 
+          opacity: 0,
+          duration: 0.3,
+          onComplete: () => {
+            gsap.set(heroRef.current, { 
+              position: "relative",
+              opacity: 1 // Reset for when scrolling back up
+            });
+          }
         });
-      },
-      markers: true, // Disable in production
+      }
     });
 
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
@@ -113,33 +115,110 @@ const LandingPage = () => {
 
   return (
     <div className="relative" role="main">
-      {/* Hero - starts fixed, becomes sticky, then relative */}
+      {/* Hero section */}
       <div
         ref={heroRef}
-        className="w-full h-screen z-10"
-        style={{
-          position: "fixed", // Initial state
-          top: 0,
-          left: 0,
-        }}
+        className="w-full h-screen z-10 fixed top-0 left-0"
       >
         <Hero />
       </div>
 
-      {/* Spacer - ensures content starts below Hero */}
+      {/* Spacer */}
       <div ref={spacerRef} className="h-screen" aria-hidden="true"></div>
 
-      {/* Content section */}
-      <div className="relative dark-section bg-background-100 w-full rounded-[40px] z-20">
-        <Motto />
-        {/* <ServicesSection title="Oracle EPM Services" services={serviceItems} /> */}
-        <AboutCard />
-        <HomePageServiceSection />
-        <Testimonials />
-        <FAQAcc />
+      {/* Content wrapper with footer-matching bg */}
+      <div className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
+        {/* Actual content with rounded corners */}
+        <div className="bg-background-100 rounded-[40px] ">
+          <Motto />
+          <AboutCard />
+          <HomePageServiceSection />
+          <Testimonials />
+          <FAQAcc />
+        </div>
+        <div className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-light-200"></div>
       </div>
     </div>
   );
 };
 
 export default LandingPage;
+
+// import Hero from "../homepage/Hero";
+// import Motto from "../ui/Motto";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { Testimonials } from "../ui/Testimonials";
+// import FAQAcc from "./../ui/FAQAcc";
+// import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
+// import { useLayoutEffect, useRef } from "react";
+// import AboutCard from './../ui/AboutCard';
+
+// const LandingPage = () => {
+//   const heroRef = useRef(null);
+//   const spacerRef = useRef(null);
+//   const contentRef = useRef(null);
+
+//   useLayoutEffect(() => {
+//     gsap.registerPlugin(ScrollTrigger);
+
+//     const tl = gsap.timeline({
+//       scrollTrigger: {
+//         trigger: spacerRef.current,
+//         start: "top bottom",
+//         end: "bottom top",
+//         scrub: true,
+//         markers: true, // Remove in production
+//       }
+//     });
+
+//     // Hero transition: fixed → sticky → hidden
+//     tl.to(heroRef.current, {
+//       opacity: 0,
+//       duration: 0.3,
+//       ease: "power2.in",
+//       onComplete: () => {
+//         gsap.set(heroRef.current, { display: "none" });
+//       }
+//     }, 0.5);
+
+//     // Content section mask to hide rounded corners
+//     tl.fromTo(contentRef.current, 
+//       { clipPath: "inset(0 0 100% 0)" },
+//       { clipPath: "inset(0 0 0 0)", duration: 0.5 },
+//       0
+//     );
+
+//     return () => ScrollTrigger.getAll().forEach(t => t.kill());
+//   }, []);
+
+//   return (
+//     <div className="relative" role="main">
+//       {/* Hero - starts fixed, fades out when scrolling */}
+//       <div
+//         ref={heroRef}
+//         className="w-full h-screen z-10 fixed top-0 left-0"
+//       >
+//         <Hero />
+//       </div>
+
+//       {/* Spacer - ensures content starts below Hero */}
+//       <div ref={spacerRef} className="h-screen" aria-hidden="true"></div>
+
+//       {/* Content section with clip-path mask */}
+//       <div 
+//         ref={contentRef}
+//         className="relative dark-section bg-background-100 w-full rounded-[40px] z-20"
+//         style={{ clipPath: "inset(0 0 100% 0)" }}
+//       >
+//         <Motto />
+//         <AboutCard />
+//         <HomePageServiceSection />
+//         <Testimonials />
+//         <FAQAcc />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LandingPage;
