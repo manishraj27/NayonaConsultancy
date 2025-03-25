@@ -5,6 +5,7 @@ import card3 from "../../assets/images/cards/card-3.webp";
 import card4 from "../../assets/images/cards/card-4.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Heading from "./Heading";
 
 // Ensure plugins are registered only once
 if (!gsap.plugins.ScrollTrigger) {
@@ -22,10 +23,10 @@ const Card = ({ title, copy, index }) => {
 
   return (
     <div className="card relative w-full" id={`card-${index + 1}`}>
-      <div className={`card-inner relative will-change-transform w-full h-full p-8 flex flex-col md:flex-row gap-8 md:gap-16 items-center ${bgColors[index]}`}>
+      <div className={`card-inner relative will-change-transform w-full h-full p-8 flex flex-col md:flex-row gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100`}>
         <div className="flex-[3] w-full">
-          <h1 className="text-4xl md:text-6xl font-semibold leading-none mb-6 md:mb-10">{title}</h1>
-          <p className="text-xl md:text-2xl font-medium">{copy}</p>
+          <h1 className="text-4xl md:text-6xl font-semibold text-on-dark leading-none mb-6 md:mb-10">{title}</h1>
+          <p className="text-xl md:text-2xl text-on-dark font-medium">{copy}</p>
         </div>
         <div className="flex-1 w-full aspect-video rounded-xl overflow-hidden">
           <img src={images[index]} alt={title} className="w-full h-full object-cover" />
@@ -117,9 +118,9 @@ function AboutCard() {
   }, []); // Empty dependency array ensures this runs once after initial render
 
   return (
-    <div className="w-full overflow-hidden" ref={containerRef}>
-      <section className="intro w-full h-screen p-8 bg-white flex items-center justify-center">
-        <h1 className="text-4xl md:text-6xl font-semibold">About Us</h1>
+    <div className="w-full mt-10 overflow-hidden bg-background-100" ref={containerRef}>
+      <section className="intro w-full min-h-screen p-8 bg-background-100 flex">
+       <Heading title="Why choose us?" description="About Us"/>
       </section>
       
       <section className="cards w-full">
@@ -128,11 +129,11 @@ function AboutCard() {
         ))}
       </section>
       
-      <section className="outro w-full h-screen p-8 bg-white flex items-center justify-center">
-        <p>
+      <section className="outro w-full p-8 flex items-center justify-center">
+        {/* <p className="text-on-dark">
           This is the outro section. Scroll back up to see the intro section.
           nayona consultancy
-        </p>
+        </p> */}
       </section>
     </div>
   );

@@ -70,6 +70,8 @@ import FAQAcc from "./../ui/FAQAcc";
 import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
 import { useLayoutEffect, useRef } from "react";
 import AboutCard from './../ui/AboutCard';
+import serviceItems from "../../lib/servicesdata";
+import ServicesSection from "../ui/ServicesSection";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -128,8 +130,9 @@ const LandingPage = () => {
       <div ref={spacerRef} className="h-screen" aria-hidden="true"></div>
 
       {/* Content section */}
-      <div className="relative bg-background-100 w-full rounded-[40px] z-20">
+      <div className="relative dark-section bg-background-100 w-full rounded-[40px] z-20">
         <Motto />
+        {/* <ServicesSection title="Oracle EPM Services" services={serviceItems} /> */}
         <AboutCard />
         <HomePageServiceSection />
         <Testimonials />
