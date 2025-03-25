@@ -91,7 +91,7 @@ const RightSection = () => {
       initial={{ opacity: 0, x: 100 }}
       animate={startAnimation ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-3xl flex flex-col p-10 z-[1] overflow-hidden"
+      className="hidden lg:flex absolute right-1 top-2 w-1/2 h-[97%] rounded-[40px] flex flex-col p-10 z-[1] overflow-hidden"
     >
       {/* Background Iridescence */}
       <motion.div

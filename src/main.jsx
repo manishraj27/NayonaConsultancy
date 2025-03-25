@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import SpotlightCursor from './components/ui/SpotlightCursor.jsx'
 import LenisWrapper from './components/ui/LenisWrapper.jsx'
-import ServicesSection from './components/ui/ServicesSection';
-import { HomePageServiceSection } from './components/homepage/HomePageServiceSection.jsx'
-import AboutCard from './components/ui/AboutCard.jsx'
+
+
+
 
 
 createRoot(document.getElementById('root')).render(
@@ -16,6 +16,7 @@ createRoot(document.getElementById('root')).render(
       <LenisWrapper>
         <SpotlightCursor />
         <App />
+    
       </LenisWrapper>
     </StrictMode>
   </BrowserRouter>
