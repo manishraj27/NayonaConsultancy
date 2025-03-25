@@ -1,14 +1,15 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import card1 from "../../assets/images/cards/card-1.webp";
 import card2 from "../../assets/images/cards/card-2.webp";
 import card3 from "../../assets/images/cards/card-3.webp";
 import card4 from "../../assets/images/cards/card-4.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from '@gsap/react';
 
-// Register plugins
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+// Ensure plugins are registered only once
+if (!gsap.plugins.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const Card = ({ title, copy, index }) => {
   const images = [card1, card2, card3, card4];
@@ -54,24 +55,28 @@ function AboutCard() {
     },
   ];
 
-  const container = useRef();
+  const containerRef = useRef(null);
 
-  useGSAP(() => {
-  
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Kill any existing ScrollTrigger instances to prevent conflicts
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
     // Ensure the container is properly sized
-    gsap.set(container.current, { height: "auto" });
+    gsap.set(container, { height: "auto" });
 
-    const cardElements = gsap.utils.toArray(".card");
+    const cardElements = gsap.utils.toArray(".card", container);
 
-    // Main pinning animation
+    // Main pinning animation for intro
     ScrollTrigger.create({
       trigger: cardElements[0],
       start: "top 35%",
       endTrigger: cardElements[cardElements.length - 1],
       end: "top 30%",
-            pin: ".intro",
+      pin: ".intro",
       pinSpacing: false,
-      markers: true, // Add markers for debugging
     });
 
     // Card animations
@@ -80,36 +85,39 @@ function AboutCard() {
       const cardInner = card.querySelector(".card-inner");
       
       if (!isLastCard) {
+        // Pin each card
         ScrollTrigger.create({
-            trigger: card,
-            start: "top 35%",
-            endTrigger: ".outro",
-            end: "top 60%",
-            pin: true,
-            pinSpacing: false,
-          markers: true, // Add markers for debugging
+          trigger: card,
+          start: "top 35%",
+          endTrigger: ".outro",
+          end: "top 60%",
+          pin: true,
+          pinSpacing: false,
         });
 
+        // Move card upwards
         gsap.to(cardInner, {
           y: `-${(cardElements.length - index) * 14}vh`,
           ease: "none",
           scrollTrigger: {
             trigger: card,
             start: "top 35%",
-                        endTrigger: ".outro",
-                        end: "top 65%",
-                        scrub: true,
-         
+            endTrigger: ".outro",
+            end: "top 65%",
+            scrub: true,
           },
         });
       }
     });
 
-    return () => ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-  }, { scope: container });
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []); // Empty dependency array ensures this runs once after initial render
 
   return (
-    <div className="w-full overflow-hidden" ref={container}>
+    <div className="w-full overflow-hidden" ref={containerRef}>
       <section className="intro w-full h-screen p-8 bg-white flex items-center justify-center">
         <h1 className="text-4xl md:text-6xl font-semibold">About Us</h1>
       </section>
@@ -121,10 +129,9 @@ function AboutCard() {
       </section>
       
       <section className="outro w-full h-screen p-8 bg-white flex items-center justify-center">
-
         <p>
-            This is the outro section. Scroll back up to see the intro section.
-            nayona consultancy
+          This is the outro section. Scroll back up to see the intro section.
+          nayona consultancy
         </p>
       </section>
     </div>
