@@ -74,9 +74,9 @@ const Card = ({ index, title, description, features, iconSrc }) => {
   return (
     <div className="px-4 lg:px-8 card relative w-full" id={`card-${index}`}>
       <div className="card-inner relative will-change-transform w-full h-full pt-4 gap-8 md:gap-16 items-center border-t border-secondary-500 bg-background-100 ">
-        <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-heading-4 font-semibold text-accent-400 md:grid md:justify-between md:gap-x-fluid">
-          <span className="col-span-2 text-heading-3 font-open-sans">({index})</span>
-          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 text-on-dark font-open-sans">
+        <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-accent-400 md:grid md:justify-between md:gap-x-fluid">
+          <span className="col-span-2 lg:text-heading-3 text-heading-4  font-open-sans">({index})</span>
+          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md lg:text-heading-3 text-heading-4 text-accent-400 font-open-sans">
             {title}
           </h3>
           <img
@@ -238,6 +238,8 @@ function AboutCard() {
     <div className="w-full mt-10 overflow-hidden bg-background-100" ref={containerRef}>
       <section className="intro w-full min-h-screen p-8 bg-background-100 flex">
        <Heading title="Why choose us?" description="About Us"/>
+        {/*  */}
+
       </section>
       
       <section className="cards w-full">
