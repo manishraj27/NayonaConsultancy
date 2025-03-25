@@ -11,40 +11,97 @@ if (!gsap.plugins.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const Card = ({ index, title, description, features, iconSrc}) => {
-  return (
-    <div className="lg:px-8 px-4 card relative w-full" id={`card-${index}`}>
-      {/* <div className={`card-inner relative will-change-transform w-full h-full p-8 flex flex-col md:flex-row gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}/> */}
+// const Card = ({ index, title, description, features, iconSrc}) => {
+//   return (
+//     <div className="lg:px-8 px-4 card relative w-full" id={`card-${index}`}>
+//       {/* <div className={`card-inner relative will-change-transform w-full h-full p-8 flex flex-col md:flex-row gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}/> */}
 
-      <div className="card-inner  top-0   border-t-secondary-300 relative will-change-transform w-full h-full pt-4  gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}" 
+//       <div className="card-inner  top-0   border-t-secondary-300 relative will-change-transform w-full h-full pt-4  gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}" 
        
-      >
+//       >
+//         <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-heading-4 font-semibold text-accent-400 md:grid md:justify-between md:gap-x-fluid">
+//           <span className="col-span-2">({index})</span>
+//           <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 ">{title}</h3>
+//           <img 
+//             alt="" 
+//             loading="lazy" 
+//             width={32} 
+//             height={32} 
+//             className="hidden h-6 w-6 justify-self-end opacity-30 sm:h-7 sm:w-7 xl:flex 2xl:h-8 2xl:w-8" 
+//             style={{ color: "transparent" }} 
+//             src={iconSrc} 
+//           />
+//         </div>
+        
+//         <div className="grid-gap relative flex min-h-[30vh] py-8 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
+//           <div className="col-span-7 col-start-6 flex w-full flex-col gap-y-space-sm pt-space-sm text-heading-4">
+//             <p className="max-w-[40ch] text-body-1 pb-2 font-medium text-on-dark">
+//               {description}
+//             </p>
+            
+//             <div className="flex flex-col divide-y divide-secondary-200">
+//               {features.map((feature, idx) => (
+//                 <AboutDescriptionCardFeature 
+//                   key={idx} 
+//                   index={`0${idx + 1}`} 
+//                   text={feature} 
+//                 />
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const AboutDescriptionCardFeature = ({ index, text }) => {
+//   return (
+//     <span className="flex items-start gap-x-space-sm py-2 text-body-1 text-on-dark xl:gap-x-space-md xl:py-space-2xs">
+//       <span className="font-mono text-base font-medium leading-[200%] text-on-dark">
+//         {index}
+//       </span>
+      
+//       {text}
+//     </span>
+//   );
+// };
+
+
+
+
+const Card = ({ index, title, description, features, iconSrc }) => {
+  return (
+    <div className="px-4 lg:px-8 card relative w-full" id={`card-${index}`}>
+      <div className="card-inner relative will-change-transform w-full h-full pt-4 gap-8 md:gap-16 items-center border-t border-secondary-500 bg-background-100 ">
         <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-heading-4 font-semibold text-accent-400 md:grid md:justify-between md:gap-x-fluid">
-          <span className="col-span-2">({index})</span>
-          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 ">{title}</h3>
-          <img 
-            alt="" 
-            loading="lazy" 
-            width={32} 
-            height={32} 
-            className="hidden h-6 w-6 justify-self-end opacity-30 sm:h-7 sm:w-7 xl:flex 2xl:h-8 2xl:w-8" 
-            style={{ color: "transparent" }} 
-            src={iconSrc} 
+          <span className="col-span-2 font-mono">({index})</span>
+          <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 text-on-dark font-medium">
+            {title}
+          </h3>
+          <img
+            alt=""
+            loading="lazy"
+            width={32}
+            height={32}
+            className="hidden h-6 w-6 justify-self-end opacity-30 sm:h-7 sm:w-7 xl:flex 2xl:h-8 2xl:w-8"
+            style={{ color: "transparent" }}
+            src={iconSrc}
           />
         </div>
-        
+
         <div className="grid-gap relative flex min-h-[30vh] py-8 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
           <div className="col-span-7 col-start-6 flex w-full flex-col gap-y-space-sm pt-space-sm text-heading-4">
-            <p className="max-w-[40ch] text-body-1 pb-2 font-medium text-on-dark">
+            <p className="max-w-[40ch] text-body-1 pb-2 font-medium text-on-dark opacity-80">
               {description}
             </p>
-            
-            <div className="flex flex-col divide-y divide-secondary-200">
+
+            <div className="flex flex-col divide-y divide-secondary-500">
               {features.map((feature, idx) => (
-                <AboutDescriptionCardFeature 
-                  key={idx} 
-                  index={`0${idx + 1}`} 
-                  text={feature} 
+                <AboutDescriptionCardFeature
+                  key={idx}
+                  index={`0${idx + 1}`}
+                  text={feature}
                 />
               ))}
             </div>
@@ -57,12 +114,11 @@ const Card = ({ index, title, description, features, iconSrc}) => {
 
 const AboutDescriptionCardFeature = ({ index, text }) => {
   return (
-    <span className="flex items-start gap-x-space-sm py-2 text-body-1 text-on-dark xl:gap-x-space-md xl:py-space-2xs">
-      <span className="font-mono text-base font-medium leading-[200%] text-on-dark">
+    <span className="flex items-start gap-x-space-sm py-4 text-body-1 text-on-dark xl:gap-x-space-md xl:py-space-2xs">
+      <span className="font-mono text-base font-medium leading-[200%] text-accent-300">
         {index}
       </span>
-      
-      {text}
+      <span className="opacity-80">{text}</span>
     </span>
   );
 };
