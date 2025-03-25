@@ -6,6 +6,7 @@ import card4 from "../../assets/images/cards/card-4.webp";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Heading from "./Heading";
+import Page2 from "./Page2";
 
 // Ensure plugins are registered only once
 if (!gsap.plugins.ScrollTrigger) {
@@ -121,6 +122,7 @@ function AboutCard() {
     <div className="w-full mt-10 overflow-hidden bg-background-100" ref={containerRef}>
       <section className="intro w-full min-h-screen p-8 bg-background-100 flex">
        <Heading title="Why choose us?" description="About Us"/>
+       <Page2 />
       </section>
       
       <section className="cards w-full">
