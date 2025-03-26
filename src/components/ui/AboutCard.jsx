@@ -5,68 +5,16 @@ import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Heading from "./Heading";
+import shape1 from "../../assets/shapes/deepdown.svg";
+import shape2 from "../../assets/shapes/EchoFlash.svg";
+import shape3 from "../../assets/shapes/entangled.svg";
+import shape4 from "../../assets/shapes/target.svg";
+
 
 // Ensure plugins are registered only once
 if (!gsap.plugins.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 }
-
-// const Card = ({ index, title, description, features, iconSrc}) => {
-//   return (
-//     <div className="lg:px-8 px-4 card relative w-full" id={`card-${index}`}>
-//       {/* <div className={`card-inner relative will-change-transform w-full h-full p-8 flex flex-col md:flex-row gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}/> */}
-
-//       <div className="card-inner  top-0   border-t-secondary-300 relative will-change-transform w-full h-full pt-4  gap-8 md:gap-16 items-center border-secondary-500 border-t bg-background-100 rounded-t-[40px]`}" 
-       
-//       >
-//         <div className="flex grid-cols-12 items-center justify-start gap-x-space-xs text-left text-heading-4 font-semibold text-accent-400 md:grid md:justify-between md:gap-x-fluid">
-//           <span className="col-span-2">({index})</span>
-//           <h3 className="col-span-6 px-4 lg:px-0 col-start-6 py-space-md text-heading-3 ">{title}</h3>
-//           <img 
-//             alt="" 
-//             loading="lazy" 
-//             width={32} 
-//             height={32} 
-//             className="hidden h-6 w-6 justify-self-end opacity-30 sm:h-7 sm:w-7 xl:flex 2xl:h-8 2xl:w-8" 
-//             style={{ color: "transparent" }} 
-//             src={iconSrc} 
-//           />
-//         </div>
-        
-//         <div className="grid-gap relative flex min-h-[30vh] py-8 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
-//           <div className="col-span-7 col-start-6 flex w-full flex-col gap-y-space-sm pt-space-sm text-heading-4">
-//             <p className="max-w-[40ch] text-body-1 pb-2 font-medium text-on-dark">
-//               {description}
-//             </p>
-            
-//             <div className="flex flex-col divide-y divide-secondary-200">
-//               {features.map((feature, idx) => (
-//                 <AboutDescriptionCardFeature 
-//                   key={idx} 
-//                   index={`0${idx + 1}`} 
-//                   text={feature} 
-//                 />
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// const AboutDescriptionCardFeature = ({ index, text }) => {
-//   return (
-//     <span className="flex items-start gap-x-space-sm py-2 text-body-1 text-on-dark xl:gap-x-space-md xl:py-space-2xs">
-//       <span className="font-mono text-base font-medium leading-[200%] text-on-dark">
-//         {index}
-//       </span>
-      
-//       {text}
-//     </span>
-//   );
-// };
-
 
 
 
@@ -90,7 +38,7 @@ const Card = ({ index, title, description, features, iconSrc }) => {
           />
         </div>
 
-        <div className="grid-gap relative flex min-h-[30vh] py-8 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
+        <div className="grid-gap relative flex min-h-[30vh] lg:py-8 py-20 flex-col place-items-start pt-space-3xs md:grid md:min-h-[40vh] md:grid-cols-12">
           <div className="col-span-7 col-start-6 flex w-full flex-col gap-y-space-sm pt-space-sm text-heading-4">
             <p className="max-w-[40ch] text-body-1 pb-2 font-grotesk text-on-dark opacity-80">
               {description}
@@ -122,7 +70,7 @@ const AboutDescriptionCardFeature = ({ index, text }) => {
     </span>
   );
 };
-
+import { Target, Globe, Award } from 'lucide-react';
 function AboutCard() {
   const containerRef = useRef(null);
 
@@ -197,7 +145,7 @@ function AboutCard() {
         "Real-time Performance Insights",
         "Strategic Business Intelligence"
       ],
-      iconSrc: "//images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg"
+      iconSrc: shape1,
     },
     {
       index: "02",
@@ -208,7 +156,7 @@ function AboutCard() {
         "Custom Configuration",
         "Continuous Support"
       ],
-      iconSrc: "//images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg"
+      iconSrc: shape2
     },
     {
       index: "03",
@@ -219,7 +167,7 @@ function AboutCard() {
         "Budgeting Optimization",
         "Performance Reporting"
       ],
-      iconSrc: "//images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg"
+      iconSrc: shape3
     },
     {
       index: "04",
@@ -230,18 +178,44 @@ function AboutCard() {
         "Customized Solutions",
         "Continuous Innovation"
       ],
-      iconSrc: "//images.ctfassets.net/fwy0yv14lkat/3OTKoEZctLHsU75qKdenDH/a241fd9d6e8c8f0622811fe2bed44b87/Shape.svg"
+      iconSrc: shape4
     }
   ];
 
   return (
     <div className="w-full mt-10 overflow-hidden bg-background-100" ref={containerRef}>
-      <section className="intro w-full min-h-screen p-8 bg-background-100 flex">
-       <Heading title="Why choose us?" description="About Us"/>
-        {/*  */}
-
-      </section>
+ <section className="intro w-full min-h-screen lg:px-8 px-4 pb-72 lg:pb-56 lg:pt-24 pt-6">
+  <div className="container mx-auto">
+    {/* Heading Section */}
+    <div className="mb-16">
+      <Heading title="Why choose us?" description="About Us"/>
+    </div>
+    
+    {/* Content Section with left blank space */}
+    <div className="flex">
+      {/* Left blank space - 1/4 width */}
+      <div className="lg:w-1/4"></div>
       
+      {/* Right content - 3/4 width */}
+      <div className="lg:w-3/4">
+        <div className="space-y-8 text-on-dark font-grotesk leading-relaxed text-body-1  max-w-3xl">
+          <p>
+            Nayona Consultancy stands as a premier Oracle Enterprise Performance Management (EPM) consulting firm, dedicated to transforming financial strategies and empowering businesses through innovative technological solutions.
+          </p>
+          <p>
+            At the core of our mission is a commitment to delivering exceptional value to our clients. We specialize in tailoring Oracle EPM solutions that are precisely aligned with each organization's unique business objectives.
+          </p>
+          <p>
+            Our team comprises certified Oracle professionals, financial experts, and technology specialists with an average of 12+ years of experience. We pride ourselves on translating intricate financial data into actionable insights.
+          </p>
+          <p>
+            Throughout our journey, Nayona Consultancy has served over 150 clients across 50+ industries, maintaining an impressive 95% client satisfaction rate. We are strategic partners committed to your financial excellence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       <section className="cards w-full">
         {cardDetails.map((service, index) => (
           <Card key={index} {...service} />
