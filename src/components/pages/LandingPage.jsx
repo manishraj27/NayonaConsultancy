@@ -70,6 +70,7 @@ import FAQAcc from "./../ui/FAQAcc";
 import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
 import { useLayoutEffect, useRef } from "react";
 import AboutCard from './../ui/AboutCard';
+import HomePageCTA from "../ui/HomePageCTA";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -135,6 +136,7 @@ const LandingPage = () => {
           <HomePageServiceSection />
           <Testimonials />
           <FAQAcc />
+          <HomePageCTA />
         </div>
         <div className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-light-200"></div>
       </div>
