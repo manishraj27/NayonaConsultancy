@@ -5,6 +5,7 @@ import { ArrowLeft, Heart, Eye, Calendar, Clock, Tag, MessageCircle, BookOpen } 
 import ReactQuill from 'react-quill';
 import defaultBlogCover from "../../assets/images/blogDefaultImage.webp";
 import apiconfig from '../../configurations/APIConfig';
+import { BlogPostSkeleton } from '../ui/Skeleton/BlogPostSkeleton';
 
 function Blog() {
   const { slug } = useParams();
@@ -40,11 +41,8 @@ function Blog() {
 
   const getDefaultImage = () => defaultBlogCover;
 
-  if (loading) return (
-    <section className="bg-background-100 min-h-screen flex items-center justify-center text-on-dark  dark-section rounded-b-[40px]">
-      <div className="text-xl font-medium">Loading blog...</div>
-    </section>
-  );
+  if (loading) return <BlogPostSkeleton />;
+
 
   if (error || !blog) return (
     <section className="bg-background-100 min-h-screen flex items-center justify-center text-red-500  dark-section rounded-b-[40px]">

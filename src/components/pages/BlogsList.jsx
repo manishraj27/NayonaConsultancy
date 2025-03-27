@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Heading from '../ui/Heading';
 import defaultBlogCover from "../../assets/images/blogDefaultImage.webp";
 import apiconfig from './../../configurations/APIConfig';
+import { BlogSectionSkeleton } from '../ui/Skeleton/BlogSectionSkeleton';
 
 function BlogList() {
   const [blogs, setBlogs] = useState([]);
@@ -67,16 +68,7 @@ function BlogList() {
   const nextPage = () => setCurrentPage(prev => Math.min(prev + 1, totalPages));
   const prevPage = () => setCurrentPage(prev => Math.max(prev - 1, 1));
 
-  if (loading) return (
-    <section className="dark-section overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
-      <div className="w-full text-center">
-        <div className="inline-block relative w-24 h-24">
-          <div className="absolute top-0 left-0 w-full h-full border-4 border-transparent border-t-primary-300 border-r-primary-300 rounded-full animate-spin"></div>
-        </div>
-        <p className="mt-6 text-secondary-300 font-mono">Loading blogs...</p>
-      </div>
-    </section>
-  );
+  if (loading) return <BlogSectionSkeleton />;
 
   if (error) return (
     <section className="dark-section overflow-visible lg:px-12 px-4 w-full rounded-b-3xl py-24 lg:py-32 min-h-screen bg-background-100 text-light-100 flex flex-col items-center justify-center relative">
