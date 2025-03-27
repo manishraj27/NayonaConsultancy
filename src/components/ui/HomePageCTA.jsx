@@ -21,8 +21,8 @@ function HomePageCTA() {
   }, []);
 
   return (
-    <div className="lg:px-12 lg:py-24 px-8 py-8">
-      <div className="relative flex flex-col items-center justify-center text-center bg-light-200 rounded-[40px] p-8">
+    <div className="lg:px-12 lg:py-24 px-4 py-12">
+      <div className="relative flex flex-col items-center w-full  justify-center text-center bg-light-200 rounded-[40px] p-8">
         {/* Main Centered Text */}
         <div className="mb-12 text-center">
           <h4 className="text-body-4 font-open-sans uppercase tracking-wider text-on-light mb-4">
@@ -82,7 +82,7 @@ function HomePageCTA() {
                 Working Globally
               </span>
               <span className="flex h-full items-center justify-start px-2">
-                Available Apr '25
+                Available 24/7
               </span>
             </p>
           </div>
