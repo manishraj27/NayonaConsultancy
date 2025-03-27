@@ -4,6 +4,7 @@ import { ChevronRight } from "lucide-react";
 import globe from "../../assets/images/globe.png";
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
+import Iridescence from "../../blocks/Backgrounds/Iridescence/Iridescence";
 
 function HomePageCTA() {
   useEffect(() => {
@@ -23,6 +24,12 @@ function HomePageCTA() {
   return (
     <div className="lg:px-12 lg:py-24 px-4 py-12">
       <div className="relative flex flex-col items-center w-full  justify-center text-center bg-light-200 rounded-[40px] p-8">
+         <Iridescence
+                  color={[0.1, 0.8, 1]}
+                  mouseReact={false}
+                  amplitude={0.15}
+                  speed={0.2}
+                />
         {/* Main Centered Text */}
         <div className="mb-12 text-center">
           <h4 className="text-body-4 font-open-sans uppercase tracking-wider text-on-light mb-4">
