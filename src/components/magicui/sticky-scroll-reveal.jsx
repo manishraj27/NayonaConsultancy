@@ -12,7 +12,7 @@ export const StickyScroll = ({
   const { scrollYProgress } = useScroll({
     // Remove container option to use page scroll
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start 144px", "end start"],
   });
   const cardLength = content.length;
 
@@ -84,7 +84,7 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "sticky top-10 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
+          "sticky top-36 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
           contentClassName
         )}>
         {content[activeCard].content ?? null}
