@@ -72,8 +72,11 @@ const CompetitorSection = () => {
             title="The Premier Choice for Oracle EPM" 
             description="Why Industry Leaders Choose Us" 
           />
-          <p className="mt-4 text-body-1 text-on-dark/70 max-w-3xl">
+          <p className="mt-4 text-body-1 text-on-dark/70 max-w-3xl lg:block hidden md:block">
             See how Nayona Consultancy delivers superior value compared to other providers in the markert. Our tailored solutions, personalized support, and deep expertise in Oracle EPM set us apart from the competition.
+          </p>
+          <p className="mt-4 text-body-1 text-on-dark/70 max-w-3xl">
+            See how Nayona Consultancy delivers superior value compared to other providers in the markert.
           </p>
         </div>
 
