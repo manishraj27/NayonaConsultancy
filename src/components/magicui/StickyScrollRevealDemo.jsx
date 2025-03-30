@@ -345,7 +345,7 @@ export function SeeTheEPMDifference() {
             See the EPM Difference
           </h2>
           <p className="text-body-1 text-on-dark/70 max-w-3xl mx-auto">
-            Interactive demonstration of how Nayona's approach delivers more
+          Demonstration of how Nayona's approach delivers more
             value than out-of-the-box solutions
           </p>
         </div>
