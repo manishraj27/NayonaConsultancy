@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "motion/react";
-import { motion } from "motion/react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from './../../lib/utils';
 
 export const StickyScroll = ({
@@ -10,7 +10,6 @@ export const StickyScroll = ({
   const [activeCard, setActiveCard] = React.useState(0);
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
-    // Remove container option to use page scroll
     target: ref,
     offset: ["start 144px", "end start"],
   });
@@ -29,14 +28,16 @@ export const StickyScroll = ({
   });
 
   const backgroundColors = [
-    "#0f172a", // slate-900
-    "#000000", // black
-    "#171717", // neutral-900
+    '#0c0c0c',  // Start with pure dark
+    '#0e0a18',  // Slightly bluish-purple tint
+    // '#100b20',  // Deeper purple-blue (peak)
+    '#0e0a18',  // Mirror back down
+    '#0c0c0c'   // Return to base
   ];
   const linearGradients = [
-    "linear-gradient(to bottom right, #06b6d4, #10b981)", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, #ec4899, #6366f1)", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, #f97316, #eab308)", // orange-500 to yellow-500
+    "linear-gradient(to bottom right, #4A90E2, #5A6ACF)", // primary-300 to secondary-400
+    "linear-gradient(to bottom right, #6366F1, #4338CA)", // accent-400 to secondary-500
+    "linear-gradient(to bottom right, #818CF8, #312E81)", // accent-300 to secondary-600
   ];
 
   const [backgroundGradient, setBackgroundGradient] = useState(linearGradients[0]);
@@ -50,30 +51,25 @@ export const StickyScroll = ({
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="relative flex justify-center space-x-10 rounded-md p-10"
-      ref={ref}>
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
+      className="relative flex justify-center space-x-10  p-10 "
+      ref={ref}
+    >
+      <div className="relative flex items-start px-4">
+        <div className="max-w-prose">
           {content.map((item, index) => (
             <div key={item.title + index} className="my-20">
               <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-slate-100">
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                className="text-heading-3 font-normal text-on-dark font-open-sans"
+              >
                 {item.title}
               </motion.h2>
               <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-kg mt-10 max-w-sm text-slate-300">
+                initial={{ opacity: 0 }}
+                animate={{ opacity: activeCard === index ? 1 : 0.3 }}
+                className="text-body-1 mt-10 max-w-sm text-on-dark/80 font-grotesk"
+              >
                 {item.description}
               </motion.p>
             </div>
@@ -84,9 +80,10 @@ export const StickyScroll = ({
       <div
         style={{ background: backgroundGradient }}
         className={cn(
-          "sticky top-36 hidden h-60 w-80 overflow-hidden rounded-md bg-white lg:block",
+          "sticky top-36 hidden h-60 w-80 overflow-hidden bg-background-100 rounded-2xl lg:block",
           contentClassName
-        )}>
+        )}
+      >
         {content[activeCard].content ?? null}
       </div>
     </motion.div>

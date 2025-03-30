@@ -71,7 +71,7 @@ import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
 import { useLayoutEffect, useRef } from "react";
 import AboutCard from './../ui/AboutCard';
 import HomePageCTA from "../ui/HomePageCTA";
-import { StickyScrollRevealDemo } from "../magicui/StickyScrollRevealDemo";
+import {  SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -135,7 +135,7 @@ const LandingPage = () => {
           <Motto />
           <AboutCard />
           <HomePageServiceSection />
-          <StickyScrollRevealDemo />
+          <SeeTheEPMDifference />
           <Testimonials />
           <FAQAcc />
           <HomePageCTA />
