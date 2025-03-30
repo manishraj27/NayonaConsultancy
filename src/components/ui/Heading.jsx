@@ -12,7 +12,7 @@ export default function Heading({ title, description }) {
       </div>
 
       {/* Title */}
-      <h2 className="mt-2 text-heading-1 font-semibold text-on-dark text-pretty">
+      <h2 className="mt-2 text-heading-1 font-open-sans font-medium text-on-dark text-pretty">
         {title}
       </h2>
     </div>
