@@ -29,11 +29,11 @@ export const StickyScroll = ({
 
   const backgroundColors = [
     '#0c0c0c',  // Start with pure dark
-    '#0e0a18',  // Slightly bluish-purple tint
-    // '#100b20',  // Deeper purple-blue (peak)
-    '#0e0a18',  // Mirror back down
+    '#151f2e',  // Dark ocean
+    '#1f2937',  // Charcoal blue
     '#0c0c0c'   // Return to base
   ];
+  
   const linearGradients = [
     "linear-gradient(to bottom right, #4A90E2, #5A6ACF)", // primary-300 to secondary-400
     "linear-gradient(to bottom right, #6366F1, #4338CA)", // accent-400 to secondary-500

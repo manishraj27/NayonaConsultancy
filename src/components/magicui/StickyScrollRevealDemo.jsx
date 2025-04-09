@@ -106,7 +106,7 @@ import scenarioModeling from "../../assets/scroll-images/businessAnalyticStrateg
 import consolidationFlow from "../../assets/scroll-images/consolidationFlow.webp";
 import taxAutomation from "../../assets/scroll-images/tax.webp";
 import { motion } from 'framer-motion';
-
+import competitiveEdge from "../../assets/scroll-images/compedge.webp";
 import { useEffect, useRef } from 'react';
 import {useAnimation } from 'framer-motion';
 
@@ -328,7 +328,7 @@ const content = [
       {/* Image with zoom effect */}
       <div className="absolute inset-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500">
         <Image
-          src={consolidationFlow}
+          src={competitiveEdge}
           width={300}
           height={300}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -345,12 +345,12 @@ const content = [
          
           {/* Title text */}
           <h3 className="text-heading-4 text-light-100 font-open-sans mb-2">
-            Error-Proof Consolidations
+            Your Competitive Edge
           </h3>
           
           {/* Hover-only description */}
           <p className="text-light-100/80 text-body-2 font-grotesk opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200 line-clamp-2">
-            Automated data validation and intercompany matching
+            Your competitive edge through innovative features
           </p>
           
         
