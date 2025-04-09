@@ -6,7 +6,10 @@ import CalComIntegration from './CalComIntegration';
 const HeroButton = () => {
   const containerRef = useRef(null);
   const arrowRef = useRef(null);
-
+  const handleClick = () => {
+    const aboutSection = document.getElementById('aboutus');
+    aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
   useEffect(() => {
     const ctx = gsap.context(() => {
       const lines = arrowRef.current.querySelectorAll('line');
@@ -36,6 +39,7 @@ const HeroButton = () => {
       <CalComIntegration />
       <p
         ref={containerRef}
+        onClick={handleClick}
         className="text-body-3 font-open-sans text-on-light flex items-center cursor-pointer hover:text-primary-400 transition-colors"
       >
         About Us&nbsp;

@@ -60,18 +60,107 @@
 
 // export default LandingPage;
 
+// 1st - correct code
+// import Hero from "../homepage/Hero";
+// import Motto from "../ui/Motto";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { Testimonials } from "../ui/Testimonials";
+// import FAQAcc from "./../ui/FAQAcc";
+// import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
+// import { useLayoutEffect, useRef } from "react";
+// import AboutCard from './../ui/AboutCard';
+// import HomePageCTA from "../ui/HomePageCTA";
+// import {  SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
+// import CompetitorSection from "../ui/CompetitorSection";
 
-import Hero from "../homepage/Hero";
-import Motto from "../ui/Motto";
+// const LandingPage = () => {
+//   const heroRef = useRef(null);
+//   const spacerRef = useRef(null);
+
+//   useLayoutEffect(() => {
+//     gsap.registerPlugin(ScrollTrigger);
+
+//     ScrollTrigger.create({
+//       trigger: spacerRef.current,
+//       start: "top bottom",
+//       end: "bottom top",
+//       onEnter: () => {
+//         gsap.set(heroRef.current, { 
+//           position: "sticky",
+//           top: 0,
+//           // Smooth transition between states
+//           transition: "all 0.2s ease-out" 
+//         });
+//       },
+//       onLeaveBack: () => {
+//         gsap.set(heroRef.current, { 
+//           position: "fixed",
+//           top: 0 
+//         });
+//       },
+//       onLeave: () => {
+//         gsap.to(heroRef.current, { 
+//           opacity: 0,
+//           duration: 0.3,
+//           onComplete: () => {
+//             gsap.set(heroRef.current, { 
+//               position: "relative",
+//               opacity: 1 // Reset for when scrolling back up
+//             });
+//           }
+//         });
+//       }
+//     });
+
+//     return () => ScrollTrigger.getAll().forEach(t => t.kill());
+//   }, []);
+
+//   return (
+//     <div className="relative" role="main">
+//       {/* Hero section */}
+//       <div
+//         ref={heroRef}
+//         className="w-full h-screen z-10 fixed top-0 left-0"
+//       >
+//         <Hero />
+//       </div>
+
+//       {/* Spacer */}
+//       <div ref={spacerRef} className="h-screen" aria-hidden="true"></div>
+
+//       {/* Content wrapper with footer-matching bg */}
+//       <div className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
+//         {/* Actual content with rounded corners */}
+//         <div className="bg-background-100 rounded-[40px] ">
+//           <Motto />
+//           <AboutCard />
+//           <HomePageServiceSection />
+//           <SeeTheEPMDifference />
+//           <CompetitorSection />
+//           <Testimonials />
+//           <FAQAcc />
+//           <HomePageCTA />
+//         </div>
+//         <div className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-light-200"></div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LandingPage;
+
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Hero from "../homepage/Hero";
+import Motto from "../ui/Motto";
 import { Testimonials } from "../ui/Testimonials";
 import FAQAcc from "./../ui/FAQAcc";
 import { HomePageServiceSection } from "../homepage/HomePageServiceSection";
-import { useLayoutEffect, useRef } from "react";
 import AboutCard from './../ui/AboutCard';
 import HomePageCTA from "../ui/HomePageCTA";
-import {  SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
+import { SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
 import CompetitorSection from "../ui/CompetitorSection";
 
 const LandingPage = () => {
@@ -81,7 +170,7 @@ const LandingPage = () => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    ScrollTrigger.create({
+    const scrollTrigger = ScrollTrigger.create({
       trigger: spacerRef.current,
       start: "top bottom",
       end: "bottom top",
@@ -89,7 +178,6 @@ const LandingPage = () => {
         gsap.set(heroRef.current, { 
           position: "sticky",
           top: 0,
-          // Smooth transition between states
           transition: "all 0.2s ease-out" 
         });
       },
@@ -106,19 +194,20 @@ const LandingPage = () => {
           onComplete: () => {
             gsap.set(heroRef.current, { 
               position: "relative",
-              opacity: 1 // Reset for when scrolling back up
+              opacity: 1
             });
           }
         });
       }
     });
 
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+    return () => {
+      scrollTrigger.kill();
+    };
   }, []);
 
   return (
-    <div className="relative" role="main">
-      {/* Hero section */}
+    <main className="relative">
       <div
         ref={heroRef}
         className="w-full h-screen z-10 fixed top-0 left-0"
@@ -126,13 +215,10 @@ const LandingPage = () => {
         <Hero />
       </div>
 
-      {/* Spacer */}
-      <div ref={spacerRef} className="h-screen" aria-hidden="true"></div>
+      <div ref={spacerRef} className="h-screen" aria-hidden="true" />
 
-      {/* Content wrapper with footer-matching bg */}
-      <div className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
-        {/* Actual content with rounded corners */}
-        <div className="bg-background-100 rounded-[40px] ">
+      <section className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
+        <div className="bg-background-100 rounded-[40px]">
           <Motto />
           <AboutCard />
           <HomePageServiceSection />
@@ -142,9 +228,9 @@ const LandingPage = () => {
           <FAQAcc />
           <HomePageCTA />
         </div>
-        <div className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-light-200"></div>
-      </div>
-    </div>
+        <div className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-light-200" />
+      </section>
+    </main>
   );
 };
 

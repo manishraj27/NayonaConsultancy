@@ -95,7 +95,7 @@ function AboutCard() {
     cardElements.forEach((card, index) => {
       const isLastCard = index === cardElements.length;
       const cardInner = card.querySelector(".card-inner");
-      
+
       if (!isLastCard) {
         // Pin each card
         ScrollTrigger.create({
@@ -177,49 +177,55 @@ function AboutCard() {
   ];
 
   return (
-    <div className="w-full mt-10 overflow-hidden bg-background-100" ref={containerRef}>
- <section className="intro w-full min-h-screen lg:px-8 px-4 pb-72 lg:pb-56 lg:pt-24 pt-6">
-  <div className="container mx-auto">
-    {/* Heading Section */}
-    <div className="mb-16">
-      <Heading title="Why choose us?" description="About Us"/>
-    </div>
-    
-    {/* Content Section with left blank space */}
-    <div className="flex">
-      {/* Left blank space - 1/4 width */}
-      <div className="lg:w-1/4"></div>
-      
-      {/* Right content - 3/4 width */}
-      <div className="lg:w-3/4">
-        <div className="space-y-8 text-on-dark font-grotesk leading-relaxed text-body-1  max-w-3xl">
-          <p>
-            Nayona Consultancy stands as a premier Oracle Enterprise Performance Management (EPM) consulting firm, dedicated to transforming financial strategies and empowering businesses through innovative technological solutions.
-          </p>
-          <p>
-            At the core of our mission is a commitment to delivering exceptional value to our clients. We specialize in tailoring Oracle EPM solutions that are precisely aligned with each organization's unique business objectives.
-          </p>
-          <p>
-            Our team comprises certified Oracle professionals, financial experts, and technology specialists with an average of 12+ years of experience. We pride ourselves on translating intricate financial data into actionable insights.
-          </p>
-          <p>
-            Throughout our journey, Nayona Consultancy has served over 150 clients across 50+ industries, maintaining an impressive 95% client satisfaction rate. We are strategic partners committed to your financial excellence.
-          </p>
+    <section
+      id="aboutus"
+      aria-label="About Us"
+    >
+
+    <div className="w-full mt-10 overflow-hidden " ref={containerRef}>
+      <section className="intro w-full min-h-screen lg:px-8 px-4 pb-72 lg:pb-56 lg:pt-24 pt-6">
+        <div className="container mx-auto">
+          {/* Heading Section */}
+          <div className="mb-16">
+            <Heading title="Why choose us?" description="About Us" />
+          </div>
+
+          {/* Content Section with left blank space */}
+          <div className="flex">
+            {/* Left blank space - 1/4 width */}
+            <div className="lg:w-1/4"></div>
+
+            {/* Right content - 3/4 width */}
+            <div className="lg:w-3/4">
+              <div className="space-y-8 text-on-dark font-grotesk leading-relaxed text-body-1  max-w-3xl">
+                <p>
+                  Nayona Consultancy stands as a premier Oracle Enterprise Performance Management (EPM) consulting firm, dedicated to transforming financial strategies and empowering businesses through innovative technological solutions.
+                </p>
+                <p>
+                  At the core of our mission is a commitment to delivering exceptional value to our clients. We specialize in tailoring Oracle EPM solutions that are precisely aligned with each organization's unique business objectives.
+                </p>
+                <p>
+                  Our team comprises certified Oracle professionals, financial experts, and technology specialists with an average of 12+ years of experience. We pride ourselves on translating intricate financial data into actionable insights.
+                </p>
+                <p>
+                  Throughout our journey, Nayona Consultancy has served over 150 clients across 50+ industries, maintaining an impressive 95% client satisfaction rate. We are strategic partners committed to your financial excellence.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
       <section className="cards w-full">
         {cardDetails.map((service, index) => (
           <Card key={index} {...service} />
         ))}
       </section>
-      
+
       <section className="outro w-full p-24 flex items-center justify-center">
         {/* Outro section left empty as per original component */}
       </section>
     </div>
+    </section>
   );
 }
 
