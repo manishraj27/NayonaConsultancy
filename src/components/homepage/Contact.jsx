@@ -23,7 +23,7 @@ function Contact() {
       <section
         id="contact"
         aria-label="contact"
-        className=" rounded-b-3xl overflow-hidden lg:px-12 px-6 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
+        className=" rounded-b-3xl overflow-hidden lg:px-8 px-6 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
       >
         
         <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8 md:gap-0">

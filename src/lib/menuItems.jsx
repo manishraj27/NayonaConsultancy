@@ -17,6 +17,7 @@ import {
   Book,
   Heart,
   MessageCircle,
+  File,
 } from "lucide-react";
 
 const menuItems = [
@@ -26,17 +27,18 @@ const menuItems = [
     icon: Home,
     description: "Return to homepage",
   },
-  {
-    name: "Features",
-    icon: Zap,
-    description: "Explore our key",
-    submenu: [
-      { name: "Consulting Services", to: "/features/consulting", icon: Briefcase },
-      { name: "Digital Transformation", to: "/features/digital", icon: Laptop },
-      { name: "Strategy Planning", to: "/features/strategy", icon: Target },
-      { name: "Business Analytics", to: "/features/analytics", icon: BarChart }
-    ]
-  },
+  
+  // {
+  //   name: "Features",
+  //   icon: Zap,
+  //   description: "Explore our key",
+  //   submenu: [
+  //     { name: "Consulting Services", to: "/features/consulting", icon: Briefcase },
+  //     { name: "Digital Transformation", to: "/features/digital", icon: Laptop },
+  //     { name: "Strategy Planning", to: "/features/strategy", icon: Target },
+  //     { name: "Business Analytics", to: "/features/analytics", icon: BarChart }
+  //   ]
+  // },
   {
     name: "Services",
     icon: Settings,
@@ -46,6 +48,16 @@ const menuItems = [
       { name: "Cloud Services", to: "/services/cloud", icon: Cloud },
       // { name: "IT Infrastructure", to: "/services/infrastructure", icon: Server },
       // { name: "AI Integration", to: "/services/ai", icon: Server }
+    ]
+  },
+  {
+    name: "Careers",
+    icon: Briefcase,
+    description: "Explore our openings",
+    submenu: [
+      { name: "All Jobs", to: "/careers", icon: Briefcase },
+      { name: "Job Search", to: "/careers/search", icon: Target },
+      //{ name: "Apply Now", to: "/careers/apply", icon: Heart }
     ]
   },
   {

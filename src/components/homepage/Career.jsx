@@ -1,12 +1,16 @@
 
 const Career = () => {
     return (
-      <div className="container mx-auto px-4 py-8 lg:py-64">
-       
-      <h1 className="text-4xl font-bold text-center text-gray-800">Career Section</h1>
-      <p className="text-center text-gray-600">This is the Career section of the website.</p>
-     
-  </div>  )
+      <>
+      <section
+        id="career"
+        aria-label="career"
+        className=" rounded-b-3xl overflow-hidden lg:px-8 px-6 w-full lg:py-16 py-64 min-h-screen dark-section bg-background-100 flex flex-col items-center justify-center"
+      >
+
+      </section>
+      </>
+     )
   }
   
   export default Career
