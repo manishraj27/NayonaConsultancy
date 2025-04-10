@@ -4,18 +4,21 @@ import { motion } from 'framer-motion';
 import { 
   BriefcaseIcon, MapPin, Calendar, DollarSign, 
   Building, GraduationCap, CheckCircle, 
-  Users, Target, Share2, Clock, AlertCircle
+  Users, Target, Share2, Clock, AlertCircle,
+  X, Copy, Mail, Facebook, Twitter, Linkedin
 } from 'lucide-react';
 import Button from './Button';
 import apiconfig from '../../configurations/APIConfig';
 import ReactQuill from 'react-quill';
 import Heading from './Heading';
-
+import JobDetailSkeleton from './Skeleton/JobDetailSkeleton';
 const JobDetail = () => {
-  const { slug } = useParams();
+    const { slug } = useParams();
   const [job, setJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showShareDialog, setShowShareDialog] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const fetchJobDetail = async () => {
@@ -34,30 +37,41 @@ const JobDetail = () => {
     fetchJobDetail();
   }, [slug]);
 
+  const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
   const handleShare = async () => {
+    const shareData = {
+      title: job.title,
+      text: `Check out this job opportunity: ${job.title} at ${job.company}`,
+      url: window.location.href,
+    };
+  
     if (navigator.share) {
       try {
-        await navigator.share({
-          title: job.title,
-          text: `Check out this job opportunity: ${job.title} at ${job.company}`,
-          url: window.location.href,
-        });
+        await navigator.share(shareData);
       } catch (err) {
         console.log('Error sharing:', err);
+      }
+    } else {
+      // Fallback: Copy to clipboard
+      try {
+        await navigator.clipboard.writeText(`${shareData.text}\n${shareData.url}`);
+        alert('Link copied to clipboard!');
+      } catch (err) {
+        console.log('Error copying to clipboard:', err);
       }
     }
   };
 
+ 
   if (isLoading) {
-    return (
-        <section
-        id="job-detail"
-        aria-label="job-detail"
-        className="rounded-b-3xl overflow-hidden lg:px-8 px-6 w-full lg:py-16 py-24 min-h-screen dark-section bg-background-100"
-      >
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-300"></div>
-      </section>
-    );
+    return <JobDetailSkeleton />;
   }
 
   if (error) {
@@ -75,13 +89,6 @@ const JobDetail = () => {
     );
   }
 
-  const formatDate = (date) => {
-    return new Date(date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
 
   return (
     <section
@@ -89,6 +96,78 @@ const JobDetail = () => {
       aria-label="job-detail"
       className="rounded-b-3xl overflow-hidden lg:px-8 px-6 w-full lg:py-16 py-24 min-h-screen dark-section bg-background-100"
     >
+
+{showShareDialog && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-background-200 rounded-xl p-6 max-w-md w-full"
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">Share this position</h3>
+              <button 
+                onClick={() => setShowShareDialog(false)}
+                className="text-secondary-300 hover:text-on-dark"
+              >
+                <X size={24} />
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-4 gap-4 mb-6">
+              <button 
+                onClick={copyToClipboard}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-background-300/50 transition-colors"
+              >
+                <div className="p-3 bg-background-300/20 rounded-full">
+                  <Copy size={20} />
+                </div>
+                <span className="text-sm">{isCopied ? 'Copied!' : 'Copy link'}</span>
+              </button>
+              
+              <button 
+                onClick={shareViaEmail}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-background-300/50 transition-colors"
+              >
+                <div className="p-3 bg-background-300/20 rounded-full">
+                  <Mail size={20} />
+                </div>
+                <span className="text-sm">Email</span>
+              </button>
+              
+              <button 
+                onClick={() => shareOnSocial('twitter')}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-background-300/50 transition-colors"
+              >
+                <div className="p-3 bg-background-300/20 rounded-full">
+                  <Twitter size={20} />
+                </div>
+                <span className="text-sm">Twitter</span>
+              </button>
+              
+              <button 
+                onClick={() => shareOnSocial('linkedin')}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-background-300/50 transition-colors"
+              >
+                <div className="p-3 bg-background-300/20 rounded-full">
+                  <Linkedin size={20} />
+                </div>
+                <span className="text-sm">LinkedIn</span>
+              </button>
+              
+              <button 
+                onClick={() => shareOnSocial('facebook')}
+                className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-background-300/50 transition-colors"
+              >
+                <div className="p-3 bg-background-300/20 rounded-full">
+                  <Facebook size={20} />
+                </div>
+                <span className="text-sm">Facebook</span>
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -126,13 +205,20 @@ const JobDetail = () => {
             theme="dark"
             className="bg-primary-300 hover:bg-primary-400"
           />
+          <div
+          onClick={handleShare}
+          >
+
           <Button
-            text="Share Position"
-            theme="dark"
-            className="bg-background-200/50 hover:bg-background-200/70"
-            onClick={handleShare}
-            icon={<Share2 className="w-4 h-4" />}
-          />
+  text="Share Position"
+  theme="dark"
+  className="bg-background-200/50 hover:bg-background-200/70"
+
+
+/>
+
+          </div>
+
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 mb-12">
