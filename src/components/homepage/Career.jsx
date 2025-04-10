@@ -12,6 +12,7 @@ import apiconfig from "../../configurations/APIConfig";
 import { Check } from "lucide-react";
 import { Star, Lightbulb, Zap, Trophy } from "lucide-react";
 import employee from "../../assets/images/clien1.webp"
+import { useEffect } from "react";
 const Career = () => {
   const benefits = [
     {
@@ -52,29 +53,6 @@ const Career = () => {
     }
   ];
 
-  const recentJobs = [
-    {
-      title: "Senior Software Engineer",
-      type: "Full-time",
-      location: "Remote",
-      salary: "$120k - $150k",
-      posted: "2 days ago",
-    },
-    {
-      title: "Business Analyst",
-      type: "Full-time",
-      location: "New York, USA",
-      salary: "$90k - $110k",
-      posted: "1 week ago",
-    },
-    {
-      title: "Project Manager",
-      type: "Contract",
-      location: "Hybrid",
-      salary: "$100k - $130k",
-      posted: "3 days ago",
-    },
-  ];
 
   const careerStories = [
     {
@@ -104,6 +82,59 @@ const Career = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+  const [recentJobs, setRecentJobs] = useState([]);
+  const [isLoadingJobs, setIsLoadingJobs] = useState(true);
+  const [jobError, setJobError] = useState(null);
+
+const fetchRecentJobs = async () => {
+  try {
+    setIsLoadingJobs(true);
+    const response = await fetch(`${apiconfig.nayona_api}/api/jobs?limit=3&sort=latest`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch jobs');
+    }
+    const data = await response.json();
+    // Take only the first 3 jobs from the array
+    const jobsArray = Array.isArray(data) ? data.slice(0, 3) : [];
+    setRecentJobs(jobsArray.map(job => ({
+      id: job._id,
+      title: job.title,
+      type: job.employmentType || 'Full Time',
+      location: job.location ? 
+        (job.location.type === 'remote' ? 'Remote' : `${job.location.state || ''}, ${job.location.country}`) : 
+        'Location not specified',
+      salary: job.salaryRange ? 
+        `$${job.salaryRange.min}k - $${job.salaryRange.max}k` : 
+        'Competitive',
+      posted: job.createdAt ? formatTimeAgo(new Date(job.createdAt)) : 'Recently',
+      slug: job.slug || job._id
+    })));
+  } catch (error) {
+    console.error('Error fetching jobs:', error);
+    setJobError('Failed to load recent jobs');
+  } finally {
+    setIsLoadingJobs(false);
+  }
+};
+  
+  // Add this utility function
+  const formatTimeAgo = (date) => {
+    const now = new Date();
+    const diffInDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+    
+    if (diffInDays === 0) return 'Today';
+    if (diffInDays === 1) return 'Yesterday';
+    if (diffInDays < 7) return `${diffInDays} days ago`;
+    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
+    return `${Math.floor(diffInDays / 30)} months ago`;
+  };
+  
+  // Add useEffect to fetch jobs when component mounts
+  useEffect(() => {
+    fetchRecentJobs();
+  }, []);
+
+
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -336,64 +367,72 @@ const Career = () => {
 
 
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-on-dark mb-4">Recent Job Openings</h2>
-            <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
-              Explore our latest opportunities and find your next career move
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentJobs.map((job, index) => (
-              <motion.div
-                key={job.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-secondary-800/80 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10 hover:border-primary-300/30 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-on-dark mb-2">{job.title}</h3>
-                    <div className="flex items-center gap-2 text-secondary-300">
-                      <BriefcaseIcon className="w-4 h-4" />
-                      <span>{job.type}</span>
-                    </div>
-                  </div>
-                  <div className="bg-primary-300/10 p-2 rounded-xl">
-                    <BriefcaseIcon className="w-6 h-6 text-primary-300" />
-                  </div>
-                </div>
-
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-secondary-300">
-                    <MapPin className="w-4 h-4" />
-                    <span>{job.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-secondary-300">
-                    <DollarSign className="w-4 h-4" />
-                    <span>{job.salary}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-secondary-300">
-                    <Clock className="w-4 h-4" />
-                    <span>{job.posted}</span>
-                  </div>
-                </div>
-
-                <Button
-                  text="View Details"
-                  icon={ArrowRight}
-                  iconPosition="right"
-                  theme="dark"
-                  className="w-full"
-                />
-              </motion.div>
-            ))}
+// Replace or add the recent jobs section in your JSX
+<div className="mt-12">
+  <h3 className="text-2xl font-bold text-on-dark mb-6">Recent Opportunities</h3>
+  
+  {isLoadingJobs ? (
+    <div className="space-y-4">
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="bg-secondary-800/50 animate-pulse rounded-xl p-6">
+          <div className="h-6 bg-secondary-700 rounded w-3/4 mb-4"></div>
+          <div className="space-y-2">
+            <div className="h-4 bg-secondary-700 rounded w-1/4"></div>
+            <div className="h-4 bg-secondary-700 rounded w-1/2"></div>
           </div>
+        </div>
+      ))}
+    </div>
+  ) : jobError ? (
+    <div className="text-red-400 bg-red-400/10 p-4 rounded-xl">
+      {jobError}
+    </div>
+  ) : (
+    <div className="space-y-4">
+      {recentJobs.map((job) => (
+        <Link 
+          key={job.id}
+          to={`/careers/${job.slug}`}
+          className="block bg-secondary-800/50 hover:bg-secondary-700/50 transition-colors duration-300 rounded-xl p-6"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <h4 className="text-xl font-semibold text-on-dark mb-2">{job.title}</h4>
+              <div className="flex items-center gap-4 text-secondary-300">
+                <div className="flex items-center gap-2">
+                  <BriefcaseIcon className="w-4 h-4" />
+                  <span>{job.type}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  <span>{job.location}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-4 h-4" />
+                  <span>{job.salary}</span>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-primary-300">
+              <Clock className="w-4 h-4" />
+              <span>{job.posted}</span>
+            </div>
+          </div>
+        </Link>
+      ))}
+      
+      <Link to="/careers" className="inline-block mt-6">
+        <Button
+          text="View All Positions"
+          icon={ArrowRight}
+          iconPosition="right"
+          theme="dark"
+          className="bg-primary-300/90 hover:bg-primary-300"
+        />
+      </Link>
+    </div>
+  )}
+</div>
 
           <div className="mb-24 mt-12">
   {/* Growth Statistics */}
