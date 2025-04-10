@@ -18,6 +18,7 @@ import FooterUpper from "./components/ui/Footer/FooterUpper";
 import Blog from "./components/pages/Blog";
 import BlogList from "./components/pages/BlogsList";
 import JobDetail from "./components/ui/JobDetail";
+import JobApplication from "./components/ui/JobApplication";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route path="/services/cloud" element={<CloudService />} />
             <Route path="/careers" element={<Career />} />
             <Route path="/careers/job/:slug" element={<JobDetail/>} />
+            <Route path="/jobs/:slug/apply" element={<JobApplication />} />
             <Route path="/unsubscribe" element={<UnsubscribePage/>} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
             <Route path="*" element={<NotFound/>} />

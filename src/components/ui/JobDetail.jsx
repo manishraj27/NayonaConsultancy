@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   BriefcaseIcon, MapPin, Calendar, DollarSign, 
@@ -13,13 +13,16 @@ import ReactQuill from 'react-quill';
 import Heading from './Heading';
 import JobDetailSkeleton from './Skeleton/JobDetailSkeleton';
 const JobDetail = () => {
-    const { slug } = useParams();
+  const { slug } = useParams();
   const [job, setJob] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showShareDialog, setShowShareDialog] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
-
+  const navigate = useNavigate();
+  const handleApply = () => {
+    navigate(`/jobs/${slug}/apply`);
+  };
   useEffect(() => {
     const fetchJobDetail = async () => {
       try {
@@ -97,7 +100,7 @@ const JobDetail = () => {
       className="rounded-b-3xl overflow-hidden lg:px-8 px-6 w-full lg:py-16 py-24 min-h-screen dark-section bg-background-100"
     >
 
-{showShareDialog && (
+{/* {showShareDialog && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -167,7 +170,7 @@ const JobDetail = () => {
             </div>
           </motion.div>
         </div>
-      )}
+      )} */}
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -200,11 +203,17 @@ const JobDetail = () => {
           transition={{ delay: 0.1 }}
           className="flex flex-wrap gap-4 mb-12"
         >
+          <div
+          onClick={handleApply}
+          >
+
           <Button
             text="Apply Now"
             theme="dark"
             className="bg-primary-300 hover:bg-primary-400"
           />
+
+          </div>
           <div
           onClick={handleShare}
           >
