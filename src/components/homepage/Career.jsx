@@ -10,6 +10,8 @@ import { Mail, BriefcaseIcon, Clock, MapPin, DollarSign } from "lucide-react";
 import careerHeroImage from "../../assets/images/ABOUTUSMEETING.webp"
 import apiconfig from "../../configurations/APIConfig";
 import { Check } from "lucide-react";
+import { Star, Lightbulb, Zap, Trophy } from "lucide-react";
+import employee from "../../assets/images/clien1.webp"
 const Career = () => {
   const benefits = [
     {
@@ -73,6 +75,32 @@ const Career = () => {
       posted: "3 days ago",
     },
   ];
+
+  const careerStories = [
+    {
+      name: "Sarah Chen",
+      role: "Senior Developer",
+      image: employee,
+      quote: "Joining Nayona was the best career move I've made. The growth opportunities and collaborative culture are unmatched.",
+      years: "3 years at Nayona"
+    },
+    {
+      name: "Michael Rodriguez",
+      role: "Project Manager",
+      image: employee,
+      quote: "The supportive environment and emphasis on work-life balance make Nayona a great place to build a career.",
+      years: "2 years at Nayona"
+    }
+  ];
+  
+  const growthStats = [
+    { number: "85%", label: "Employee Growth Rate", icon: <Zap className="w-6 h-6" /> },
+    { number: "92%", label: "Employee Satisfaction", icon: <Star className="w-6 h-6" /> },
+    { number: "100+", label: "Learning Programs", icon: <Lightbulb className="w-6 h-6" /> },
+    { number: "45+", label: "Industry Awards", icon: <Trophy className="w-6 h-6" /> }
+  ];
+
+
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [subscriptionStatus, setSubscriptionStatus] = useState(null);
@@ -366,6 +394,109 @@ const Career = () => {
               </motion.div>
             ))}
           </div>
+
+          <div className="mb-24 mt-12">
+  {/* Growth Statistics */}
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+    {growthStats.map((stat, index) => (
+      <motion.div
+        key={stat.label}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10 text-center group hover:border-primary-300/30 transition-all duration-300"
+      >
+        <div className="w-12 h-12 mx-auto mb-4 bg-primary-300/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          {stat.icon}
+        </div>
+        <h3 className="text-3xl font-bold text-primary-300 mb-2">{stat.number}</h3>
+        <p className="text-secondary-300">{stat.label}</p>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Employee Stories */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="text-center mb-12"
+  >
+    <h2 className="text-3xl font-bold text-on-dark mb-4">Employee Stories</h2>
+    <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
+      Hear from our team members about their journey at Nayona Consultancy
+    </p>
+  </motion.div>
+
+  <div className="grid md:grid-cols-2 gap-8">
+    {careerStories.map((story, index) => (
+      <motion.div
+        key={story.name}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.2 }}
+        className="bg-secondary-800/50 backdrop-blur-sm p-8 rounded-2xl border border-secondary-600/10 relative group hover:border-primary-300/30 transition-all duration-300"
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-300/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary-300/10 transition-colors duration-300"></div>
+        <div className="relative z-10">
+          <div className="flex items-center gap-4 mb-6">
+            <img
+              src={story.image}
+              alt={story.name}
+              className="w-16 h-16 rounded-full object-cover border-2 border-primary-300/30"
+            />
+            <div>
+              <h3 className="text-xl font-semibold text-on-dark">{story.name}</h3>
+              <p className="text-primary-300">{story.role}</p>
+            </div>
+          </div>
+          <blockquote className="text-secondary-300 text-lg italic mb-4">
+            "{story.quote}"
+          </blockquote>
+          <p className="text-primary-300/70 text-sm">{story.years}</p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
+{/* Development Path Section */}
+<div className="mb-24">
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="text-center mb-12"
+  >
+    <h2 className="text-3xl font-bold text-on-dark mb-4">Your Growth Path</h2>
+    <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
+      We provide clear career progression paths and support your professional development
+    </p>
+  </motion.div>
+
+  <div className="relative">
+    <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-secondary-700/50"></div>
+    {['Entry Level', 'Mid Level', 'Senior Level', 'Leadership'].map((level, index) => (
+      <motion.div
+        key={level}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.2 }}
+        className={`relative flex items-center gap-8 mb-8 ${
+          index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+        }`}
+      >
+        <div className="w-1/2"></div>
+        <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-300"></div>
+        <div className="w-1/2 bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10">
+          <h3 className="text-xl font-bold text-on-dark mb-2">{level}</h3>
+          <p className="text-secondary-300">
+            Structured learning path with mentorship and hands-on project experience
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
 
           <div className="mt-16 relative">
