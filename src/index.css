@@ -199,3 +199,45 @@
     @apply my-6 rounded-lg shadow-lg; /* Styled images */
   }
 }
+
+/* 
+.custom-quill.prose {
+  color: inherit;
+  max-width: none;
+}
+
+.custom-quill.prose h1,
+.custom-quill.prose h2,
+.custom-quill.prose h3,
+.custom-quill.prose h4,
+.custom-quill.prose h5,
+.custom-quill.prose h6 {
+  color: var(--color-on-dark);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.custom-quill.prose p,
+.custom-quill.prose ul,
+.custom-quill.prose ol {
+  color: var(--color-secondary-300);
+  margin-bottom: 1em;
+}
+
+.custom-quill.prose strong {
+  color: var(--color-on-dark);
+}
+
+.custom-quill.prose a {
+  color: var(--color-primary-300);
+  text-decoration: underline;
+}
+
+.custom-quill.prose ul,
+.custom-quill.prose ol {
+  padding-left: 1.5em;
+}
+
+.custom-quill.prose li {
+  margin-bottom: 0.5em;
+} */

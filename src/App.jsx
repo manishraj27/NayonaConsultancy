@@ -17,6 +17,7 @@ import AboutUsPage from "./components/pages/AboutUsPage";
 import FooterUpper from "./components/ui/Footer/FooterUpper";
 import Blog from "./components/pages/Blog";
 import BlogList from "./components/pages/BlogsList";
+import JobDetail from "./components/ui/JobDetail";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/services/cloud" element={<CloudService />} />
             <Route path="/careers" element={<Career />} />
+            <Route path="/careers/job/:slug" element={<JobDetail/>} />
             <Route path="/unsubscribe" element={<UnsubscribePage/>} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
             <Route path="*" element={<NotFound/>} />

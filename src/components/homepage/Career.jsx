@@ -70,7 +70,7 @@ const Career = () => {
       years: "2 years at Nayona"
     }
   ];
-  
+
   const growthStats = [
     { number: "85%", label: "Employee Growth Rate", icon: <Zap className="w-6 h-6" /> },
     { number: "92%", label: "Employee Satisfaction", icon: <Star className="w-6 h-6" /> },
@@ -94,20 +94,28 @@ const fetchRecentJobs = async () => {
       throw new Error('Failed to fetch jobs');
     }
     const data = await response.json();
-    // Take only the first 3 jobs from the array
-    const jobsArray = Array.isArray(data) ? data.slice(0, 3) : [];
+    
+    const jobsArray = data.jobs && Array.isArray(data.jobs) ? data.jobs.slice(0, 3) : [];
+    
     setRecentJobs(jobsArray.map(job => ({
       id: job._id,
       title: job.title,
       type: job.employmentType || 'Full Time',
-      location: job.location ? 
-        (job.location.type === 'remote' ? 'Remote' : `${job.location.state || ''}, ${job.location.country}`) : 
+      location: job.location ?
+        (job.location.type === 'remote' ? 'Remote' : `${job.location.state || ''}, ${job.location.country}`) :
         'Location not specified',
-      salary: job.salaryRange ? 
-        `$${job.salaryRange.min}k - $${job.salaryRange.max}k` : 
+      salary: job.salaryRange ?
+        `$${job.salaryRange.min}k - $${job.salaryRange.max}k` :
         'Competitive',
       posted: job.createdAt ? formatTimeAgo(new Date(job.createdAt)) : 'Recently',
-      slug: job.slug || job._id
+      slug: job.slug || job._id,
+      description: job.description || '',
+      requiredSkills: job.requiredSkills || [],
+      experience: job.experience || 'Not specified',
+      department: job.department || 'General',
+      responsibilities: job.responsibilities || [],
+      benefits: job.benefits || [],
+      qualifications: job.qualifications || []
     })));
   } catch (error) {
     console.error('Error fetching jobs:', error);
@@ -116,19 +124,19 @@ const fetchRecentJobs = async () => {
     setIsLoadingJobs(false);
   }
 };
-  
+
   // Add this utility function
   const formatTimeAgo = (date) => {
     const now = new Date();
     const diffInDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
-    
+
     if (diffInDays === 0) return 'Today';
     if (diffInDays === 1) return 'Yesterday';
     if (diffInDays < 7) return `${diffInDays} days ago`;
     if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`;
     return `${Math.floor(diffInDays / 30)} months ago`;
   };
-  
+
   // Add useEffect to fetch jobs when component mounts
   useEffect(() => {
     fetchRecentJobs();
@@ -367,174 +375,193 @@ const fetchRecentJobs = async () => {
 
 
         <div className="mb-24">
-// Replace or add the recent jobs section in your JSX
-<div className="mt-12">
-  <h3 className="text-2xl font-bold text-on-dark mb-6">Recent Opportunities</h3>
-  
-  {isLoadingJobs ? (
-    <div className="space-y-4">
-      {[1, 2, 3].map((i) => (
-        <div key={i} className="bg-secondary-800/50 animate-pulse rounded-xl p-6">
-          <div className="h-6 bg-secondary-700 rounded w-3/4 mb-4"></div>
-          <div className="space-y-2">
-            <div className="h-4 bg-secondary-700 rounded w-1/4"></div>
-            <div className="h-4 bg-secondary-700 rounded w-1/2"></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  ) : jobError ? (
-    <div className="text-red-400 bg-red-400/10 p-4 rounded-xl">
-      {jobError}
-    </div>
-  ) : (
-    <div className="space-y-4">
-      {recentJobs.map((job) => (
-        <Link 
-          key={job.id}
-          to={`/careers/${job.slug}`}
-          className="block bg-secondary-800/50 hover:bg-secondary-700/50 transition-colors duration-300 rounded-xl p-6"
-        >
-          <div className="flex items-start justify-between">
-            <div>
-              <h4 className="text-xl font-semibold text-on-dark mb-2">{job.title}</h4>
-              <div className="flex items-center gap-4 text-secondary-300">
-                <div className="flex items-center gap-2">
-                  <BriefcaseIcon className="w-4 h-4" />
-                  <span>{job.type}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>{job.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <DollarSign className="w-4 h-4" />
-                  <span>{job.salary}</span>
-                </div>
+        <div className="mt-12">
+            <h3 className="text-2xl font-bold text-on-dark mb-6">Recent Opportunities</h3>
+
+            {isLoadingJobs ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="bg-secondary-800/50 animate-pulse rounded-xl p-6">
+                    <div className="h-6 bg-secondary-700 rounded w-3/4 mb-4"></div>
+                    <div className="space-y-2">
+                      <div className="h-4 bg-secondary-700 rounded w-1/4"></div>
+                      <div className="h-4 bg-secondary-700 rounded w-1/2"></div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="flex items-center gap-2 text-primary-300">
-              <Clock className="w-4 h-4" />
-              <span>{job.posted}</span>
-            </div>
-          </div>
-        </Link>
-      ))}
-      
-      <Link to="/careers" className="inline-block mt-6">
-        <Button
-          text="View All Positions"
-          icon={ArrowRight}
-          iconPosition="right"
-          theme="dark"
-          className="bg-primary-300/90 hover:bg-primary-300"
-        />
-      </Link>
-    </div>
-  )}
-</div>
+            ) : jobError ? (
+              <div className="text-red-400 bg-red-400/10 p-4 rounded-xl">
+                {jobError}
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {recentJobs.map((job) => (
+                  <Link
+                    key={job.id}
+                    to={`/careers/job/${job.slug}`}
+                    className="group block bg-secondary-800/50 hover:bg-secondary-700/50 transition-all duration-300 rounded-xl p-6 border border-secondary-600/10 hover:border-primary-300/30"
+                  >
+                    <div className="space-y-4">
+                      {/* Header */}
+                      <div>
+                        <h4 className="text-xl font-semibold text-on-dark mb-2 group-hover:text-primary-300 transition-colors">
+                          {job.title}
+                        </h4>
+                        <div className="flex items-center gap-2 text-primary-300/70">
+                          <Clock className="w-4 h-4" />
+                          <span>{job.posted}</span>
+                        </div>
+                      </div>
 
+                      {/* Details */}
+                      <div className="space-y-3 text-secondary-300">
+                        <div className="flex items-center gap-2">
+                          <BriefcaseIcon className="w-4 h-4" />
+                          <span>{job.type}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          <span>{job.location}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <DollarSign className="w-4 h-4" />
+                          <span>{job.salary}</span>
+                        </div>
+                      </div>
+
+                      {/* Skills */}
+                      {job.requiredSkills && (
+                        <div className="flex flex-wrap gap-2">
+                          {job.requiredSkills.slice(0, 3).map((skill, index) => (
+                            <span
+                              key={index}
+                              className="text-xs px-2 py-1 rounded-lg bg-primary-300/10 text-primary-300"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                          {job.requiredSkills.length > 3 && (
+                            <span className="text-xs px-2 py-1 rounded-lg bg-secondary-700/50 text-secondary-300">
+                              +{job.requiredSkills.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                      )}
+
+                      {/* View Details Button */}
+                      <div className="pt-2">
+                        <span className="inline-flex items-center gap-2 text-primary-300 group-hover:translate-x-1 transition-transform">
+                          View Details
+                          <ChevronRight className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="mb-24 mt-12">
-  {/* Growth Statistics */}
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
-    {growthStats.map((stat, index) => (
-      <motion.div
-        key={stat.label}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10 text-center group hover:border-primary-300/30 transition-all duration-300"
-      >
-        <div className="w-12 h-12 mx-auto mb-4 bg-primary-300/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          {stat.icon}
-        </div>
-        <h3 className="text-3xl font-bold text-primary-300 mb-2">{stat.number}</h3>
-        <p className="text-secondary-300">{stat.label}</p>
-      </motion.div>
-    ))}
-  </div>
+            {/* Growth Statistics */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+              {growthStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10 text-center group hover:border-primary-300/30 transition-all duration-300"
+                >
+                  <div className="w-12 h-12 mx-auto mb-4 bg-primary-300/10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <h3 className="text-3xl font-bold text-primary-300 mb-2">{stat.number}</h3>
+                  <p className="text-secondary-300">{stat.label}</p>
+                </motion.div>
+              ))}
+            </div>
 
-  {/* Employee Stories */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="text-center mb-12"
-  >
-    <h2 className="text-3xl font-bold text-on-dark mb-4">Employee Stories</h2>
-    <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
-      Hear from our team members about their journey at Nayona Consultancy
-    </p>
-  </motion.div>
+            {/* Employee Stories */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-on-dark mb-4">Employee Stories</h2>
+              <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
+                Hear from our team members about their journey at Nayona Consultancy
+              </p>
+            </motion.div>
 
-  <div className="grid md:grid-cols-2 gap-8">
-    {careerStories.map((story, index) => (
-      <motion.div
-        key={story.name}
-        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: index * 0.2 }}
-        className="bg-secondary-800/50 backdrop-blur-sm p-8 rounded-2xl border border-secondary-600/10 relative group hover:border-primary-300/30 transition-all duration-300"
-      >
-        <div className="absolute top-0 right-0 w-32 h-32 bg-primary-300/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary-300/10 transition-colors duration-300"></div>
-        <div className="relative z-10">
-          <div className="flex items-center gap-4 mb-6">
-            <img
-              src={story.image}
-              alt={story.name}
-              className="w-16 h-16 rounded-full object-cover border-2 border-primary-300/30"
-            />
-            <div>
-              <h3 className="text-xl font-semibold text-on-dark">{story.name}</h3>
-              <p className="text-primary-300">{story.role}</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {careerStories.map((story, index) => (
+                <motion.div
+                  key={story.name}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className="bg-secondary-800/50 backdrop-blur-sm p-8 rounded-2xl border border-secondary-600/10 relative group hover:border-primary-300/30 transition-all duration-300"
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-300/5 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary-300/10 transition-colors duration-300"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <img
+                        src={story.image}
+                        alt={story.name}
+                        className="w-16 h-16 rounded-full object-cover border-2 border-primary-300/30"
+                      />
+                      <div>
+                        <h3 className="text-xl font-semibold text-on-dark">{story.name}</h3>
+                        <p className="text-primary-300">{story.role}</p>
+                      </div>
+                    </div>
+                    <blockquote className="text-secondary-300 text-lg italic mb-4">
+                      "{story.quote}"
+                    </blockquote>
+                    <p className="text-primary-300/70 text-sm">{story.years}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
-          <blockquote className="text-secondary-300 text-lg italic mb-4">
-            "{story.quote}"
-          </blockquote>
-          <p className="text-primary-300/70 text-sm">{story.years}</p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</div>
 
-{/* Development Path Section */}
-<div className="mb-24">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    className="text-center mb-12"
-  >
-    <h2 className="text-3xl font-bold text-on-dark mb-4">Your Growth Path</h2>
-    <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
-      We provide clear career progression paths and support your professional development
-    </p>
-  </motion.div>
+          {/* Development Path Section */}
+          <div className="mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl font-bold text-on-dark mb-4">Your Growth Path</h2>
+              <p className="text-secondary-300 text-lg max-w-2xl mx-auto">
+                We provide clear career progression paths and support your professional development
+              </p>
+            </motion.div>
 
-  <div className="relative">
-    <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-secondary-700/50"></div>
-    {['Entry Level', 'Mid Level', 'Senior Level', 'Leadership'].map((level, index) => (
-      <motion.div
-        key={level}
-        initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: index * 0.2 }}
-        className={`relative flex items-center gap-8 mb-8 ${
-          index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-        }`}
-      >
-        <div className="w-1/2"></div>
-        <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-300"></div>
-        <div className="w-1/2 bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10">
-          <h3 className="text-xl font-bold text-on-dark mb-2">{level}</h3>
-          <p className="text-secondary-300">
-            Structured learning path with mentorship and hands-on project experience
-          </p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</div>
+            <div className="relative">
+              <div className="absolute left-1/2 -translate-x-1/2 h-full w-1 bg-secondary-700/50"></div>
+              {['Entry Level', 'Mid Level', 'Senior Level', 'Leadership'].map((level, index) => (
+                <motion.div
+                  key={level}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.2 }}
+                  className={`relative flex items-center gap-8 mb-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+                    }`}
+                >
+                  <div className="w-1/2"></div>
+                  <div className="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary-300"></div>
+                  <div className="w-1/2 bg-secondary-800/50 backdrop-blur-sm p-6 rounded-2xl border border-secondary-600/10">
+                    <h3 className="text-xl font-bold text-on-dark mb-2">{level}</h3>
+                    <p className="text-secondary-300">
+                      Structured learning path with mentorship and hands-on project experience
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
 
 
@@ -607,8 +634,8 @@ const fetchRecentJobs = async () => {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           className={`mt-4 p-3 rounded-xl backdrop-blur-sm ${subscriptionStatus.success
-                              ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                              : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                            ? 'bg-green-500/10 text-green-400 border border-green-500/20'
+                            : 'bg-red-500/10 text-red-400 border border-red-500/20'
                             }`}
                         >
                           {subscriptionStatus.message}
@@ -621,7 +648,6 @@ const fetchRecentJobs = async () => {
             </div>
 
             {/* Add this CTA section at the bottom */}
-// Replace the existing CTA section with this enhanced version
             <motion.div
               className="w-full mt-24 p-8 md:p-12 bg-background-200/30 rounded-3xl border border-secondary-300/10 backdrop-blur-sm"
               initial="hidden"
