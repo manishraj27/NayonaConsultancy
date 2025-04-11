@@ -4,9 +4,15 @@ import { Quote, Star, BarChart, Clock, Award, ArrowRight } from 'lucide-react';
 import member from "../../assets/images/clien1.webp";
 import Button from '../ui/Button';
 import { useNavigate } from 'react-router-dom';
-
+import Breadcrumb from '../ui/Breadcrumb';
 function TestimonialsPage() {
   const navigate = useNavigate();
+  const breadcrumbItems = [
+    { label: 'Home', path: '/' },
+    { label: 'About Us', path: '/about/us' },
+    { label: 'Testimonials', path: '/about/testimonials' }
+  ];
+
   // Add statistics section data
   const statistics = [
     { icon: Star, value: "98%", label: "Client Satisfaction" },
@@ -55,8 +61,12 @@ function TestimonialsPage() {
 
   return (
     <section className="dark-section rounded-b-3xl overflow-hidden w-full min-h-screen bg-background-100">
+
+<div className="max-w-7xl mx-auto px-4 lg:px-12 py-2 mt-28">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
       {/* Hero Section */}
-      <div className=" py-32">
+      <div className="mt-16 pb-16">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-heading-2 font-grotesk text-on-dark mb-6">
