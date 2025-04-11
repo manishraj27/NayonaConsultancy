@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 
-const Button = ({ text, theme = "light" }) => {
+const Button = ({ text, theme = "light", onClick }) => {
   const buttonRef = useRef(null);
   const curtainRef = useRef(null);
   const textRef = useRef(null);
@@ -41,6 +41,7 @@ const Button = ({ text, theme = "light" }) => {
   return (
     <button
       ref={buttonRef}
+      onClick={onClick}
       className={`relative h-12 px-6 overflow-hidden rounded-full border font-open-sans tracking-wider 
         ${theme === "dark" ? "border-light-100 text-on-dark" : "border-background-100 text-on-light"}`}
     >
