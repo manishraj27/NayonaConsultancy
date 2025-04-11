@@ -16,6 +16,7 @@ import PrivacyPolicy from './components/pages/PrivacyPolicy';
 import TermsOfService from './components/pages/TermsOfService';
 import CookiesPolicy from './components/pages/CookiesPolicy';
 import Legal from './components/pages/Legal';
+import ScrollToTop from './components/ui/ScrollToTop';
 
 import AboutUsPage from "./components/pages/AboutUsPage";
 import Blog from "./components/pages/Blog";
@@ -30,6 +31,7 @@ function App() {
   return (
     <>
       <WebLoader />
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-light-200">
         <NavBar />
         <main id="main-content">
