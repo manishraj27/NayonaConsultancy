@@ -25,6 +25,7 @@ import JobDetail from "./components/ui/JobDetail";
 import JobApplication from "./components/ui/JobApplication";
 import TeamPage from "./components/pages/TeamPage";
 import TestimonialsPage from "./components/pages/TestimonialsPage";
+import JobSearchPage from "./components/pages/JobSearchPage";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
             <Route path="/careers" element={<Career />} />
             <Route path="/careers/job/:slug" element={<JobDetail/>} />
             <Route path="/jobs/:slug/apply" element={<JobApplication />} />
+            <Route path="/careers/all-jobs/search" element={<JobSearchPage />} />
             <Route path="/unsubscribe" element={<UnsubscribePage/>} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

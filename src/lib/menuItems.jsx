@@ -61,7 +61,7 @@ const menuItems = [
     description: "Explore our openings",
     submenu: [
       { name: "All Jobs", to: "/careers", icon: Briefcase },
-      { name: "Job Search", to: "/careers/search", icon: Target },
+      { name: "Job Search", to: "/careers/all-jobs/search", icon: Target },
       //{ name: "Apply Now", to: "/careers/apply", icon: Heart }
     ]
   },
