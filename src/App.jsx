@@ -23,6 +23,8 @@ import Blog from "./components/pages/Blog";
 import BlogList from "./components/pages/BlogsList";
 import JobDetail from "./components/ui/JobDetail";
 import JobApplication from "./components/ui/JobApplication";
+import TeamPage from "./components/pages/TeamPage";
+import TestimonialsPage from "./components/pages/TestimonialsPage";
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/about/us" element={<AboutUsPage />} />
+            <Route path="/about/team" element={<TeamPage />} />
+            <Route path="/about/testimonials" element={<TestimonialsPage/>} />
             <Route path="/resources/blogs" element={<BlogList />} />
             <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />

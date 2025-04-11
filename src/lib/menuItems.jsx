@@ -18,6 +18,11 @@ import {
   Heart,
   MessageCircle,
   File,
+  User2Icon,
+  UserCog2Icon,
+  Users2,
+  UsersRoundIcon,
+  Building2,
 } from "lucide-react";
 
 const menuItems = [
@@ -75,6 +80,7 @@ const menuItems = [
     description: "Our story",
     submenu: [
       { name: "About Us", to: "/about/us", icon: Users },
+      { name: "Our Team", to: "/about/team", icon: Building2 },
       { name: "Testimonials", to: "/about/testimonials", icon: MessageCircle }
     ]
   },
