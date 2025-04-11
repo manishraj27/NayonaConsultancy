@@ -2,6 +2,7 @@ import React from 'react';
 import { Copyright, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Icon } from "@iconify/react";
+import { Link } from 'react-router-dom';
 
 function FooterCredits() {
   const currentYear = new Date().getFullYear();
@@ -44,21 +45,29 @@ function FooterCredits() {
           
           {/* Policy links */}
           <div className="flex items-center gap-3 text-body-5 text-secondary-600">
-            {["Privacy Policy", "Terms of Service", "Cookies"].map((item, index) => (
-              <motion.a
+            {[
+              { name: "Privacy Policy", path: "privacy-policy" },
+              { name: "Terms of Service", path: "terms-of-service" },
+              { name: "Cookies Policy", path: "cookies-policy" },
+              { name: "Legal", path: "legal" }
+            ].map((item, index) => (
+              <motion.div
                 key={index}
-                href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                className="relative group"
                 whileHover={{ color: "#4B5563" }}
               >
-                {item}
-                <motion.span 
-                  className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-accent-300"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: '100%' }}
-                  transition={{ duration: 0.3 }}
-                ></motion.span>
-              </motion.a>
+                <Link
+                  to={`/${item.path}`}
+                  className="relative group"
+                >
+                  {item.name}
+                  <motion.span 
+                    className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-accent-300"
+                    initial={{ width: 0 }}
+                    whileHover={{ width: '100%' }}
+                    transition={{ duration: 0.3 }}
+                  ></motion.span>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>

@@ -12,9 +12,12 @@ import useScrollTrigger from "./lib/hooks/useScrollTrigger";
 import NotFound from './components/ui/NotFound';
 import UnsubscribePage from "./components/pages/UnsubscribePage";
 import CloudService from "./components/pages/CloudService";
+import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import TermsOfService from './components/pages/TermsOfService';
+import CookiesPolicy from './components/pages/CookiesPolicy';
+import Legal from './components/pages/Legal';
 
 import AboutUsPage from "./components/pages/AboutUsPage";
-import FooterUpper from "./components/ui/Footer/FooterUpper";
 import Blog from "./components/pages/Blog";
 import BlogList from "./components/pages/BlogsList";
 import JobDetail from "./components/ui/JobDetail";
@@ -43,6 +46,10 @@ function App() {
             <Route path="/jobs/:slug/apply" element={<JobApplication />} />
             <Route path="/unsubscribe" element={<UnsubscribePage/>} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookies-policy" element={<CookiesPolicy />} />
+            <Route path="/legal" element={<Legal />} />
             <Route path="*" element={<NotFound/>} />
           </Routes>
           {showFloatingButtons && <FloatingButtonsContainer />}
