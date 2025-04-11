@@ -9,6 +9,7 @@ import {
 import Button from "./Button";
 import Heading from "./Heading";
 import apiconfig from "../../configurations/APIConfig";
+import COUNTRY_CODES from "../../lib/countryCodes";
 
 const JobApplication = () => {
   const { slug } = useParams();
@@ -190,15 +191,15 @@ const JobApplication = () => {
 
   if (!job) {
     return (
-      <section className="min-h-screen bg-background-100 flex items-center justify-center">
+      <section className="min-h-screen bg-background-100 flex items-center justify-center dark-section rounded-b-[40px]">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary-300"></div>
       </section>
     );
   }
 
   return (
-    <section className="min-h-screen bg-background-100 text-on-dark font-body-1">
-      <div className="max-w-4xl mx-auto px-6 py-16">
+    <section className="min-h-screen bg-background-100 text-on-dark font-body-1 dark-section rounded-b-[40px]">
+      <div className=" max-w-4xl mx-auto px-6 py-16 pt-48">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -248,7 +249,7 @@ const JobApplication = () => {
                     required
                     value={formData.personalInfo.firstName}
                     onChange={handlePersonalInfoChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                   />
                 </div>
                 <div>
@@ -259,7 +260,7 @@ const JobApplication = () => {
                     required
                     value={formData.personalInfo.lastName}
                     onChange={handlePersonalInfoChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                   />
                 </div>
                 <div>
@@ -270,9 +271,10 @@ const JobApplication = () => {
                     required
                     value={formData.personalInfo.email}
                     onChange={handlePersonalInfoChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                   />
                 </div>
+              
                 <div>
                   <label className="block text-secondary-300 mb-2 body-3">Phone Number *</label>
                   <div className="flex gap-2">
@@ -280,10 +282,13 @@ const JobApplication = () => {
                       name="countryCode"
                       value={formData.personalInfo.countryCode}
                       onChange={handlePersonalInfoChange}
-                      className="bg-background-300/50 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                      className="bg-secondary-700/80 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     >
-                      <option value="+1">+1 (US)</option>
-                      <option value="+44">+44 (UK)</option>
+                      {COUNTRY_CODES.map(country => (
+                        <option key={country.code} value={country.code}>
+                          {country.code} ({country.name})
+                        </option>
+                      ))}
                     </select>
                     <input
                       type="tel"
@@ -291,7 +296,7 @@ const JobApplication = () => {
                       required
                       value={formData.personalInfo.phoneNumber}
                       onChange={handlePersonalInfoChange}
-                      className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                      className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     />
                   </div>
                 </div>
@@ -303,7 +308,7 @@ const JobApplication = () => {
                     required
                     value={formData.personalInfo.placeOfResidence}
                     onChange={handlePersonalInfoChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     placeholder="City, Country"
                   />
                 </div>
@@ -350,7 +355,7 @@ const JobApplication = () => {
                         required
                         value={exp.title}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -361,7 +366,7 @@ const JobApplication = () => {
                         required
                         value={exp.company}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -371,7 +376,7 @@ const JobApplication = () => {
                         name="location"
                         value={exp.location}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -381,7 +386,7 @@ const JobApplication = () => {
                         required
                         value={exp.description}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none min-h-[100px] body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none min-h-[100px] body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -392,7 +397,7 @@ const JobApplication = () => {
                         required
                         value={exp.fromDate}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -403,7 +408,7 @@ const JobApplication = () => {
                         value={exp.toDate}
                         onChange={(e) => handleWorkExperienceChange(index, e)}
                         disabled={exp.isCurrentJob}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -463,7 +468,7 @@ const JobApplication = () => {
                         required
                         value={edu.institution}
                         onChange={(e) => handleEducationChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -474,7 +479,7 @@ const JobApplication = () => {
                         required
                         value={edu.degree}
                         onChange={(e) => handleEducationChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -485,7 +490,7 @@ const JobApplication = () => {
                         required
                         value={edu.major}
                         onChange={(e) => handleEducationChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -495,7 +500,7 @@ const JobApplication = () => {
                         name="location"
                         value={edu.location}
                         onChange={(e) => handleEducationChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -506,7 +511,7 @@ const JobApplication = () => {
                         required
                         value={edu.fromDate}
                         onChange={(e) => handleEducationChange(index, e)}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
                     <div>
@@ -517,7 +522,7 @@ const JobApplication = () => {
                         value={edu.toDate}
                         onChange={(e) => handleEducationChange(index, e)}
                         disabled={edu.isCurrentlyStudying}
-                        className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
+                        className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
                       />
                     </div>
                     <div className="md:col-span-2">
@@ -551,7 +556,7 @@ const JobApplication = () => {
                     name="linkedin"
                     value={formData.socialProfiles.linkedin}
                     onChange={handleSocialProfilesChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     placeholder="https://linkedin.com/in/username"
                   />
                 </div>
@@ -562,7 +567,7 @@ const JobApplication = () => {
                     name="website"
                     value={formData.socialProfiles.website}
                     onChange={handleSocialProfilesChange}
-                    className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                    className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     placeholder="https://yourwebsite.com"
                   />
                 </div>
@@ -582,7 +587,7 @@ const JobApplication = () => {
                   required
                   value={formData.resumeUrl}
                   onChange={(e) => setFormData(prev => ({ ...prev, resumeUrl: e.target.value }))}
-                  className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                  className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                   placeholder="https://drive.google.com/your-resume"
                 />
                 <p className="text-secondary-300 body-4 mt-2">
@@ -600,7 +605,7 @@ const JobApplication = () => {
               <textarea
                 value={formData.messageToHiringTeam}
                 onChange={(e) => setFormData(prev => ({ ...prev, messageToHiringTeam: e.target.value }))}
-                className="w-full bg-background-300/50 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none min-h-[150px] body-2 border border-secondary-600/30"
+                className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none min-h-[150px] body-2 border border-secondary-600/30"
                 placeholder="Tell us why you're interested in this position..."
               />
             </div>
