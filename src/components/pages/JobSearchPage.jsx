@@ -16,7 +16,7 @@ const JobSearchPage = () => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [activeFilters, setActiveFilters] = useState(0);
   const navigate = useNavigate();
-  
+
   const [filters, setFilters] = useState({
     search: '',
     country: '',
@@ -205,7 +205,7 @@ const JobSearchPage = () => {
       <FilterSection
         title="Country"
         name="country"
-        options={countryList}
+        options={countryList.map(country => country.name)}
         value={filters.country}
         onChange={handleFilterChange}
       />
