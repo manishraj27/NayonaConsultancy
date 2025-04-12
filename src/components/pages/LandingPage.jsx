@@ -165,6 +165,7 @@ import AboutCard from './../ui/AboutCard';
 import HomePageCTA from "../ui/HomePageCTA";
 import { SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
 import CompetitorSection from "../ui/CompetitorSection";
+import RecentBlogs from "../ui/RecentBlogs";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -207,6 +208,7 @@ const LandingPage = () => {
           <HomePageServiceSection />
           <SeeTheEPMDifference />
           <CompetitorSection />
+          <RecentBlogs />
           <Testimonials />
           <FAQAcc />
           <HomePageCTA />
