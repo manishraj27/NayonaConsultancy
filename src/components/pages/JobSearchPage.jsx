@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, MapPin, Briefcase, Building2, Filter, X, ArrowRight, Clock, ChevronDown } from 'lucide-react';
+import { Search, MapPin, Briefcase, Building2, Filter, X, ArrowRight, Clock, ChevronDown, SearchIcon } from 'lucide-react';
 import apiconfig from '../../configurations/APIConfig';
 import Button from '../ui/Button';
 import Heading from '../ui/Heading';
@@ -16,6 +16,21 @@ const JobSearchPage = () => {
   const [showMobileFilters, setShowMobileFilters] = useState(false);
   const [activeFilters, setActiveFilters] = useState(0);
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[name="search"]');
+        searchInput?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
 
   const [filters, setFilters] = useState({
     search: '',
@@ -328,7 +343,7 @@ const JobSearchPage = () => {
 
   return (
     <section className="dark-section w-full min-h-screen bg-background-100 rounded-b-3xl">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-20 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8 py-32 ">
         <Heading
           title="Find Your Next Opportunity"
           description="Browse open positions and discover your perfect career match"
@@ -337,31 +352,42 @@ const JobSearchPage = () => {
         {/* Search Bar */}
         <form onSubmit={(e) => e.preventDefault()} className="mt-8">
           <div className="flex flex-col md:flex-row gap-4 items-stretch">
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-secondary-300" />
+            {/* Enhanced Search Bar */}
+            <div className="flex-1 relative group">
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-3 text-secondary-300">
+                <Search className="w-5 h-5 text-on-dark" />
+                <div className="h-5 w-px bg-secondary-600/30 group-hover:bg-secondary-600/50 transition-colors" />
+              </div>
               <input
                 type="text"
                 name="search"
                 value={filters.search}
                 onChange={handleFilterChange}
                 placeholder="Search job titles, skills, or keywords..."
-                className="w-full pl-12 pr-4 py-4 bg-background-200/30 border border-secondary-600/20 rounded-xl text-on-dark focus:outline-none focus:border-primary-300 transition-colors"
+                className="w-full pl-16 pr-4 py-4 bg-background-100 backdrop-blur-sm border border-secondary-600 rounded-xl text-on-dark placeholder:text-secondary-300/70 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/10 hover:border-secondary-600/40 transition-all duration-300"
               />
+              <kbd className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center gap-1 px-2 py-0.5 text-xs text-secondary-300/70 bg-secondary-600/10 rounded border border-secondary-600/20">
+                <span className="text-[10px]">⌘</span>
+                <span>K</span>
+              </kbd>
             </div>
 
-            <div className="flex gap-2">
-              <FilterSection
-                title=""
-                name="sort"
-                options={[
-                  { code: 'latest', name: 'Most Recent' },
-                  { code: 'oldest', name: 'Oldest First' },
-                  { code: 'salary-high-low', name: 'Salary: High to Low' },
-                  { code: 'salary-low-high', name: 'Salary: Low to High' }
-                ]}
-                value={filters.sort}
-                onChange={handleFilterChange}
-              />
+            {/* Sort and Filter Controls */}
+            <div className="flex gap-3">
+              <div className="relative flex-shrink-0">
+                <FilterSection
+                  title=""
+                  name="sort"
+                  options={[
+                    { code: 'latest', name: 'Most Recent' },
+                    { code: 'oldest', name: 'Oldest First' },
+                    { code: 'salary-high-low', name: 'Salary: High to Low' },
+                    { code: 'salary-low-high', name: 'Salary: Low to High' }
+                  ]}
+                  value={filters.sort}
+                  onChange={handleFilterChange}
+                />
+              </div>
 
               <Button
                 text={
@@ -369,7 +395,7 @@ const JobSearchPage = () => {
                     <Filter className="w-5 h-5" />
                     <span className="hidden sm:inline">Filters</span>
                     {activeFilters > 0 && (
-                      <span className="bg-primary-300/20 text-primary-300 px-1.5 py-0.5 rounded-full text-xs">
+                      <span className="bg-primary-300/20 text-primary-300 px-2 py-0.5 rounded-full text-xs font-medium">
                         {activeFilters}
                       </span>
                     )}
@@ -377,7 +403,7 @@ const JobSearchPage = () => {
                 }
                 theme="dark"
                 onClick={() => setShowMobileFilters(true)}
-                className="lg:hidden flex-shrink-0 py-3"
+                className="lg:hidden flex-shrink-0 py-3 hover:bg-background-200/50 transition-colors"
               />
             </div>
           </div>
@@ -509,12 +535,12 @@ const JobSearchPage = () => {
                           <div>
                             <p className="text-secondary-300 text-body-5 mb-1">Application Deadline</p>
                             <p className="text-on-dark">
-                              {job.applicationDeadline 
-                                ? new Date(job.applicationDeadline).toLocaleDateString('en-US', { 
-                                    month: 'short', 
-                                    day: 'numeric',
-                                    year: 'numeric'
-                                  })
+                              {job.applicationDeadline
+                                ? new Date(job.applicationDeadline).toLocaleDateString('en-US', {
+                                  month: 'short',
+                                  day: 'numeric',
+                                  year: 'numeric'
+                                })
                                 : 'Open until filled'
                               }
                             </p>
@@ -528,7 +554,7 @@ const JobSearchPage = () => {
                           <p className="text-secondary-300 text-body-5 mb-2">Required Skills</p>
                           <div className="flex flex-wrap gap-2">
                             {job.requiredSkills.map(skill => (
-                              <span 
+                              <span
                                 key={skill}
                                 className="px-3 py-1 bg-background-200/50 text-secondary-300 rounded-full text-body-5 border border-secondary-600/20"
                               >
