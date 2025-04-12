@@ -19,7 +19,7 @@ const RecentBlogs = () => {
       description: "Learn how modern FP&A solutions are revolutionizing financial planning and decision-making processes in organizations.",
       tag: "Finance",
       slug: "modern-fpa-solutions",
-      image: "/images/blogs/fpa-digital.webp",
+      image: blog1,
       shortTitle: "FP&A"
     },
     // Add more blog posts as needed
