@@ -150,9 +150,12 @@
 
 // export default LandingPage;
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// 2nd - correct code
+
+
+// 3rd - correct code from claude 
+import { useEffect, useRef } from "react";
 import Hero from "../homepage/Hero";
 import Motto from "../ui/Motto";
 import { Testimonials } from "../ui/Testimonials";
@@ -165,57 +168,37 @@ import CompetitorSection from "../ui/CompetitorSection";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
-  const spacerRef = useRef(null);
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: spacerRef.current,
-      start: "top bottom",
-      end: "bottom top",
-      onEnter: () => {
-        gsap.set(heroRef.current, { 
-          position: "sticky",
-          top: 0,
-          transition: "all 0.2s ease-out" 
-        });
-      },
-      onLeaveBack: () => {
-        gsap.set(heroRef.current, { 
-          position: "fixed",
-          top: 0 
-        });
-      },
-      onLeave: () => {
-        gsap.to(heroRef.current, { 
-          opacity: 0,
-          duration: 0.3,
-          onComplete: () => {
-            gsap.set(heroRef.current, { 
-              position: "relative",
-              opacity: 1
-            });
-          }
-        });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!heroRef.current) return;
+      
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      if (scrollPosition > windowHeight) {
+        heroRef.current.style.opacity = '0';
+        heroRef.current.style.pointerEvents = 'none';
+      } else {
+        heroRef.current.style.opacity = '1';
+        heroRef.current.style.pointerEvents = 'auto';
       }
-    });
-
-    return () => {
-      scrollTrigger.kill();
     };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <main className="relative">
       <div
         ref={heroRef}
-        className="w-full h-screen z-10 fixed top-0 left-0"
+        className="w-full h-screen fixed top-0 left-0 z-10 transition-opacity duration-300"
       >
         <Hero />
       </div>
 
-      <div ref={spacerRef} className="h-screen" aria-hidden="true" />
+      <div className="h-screen" aria-hidden="true" />
 
       <section className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
         <div className="bg-background-100 rounded-[40px]">

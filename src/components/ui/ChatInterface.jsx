@@ -122,7 +122,7 @@ const ChatInterface = () => {
   };
 
   return (
-    <div className="fixed bottom-16 right-4 z-40">
+    <div className="fixed bottom-16 right-1 z-40">
       <AnimatePresence>
         {isOpen && (
           <motion.div

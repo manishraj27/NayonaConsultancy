@@ -29,7 +29,7 @@ import JobSearchPage from "./components/pages/JobSearchPage";
 
 
 function App() {
-  const showFloatingButtons = useScrollTrigger();
+  // const showFloatingButtons = useScrollTrigger();
 
   return (
     <>
@@ -42,25 +42,25 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/about/us" element={<AboutUsPage />} />
             <Route path="/about/team" element={<TeamPage />} />
-            <Route path="/about/testimonials" element={<TestimonialsPage/>} />
+            <Route path="/about/testimonials" element={<TestimonialsPage />} />
             <Route path="/resources/blogs" element={<BlogList />} />
             <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
             <Route path="/services/cloud" element={<CloudService />} />
             <Route path="/careers" element={<Career />} />
-            <Route path="/careers/job/:slug" element={<JobDetail/>} />
+            <Route path="/careers/job/:slug" element={<JobDetail />} />
             <Route path="/jobs/:slug/apply" element={<JobApplication />} />
             <Route path="/careers/all-jobs/search" element={<JobSearchPage />} />
-            <Route path="/unsubscribe" element={<UnsubscribePage/>} />
+            <Route path="/unsubscribe" element={<UnsubscribePage />} />
             <Route path="/color-palette" element={<ColorPaletteVisualizer />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/cookies-policy" element={<CookiesPolicy />} />
             <Route path="/legal" element={<Legal />} />
-            <Route path="*" element={<NotFound/>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          {showFloatingButtons && <FloatingButtonsContainer />}
+          <FloatingButtonsContainer />
           <Footer />
           {/* <FooterUpper /> */}
         </main>

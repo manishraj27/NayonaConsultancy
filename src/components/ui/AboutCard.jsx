@@ -60,7 +60,7 @@ const AboutDescriptionCardFeature = ({ index, text }) => {
   return (
     <span className="flex items-start gap-x-space-sm py-4 text-body-1 text-on-dark xl:gap-x-space-md xl:py-space-2xs">
       <span className="font-mono text-base font-medium leading-[200%] text-accent-300">
-        {index}
+        {index}&nbsp;
       </span>
       <span className="opacity-80">{text}</span>
     </span>
