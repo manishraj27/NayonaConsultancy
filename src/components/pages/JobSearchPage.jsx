@@ -451,72 +451,105 @@ const JobSearchPage = () => {
                 {jobs.map(job => (
                   <div
                     key={job._id}
-                    className="group bg-background-200/30 rounded-xl hover:bg-background-200/50 transition-all duration-300 border border-secondary-600/20 hover:border-secondary-600/40 overflow-hidden"
+                    className="group bg-background-200/30 backdrop-blur-sm rounded-xl hover:bg-background-200/50 transition-all duration-300 border border-secondary-600/20 hover:border-secondary-600/40 overflow-hidden hover:shadow-lg hover:shadow-primary-300/5"
                   >
-                    <div className="p-6">
-                      <div className="flex flex-col gap-4">
-                        {/* Title and Company */}
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <h3 className="text-heading-4 font-grotesk font-bold text-on-dark group-hover:text-primary-300 transition-colors">
-                              {job.title}
-                            </h3>
-                            <div className="flex items-center mt-1 text-secondary-300">
+                    <div className="p-8">
+                      {/* Header Section */}
+                      <div className="flex justify-between items-start gap-6">
+                        <div className="flex-1">
+                          <h3 className="text-heading-4 font-grotesk font-bold text-on-dark group-hover:text-primary-300 transition-colors">
+                            {job.title}
+                          </h3>
+                          <div className="flex items-center gap-4 mt-2 text-secondary-300">
+                            <div className="flex items-center">
                               <Building2 className="w-4 h-4 mr-1.5" />
-                              <span>{job.company || 'Company Name'}</span>
+                              <span className="font-medium">{job.company}</span>
+                            </div>
+                            <div className="flex items-center">
+                              <Clock className="w-4 h-4 mr-1.5" />
+                              <span>Posted {formatDate(job.createdAt)}</span>
                             </div>
                           </div>
-                          <span className="px-4 py-1.5 bg-primary-300/10 text-primary-300 rounded-full text-body-4 font-medium whitespace-nowrap">
-                            {job.employmentType ? (job.employmentType.charAt(0).toUpperCase() + job.employmentType.slice(1).replace(/-/g, ' ')) : 'Not specified'}
+                        </div>
+                        <div className="flex flex-col items-end gap-2">
+                          <span className="px-4 py-1.5 bg-primary-300/10 text-primary-300 rounded-full text-body-4 font-medium">
+                            {job.employmentType.charAt(0).toUpperCase() + job.employmentType.slice(1).replace(/-/g, ' ')}
                           </span>
-                        </div>
-
-                        {/* Location and Date */}
-                        <div className="flex flex-wrap justify-between items-center text-body-4">
-                          <div className="flex items-center text-secondary-300">
-                            <MapPin className="w-4 h-4 mr-1.5" />
-                            <span>
-                              {[
-                                job.location?.city,
-                                job.location?.country
-                              ].filter(Boolean).join(', ') || 'Location not specified'}
-                              {job.locationType && ` • ${job.locationType.charAt(0).toUpperCase() + job.locationType.slice(1)}`}
-                            </span>
-                          </div>
-                          <div className="flex items-center text-secondary-300 mt-2 sm:mt-0">
-                            <Clock className="w-4 h-4 mr-1.5" />
-                            <span>Posted {formatDate(job.createdAt || new Date())}</span>
-                          </div>
-                        </div>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mt-1">
-                          {job.experienceLevel && (
-                            <span className="text-body-5 px-3 py-1 bg-secondary-600/10 rounded-full text-secondary-300">
-                              {job.experienceLevel.charAt(0).toUpperCase() + job.experienceLevel.slice(1).replace(/-/g, ' ')}
-                            </span>
-                          )}
-                          {job.jobFunction && (
-                            <span className="text-body-5 px-3 py-1 bg-secondary-600/10 rounded-full text-secondary-300">
-                              {job.jobFunction.charAt(0).toUpperCase() + job.jobFunction.slice(1)}
-                            </span>
-                          )}
-                          {job.skills && job.skills.slice(0, 3).map(skill => (
-                            <span key={skill} className="text-body-5 px-3 py-1 bg-secondary-600/10 rounded-full text-secondary-300">
-                              {skill}
-                            </span>
-                          ))}
+                          <span className="text-body-5 px-3 py-1 bg-secondary-600/10 rounded-full text-secondary-300">
+                            {job.status === 'active' ? 'Active' : 'Closed'}
+                          </span>
                         </div>
                       </div>
 
-                      {/* Salary and Action */}
-                      <div className="flex justify-between items-center mt-6 pt-4 border-t border-secondary-600/10">
-                        <span className="text-primary-300 font-medium">
-                          {formatSalaryRange(job.salaryRange)}
-                        </span>
+                      {/* Details Grid */}
+                      <div className="grid md:grid-cols-3 gap-6 mt-6">
+                        <div className="flex items-start gap-3">
+                          <MapPin className="w-5 h-5 text-secondary-300 mt-0.5" />
+                          <div>
+                            <p className="text-secondary-300 text-body-5 mb-1">Location</p>
+                            <p className="text-on-dark">
+                              {[job.location?.country, job.location?.state].filter(Boolean).join(', ')}
+                              <span className="block text-primary-300 text-body-5 mt-0.5">
+                                {job.location?.type.charAt(0).toUpperCase() + job.location?.type.slice(1)}
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <Briefcase className="w-5 h-5 text-secondary-300 mt-0.5" />
+                          <div>
+                            <p className="text-secondary-300 text-body-5 mb-1">Department</p>
+                            <p className="text-on-dark capitalize">{job.jobFunction.replace(/-/g, ' ')}</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-3">
+                          <Clock className="w-5 h-5 text-secondary-300 mt-0.5" />
+                          <div>
+                            <p className="text-secondary-300 text-body-5 mb-1">Application Deadline</p>
+                            <p className="text-on-dark">
+                              {job.applicationDeadline 
+                                ? new Date(job.applicationDeadline).toLocaleDateString('en-US', { 
+                                    month: 'short', 
+                                    day: 'numeric',
+                                    year: 'numeric'
+                                  })
+                                : 'Open until filled'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Required Skills */}
+                      {job.requiredSkills && job.requiredSkills.length > 0 && (
+                        <div className="mt-6">
+                          <p className="text-secondary-300 text-body-5 mb-2">Required Skills</p>
+                          <div className="flex flex-wrap gap-2">
+                            {job.requiredSkills.map(skill => (
+                              <span 
+                                key={skill}
+                                className="px-3 py-1 bg-background-200/50 text-secondary-300 rounded-full text-body-5 border border-secondary-600/20"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Footer */}
+                      <div className="flex justify-between items-center mt-6 pt-6 border-t border-secondary-600/10">
+                        <div className="flex flex-col">
+                          <span className="text-secondary-300 text-body-5 mb-1">Salary Range</span>
+                          <span className="text-primary-300 font-medium">
+                            {formatSalaryRange(job.salaryRange)}
+                          </span>
+                        </div>
                         <button
                           onClick={() => navigate(`/careers/job/${job.slug}`)}
-                          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-300/10 text-primary-300 hover:bg-primary-300 hover:text-on-dark transition-all duration-300"
+                          className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary-300/10 text-primary-300 hover:bg-primary-300 hover:text-on-dark transition-all duration-300"
                         >
                           <span>View Details</span>
                           <ArrowRight className="w-4 h-4" />
