@@ -8,6 +8,7 @@ import blog2 from '../../assets/images/cards/LPBlogImg4.webp';
 import blog3 from '../../assets/images/cards/LPBlogImg3.webp';
 import LPBlogCard from './LPBlogCard';
 import LPBlogCardSkeleton from './Skeleton/LPBlogCardSkeleton';
+import apiconfig from '../../configurations/APIConfig';
 
 const RecentBlogs = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const RecentBlogs = () => {
   useEffect(() => {
     const fetchRecentBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/blogs?limit=3&sort=-createdAt');
+        const response = await fetch(`${apiconfig.nayona_api}/api/blogs?limit=3&sort=-createdAt`);
         if (!response.ok) throw new Error('Failed to fetch blogs');
         const data = await response.json();
         const blogsWithImages = data.map((blog, index) => ({
