@@ -354,17 +354,17 @@ const JobSearchPage = () => {
           <div className="flex flex-col md:flex-row gap-4 items-stretch">
             {/* Enhanced Search Bar */}
             <div className="flex-1 relative group">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-3 text-secondary-300">
+              {/* <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-3 text-secondary-300">
                 <Search className="w-5 h-5 text-on-dark" />
                 <div className="h-5 w-px bg-secondary-600/30 group-hover:bg-secondary-600/50 transition-colors" />
-              </div>
+              </div> */}
               <input
                 type="text"
                 name="search"
                 value={filters.search}
                 onChange={handleFilterChange}
                 placeholder="Search job titles, skills, or keywords..."
-                className="w-full pl-16 pr-4 py-4 bg-background-100 backdrop-blur-sm border border-secondary-600 rounded-xl text-on-dark placeholder:text-secondary-300/70 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/10 hover:border-secondary-600/40 transition-all duration-300"
+                className="w-full pl-4 pr-4 py-4 bg-background-100 backdrop-blur-sm border border-secondary-600 rounded-xl text-on-dark placeholder:text-secondary-300/70 focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/10 hover:border-secondary-600/40 transition-all duration-300"
               />
               <kbd className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center gap-1 px-2 py-0.5 text-xs text-secondary-300/70 bg-secondary-600/10 rounded border border-secondary-600/20">
                 <span className="text-[10px]">⌘</span>
@@ -474,7 +474,7 @@ const JobSearchPage = () => {
               <div className="space-y-4">
 
 
-{jobs.map(job => (
+                {jobs.map(job => (
                   <div
                     key={job._id}
                     className="group bg-secondary-700/5 backdrop-blur-sm rounded-xl hover:bg-background-200/50 transition-all duration-300 border border-secondary-600/20 hover:border-secondary-600/40 overflow-hidden hover:shadow-lg hover:shadow-primary-300/5"
