@@ -474,19 +474,19 @@ const JobSearchPage = () => {
               <div className="space-y-4">
 
 
-                {jobs.map(job => (
+{jobs.map(job => (
                   <div
                     key={job._id}
-                    className="group bg-background-200/30 backdrop-blur-sm rounded-xl hover:bg-background-200/50 transition-all duration-300 border border-secondary-600/20 hover:border-secondary-600/40 overflow-hidden hover:shadow-lg hover:shadow-primary-300/5"
+                    className="group bg-secondary-700/5 backdrop-blur-sm rounded-xl hover:bg-background-200/50 transition-all duration-300 border border-secondary-600/20 hover:border-secondary-600/40 overflow-hidden hover:shadow-lg hover:shadow-primary-300/5"
                   >
-                    <div className="p-8">
+                    <div className="p-4 sm:p-6 md:p-8">
                       {/* Header Section */}
-                      <div className="flex justify-between items-start gap-6">
-                        <div className="flex-1">
-                          <h3 className="text-heading-4 font-grotesk font-bold text-on-dark group-hover:text-primary-300 transition-colors">
+                      <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-6">
+                        <div className="flex-1 w-full sm:w-auto">
+                          <h3 className="text-heading-5 sm:text-heading-4 font-grotesk font-bold text-on-dark group-hover:text-primary-300 transition-colors">
                             {job.title}
                           </h3>
-                          <div className="flex items-center gap-4 mt-2 text-secondary-300">
+                          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-2 text-secondary-300">
                             <div className="flex items-center">
                               <Building2 className="w-4 h-4 mr-1.5" />
                               <span className="font-medium">{job.company}</span>
@@ -497,8 +497,8 @@ const JobSearchPage = () => {
                             </div>
                           </div>
                         </div>
-                        <div className="flex flex-col items-end gap-2">
-                          <span className="px-4 py-1.5 bg-primary-300/10 text-primary-300 rounded-full text-body-4 font-medium">
+                        <div className="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto justify-end">
+                          <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-primary-300/10 text-primary-300 rounded-full text-body-5 sm:text-body-4 font-medium">
                             {job.employmentType.charAt(0).toUpperCase() + job.employmentType.slice(1).replace(/-/g, ' ')}
                           </span>
                           <span className="text-body-5 px-3 py-1 bg-secondary-600/10 rounded-full text-secondary-300">
@@ -508,12 +508,12 @@ const JobSearchPage = () => {
                       </div>
 
                       {/* Details Grid */}
-                      <div className="grid md:grid-cols-3 gap-6 mt-6">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mt-6">
                         <div className="flex items-start gap-3">
-                          <MapPin className="w-5 h-5 text-secondary-300 mt-0.5" />
-                          <div>
+                          <MapPin className="w-5 h-5 text-secondary-300 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0">
                             <p className="text-secondary-300 text-body-5 mb-1">Location</p>
-                            <p className="text-on-dark">
+                            <p className="text-on-dark truncate">
                               {[job.location?.country, job.location?.state].filter(Boolean).join(', ')}
                               <span className="block text-primary-300 text-body-5 mt-0.5">
                                 {job.location?.type.charAt(0).toUpperCase() + job.location?.type.slice(1)}
@@ -523,18 +523,18 @@ const JobSearchPage = () => {
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <Briefcase className="w-5 h-5 text-secondary-300 mt-0.5" />
-                          <div>
+                          <Briefcase className="w-5 h-5 text-secondary-300 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0">
                             <p className="text-secondary-300 text-body-5 mb-1">Department</p>
-                            <p className="text-on-dark capitalize">{job.jobFunction.replace(/-/g, ' ')}</p>
+                            <p className="text-on-dark capitalize truncate">{job.jobFunction.replace(/-/g, ' ')}</p>
                           </div>
                         </div>
 
                         <div className="flex items-start gap-3">
-                          <Clock className="w-5 h-5 text-secondary-300 mt-0.5" />
-                          <div>
+                          <Clock className="w-5 h-5 text-secondary-300 mt-0.5 flex-shrink-0" />
+                          <div className="min-w-0">
                             <p className="text-secondary-300 text-body-5 mb-1">Application Deadline</p>
-                            <p className="text-on-dark">
+                            <p className="text-on-dark truncate">
                               {job.applicationDeadline
                                 ? new Date(job.applicationDeadline).toLocaleDateString('en-US', {
                                   month: 'short',
@@ -566,8 +566,8 @@ const JobSearchPage = () => {
                       )}
 
                       {/* Footer */}
-                      <div className="flex justify-between items-center mt-6 pt-6 border-t border-secondary-600/10">
-                        <div className="flex flex-col">
+                      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-6 pt-6 border-t border-secondary-600/10">
+                        <div className="flex flex-col w-full sm:w-auto">
                           <span className="text-secondary-300 text-body-5 mb-1">Salary Range</span>
                           <span className="text-primary-300 font-medium">
                             {formatSalaryRange(job.salaryRange)}
@@ -575,7 +575,7 @@ const JobSearchPage = () => {
                         </div>
                         <button
                           onClick={() => navigate(`/careers/job/${job.slug}`)}
-                          className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-primary-300/10 text-primary-300 hover:bg-primary-300 hover:text-on-dark transition-all duration-300"
+                          className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-primary-300/10 text-primary-300 hover:bg-primary-300 hover:text-on-dark transition-all duration-300"
                         >
                           <span>View Details</span>
                           <ArrowRight className="w-4 h-4" />

@@ -26,7 +26,7 @@ import JobApplication from "./components/ui/JobApplication";
 import TeamPage from "./components/pages/TeamPage";
 import TestimonialsPage from "./components/pages/TestimonialsPage";
 import JobSearchPage from "./components/pages/JobSearchPage";
-
+import CaseStudyPage from "./components/pages/CaseStudyPage";
 
 function App() {
   // const showFloatingButtons = useScrollTrigger();
@@ -44,6 +44,7 @@ function App() {
             <Route path="/about/team" element={<TeamPage />} />
             <Route path="/about/testimonials" element={<TestimonialsPage />} />
             <Route path="/resources/blogs" element={<BlogList />} />
+            <Route path="/resources/cases" element={<CaseStudyPage />} />
             <Route path="/blog/:slug" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/services/enterprise" element={<Service />} />
