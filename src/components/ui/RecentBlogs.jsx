@@ -1,34 +1,46 @@
 import BlogCard from './BlogCard';
-import blog1 from "../../assets/images/cards/LPBlogImg3.webp"
 import Heading from './Heading';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import blog1 from '../../assets/images/cards/LPBlogImg1.webp';
+import blog2 from '../../assets/images/cards/LPBlogImg4.webp';
+import blog3 from '../../assets/images/cards/LPBlogImg3.webp';
 const RecentBlogs = () => {
-
   const navigate = useNavigate();
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const images = [blog1, blog2, blog3];
 
+  useEffect(() => {
+    const fetchRecentBlogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/blogs?limit=3&sort=-createdAt');
+        if (!response.ok) throw new Error('Failed to fetch blogs');
+        const data = await response.json();
+        const blogsWithImages = data.map((blog, index) => ({
+          ...blog,
+          image: images[index]
+        }));
 
-  const blogs = [
-    {
-      date: "February 19, 2024",
-      title: "Oracle EPM Cloud Implementation Best Practices",
-      description: "Discover the key strategies and best practices for successful Oracle EPM Cloud implementation that can transform your financial planning and analysis.",
-      tag: "EPM",
-      slug: "epm-cloud-implementation",
-      image: blog1,
-      shortTitle: "EPM Cloud"
-    },
-    {
-      date: "February 15, 2024",
-      title: "Financial Planning & Analysis in the Digital Age",
-      description: "Learn how modern FP&A solutions are revolutionizing financial planning and decision-making processes in organizations.",
-      tag: "Finance",
-      slug: "modern-fpa-solutions",
-      image: blog1,
-      shortTitle: "FP&A"
-    },
-    // Add more blog posts as needed
-  ];
+        setBlogs(blogsWithImages);
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecentBlogs();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="container mx-auto px-4 lg:px-8 py-16">
+        <div className="text-center">Loading...</div>
+      </section>
+    );
+  }
 
   return (
     <section className="container mx-auto px-4 lg:px-8 py-16">
@@ -40,7 +52,7 @@ const RecentBlogs = () => {
       </div>
       <div className="space-y-8 pt-20 lg:pt-24">
         {blogs.map((blog, index) => (
-          <BlogCard key={index} blog={blog} />
+          <BlogCard key={blog._id || index} blog={blog} />
         ))}
       </div>
     </section>
