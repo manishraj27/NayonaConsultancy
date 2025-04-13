@@ -199,11 +199,11 @@ const JobApplication = () => {
 
   return (
     <section className="min-h-screen bg-background-100 text-on-dark font-body-1 dark-section rounded-b-[40px]">
-      <div className=" max-w-4xl mx-auto px-6 py-16 pt-48">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-16 pt-32 sm:pt-48">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-12"
+          className="mb-8 sm:mb-12"
         >
           <Heading
             title="Job Application Form"
@@ -235,12 +235,12 @@ const JobApplication = () => {
             )}
 
             {/* Personal Information */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <h3 className="text-heading-4 font-semibold mb-6 flex items-center gap-2">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <h3 className="text-heading-4 font-semibold mb-4 sm:mb-6 flex items-center gap-2">
                 <User className="w-5 h-5 text-primary-300" />
                 Personal Information
               </h3>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-secondary-300 mb-2 body-3">First Name *</label>
                   <input
@@ -263,7 +263,7 @@ const JobApplication = () => {
                     className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                   />
                 </div>
-                <div>
+                <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">Email Address *</label>
                   <input
                     type="email"
@@ -275,18 +275,18 @@ const JobApplication = () => {
                   />
                 </div>
               
-                <div>
+                <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">Phone Number *</label>
                   <div className="flex gap-2">
                     <select
                       name="countryCode"
                       value={formData.personalInfo.countryCode}
                       onChange={handlePersonalInfoChange}
-                      className="bg-secondary-700/80 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                      className="w-1/3 sm:w-auto bg-secondary-700/80 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     >
                       {COUNTRY_CODES.map(country => (
                         <option key={country.code} value={country.code}>
-                          {country.code} ({country.name})
+                          {country.code}
                         </option>
                       ))}
                     </select>
@@ -300,7 +300,7 @@ const JobApplication = () => {
                     />
                   </div>
                 </div>
-                <div className="md:col-span-2">
+                <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">Place of Residence *</label>
                   <input
                     type="text"
@@ -316,8 +316,8 @@ const JobApplication = () => {
             </div>
 
             {/* Work Experience */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <div className="flex justify-between items-center mb-6">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-4">
                 <h3 className="text-heading-4 font-semibold flex items-center gap-2">
                   <Briefcase className="w-5 h-5 text-primary-300" />
                   Work Experience
@@ -327,7 +327,7 @@ const JobApplication = () => {
                   onClick={addWorkExperience}
                   text="Add Experience"
                   theme="dark"
-                  className="bg-primary-300 hover:bg-primary-400 text-on-dark"
+                  className="w-full sm:w-auto bg-primary-300 hover:bg-primary-400 text-on-dark"
                 />
               </div>
               
@@ -346,8 +346,8 @@ const JobApplication = () => {
                     )}
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Job Title *</label>
                       <input
                         type="text"
@@ -358,7 +358,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
-                    <div>
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Company *</label>
                       <input
                         type="text"
@@ -369,7 +369,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
-                    <div>
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Location</label>
                       <input
                         type="text"
@@ -379,7 +379,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Description *</label>
                       <textarea
                         name="description"
@@ -411,7 +411,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="sm:col-span-2">
                       <label className="flex items-center gap-2 text-secondary-300 body-3">
                         <input
                           type="checkbox"
@@ -429,8 +429,8 @@ const JobApplication = () => {
             </div>
 
             {/* Education */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <div className="flex justify-between items-center mb-6">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-4">
                 <h3 className="text-heading-4 font-semibold flex items-center gap-2">
                   <GraduationCap className="w-5 h-5 text-primary-300" />
                   Education
@@ -440,7 +440,7 @@ const JobApplication = () => {
                   onClick={addEducation}
                   text="Add Education"
                   theme="dark"
-                  className="bg-primary-300 hover:bg-primary-400 text-on-dark"
+                  className="w-full sm:w-auto bg-primary-300 hover:bg-primary-400 text-on-dark"
                 />
               </div>
               
@@ -459,8 +459,8 @@ const JobApplication = () => {
                     )}
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Institution *</label>
                       <input
                         type="text"
@@ -493,7 +493,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                       />
                     </div>
-                    <div>
+                    <div className="sm:col-span-2">
                       <label className="block text-secondary-300 mb-2 body-3">Location</label>
                       <input
                         type="text"
@@ -525,7 +525,7 @@ const JobApplication = () => {
                         className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30 disabled:opacity-50"
                       />
                     </div>
-                    <div className="md:col-span-2">
+                    <div className="sm:col-span-2">
                       <label className="flex items-center gap-2 text-secondary-300 body-3">
                         <input
                           type="checkbox"
@@ -543,13 +543,13 @@ const JobApplication = () => {
             </div>
 
             {/* Social Profiles */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <h3 className="text-heading-4 font-semibold mb-6 flex items-center gap-2">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <h3 className="text-heading-4 font-semibold mb-4 sm:mb-6 flex items-center gap-2">
                 <Globe className="w-5 h-5 text-primary-300" />
                 Social Profiles
               </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">LinkedIn Profile</label>
                   <input
                     type="url"
@@ -560,7 +560,7 @@ const JobApplication = () => {
                     placeholder="https://linkedin.com/in/username"
                   />
                 </div>
-                <div>
+                <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">Personal Website</label>
                   <input
                     type="url"
@@ -575,8 +575,8 @@ const JobApplication = () => {
             </div>
 
             {/* Resume Upload */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <h3 className="text-heading-4 font-semibold mb-6 flex items-center gap-2">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <h3 className="text-heading-4 font-semibold mb-4 sm:mb-6 flex items-center gap-2">
                 <FileText className="w-5 h-5 text-primary-300" />
                 Resume/CV
               </h3>
@@ -597,8 +597,8 @@ const JobApplication = () => {
             </div>
 
             {/* Message to Hiring Team */}
-            <div className="bg-background-200/50 backdrop-blur-sm p-6 rounded-xl border border-secondary-600/30">
-              <h3 className="text-heading-4 font-semibold mb-6 flex items-center gap-2">
+            <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
+              <h3 className="text-heading-4 font-semibold mb-4 sm:mb-6 flex items-center gap-2">
                 <MessageSquare className="w-5 h-5 text-primary-300" />
                 Message to Hiring Team
               </h3>
@@ -615,7 +615,7 @@ const JobApplication = () => {
                 type="submit"
                 text={isSubmitting ? "Submitting..." : "Submit Application"}
                 theme="dark"
-                className="w-full md:w-auto bg-primary-300 hover:bg-primary-400 text-on-dark"
+                className="w-full sm:w-auto bg-primary-300 hover:bg-primary-400 text-on-dark"
                 disabled={isSubmitting}
               />
             </div>
