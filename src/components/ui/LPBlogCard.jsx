@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const BlogCard = ({ blog }) => {
+const LPBlogCard = ({ blog }) => {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -74,4 +74,4 @@ const BlogCard = ({ blog }) => {
   );
 };
 
-export default BlogCard;
+export default LPBlogCard;

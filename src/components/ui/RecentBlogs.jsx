@@ -1,4 +1,4 @@
-import BlogCard from './BlogCard';
+
 import Heading from './Heading';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import blog1 from '../../assets/images/cards/LPBlogImg1.webp';
 import blog2 from '../../assets/images/cards/LPBlogImg4.webp';
 import blog3 from '../../assets/images/cards/LPBlogImg3.webp';
+import LPBlogCard from './LPBlogCard';
+
 const RecentBlogs = () => {
   const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
@@ -52,7 +54,7 @@ const RecentBlogs = () => {
       </div>
       <div className="space-y-8 pt-20 lg:pt-24">
         {blogs.map((blog, index) => (
-          <BlogCard key={blog._id || index} blog={blog} />
+          <LPBlogCard key={blog._id || index} blog={blog} />
         ))}
       </div>
     </section>
