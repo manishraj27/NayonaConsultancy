@@ -1,8 +1,13 @@
 import BlogCard from './BlogCard';
-import blog1 from "../../assets/images/cards/BLOG1.png"
+import blog1 from "../../assets/images/cards/LPBlogImg3.png"
 import Heading from './Heading';
 import Button from './Button';
+import { useNavigate } from 'react-router-dom';
 const RecentBlogs = () => {
+
+  const navigate = useNavigate();
+
+
   const blogs = [
     {
       date: "February 19, 2024",
@@ -27,9 +32,13 @@ const RecentBlogs = () => {
 
   return (
     <section className="container mx-auto px-4 lg:px-8 py-16">
-      <Heading title="Latest News" description="Blogs" />
-      <Button text="Explore All" theme='dark' onClick={() => {}} />
-      <div className="space-y-8 pt-28">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+        <Heading title="Latest News" description="Blogs" />
+        <div className="mt-6 lg:mt-0">
+          <Button text="Explore All" theme='dark' onClick={() => navigate('/resources/blogs')} />
+        </div>
+      </div>
+      <div className="space-y-8 pt-20 lg:pt-24">
         {blogs.map((blog, index) => (
           <BlogCard key={index} blog={blog} />
         ))}
