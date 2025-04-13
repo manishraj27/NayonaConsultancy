@@ -277,16 +277,16 @@ const JobApplication = () => {
               
                 <div className="sm:col-span-2">
                   <label className="block text-secondary-300 mb-2 body-3">Phone Number *</label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <select
                       name="countryCode"
                       value={formData.personalInfo.countryCode}
                       onChange={handlePersonalInfoChange}
-                      className="w-1/3 sm:w-auto bg-secondary-700/80 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                      className="w-full sm:w-[240px] bg-secondary-700/80 rounded-lg px-3 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
                     >
                       {COUNTRY_CODES.map(country => (
                         <option key={country.code} value={country.code}>
-                          {country.code}
+                          {country.name} ({country.code})
                         </option>
                       ))}
                     </select>
@@ -297,6 +297,7 @@ const JobApplication = () => {
                       value={formData.personalInfo.phoneNumber}
                       onChange={handlePersonalInfoChange}
                       className="w-full bg-secondary-700/80 rounded-lg px-4 py-3 text-on-dark focus:ring-2 focus:ring-primary-300 outline-none body-2 border border-secondary-600/30"
+                      placeholder="Enter phone number"
                     />
                   </div>
                 </div>
