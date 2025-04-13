@@ -7,6 +7,7 @@ import blog1 from '../../assets/images/cards/LPBlogImg1.webp';
 import blog2 from '../../assets/images/cards/LPBlogImg4.webp';
 import blog3 from '../../assets/images/cards/LPBlogImg3.webp';
 import LPBlogCard from './LPBlogCard';
+import LPBlogCardSkeleton from './Skeleton/LPBlogCardSkeleton';
 
 const RecentBlogs = () => {
   const navigate = useNavigate();
@@ -39,7 +40,16 @@ const RecentBlogs = () => {
   if (loading) {
     return (
       <section className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="text-center">Loading...</div>
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
+          <Heading title="Latest News" description="Blogs" />
+          <div className="mt-6 lg:mt-0">
+            <Button text="Explore All" theme='dark' onClick={() => navigate('/resources/blogs')} />
+          </div>
+        </div>
+        <div className="space-y-8 pt-20 lg:pt-24">
+
+        <LPBlogCardSkeleton />
+        </div>
       </section>
     );
   }
