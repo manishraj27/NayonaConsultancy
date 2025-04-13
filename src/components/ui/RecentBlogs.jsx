@@ -1,5 +1,5 @@
 import BlogCard from './BlogCard';
-import blog1 from "../../assets/images/cards/LPBlogImg3.png"
+import blog1 from "../../assets/images/cards/LPBlogImg3.webp"
 import Heading from './Heading';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
