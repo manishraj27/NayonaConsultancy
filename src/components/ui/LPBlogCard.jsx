@@ -14,7 +14,7 @@ const LPBlogCard = ({ blog }) => {
 
 
   return (
-    <div className="group relative ">
+    <div className="group relative">
       <div className="flex flex-col gap-10 border-b border-secondary-300/10 py-12 last-of-type:border-b-0 first-of-type:border-t md:flex-row md:gap-12">
         <div className="flex flex-col gap-4 md:gap-12 xl:flex-row flex-1 order-2 md:order-1">
           <div className="w-[120px] shrink-0">

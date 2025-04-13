@@ -16,7 +16,6 @@ createRoot(document.getElementById('root')).render(
       <LenisWrapper>
         <SpotlightCursor />
         <App />
-    
       </LenisWrapper>
     </StrictMode>
   </BrowserRouter>

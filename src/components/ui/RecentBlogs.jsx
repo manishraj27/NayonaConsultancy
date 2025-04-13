@@ -63,7 +63,7 @@ const RecentBlogs = () => {
           <Button text="Explore All" theme='dark' onClick={() => navigate('/resources/blogs')} />
         </div>
       </div>
-      <div className="space-y-8 pt-20 lg:pt-24">
+      <div className="space-y-8 pt-20 lg:pt-24 blog-card">
         {blogs.map((blog, index) => (
           <LPBlogCard key={blog._id || index} blog={blog} />
         ))}
