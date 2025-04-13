@@ -131,27 +131,22 @@ const JobDetail = () => {
           transition={{ delay: 0.1 }}
           className="flex flex-wrap gap-4 mb-12"
         >
-          <div
-            onClick={handleApply}
-          >
+
 
             <Button
               text="Apply Now"
               theme="dark"
+              onClick={handleApply}
             />
 
-          </div>
-          <div
-            onClick={handleShare}
-          >
+
 
             <Button
               text="Share Position"
               theme="dark"
-
+              onClick={handleShare}
             />
 
-          </div>
 
         </motion.div>
 
@@ -307,7 +302,7 @@ const JobDetail = () => {
                 <Button
                   text="Submit Application"
                   theme="dark"
-                  className="w-full md:w-auto bg-primary-300 hover:bg-primary-400"
+                  onClick={handleApply}
                 />
               </div>
             </section>
