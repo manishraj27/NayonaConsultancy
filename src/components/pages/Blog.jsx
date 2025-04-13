@@ -124,19 +124,19 @@ function Blog() {
               <Clock size={16} className="mr-2" />
               <span>{blog.readTime} min read</span>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <Eye size={16} className="mr-2" />
               <span>{blog.views} views</span>
             </div>
             <div className="flex items-center">
               <Heart size={16} className="mr-2" />
               <span>{blog.likes} likes</span>
-            </div>
+            </div> */}
           </div>
 
            {/* Author Section */}
            <div className="flex items-center mb-8">
-            <div className="w-12 h-12 bg-secondary-200 rounded-full mr-4 flex items-center justify-center text-on-dark font-semibold">
+            <div className="w-12 h-12 border rounded-full mr-4 flex items-center justify-center text-on-dark font-semibold">
               {blog.author?.name?.charAt(0) || 'U'}
             </div>
             <div>
@@ -157,7 +157,7 @@ function Blog() {
           </div>
 
           {/* Comments Section */}
-          <div className="border-t border-secondary-700 pt-12">
+          {/* <div className="border-t border-secondary-700 pt-12">
             <h3 className="text-2xl font-bold mb-6 text-on-dark">
               Comments ({blog.comments?.length || 0})
             </h3>
@@ -184,7 +184,7 @@ function Blog() {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
