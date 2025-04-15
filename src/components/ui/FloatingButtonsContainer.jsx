@@ -5,7 +5,7 @@ const FloatingButtonsContainer = () => {
   return (
     <div>
       <ChatInterface />
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
     </div>
   );
 };
