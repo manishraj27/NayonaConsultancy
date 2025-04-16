@@ -73,7 +73,7 @@ function FooterCredits() {
         </div>
 
         {/* Right side - Credits with animations */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mr-12">
           {/* Website credit */}
           <motion.span 
             className="text-secondary-700 font-grotesk text-body-5 lg:text-body-5 flex items-center"
