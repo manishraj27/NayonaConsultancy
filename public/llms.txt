@@ -1,0 +1,34 @@
+# Permissions for AI and LLM Crawlers
+Permission-Type: Limited
+Content-Type: Public
+Last-Updated: 2025-04
+
+# Access Rules
+Allow-Processing: True
+Allow-Indexing: True
+Allow-Summarization: True
+Allow-Training: False
+Allow-Commercial-Use: False
+
+# Content Scope
+Allowed-Sections:
+- Public website content
+- Blog posts
+- Service descriptions
+- Case studies
+- Job listings
+
+Excluded-Sections:
+- User data
+- Application forms
+- Private communications
+- Internal documentation
+
+# Usage Guidelines
+Rate-Limit: 100 requests per hour
+Cache-Duration: 24 hours
+Max-Tokens: 10000 per request
+
+# Contact Information
+Contact: info@nayonaconsultancy.com
+Website: https://nayonaconsultancy.com

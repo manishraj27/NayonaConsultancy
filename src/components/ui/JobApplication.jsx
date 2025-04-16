@@ -223,16 +223,13 @@ const JobApplication = () => {
               text="Back to Job Listing"
               theme="dark"
               className="bg-primary-300 hover:bg-primary-400 text-on-dark"
-              onClick={() => navigate('/jobs')}
+              onClick={() => navigate('/careers/all-jobs/search')}
             />
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
-            {error && (
-              <div className="bg-red-500/20 text-red-500 p-4 rounded-lg body-3">
-                {error}
-              </div>
-            )}
+      
+            
 
             {/* Personal Information */}
             <div className="bg-background-200/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl border border-secondary-600/30">
@@ -620,6 +617,16 @@ const JobApplication = () => {
                 disabled={isSubmitting}
               />
             </div>
+
+
+
+            {error && (
+              <div className="bg-red-500/20 text-red-500 p-4 rounded-lg body-3">
+                {error}
+              </div>
+            )}
+
+            
           </form>
         )}
       </div>
