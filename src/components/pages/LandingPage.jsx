@@ -166,6 +166,8 @@ import HomePageCTA from "../ui/HomePageCTA";
 import { SeeTheEPMDifference } from "../magicui/StickyScrollRevealDemo";
 import CompetitorSection from "../ui/CompetitorSection";
 import RecentBlogs from "../ui/RecentBlogs";
+import FeaturedCaseStudies from "../ui/FeaturedCaseStudies";
+import PartnersCarousel from "../ui/PartnersCarousel";
 
 const LandingPage = () => {
   const heroRef = useRef(null);
@@ -204,10 +206,14 @@ const LandingPage = () => {
       <section className="dark-section relative bg-light-200 w-full min-h-screen z-20 rounded-t-[40px]">
         <div className="bg-background-100 rounded-[40px]">
           <Motto />
+          <PartnersCarousel/>
           <AboutCard />
           <HomePageServiceSection />
           <SeeTheEPMDifference />
           <CompetitorSection />
+
+          <FeaturedCaseStudies />
+
           <RecentBlogs />
           <Testimonials />
           <FAQAcc />
