@@ -57,7 +57,7 @@ const FeaturedCaseStudies = () => {
         />
         
         {/* Mobile Tab Navigation */}
-        <div className="mt-8 flex overflow-x-auto gap-2 md:hidden">
+        <div className="mt-8 flex overflow-x-auto gap-2 md:hidden scrollbar-hide">
           {caseStudies.map((study, index) => (
             <button
               key={index}

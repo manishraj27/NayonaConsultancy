@@ -95,7 +95,7 @@ const InfiniteMarquee = ({ items, direction = "left", speed = 40 }) => {
 const PartnersCarousel = () => {
   const navigate = useNavigate();
   return (
-    <section className="pt-8 md:pt-16 lg:pt-24 overflow-hidden px-2 md:px-4 lg:px-8">
+    <section className="pt-36 pb-8 overflow-hidden  md:px-4 lg:px-8">
       <div className="container mx-auto px-2 md:px-4">
         <Heading 
           title="Trusted By Industry Leaders" 
