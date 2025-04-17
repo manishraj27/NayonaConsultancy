@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Heading from "../ui/Heading";
 import { Briefcase, Users, Heart, Award, ArrowRight, Globe, BookOpen, Target, ChevronRight, Sparkles, Rocket } from "lucide-react";
 import Button from "../ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Mail, BriefcaseIcon, Clock, MapPin, DollarSign } from "lucide-react";
 import careerHeroImage from "../../assets/images/ABOUTUSMEETING.webp"
@@ -85,45 +85,46 @@ const Career = () => {
   const [recentJobs, setRecentJobs] = useState([]);
   const [isLoadingJobs, setIsLoadingJobs] = useState(true);
   const [jobError, setJobError] = useState(null);
+  const navigate = useNavigate();
 
-const fetchRecentJobs = async () => {
-  try {
-    setIsLoadingJobs(true);
-    const response = await fetch(`${apiconfig.nayona_api}/api/jobs?limit=3&sort=latest`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch jobs');
+  const fetchRecentJobs = async () => {
+    try {
+      setIsLoadingJobs(true);
+      const response = await fetch(`${apiconfig.nayona_api}/api/jobs?limit=3&sort=latest`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch jobs');
+      }
+      const data = await response.json();
+
+      const jobsArray = data.jobs && Array.isArray(data.jobs) ? data.jobs.slice(0, 3) : [];
+
+      setRecentJobs(jobsArray.map(job => ({
+        id: job._id,
+        title: job.title,
+        type: job.employmentType || 'Full Time',
+        location: job.location ?
+          (job.location.type === 'remote' ? 'Remote' : `${job.location.state || ''}, ${job.location.country}`) :
+          'Location not specified',
+        salary: job.salaryRange ?
+          `$${job.salaryRange.min}k - $${job.salaryRange.max}k` :
+          'Competitive',
+        posted: job.createdAt ? formatTimeAgo(new Date(job.createdAt)) : 'Recently',
+        slug: job.slug || job._id,
+        description: job.description || '',
+        requiredSkills: job.requiredSkills || [],
+        experience: job.experience || 'Not specified',
+        department: job.department || 'General',
+        responsibilities: job.responsibilities || [],
+        benefits: job.benefits || [],
+        qualifications: job.qualifications || []
+      })));
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+      setJobError('Failed to load recent jobs');
+    } finally {
+      setIsLoadingJobs(false);
     }
-    const data = await response.json();
-    
-    const jobsArray = data.jobs && Array.isArray(data.jobs) ? data.jobs.slice(0, 3) : [];
-    
-    setRecentJobs(jobsArray.map(job => ({
-      id: job._id,
-      title: job.title,
-      type: job.employmentType || 'Full Time',
-      location: job.location ?
-        (job.location.type === 'remote' ? 'Remote' : `${job.location.state || ''}, ${job.location.country}`) :
-        'Location not specified',
-      salary: job.salaryRange ?
-        `$${job.salaryRange.min}k - $${job.salaryRange.max}k` :
-        'Competitive',
-      posted: job.createdAt ? formatTimeAgo(new Date(job.createdAt)) : 'Recently',
-      slug: job.slug || job._id,
-      description: job.description || '',
-      requiredSkills: job.requiredSkills || [],
-      experience: job.experience || 'Not specified',
-      department: job.department || 'General',
-      responsibilities: job.responsibilities || [],
-      benefits: job.benefits || [],
-      qualifications: job.qualifications || []
-    })));
-  } catch (error) {
-    console.error('Error fetching jobs:', error);
-    setJobError('Failed to load recent jobs');
-  } finally {
-    setIsLoadingJobs(false);
-  }
-};
+  };
 
   // Add this utility function
   const formatTimeAgo = (date) => {
@@ -301,17 +302,13 @@ const fetchRecentJobs = async () => {
                     </div>
                   </div>
 
-                  <Link to="/careers" className="center">
-
+         
                     <Button
                       text="Explore Opportunities"
-                      icon={ArrowRight}
-                      iconPosition="right"
                       theme="dark"
-                      className="w-full bg-primary-300/90 hover:bg-primary-300 transition-colors duration-300"
+                     onClick={() => navigate('/careers/all-jobs/search')}
                     />
 
-                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -375,9 +372,15 @@ const fetchRecentJobs = async () => {
 
 
         <div className="mb-24">
-        <div className="mt-12">
-            <h3 className="text-2xl font-bold text-on-dark mb-6">Recent Opportunities</h3>
-
+          <div className="mt-12">
+          <div className="flex justify-between items-center mb-8">
+              <h3 className="text-2xl font-bold text-on-dark">Recent Opportunities</h3>
+              <Button
+                text="View All Jobs"
+                onClick={() => navigate('/careers/all-jobs/search')}
+                theme="dark"
+              />
+            </div>
             {isLoadingJobs ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[1, 2, 3].map((i) => (
