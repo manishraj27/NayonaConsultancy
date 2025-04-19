@@ -114,21 +114,14 @@ function FooterUpper() {
       ],
     },
     {
-      name: "Features",
-      icon: Zap,
-      description: "Explore our key",
+      name: "Careers",
+      icon: Briefcase,
+      description: "Explore our openings",
       submenu: [
-        {
-          name: "Consulting Services",
-          to: "/features/consulting",
-          icon: Briefcase,
-        },
-        {
-          name: "Digital Transformation",
-          to: "/features/digital",
-          icon: Laptop,
-        },
-      ],
+        { name: "All Jobs", to: "/careers", icon: Briefcase },
+        { name: "Job Search", to: "/careers/all-jobs/search", icon: Target },
+        //{ name: "Apply Now", to: "/careers/apply", icon: Heart }
+      ]
     },
     {
       name: "About",
@@ -241,7 +234,7 @@ function FooterUpper() {
                           {subitem.to ? (
                             <a
                               href={subitem.to}
-                              className="text-secondary-600 font-grotesk text-sm hover:text-accent-500 transition-colors"
+                              className="text-secondary-600 font-grotesk text- hover:text-accent-500 transition-colors"
                             >
                               {subitem.name}
                               <span className="absolute bottom-0 left-0 h-[0.10em] w-0 bg-accent-300 rounded-full transition-all duration-300 group-hover:w-full"></span>

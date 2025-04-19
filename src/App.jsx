@@ -35,7 +35,7 @@ function App() {
     <>
       <WebLoader />
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-light-200">
+      <div className="min-h-screen flex flex-col">
         <NavBar />
         <main id="main-content">
           <Routes>
